@@ -1,0 +1,9 @@
+{
+  "name": "EasyUI-Layout",
+  "version": "0.0.0",
+  "author": "James Smith",
+  "repository": {},
+  "dependencies": {
+    "easyui": "0.0.0"
+  }
+}

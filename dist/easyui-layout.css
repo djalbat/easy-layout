@@ -1,0 +1,42 @@
+.rows {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+.rows .row {
+  flex: 1;
+  flex-shrink: 1000;
+  min-height: 2rem;
+}
+
+.columns {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  height: 100%;
+}
+
+.columns .column {
+  flex: 1;
+}
+
+.splitter.vertical {
+  width: 8px;
+  min-width: 8px;
+}
+
+.splitter.horizontal {
+  height: 8px;
+  min-height: 8px;
+}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
