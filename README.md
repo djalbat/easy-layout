@@ -11,36 +11,30 @@ EasyUI-Layout gives you sizeable elements that can be resized using draggable sp
 
 ## Installation
 
-The browserified `easyui-layout.js` file is available in the `dist/` folder. Alternatively you can download and unzip the project zip file or clone the repository. There is an `index.js` file in the root of the distribution that will work with both [Browserify](http://browserify.org/) and [Node.js](http://nodejs.org). These instructions assume you have created an EasyUI-Layout folder next to your project folder:
+If you're running [Node.js](http://nodejs.org) you can install EasyUI-Layout with [npm](https://www.npmjs.com/):
 
-With Browserify:
+    npm install easyui-layout
 
-```js
-./node_modules/.bin/browserify ./../EasyUI-Layout/index.js --standalone easyui-layout --debug --verbose -o ./public/scripts/lib/easyui-layout.js
+Client-side you can take the `easyui-layout.js` file in the `dist/` folder put it somewhere and reference it via the usual script element:
+ 
+```html
+<script src="scripts/lib/easyui-layout.js"> </script>
 ```
 
-You can now use EasyUI-Layout via an AMD require:
+This will give you a global `easyui-layout` variable which you use directly:
+  
+```js
+var VerticalSplitter = easyui-layout.VerticalSplitter;
+```
+ 
+If you're using AMD require client-side or CommonJS server-side the syntax for requiring EasyUI is the same:
 
 ```js
-var easyui-layout = require('easyui-layout'),
+var easyui-layout = require('lib/easyui-layout'),
     VerticalSplitter = easyui-layout.VerticalSplitter;
 ```
 
-With Node.js, assuming you have [npm](https://www.npmjs.com/) installed:
-
-```js
-npm ../EasyUI
-```
-Using EasyUI-Layout via a CommonJS require is identical:
-
-```js
-var easyui-layout = require('easyui-layout'),
-    VerticalSplitter = easyui-layout.VerticalSplitter;
-```
-
-You will also need the `easyui-layout.css` file in the `dist/` folder. 
-
-jQuery is not bundled with EasyUI-Layout so you will need to include it explicitly on your site whichever way you feel is best. The standard HTML script element will do of course.
+jQuery is not bundled with EasyUI-Layout so you will need to include it explicitly whichever way you feel is best.
 
 ## Documentation
 
