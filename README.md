@@ -96,5 +96,5 @@ Obviously you can override these properties for your own DOM elements but it is 
 
 ## Contact
 
-* jecs@imperial.ac.uk
+* james.smith@djalbat.com
 * http://djalbat.com
