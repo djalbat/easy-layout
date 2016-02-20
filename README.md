@@ -27,7 +27,7 @@ This will give you a global `easyui-layout` variable which you use directly:
 var VerticalSplitter = easyui-layout.VerticalSplitter;
 ```
  
-If you're using AMD require client-side or CommonJS server-side the syntax for requiring EasyUI is the same:
+If you're using AMD require client-side or CommonJS server-side the syntax for requiring EasyUI-Layout is the same:
 
 ```js
 var easyui-layout = require('lib/easyui-layout'),
