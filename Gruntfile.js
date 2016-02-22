@@ -44,3 +44,4 @@ module.exports = function(grunt) {
   grunt.registerTask('default', []);
   grunt.registerTask('git', ['shell:npm', 'bumpup', 'browserify', 'shell:git']);
 };
+
