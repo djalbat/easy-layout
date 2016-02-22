@@ -6,8 +6,8 @@ EasyUI-Layout gives you sizeable elements that can be resized using draggable sp
 
 ## Related projects
 
-- [EasyUI](https://github.com/jecs-imperial/EasyUI) A V-framework.
-- [Florence](http://djalbat.com/Florence) A collaborative proof assistant that depends on all three EasyUI projects.
+- [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
+- [Florence](https://github.com/jecs-imperial/Florence) A collaborative proof assistant that depends on all three EasyUI projects. 
 
 ## Installation
 
