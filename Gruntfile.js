@@ -5,12 +5,12 @@ module.exports = function(grunt) {
       options: {
         browserifyOptions: {
           debug: true,
-          standalone: 'easyui-layout'
+          standalone: 'easyui-explorer'
         }
       },
       build: {
         src: './index.js',
-        dest: 'dist/easyui-layout.js'
+        dest: 'dist/easyui-explorer.js'
       }
     },
     bumpup: {
@@ -46,12 +46,11 @@ module.exports = function(grunt) {
   grunt.registerTask('b', ['shell:npm', 'browserify']);
   grunt.registerTask('w', ['shell:npm', 'browserify', 'watch']);
   grunt.registerTask('g', function() {
+    var bumpup_type = grunt.option('bumpup_type') || 'patch';
+
     grunt.task.run('shell:npm');
-
     grunt.task.run('browserify');
-
-    grunt.task.run('bumpup:' + (grunt.option('bumpup_type') || 'patch'));
-
+    grunt.task.run('bumpup:' + bumpup_type);
     grunt.task.run('shell:git')
   });
 };
