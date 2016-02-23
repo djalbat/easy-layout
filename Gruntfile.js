@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       git: {
         command: [
           'git add . --all',
-          'git commit -m "' + grunt.option('commit_message') + '"',
+          'git commit -m "' + grunt.option('git_commit_message') + '"',
           'git push'
         ].join('&&')
       },
