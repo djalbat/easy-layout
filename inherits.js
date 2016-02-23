@@ -1,6 +1,6 @@
 'use strict';
 
-var inherits = function(target, source) {
+var inherits = function(target, source, superMethodNames) {
   var targetPrototype = Object.getPrototypeOf(target);
 
   for (var prop in source) {
@@ -11,6 +11,16 @@ var inherits = function(target, source) {
         targetPrototype[prop] = source[prop];
       }
     }
+  }
+
+  if (superMethodNames) {
+    var superMethods = {};
+
+    superMethodNames.forEach(function(superMethodName) {
+      superMethods[superMethodName] = source[superMethodName].bind(target);
+    });
+
+    target.super = superMethods;  ///
   }
 };
 
