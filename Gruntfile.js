@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       },
       npm: {
         command: [
-          'npm install ../EasyUI'
+          'npm update easyui --save'
         ].join('&&')
       }
     },

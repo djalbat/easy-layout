@@ -1,9 +1,9 @@
 {
   "name": "easyui-layout",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "author": "James Smith",
   "repository": {},
   "dependencies": {
-    "easyui": "0.2.1"
+    "easyui": "^0.3.3"
   }
 }
