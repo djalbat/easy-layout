@@ -30,6 +30,13 @@ module.exports = function(grunt) {
         ].join('&&')
       }
     },
+    copy: {
+      main: {
+        files: [
+          {src: './node_modules/easyui/dist/easyui.js', dest: './docs/lib/easyui.js'}
+        ]
+      }
+    },
     watch: {
       files: './lib/**/*.js',
       tasks: 'browserify'
@@ -39,16 +46,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-bumpup');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', []);
 
-  grunt.registerTask('b', ['shell:npm', 'browserify']);
-  grunt.registerTask('w', ['shell:npm', 'browserify', 'watch']);
+  grunt.registerTask('b', ['shell:npm', 'copy', 'browserify']);
+  grunt.registerTask('w', ['shell:npm', 'copy', 'browserify', 'watch']);
   grunt.registerTask('g', function() {
     var bumpup_type = grunt.option('bumpup_type') || 'patch';
 
     grunt.task.run('shell:npm');
+    grunt.task.run('copy');
     grunt.task.run('browserify');
     grunt.task.run('bumpup:' + bumpup_type);
     grunt.task.run('shell:git')
