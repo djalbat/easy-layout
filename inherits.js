@@ -3,6 +3,10 @@
 var inherits = function(target, source, superMethodNames) {
   var targetPrototype = Object.getPrototypeOf(target);
 
+  if (source.$element) {
+    source.$element.data('element', target);
+  }
+
   for (var prop in source) {
     if (source.hasOwnProperty(prop)) {
       target[prop] = source[prop];
