@@ -38,7 +38,11 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: './lib/**/*.js',
+      files: [
+        './lib/**/*.js',
+        '.inherits.js',
+        '.index.js'
+      ],
       tasks: 'browserify'
     }
   });
