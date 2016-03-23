@@ -1,8 +1,9 @@
 {
   "name": "easyui-layout",
   "author": "James Smith",
-  "version": "0.1.0",
-  "repository": {},
+  "version": "0.1.1",
+  "license": "MIT",
+  "repository": "https://github.com/djalbat/EasyUI-Layout",
   "dependencies": {
     "easyui": "^2.6.0"
   },
