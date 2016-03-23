@@ -7,14 +7,22 @@ var easyui = require('easyui'),
 var body = new Body();
 
 class Splitter extends Element {
-  constructor(selectorOr$Element) {
+  constructor(selectorOr$Element, situated, sizeableElement, dragHandler) {
     super(selectorOr$Element);
 
-    this.dragHandler = null;
+    this.situated = situated;
+    this.sizeableElement = sizeableElement;
+    this.dragHandler = dragHandler;
 
     this.dragging = false;
 
     this.disabled = false;
+
+    this.onMouseUp(this.mouseUp.bind(this));
+    this.onMouseDown(this.mouseDown.bind(this));
+    this.onMouseMove(this.mouseMove.bind(this));
+    this.onMouseOver(this.mouseOver);
+    this.onMouseOut(this.mouseOut);
   }
 
   enable() {

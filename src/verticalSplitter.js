@@ -5,62 +5,58 @@ var cursor = require('./cursor'),
 
 class VerticalSplitter extends Splitter {
   constructor(selectorOr$Element, situated, sizeableElement, dragHandler) {
-    super(selectorOr$Element);
-
-    this.situated = situated;
-    this.sizeableElement = sizeableElement;
-    this.dragHandler = dragHandler;
-
-    this.mouseLeft = null;
+    super(selectorOr$Element, situated, sizeableElement, dragHandler);
 
     this.sizeableElementWidth = null;
 
-    this.onMouseDown(function (mouseTop, mouseLeft) {
-      cursor.columnResize();
+    this.mouseLeft = null;
+  }
 
-      this.mouseLeft = mouseLeft;
+  mouseUp() {
+    cursor.reset();
 
-      this.sizeableElementWidth = this.sizeableElement.getWidth();
+    if (this.dragging) {
+      this.stopDragging();
+    }
+  }
 
-      var dragging = this.isDragging();
+  mouseDown(mouseTop, mouseLeft) {
+    cursor.columnResize();
 
-      if (!dragging) {
-        this.startDragging();
+    this.mouseLeft = mouseLeft;
+
+    this.sizeableElementWidth = this.sizeableElement.getWidth();
+
+    var dragging = this.isDragging();
+
+    if (!dragging) {
+      this.startDragging();
+    }
+  }
+
+  mouseMove(mouseTop, mouseLeft) {
+    var dragging = this.isDragging();
+
+    if (dragging) {
+      var relativeMouseLeft = mouseLeft - this.mouseLeft,
+          width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
+
+      this.sizeableElement.setWidth(width);
+
+      var sizeableElementWidth = this.sizeableElement.getWidth();
+
+      if (this.dragHandler) {
+        this.dragHandler(sizeableElementWidth);
       }
-    }.bind(this));
+    }
+  }
 
-    this.onMouseUp(function () {
-      cursor.reset();
+  mouseOver() {
+    cursor.columnResize();
+  }
 
-      if (this.dragging) {
-        this.stopDragging();
-      }
-    }.bind(this));
-
-    this.onMouseOver(function () {
-      cursor.columnResize();
-    });
-
-    this.onMouseOut(function () {
-      cursor.reset();
-    });
-
-    this.onMouseMove(function (mouseTop, mouseLeft) {
-      var dragging = this.isDragging();
-
-      if (dragging) {
-        var relativeMouseLeft = mouseLeft - this.mouseLeft,
-            width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
-
-        this.sizeableElement.setWidth(width);
-
-        var sizeableElementWidth = this.sizeableElement.getWidth();
-
-        if (this.dragHandler) {
-          this.dragHandler(sizeableElementWidth);
-        }
-      }
-    }.bind(this));
+  mouseOut() {
+    cursor.reset();
   }
 }
 
