@@ -4,14 +4,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     browserify: {
-      options: {
-        browserifyOptions: {
-          debug: true,
-          standalone: 'easyui-layout'
-        }
-      },
-      build: {
-        src: './index.js',
+      dist: {
+        options: {
+          transform: [['babelify', {presets: ['es2015']}]],
+          browserifyOptions: {
+            debug: true,
+            standalone: 'easyui-layout'
+          }
+        },
+        src: ['./index.js'],
         dest: 'dist/easyui-layout.js'
       }
     },
