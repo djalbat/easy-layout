@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: './libES2015/',
-          src: ['*.js'],
+          src: ['**/*.js'],
           dest: './lib/'
         }]
       }
