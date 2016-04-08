@@ -81,7 +81,7 @@ module.exports = function(grunt) {
     grunt.task.run('babel');
     grunt.task.run('browserify');
     grunt.task.run('bumpup:' + type);
-    grunt.task.run('shell:git')
+    grunt.task.run('shell:git');
   });
 };
 
