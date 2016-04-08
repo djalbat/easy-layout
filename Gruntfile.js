@@ -55,7 +55,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: [
-        './lib/**/*.js',
+        './libES2015/**/*.js',
         './index.js'
       ],
       tasks: ['babel', 'browserify']
