@@ -3,10 +3,23 @@ var fs = require('fs');
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    babel: {
+      options: {
+        sourceMap: "inline",
+        presets: ['es2015']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: './libES2015/',
+          src: ['*.js'],
+          dest: './lib/'
+        }]
+      }
+    },
     browserify: {
       dist: {
         options: {
-          transform: [['babelify', {presets: ['es2015']}]],
           browserifyOptions: {
             debug: true,
             standalone: 'easyui-layout'
@@ -23,7 +36,7 @@ module.exports = function(grunt) {
       git: {
         command: [
           'git add . --all',
-          'git commit -m "' + grunt.option('git_commit_message') + '"',
+          'git commit -m "' + grunt.option('commit_message') + '"',
           'git push'
         ].join('&&')
       },
@@ -45,10 +58,11 @@ module.exports = function(grunt) {
         './lib/**/*.js',
         './index.js'
       ],
-      tasks: 'browserify'
+      tasks: ['babel', 'browserify']
     }
   });
 
+  grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-bumpup');
   grunt.loadNpmTasks('grunt-browserify');
@@ -57,15 +71,16 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', []);
 
-  grunt.registerTask('b', ['shell:npm', 'copy', 'browserify']);
-  grunt.registerTask('w', ['shell:npm', 'copy', 'browserify', 'watch']);
+  grunt.registerTask('b', ['shell:npm', 'copy', 'babel', 'browserify']);
+  grunt.registerTask('w', ['shell:npm', 'copy', 'babel', 'browserify', 'watch']);
   grunt.registerTask('g', function() {
-    var bumpup_type = grunt.option('bumpup_type') || 'patch';
+    var type = grunt.option('type') || 'patch';
 
     grunt.task.run('shell:npm');
     grunt.task.run('copy');
+    grunt.task.run('babel');
     grunt.task.run('browserify');
-    grunt.task.run('bumpup:' + bumpup_type);
+    grunt.task.run('bumpup:' + type);
     grunt.task.run('shell:git')
   });
 };
