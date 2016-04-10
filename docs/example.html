@@ -35,6 +35,8 @@
 
         <script>
 
+          (function() {
+
             var Element = easyui.Element;
 
             var SizeableElement = easyuiLayout.SizeableElement,
@@ -53,8 +55,10 @@
             new VerticalSplitter('.left.vertical.splitter', TO_THE_RIGHT_OF, leftColumn);
             new VerticalSplitter('.right.vertical.splitter', TO_THE_LEFT_OF, rightColumn);
             new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(height) {
-                bottomLeft.setHeight(height);
+              bottomLeft.setHeight(height);
             });
+
+          })();
 
         </script>
     </body>
