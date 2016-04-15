@@ -39,11 +39,19 @@ module.exports = function(grunt) {
           'git commit -m "' + grunt.option('commit_message') + '"',
           'git push'
         ].join('&&')
-      },
-      npm: {
-        command: [
-          'npm install easyui@latest --save'
-        ].join('&&')
+      }
+    },
+    devUpdate: {
+      main: {
+        options: {
+          updateType: 'force',
+          reportUpdated: true,
+          semver: true,
+          packages: {
+            dependencies: true,
+            devDependencies: false
+          }
+        }
       }
     },
     copy: {
@@ -65,18 +73,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-bumpup');
+  grunt.loadNpmTasks('grunt-dev-update');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', []);
 
-  grunt.registerTask('b', ['shell:npm', 'copy', 'babel', 'browserify']);
-  grunt.registerTask('w', ['shell:npm', 'copy', 'babel', 'browserify', 'watch']);
+  grunt.registerTask('b', ['devUpdate', 'copy', 'babel', 'browserify']);
+  grunt.registerTask('w', ['devUpdate', 'copy', 'babel', 'browserify', 'watch']);
   grunt.registerTask('g', function() {
     var type = grunt.option('type') || 'patch';
 
-    grunt.task.run('shell:npm');
+    grunt.task.run('devUpdate');
     grunt.task.run('copy');
     grunt.task.run('babel');
     grunt.task.run('browserify');

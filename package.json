@@ -1,7 +1,7 @@
 {
   "name": "easyui-layout",
   "author": "James Smith",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "license": "MIT",
   "repository": "https://github.com/djalbat/EasyUI-Layout",
   "dependencies": {
@@ -15,6 +15,7 @@
     "grunt-bumpup": "^0.6.3",
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-dev-update": "^2.0.0",
     "grunt-shell": "^1.2.1"
   }
 }
