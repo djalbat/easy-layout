@@ -34,8 +34,6 @@ var easyui-layout = require('lib/easyui-layout'),
     VerticalSplitter = easyui-layout.VerticalSplitter;
 ```
 
-jQuery is not bundled with EasyUI-Layout so you will need to include it explicitly whichever way you feel is best.
-
 ## Documentation
 
 See the `example.html` file in the `docs/` folder for an example.
