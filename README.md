@@ -1,6 +1,6 @@
 # EasyUI-Layout
 
-Layout components that work with CSS flexbox.
+Layout elements that work with CSS flexbox.
 
 EasyUI-Layout gives you sizeable elements that can be resized using draggable splitters.
 
