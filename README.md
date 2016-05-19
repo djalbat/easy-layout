@@ -21,17 +21,17 @@ Client-side you can take the `easyui-layout.js` file in the `dist/` folder put i
 <script src="scripts/lib/easyui-layout.js"> </script>
 ```
 
-This will give you a global `easyuiLayout` variable which you use directly:
+This will give you a global `easyUILayout` variable which you use directly:
   
 ```js
-var VerticalSplitter = easyuiLayout.VerticalSplitter;
+var VerticalSplitter = easyUILayout.VerticalSplitter;
 ```
  
 If you're using AMD require client-side or CommonJS server-side the syntax for requiring EasyUI-Layout is the same:
 
 ```js
-var easyuiLayout = require('lib/easyui-layout'),
-    VerticalSplitter = easyuiLayout.VerticalSplitter;
+var easyUILayout = require('lib/easyui-layout'),
+    VerticalSplitter = easyUILayout.VerticalSplitter;
 ```
 
 ## Documentation

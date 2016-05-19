@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         options: {
           browserifyOptions: {
             debug: true,
-            standalone: 'easyuiLayout'
+            standalone: 'easyUILayout'
           }
         },
         src: ['./index.js'],
