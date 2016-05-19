@@ -7,8 +7,8 @@ var easyui = require('easyui'),
 var body = new Body();
 
 class Splitter extends Element {
-  constructor(selectorOr$Element, situated, sizeableElement, dragHandler) {
-    super(selectorOr$Element);
+  constructor(selector, situated, sizeableElement, dragHandler) {
+    super(selector);
 
     this.situated = situated;
     this.sizeableElement = sizeableElement;

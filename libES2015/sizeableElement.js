@@ -4,8 +4,8 @@ var easyui = require('easyui'),
     Element = easyui.Element;
 
 class SizeableElement extends Element {
-  constructor(selectorOr$Element, minimumWidth, minimumHeight, maximumWidth, maximumHeight) {
-    super(selectorOr$Element);
+  constructor(selector, minimumWidth, minimumHeight, maximumWidth, maximumHeight) {
+    super(selector);
 
     this.minimumWidth = minimumWidth;
     this.minimumHeight = minimumHeight;

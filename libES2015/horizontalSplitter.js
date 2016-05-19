@@ -4,8 +4,8 @@ var cursor = require('./cursor'),
     Splitter = require('./splitter');
 
 class HorizontalSplitter extends Splitter {
-  constructor(selectorOr$Element, situated, sizeableElement, dragHandler) {
-    super(selectorOr$Element, situated, sizeableElement, dragHandler);
+  constructor(selector, situated, sizeableElement, dragHandler) {
+    super(selector, situated, sizeableElement, dragHandler);
 
     this.sizeableElementHeight = null;
 
