@@ -65,7 +65,7 @@ new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(h
   bottomLeft.setHeight(height);
 });
 ```
-The last argument is an optional callback so that you can set the width and height of related sizeable elements, say.
+The last argument is an optional callback enabling you to set the width and height of related sizeable elements.
  
 #### HTML and CSS
 
@@ -93,24 +93,6 @@ You set the initial, minimum and maximum heights of the sizeable elements in the
 Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above. 
  
 You need an understanding of CSS flexbox to make EasyUI-Layout work, really. Have a look at the `example.html` and `example.css` files to get started and in particular the `easyui-layout.css` file. It's recommended that you start from the example in order to get your own layout working.
-
-#### Changing the CSS
-
-EasyUI-Layout works best with the following CSS, found in the `easyui-layout.css` file:
-
-```css
-*,
-*:after,
-*:before {
-  -webkit-box-sizing: border-box !important;
-  -moz-box-sizing: border-box !important;
-  box-sizing: border-box !important;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-```
-Obviously you can override these properties for your own DOM elements but it is not recommended that you do so for sizeable elements or splitters.
 
 ## Contact
 
