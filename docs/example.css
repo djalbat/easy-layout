@@ -8,8 +8,23 @@ body {
 .yellow { background-color: yellow; }
 .splitter { background-color: black;}
 
-#leftColumn { width: 300px; }
-#rightColumn { width: 300px; }
-#bottomRow { height: 200px; }
-#bottomLeft { height: 200px; }
-#topRight { height: 200px; }
+#leftColumn {
+  width: 10rem;
+  min-width: 5rem;
+  max-width: 15rem;
+}
+#rightColumn {
+  width: 20rem;
+  max-width: 40rem;
+}
+#bottomRow {
+  height: 10rem;
+  min-height: 5rem;
+}
+
+#bottomLeft {
+  height: 10rem;
+}
+#topRight {
+  height: 10rem;
+}

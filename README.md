@@ -41,11 +41,10 @@ See the `example.html` file in the `docs/` folder for an example.
 This is easily done:
 
 ```js
-var leftColumn = new SizeableElement('#leftColumn', 200, null, 600, null),
-    rightColumn = new SizeableElement('#rightColumn', 200, null, 600, null),
-    bottomRow = new SizeableElement('#bottomRow', null, 100),
+var leftColumn = new SizeableElement('#leftColumn'),
+    rightColumn = new SizeableElement('#rightColumn'),
+    bottomRow = new SizeableElement('#bottomRow'),
 ```
-Apart from the jQuery selector the arguments set the minimum width, minimum height, maximum width, maximum height respectively. If you don't want to supply these, leave them undefined or set them to null.
 
 #### Creating splitters
 
@@ -70,7 +69,30 @@ The last argument is an optional callback so that you can set the width and heig
  
 #### HTML and CSS
 
-You need an understanding of CSS flexbox to make EasyUI-Layout work, really. Have a look at the `example.html` and `example.css` files to get started. It's recommended that you start from this example in order to get your own layout working.
+You set the initial, minimum and maximum heights of the sizeable elements in the CSS:
+ 
+```css
+#leftColumn {
+  width: 10rem;
+  min-width: 5rem;
+  max-width: 15rem;
+}
+#rightColumn {
+  width: 20rem;
+  max-width: 40rem;
+}
+#bottomRow {
+  height: 10rem;
+  min-height: 5rem;
+}
+
+#bottomLeft {
+  height: 10rem;
+}
+```
+Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above. 
+ 
+You need an understanding of CSS flexbox to make EasyUI-Layout work, really. Have a look at the `example.html` and `example.css` files to get started and in particular the `easyui-layout.css` file. It's recommended that you start from the example in order to get your own layout working.
 
 #### Changing the CSS
 

@@ -49,9 +49,9 @@
                 TO_THE_LEFT_OF = VerticalSplitter.situated.TO_THE_LEFT_OF,
                 TO_THE_RIGHT_OF = VerticalSplitter.situated.TO_THE_RIGHT_OF;
 
-            var leftColumn = new SizeableElement('#leftColumn', 200, null, 600, null),
-                rightColumn = new SizeableElement('#rightColumn', 200, null, 600, null),
-                bottomRow = new SizeableElement('#bottomRow', null, 100),
+            var leftColumn = new SizeableElement('#leftColumn'),
+                rightColumn = new SizeableElement('#rightColumn'),
+                bottomRow = new SizeableElement('#bottomRow'),
                 bottomLeft = new Element('#bottomLeft');
 
             new VerticalSplitter('.left.vertical.splitter', TO_THE_RIGHT_OF, leftColumn);

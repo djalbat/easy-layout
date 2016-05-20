@@ -33,7 +33,7 @@ class Splitter extends Element {
     this.disabled = true;
   }
 
-  onDragging(dragHandler) {
+  onDrag(dragHandler) {
     this.dragHandler = dragHandler;
   }
 
@@ -49,11 +49,11 @@ class Splitter extends Element {
     return this.dragging;
   }
 
+  onMouseUp(handler) { body.onMouseUp(returnMouseEventHandler(handler).bind(this)); }
   onMouseDown(handler) { super.onMouseDown(returnMouseEventHandler(handler).bind(this)); }
   onMouseOver(handler) { super.onMouseOver(returnMouseEventHandler(handler).bind(this)); }
   onMouseOut(handler) { super.onMouseOut(returnMouseEventHandler(handler).bind(this)); }
-  onMouseUp(handler) { body.onMouseUp(returnMouseEventHandler(handler).bind(this)); }  ///
-  onMouseMove(handler) { body.onMouseMove(returnMouseEventHandler(handler).bind(this)); } ///
+  onMouseMove(handler) { body.onMouseMove(returnMouseEventHandler(handler).bind(this)) };
 }
 
 function returnMouseEventHandler(handler) {
