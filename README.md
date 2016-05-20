@@ -2,8 +2,6 @@
 
 Layout elements that work with CSS flexbox.
 
-EasyUI-Layout gives you sizeable elements that can be resized using draggable splitters.
-
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
