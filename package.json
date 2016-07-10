@@ -1,8 +1,10 @@
 {
   "name": "easyui-layout",
   "author": "James Smith",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
+  "homepage": "https://github.com/djalbat/EasyUI-Layout",
+  "description": "Layout elements that work with CSS flexbox.",
   "repository": {
     "type": "git",
     "url": "https://github.com/djalbat/EasyUI-Layout"
