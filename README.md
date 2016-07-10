@@ -5,7 +5,7 @@ Layout elements that work with CSS flexbox.
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
-- [Florence](https://github.com/jecs-imperial/Florence) A collaborative proof assistant that depends on all three EasyUI projects. 
+- [Florence](http://djalbat.com/florence) A collaborative proof assistant that depends on all three EasyUI projects. 
 
 ## Installation
 
