@@ -26,7 +26,7 @@ module.exports = function(grunt) {
           }
         },
         src: ['./index.js'],
-        dest: 'dist/easyui-layout.js'
+        dest: './dist/easyui-layout.js'
       }
     },
     bumpup: {
