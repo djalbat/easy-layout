@@ -32,15 +32,6 @@ module.exports = function(grunt) {
     bumpup: {
       file: 'package.json'
     },
-    shell: {
-      git: {
-        command: [
-          'git add . --all',
-          'git commit -m "' + grunt.option('commit_message') + '"',
-          'git push'
-        ].join('&&')
-      }
-    },
     devUpdate: {
       main: {
         options: {
@@ -82,15 +73,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('b', ['devUpdate', 'copy', 'babel', 'browserify']);
   grunt.registerTask('w', ['devUpdate', 'copy', 'babel', 'browserify', 'watch']);
-  grunt.registerTask('g', function() {
+  grunt.registerTask('v', function() {
     var type = grunt.option('type') || 'patch';
 
-    grunt.task.run('devUpdate');
-    grunt.task.run('copy');
-    grunt.task.run('babel');
-    grunt.task.run('browserify');
     grunt.task.run('bumpup:' + type);
-    grunt.task.run('shell:git');
   });
 };
 

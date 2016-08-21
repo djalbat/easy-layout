@@ -1,7 +1,7 @@
 {
   "name": "easyui-layout",
   "author": "James Smith",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/EasyUI-Layout",
   "description": "Layout elements that work with CSS flexbox.",
@@ -20,7 +20,6 @@
     "grunt-bumpup": "^0.6.3",
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-dev-update": "^2.0.0",
-    "grunt-shell": "^1.2.1"
+    "grunt-dev-update": "^2.0.0"
   }
 }
