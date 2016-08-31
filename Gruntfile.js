@@ -3,27 +3,21 @@ var fs = require('fs');
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    babel: {
-      options: {
-        sourceMap: "inline",
-        presets: ['es2015']
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: './libES2015/',
-          src: ['**/*.js'],
-          dest: './lib/'
-        }]
-      }
-    },
     browserify: {
       dist: {
         options: {
           browserifyOptions: {
             debug: true,
             standalone: 'easyUILayout'
-          }
+          },
+          transform: [[
+            'babelify',
+            {
+              presets: [
+                'es2015'
+              ]
+            }
+          ]]
         },
         src: ['./index.js'],
         dest: './dist/easyui-layout.js'
@@ -54,15 +48,13 @@ module.exports = function(grunt) {
     },
     watch: {
       files: [
-        './libES2015/**/*.js',
+        './es6/**/*.js',
         './index.js'
       ],
       tasks: ['babel', 'browserify']
     }
   });
 
-  grunt.loadNpmTasks('grunt-babel');
-  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-bumpup');
   grunt.loadNpmTasks('grunt-dev-update');
   grunt.loadNpmTasks('grunt-browserify');
@@ -71,13 +63,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', []);
 
-  grunt.registerTask('b', ['devUpdate', 'copy', 'babel', 'browserify']);
-  grunt.registerTask('w', ['devUpdate', 'copy', 'babel', 'browserify', 'watch']);
+  grunt.registerTask('b', ['devUpdate', 'copy', 'browserify']);
+  grunt.registerTask('w', ['devUpdate', 'copy', 'browserify', 'watch']);
   grunt.registerTask('v', function() {
     var type = grunt.option('type') || 'patch';
 
     grunt.task.run('bumpup:' + type);
   });
 };
-
-
