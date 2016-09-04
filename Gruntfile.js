@@ -73,7 +73,7 @@ module.exports = function(grunt) {
   grunt.registerTask('b', ['devUpdate', 'copy', 'babel', 'browserify']);
   grunt.registerTask('w', ['devUpdate', 'copy', 'babel', 'browserify', 'watch']);
   grunt.registerTask('v', function() {
-    var type = grunt.option('type') || 'patch';
+    var type = grunt.option('type');
 
     grunt.task.run('bumpup:' + type);
   });
