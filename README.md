@@ -5,7 +5,6 @@ Layout elements that work with CSS flexbox.
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
-- [Florence](http://djalbat.com/florence) A collaborative proof assistant that depends on all three EasyUI projects. 
 
 ## Installation
 
@@ -19,22 +18,22 @@ Client-side you can take the `easyui-layout.js` file in the `dist/` folder put i
 <script src="scripts/lib/easyui-layout.js"> </script>
 ```
 
-This will give you a global `easyUILayout` variable which you use directly:
+This will give you a global `easyuilayout` variable, note the lack of a hyphen, which you use directly:
   
 ```js
-var VerticalSplitter = easyUILayout.VerticalSplitter;
+var VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
  
 If you're using AMD require client-side or CommonJS server-side the syntax for requiring EasyUI-Layout is much the same:
 
 ```js
-var easyUILayout = require('lib/easyui-layout'),
-    VerticalSplitter = easyUILayout.VerticalSplitter;
+var easyuilayout = require('lib/easyui-layout'),
+    VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
-## Documentation
+## Examples
 
-See the `example.html` file in the `docs/` folder for an example.
+See the `examples.html` file in the root of the repository, or read on.
 
 #### Creating sizeable elements 
 
@@ -67,7 +66,7 @@ new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(h
 ```
 The last argument is an optional callback enabling you to set the width and height of related sizeable elements.
  
-#### HTML and CSS
+## HTML and CSS
 
 You set the initial, minimum and maximum heights of the sizeable elements in the CSS:
  

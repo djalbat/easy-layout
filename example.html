@@ -2,7 +2,7 @@
 <html>
     <head>
       <meta charset="utf-8">
-      <link href="../dist/easyui-layout.css" rel="stylesheet" type="text/css" media="all"/>
+      <link href="./dist/easyui-layout.css" rel="stylesheet" type="text/css" media="all"/>
       <link href="example.css" rel="stylesheet" type="text/css" media="all"/>
 
       <title>EasyUI-Layout Example</title>
@@ -31,19 +31,19 @@
             </div>
         </div>
 
-        <script src="./lib/easyui.js"> </script>
+        <script src="./easyui.js"> </script>
 
-        <script src="../dist/easyui-layout.js"> </script>
+        <script src="./dist/easyui-layout.js"> </script>
 
         <script>
 
           (function() {
 
-            var Element = easyUI.Element;
+            var Element = easyui.Element;
 
-            var SizeableElement = easyUILayout.SizeableElement,
-                VerticalSplitter = easyUILayout.VerticalSplitter,
-                HorizontalSplitter = easyUILayout.HorizontalSplitter;
+            var SizeableElement = easyuilayout.SizeableElement,
+                VerticalSplitter = easyuilayout.VerticalSplitter,
+                HorizontalSplitter = easyuilayout.HorizontalSplitter;
 
             var ABOVE = HorizontalSplitter.situated.ABOVE,
                 TO_THE_LEFT_OF = VerticalSplitter.situated.TO_THE_LEFT_OF,
