@@ -22,7 +22,6 @@ You can also clone the repository with [git](https://git-scm.com/)...
 
 You will need to do this if you want to look at the examples.
 
-
 ## Usage
 
 If you're building with [Node.js](http://nodejs.org) the usage is as follows:
@@ -52,7 +51,6 @@ Alternatively, if you're using an AMD style `require` the usage is similar to th
 var easyuilayout = require('lib/easyui-layout'),
     VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
-
 
 ## Compiling from source
 
