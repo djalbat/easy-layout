@@ -32,8 +32,6 @@ var easyuilayout = require('easyui-layout'),
     VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
-Note the lack of a hyphen.
-
 To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the project's `dist/` folder and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
 
 ```html
@@ -46,7 +44,9 @@ To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the p
 var VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
-Alternatively, if you're using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. Assuming that the following script should work, assuming it lives in the the `public/scripts/` directory:
+Note the lack of a hyphen.
+
+Alternatively, if you're using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
 
 ```js
 var easyuilayout = require('lib/easyui-layout'),
@@ -60,7 +60,7 @@ Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
     npm run build-debug
     npm run watch-debug
-    
+
 ## Examples
 
 See the `examples.html` file in the project's root directory, or read on.
