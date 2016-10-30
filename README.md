@@ -12,7 +12,7 @@ You can install EasyUI-Layout with [npm](https://www.npmjs.com/):
 
     npm install easyui-layout
 
-You can also clone the repository with [git](https://git-scm.com/)...
+You can also clone the repository with [Git](https://git-scm.com/)...
 
     git clone https://github.com/djalbat/EasyUI-Layout.git
 
