@@ -8,34 +8,62 @@ Layout elements that work with CSS flexbox.
 
 ## Installation
 
-If you're running [Node.js](http://nodejs.org) you can install EasyUI-Layout with [npm](https://www.npmjs.com/):
+You can install EasyUI-Layout with [npm](https://www.npmjs.com/):
 
     npm install easyui-layout
 
-Client-side you can take the `easyui-layout.js` file in the `dist/` folder put it somewhere and reference it via the usual script element:
- 
+You can also clone the repository with [Git](https://git-scm.com/)...
+
+    git clone https://github.com/djalbat/EasyUI-Layout.git
+
+...and then install the necessary modules with npm from within the project's root directory:
+
+    npm install
+
+You will need to do this if you want to look at the examples.
+
+## Usage
+
+If you're building with [Node.js](http://nodejs.org) the usage is as follows:
+
+```js
+var easyuilayout = require('easyui-layout'),
+    VerticalSplitter = easyuilayout.VerticalSplitter;
+```
+
+To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the project's `dist/` folder and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
+
 ```html
 <script src="scripts/lib/easyui-layout.js"> </script>
 ```
 
-This will give you a global `easyuilayout` variable, note the lack of a hyphen, which you use directly:
-  
+...will give you a global `easyuilayout` variable which can be used directly:
+
 ```js
 var VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
- 
-If you're using AMD require client-side or CommonJS server-side the syntax for requiring EasyUI-Layout is much the same:
+
+Note the lack of a hyphen.
+
+Alternatively, if you're using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
 
 ```js
 var easyuilayout = require('lib/easyui-layout'),
     VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
+## Compiling from source
+
+Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
+
+    npm run build-debug
+    npm run watch-debug
+
 ## Examples
 
-See the `examples.html` file in the root of the repository, or read on.
+See the `examples.html` file in the project's root directory, or read on.
 
-#### Creating sizeable elements 
+### Creating sizeable elements
 
 This is easily done:
 
@@ -45,7 +73,7 @@ var leftColumn = new SizeableElement('#leftColumn'),
     bottomRow = new SizeableElement('#bottomRow'),
 ```
 
-#### Creating splitters
+### Creating splitters
 
 There are constants defined on the relevant classes that should be used to specify where the splitters are situated relative to the sizeable elements they resize:
 
