@@ -8,7 +8,7 @@ var body = new Body(),
 
 class cursor {
   static columnResize() {
-    var currentCursor = this.getCursor();
+    var currentCursor = this.getCurrentCursor();
 
     if (currentCursor !== 'col-resize') {
       previousCursor = currentCursor;
@@ -18,7 +18,7 @@ class cursor {
   }
 
   static rowResize() {
-    var currentCursor = this.getCursor();
+    var currentCursor = this.getCurrentCursor();
 
     if (currentCursor !== 'row-resize') {
       previousCursor = currentCursor;
@@ -31,7 +31,7 @@ class cursor {
     this.setCursor(previousCursor); ///
   }
 
-  static getCursor() {
+  static getCurrentCursor() {
     var currentCursor = body.css('cursor');  ///
 
     return currentCursor || 'auto'; ///

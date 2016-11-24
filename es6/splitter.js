@@ -15,7 +15,6 @@ class Splitter extends Element {
     this.dragHandler = dragHandler;
 
     this.dragging = false;
-
     this.disabled = false;
 
     this.onMouseUp(this.mouseUp.bind(this));
