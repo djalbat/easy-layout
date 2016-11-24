@@ -6,8 +6,8 @@ var easyui = require('easyui'),
 var body = new Body(),
     previousCursor;  ///
 
-var cursor = {
-  columnResize: function() {
+class cursor {
+  static columnResize() {
     var currentCursor = this.getCursor();
 
     if (currentCursor !== 'col-resize') {
@@ -15,9 +15,9 @@ var cursor = {
 
       this.setCursor('col-resize');
     }
-  },
+  }
 
-  rowResize: function() {
+  static rowResize() {
     var currentCursor = this.getCursor();
 
     if (currentCursor !== 'row-resize') {
@@ -25,25 +25,25 @@ var cursor = {
 
       this.setCursor('row-resize');
     }
-  },
+  }
 
-  reset: function() {
+  static reset() {
     this.setCursor(previousCursor); ///
-  },
+  }
 
-  getCursor: function() {
+  static getCursor() {
     var currentCursor = body.css('cursor');  ///
 
     return currentCursor || 'auto'; ///
-  },
+  }
 
-  setCursor: function(cursor) {
+  static setCursor(cursor) {
     var css = {
       cursor: cursor
     };
 
     body.css(css);
   }
-};
+}
 
 module.exports = cursor;
