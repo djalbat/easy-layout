@@ -4,7 +4,12 @@ var easyui = require('easyui'),
     Element = easyui.Element,
     Body = easyui.Body;
 
+var options = require('./options');
+
 var body = new Body();
+
+const ESCAPE_KEYCODE = 27,
+      NAMESPACE = 'EasyUI-Layout';
 
 class Splitter extends Element {
   constructor(selector, situated, sizeableElement, dragHandler) {
@@ -22,8 +27,24 @@ class Splitter extends Element {
     this.onMouseMove(this.mouseMove.bind(this));
     this.onMouseOver(this.mouseOver);
     this.onMouseOut(this.mouseOut);
+
+    this.options = {};
   }
 
+  setOption(option) {
+    this.options[option] = true;
+  }
+
+  unsetOption(option) {
+    delete(this.options[option]);
+  }
+
+  hasOption(option) {
+    option = (this.options[option] === true); ///
+
+    return option;
+  }
+  
   enable() {
     this.disabled = false;
   }
@@ -37,15 +58,41 @@ class Splitter extends Element {
   }
 
   startDragging() {
+    var escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
+
+    if (escapeKeyStopsDragging) {
+      body.on('keydown', this.keyDownHandler.bind(this), NAMESPACE);
+    }
+
     this.dragging = true;
   }
 
   stopDragging() {
+    var escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
+
+    if (escapeKeyStopsDragging) {
+      body.off('keydown', NAMESPACE);
+    }
+
     this.dragging = false;
   }
 
   isDragging() {
     return this.dragging;
+  }
+
+  keyDownHandler(event) {
+    var keyCode = event.keyCode || event.which;
+
+    if (keyCode === ESCAPE_KEYCODE) {
+      console.log('keydown')
+      
+      var dragging = this.isDragging();
+
+      if (dragging) {
+        this.stopDragging();
+      }
+    }
   }
 
   onMouseUp(handler) { body.onMouseUp(returnMouseEventHandler(handler).bind(this)); }
