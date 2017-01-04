@@ -40,7 +40,6 @@
           (function() {
 
             var Element = easyui.Element,
-                options = easyuilayout.options,
                 SizeableElement = easyuilayout.SizeableElement,
                 VerticalSplitter = easyuilayout.VerticalSplitter,
                 HorizontalSplitter = easyuilayout.HorizontalSplitter;
@@ -56,12 +55,10 @@
 
             new VerticalSplitter('.left.vertical.splitter', TO_THE_RIGHT_OF, leftColumn);
             new VerticalSplitter('.right.vertical.splitter', TO_THE_LEFT_OF, rightColumn);
-
-            var horizontalSplitter = new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(height) {
+            new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(height) {
               bottomLeft.setHeight(height);
             });
 
-            horizontalSplitter.setOption(options.ESCAPE_KEY_STOPS_DRAGGING);
 
           })();
 
