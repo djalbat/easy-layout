@@ -5,6 +5,7 @@ Layout elements that work with CSS flexbox.
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
+- [EasyUI-DragAndDrop](https://github.com/djalbat/EasyUI-DragAndDrop) Drag and drop elements including a file explorer and a rubbish bin.
 
 ### Are these projects actually used anywhere?
 
