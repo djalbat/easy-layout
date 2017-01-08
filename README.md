@@ -6,6 +6,12 @@ Layout elements that work with CSS flexbox.
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
 
+### Are these projects actually used anywhere?
+
+Actually they are, here:
+
+- [Occam Proof Assistant](http://djalbat.com/occam)
+
 ## Installation
 
 You can install EasyUI-Layout with [npm](https://www.npmjs.com/):
