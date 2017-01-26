@@ -2,9 +2,11 @@
 
 var easyui = require('easyui'),
     Element = easyui.Element,
-    body = easyui.Body;
+    Body = easyui.Body;
 
 var options = require('./options');
+
+var body = new Body();
 
 const ESCAPE_KEYCODE = 27,
       NAMESPACE = 'EasyUI-Layout';
