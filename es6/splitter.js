@@ -2,11 +2,9 @@
 
 var easyui = require('easyui'),
     Element = easyui.Element,
-    Body = easyui.Body;
+    body = easyui.Body;
 
 var options = require('./options');
-
-var body = new Body();
 
 const ESCAPE_KEYCODE = 27,
       NAMESPACE = 'EasyUI-Layout';
@@ -85,8 +83,6 @@ class Splitter extends Element {
     var keyCode = event.keyCode || event.which;
 
     if (keyCode === ESCAPE_KEYCODE) {
-      console.log('keydown')
-      
       var dragging = this.isDragging();
 
       if (dragging) {
