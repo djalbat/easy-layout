@@ -13,50 +13,70 @@ class VerticalSplitter extends Splitter {
   }
 
   mouseUp() {
-    cursor.reset();
+    var disabled = this.isDisabled();
 
-    if (this.dragging) {
-      this.stopDragging();
-    }
-  }
+    if (!disabled) {
+      cursor.reset();
 
-  mouseDown(mouseTop, mouseLeft) {
-    cursor.columnResize();
-
-    this.mouseLeft = mouseLeft;
-
-    this.sizeableElementWidth = this.sizeableElement.getWidth();
-
-    var dragging = this.isDragging();
-
-    if (!dragging) {
-      this.startDragging();
+      if (this.dragging) {
+        this.stopDragging();
+      }
     }
   }
 
   mouseMove(mouseTop, mouseLeft) {
-    var dragging = this.isDragging();
+    var disabled = this.isDisabled();
 
-    if (dragging) {
-      var relativeMouseLeft = mouseLeft - this.mouseLeft,
-          width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
+    if (!disabled) {
+      var dragging = this.isDragging();
 
-      this.sizeableElement.setWidth(width);
+      if (dragging) {
+        var relativeMouseLeft = mouseLeft - this.mouseLeft,
+            width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
 
-      var sizeableElementWidth = this.sizeableElement.getWidth();
+        this.sizeableElement.setWidth(width);
 
-      if (this.dragHandler) {
-        this.dragHandler(sizeableElementWidth);
+        var sizeableElementWidth = this.sizeableElement.getWidth();
+
+        if (this.dragHandler) {
+          this.dragHandler(sizeableElementWidth);
+        }
+      }
+    }
+  }
+
+  mouseDown(mouseTop, mouseLeft) {
+    var disabled = this.isDisabled();
+
+    if (!disabled) {
+      cursor.columnResize();
+
+      this.mouseLeft = mouseLeft;
+
+      this.sizeableElementWidth = this.sizeableElement.getWidth();
+
+      var dragging = this.isDragging();
+
+      if (!dragging) {
+        this.startDragging();
       }
     }
   }
 
   mouseOver() {
-    cursor.columnResize();
+    var disabled = this.isDisabled();
+
+    if (!disabled) {
+      cursor.columnResize();
+    }
   }
 
   mouseOut() {
-    cursor.reset();
+    var disabled = this.isDisabled();
+
+    if (!disabled) {
+      cursor.reset();
+    }
   }
 }
 
