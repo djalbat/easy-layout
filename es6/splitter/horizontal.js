@@ -1,7 +1,7 @@
 'use strict';
 
-var cursor = require('./cursor'),
-    Splitter = require('./splitter');
+var cursor = require('../cursor'),
+    Splitter = require('../splitter');
 
 class HorizontalSplitter extends Splitter {
   constructor(selector, situated, sizeableElement, dragHandler) {
