@@ -7,7 +7,7 @@ There are three elements, namely a horizontal and a vertical splitter and a size
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
-- [EasyUI-DragAndDrop](https://github.com/djalbat/EasyUI-DragAndDrop) Drag and drop elements including a file explorer and a rubbish bin.
+- [EasyUI-DragAndDrop](https://github.com/djalbat/EasyUI-DragAndDrop) Drag and drop elements including an explorer and a rubbish bin.
 - [EasyUI-RichTextArea](https://github.com/djalbat/EasyUI-RichTextArea) A textarea component that handles and hands off events well.
 
 ### Are these projects actually used anywhere?
