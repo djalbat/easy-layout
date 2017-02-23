@@ -2,10 +2,13 @@
 
 Layout elements that work with CSS flexbox.
 
+There are three elements, namely s horizontal and a vertical splitter and a sizeable element that the splitters manipulate. They are all closely tied to CSS. For example, the sizeable element will poll its `min-width`, `max-width`, `min-height`, `max-height` CSS properties and adhere to them. They can also be nested easily.
+
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
 - [EasyUI-DragAndDrop](https://github.com/djalbat/EasyUI-DragAndDrop) Drag and drop elements including a file explorer and a rubbish bin.
+- [EasyUI-RichTextArea](https://github.com/djalbat/EasyUI-RichTextArea) A textarea component that handles and hands off events well.
 
 ### Are these projects actually used anywhere?
 
@@ -38,7 +41,7 @@ var easyuilayout = require('easyui-layout'),
     VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
-To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the project's `dist/` folder and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
+To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the project's `dist/` directory and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
 
 ```html
 <script src="scripts/lib/easyui-layout.js"> </script>
@@ -91,7 +94,7 @@ var ABOVE = HorizontalSplitter.situated.ABOVE,
 ```
 
 These are passed to the splitter constructors between the jQuery selectors and references to the sizeable elements:
- 
+
 ```js
 new VerticalSplitter('.left.vertical.splitter', TO_THE_RIGHT_OF, leftColumn);
 new VerticalSplitter('.right.vertical.splitter', TO_THE_LEFT_OF, rightColumn);
@@ -100,11 +103,11 @@ new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(h
 });
 ```
 The last argument is an optional callback enabling you to set the width and height of related sizeable elements.
- 
+
 ## HTML and CSS
 
 You set the initial, minimum and maximum heights of the sizeable elements in the CSS:
- 
+
 ```css
 #leftColumn {
   width: 10rem;
@@ -124,8 +127,8 @@ You set the initial, minimum and maximum heights of the sizeable elements in the
   height: 10rem;
 }
 ```
-Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above. 
- 
+Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above.
+
 You need an understanding of CSS flexbox to make EasyUI-Layout work, really. Have a look at the `example.html` and `example.css` files to get started and in particular the `easyui-layout.css` file. It's recommended that you start from the example in order to get your own layout working.
 
 ## Contact
