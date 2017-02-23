@@ -2,7 +2,7 @@
 
 Layout elements that work with CSS flexbox.
 
-There are three elements, namely s horizontal and a vertical splitter and a sizeable element that the splitters manipulate. They are all closely tied to CSS. For example, the sizeable element will poll its `min-width`, `max-width`, `min-height`, `max-height` CSS properties and adhere to them. They can also be nested easily.
+There are three elements, namely a horizontal and a vertical splitter and a sizeable element that the splitters manipulate. They are all closely tied to CSS. For example, the sizeable element will poll its `min-width`, `max-width`, `min-height`, `max-height` CSS properties and adhere to them. They can also be nested easily.
 
 ## Related projects
 
@@ -129,7 +129,7 @@ You set the initial, minimum and maximum heights of the sizeable elements in the
 ```
 Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above.
 
-You need an understanding of CSS flexbox to make EasyUI-Layout work, really. Have a look at the `example.html` and `example.css` files to get started and in particular the `easyui-layout.css` file. It's recommended that you start from the example in order to get your own layout working.
+You need an understanding of CSS flexbox to make these elements work, really. Have a look at the `example.html` and `example.css` files to get started and in particular the `easyui-layout.css` file. It's recommended that you start from the example in order to get your own layout working.
 
 ## Contact
 
