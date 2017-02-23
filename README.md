@@ -2,7 +2,7 @@
 
 Layout elements that work with CSS flexbox.
 
-There are three elements, namely a horizontal and a vertical splitter and a sizeable element that the splitters manipulate. They are all closely tied to CSS. For example, the sizeable element will check the values of its 'min-width', 'max-width', 'min-height', 'max-height' CSS properties and stick to them. Layouts created with these elements can also be nested easily.
+There are three elements, namely a horizontal and a vertical draggable splitter and a sizeable element that dragging the splitters will cause to be resized. All the elements are closely tied to CSS. For example, the sizeable element will check the values of its 'min-width', 'max-width', 'min-height', 'max-height' CSS properties and stick to them. Layouts created with these elements can also be nested easily.
 
 ## Related projects
 
