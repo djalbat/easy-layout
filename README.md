@@ -70,11 +70,7 @@ Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have
     npm run build-debug
     npm run watch-debug
 
-## Examples
-
-See the `examples.html` file in the project's root directory, or read on.
-
-### Creating sizeable elements
+## Creating sizeable elements
 
 This is easily done:
 
@@ -84,7 +80,7 @@ const leftColumn = new SizeableElement('#leftColumn'),
       bottomRow = new SizeableElement('#bottomRow'),
 ```
 
-### Creating splitters
+## Creating splitters
 
 There are constants defined on the relevant classes that should be used to specify where the splitters are situated relative to the sizeable elements they resize:
 
