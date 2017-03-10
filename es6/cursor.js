@@ -1,14 +1,15 @@
 'use strict';
 
-var easyui = require('easyui'),
-    Body = easyui.Body;
+const easyui = require('easyui'),
+      Body = easyui.Body;
 
-var body = new Body(),
-    previousCursor;  ///
+const body = new Body();
+
+let previousCursor;  ///
 
 class cursor {
   static columnResize() {
-    var currentCursor = this.getCurrentCursor();
+    const currentCursor = this.getCurrentCursor();
 
     if (currentCursor !== 'col-resize') {
       previousCursor = currentCursor;
@@ -18,7 +19,7 @@ class cursor {
   }
 
   static rowResize() {
-    var currentCursor = this.getCurrentCursor();
+    const currentCursor = this.getCurrentCursor();
 
     if (currentCursor !== 'row-resize') {
       previousCursor = currentCursor;
@@ -32,13 +33,13 @@ class cursor {
   }
 
   static getCurrentCursor() {
-    var currentCursor = body.css('cursor');  ///
+    const currentCursor = body.css('cursor');  ///
 
     return currentCursor || 'auto'; ///
   }
 
   static setCursor(cursor) {
-    var css = {
+    const css = {
       cursor: cursor
     };
 

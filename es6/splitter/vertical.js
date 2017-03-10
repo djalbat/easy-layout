@@ -1,7 +1,7 @@
 'use strict';
 
-var cursor = require('../cursor'),
-    Splitter = require('../splitter');
+const cursor = require('../cursor'),
+      Splitter = require('../splitter');
 
 class VerticalSplitter extends Splitter {
   constructor(selector, situated, sizeableElement, dragHandler) {
@@ -13,7 +13,7 @@ class VerticalSplitter extends Splitter {
   }
 
   mouseUp() {
-    var disabled = this.isDisabled();
+    const disabled = this.isDisabled();
 
     if (!disabled) {
       cursor.reset();
@@ -25,18 +25,18 @@ class VerticalSplitter extends Splitter {
   }
 
   mouseMove(mouseTop, mouseLeft) {
-    var disabled = this.isDisabled();
+    const disabled = this.isDisabled();
 
     if (!disabled) {
-      var dragging = this.isDragging();
+      const dragging = this.isDragging();
 
       if (dragging) {
-        var relativeMouseLeft = mouseLeft - this.mouseLeft,
-            width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
+        const relativeMouseLeft = mouseLeft - this.mouseLeft,
+              width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
 
         this.sizeableElement.setWidth(width);
 
-        var sizeableElementWidth = this.sizeableElement.getWidth();
+        const sizeableElementWidth = this.sizeableElement.getWidth();
 
         if (this.dragHandler) {
           this.dragHandler(sizeableElementWidth);
@@ -46,7 +46,7 @@ class VerticalSplitter extends Splitter {
   }
 
   mouseDown(mouseTop, mouseLeft) {
-    var disabled = this.isDisabled();
+    const disabled = this.isDisabled();
 
     if (!disabled) {
       cursor.columnResize();
@@ -55,7 +55,7 @@ class VerticalSplitter extends Splitter {
 
       this.sizeableElementWidth = this.sizeableElement.getWidth();
 
-      var dragging = this.isDragging();
+      const dragging = this.isDragging();
 
       if (!dragging) {
         this.startDragging();
@@ -64,7 +64,7 @@ class VerticalSplitter extends Splitter {
   }
 
   mouseOver() {
-    var disabled = this.isDisabled();
+    const disabled = this.isDisabled();
 
     if (!disabled) {
       cursor.columnResize();
@@ -72,7 +72,7 @@ class VerticalSplitter extends Splitter {
   }
 
   mouseOut() {
-    var disabled = this.isDisabled();
+    const disabled = this.isDisabled();
 
     if (!disabled) {
       cursor.reset();

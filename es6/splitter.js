@@ -1,10 +1,10 @@
 'use strict';
 
-var easyui = require('easyui'),
-    Element = easyui.Element,
-    window = easyui.window;
+const easyui = require('easyui'),
+      Element = easyui.Element,
+      window = easyui.window;
 
-var options = require('./options');
+const options = require('./options');
 
 const ESCAPE_KEYCODE = 27;
 
@@ -61,7 +61,7 @@ class Splitter extends Element {
   }
 
   startDragging() {
-    var escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
+    const escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDragging) {
       window.on('keydown', this.keyDownHandler.bind(this));
@@ -71,7 +71,7 @@ class Splitter extends Element {
   }
 
   stopDragging() {
-    var escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
+    const escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDragging) {
       window.off('keydown', this.keyDownHandler.bind(this));
@@ -85,10 +85,10 @@ class Splitter extends Element {
   }
 
   keyDownHandler(event) {
-    var keyCode = event.keyCode;
+    const keyCode = event.keyCode;
 
     if (keyCode === ESCAPE_KEYCODE) {
-      var dragging = this.isDragging();
+      const dragging = this.isDragging();
 
       if (dragging) {
         this.stopDragging();

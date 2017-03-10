@@ -38,8 +38,8 @@ You will need to do this if you want to look at the examples.
 If you're building with [Node.js](http://nodejs.org) the usage is as follows:
 
 ```js
-var easyuilayout = require('easyui-layout'),
-    VerticalSplitter = easyuilayout.VerticalSplitter;
+const easyuilayout = require('easyui-layout'),
+      VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
 To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the project's `dist/` directory and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
@@ -51,7 +51,7 @@ To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the p
 ...will give you a global `easyuilayout` variable which can be used directly:
 
 ```js
-var VerticalSplitter = easyuilayout.VerticalSplitter;
+const VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
 Note the lack of a hyphen.
@@ -59,8 +59,8 @@ Note the lack of a hyphen.
 Alternatively, if you're using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
 
 ```js
-var easyuilayout = require('lib/easyui-layout'),
-    VerticalSplitter = easyuilayout.VerticalSplitter;
+const easyuilayout = require('lib/easyui-layout'),
+      VerticalSplitter = easyuilayout.VerticalSplitter;
 ```
 
 ## Compiling from source
@@ -79,9 +79,9 @@ See the `examples.html` file in the project's root directory, or read on.
 This is easily done:
 
 ```js
-var leftColumn = new SizeableElement('#leftColumn'),
-    rightColumn = new SizeableElement('#rightColumn'),
-    bottomRow = new SizeableElement('#bottomRow'),
+const leftColumn = new SizeableElement('#leftColumn'),
+      rightColumn = new SizeableElement('#rightColumn'),
+      bottomRow = new SizeableElement('#bottomRow'),
 ```
 
 ### Creating splitters
@@ -89,9 +89,9 @@ var leftColumn = new SizeableElement('#leftColumn'),
 There are constants defined on the relevant classes that should be used to specify where the splitters are situated relative to the sizeable elements they resize:
 
 ```js
-var ABOVE = HorizontalSplitter.situated.ABOVE,
-    TO_THE_LEFT_OF = VerticalSplitter.situated.TO_THE_LEFT_OF,
-    TO_THE_RIGHT_OF = VerticalSplitter.situated.TO_THE_RIGHT_OF;
+const ABOVE = HorizontalSplitter.situated.ABOVE,
+      TO_THE_LEFT_OF = VerticalSplitter.situated.TO_THE_LEFT_OF,
+      TO_THE_RIGHT_OF = VerticalSplitter.situated.TO_THE_RIGHT_OF;
 ```
 
 These are passed to the splitter constructors between the jQuery selectors and references to the sizeable elements:

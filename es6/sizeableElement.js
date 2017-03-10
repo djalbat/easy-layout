@@ -1,12 +1,12 @@
 'use strict';
 
-var easyui = require('easyui'),
-    Element = easyui.Element;
+const easyui = require('easyui'),
+      Element = easyui.Element;
 
 class SizeableElement extends Element {
   setWidth(width) {
-    var minimumWidth = this.getMinimumWidth(),
-        maximumWidth = this.getMaximumWidth();
+    const minimumWidth = this.getMinimumWidth(),
+          maximumWidth = this.getMaximumWidth();
 
     if (minimumWidth !== undefined) {
       width = Math.max(width, minimumWidth);
@@ -19,8 +19,8 @@ class SizeableElement extends Element {
   }
 
   setHeight(height) {
-    var minimumHeight = this.getMinimumHeight(),
-        maximumHeight = this.getMaximumHeight();
+    const minimumHeight = this.getMinimumHeight(),
+          maximumHeight = this.getMaximumHeight();
 
     if (minimumHeight !== undefined) {
       height = Math.max(height, minimumHeight);
@@ -33,29 +33,29 @@ class SizeableElement extends Element {
   }
 
   getMinimumWidth() { 
-    var minWidth = this.css('min-width'),
-        minimumWidth = inPixels(minWidth);
+    const minWidth = this.css('min-width'),
+          minimumWidth = inPixels(minWidth);
 
     return minimumWidth;
   }
 
   getMinimumHeight() {
-    var minHeight = this.css('min-height'),
-        minimumHeight = inPixels(minHeight);
+    const minHeight = this.css('min-height'),
+          minimumHeight = inPixels(minHeight);
 
     return minimumHeight;
   }
 
   getMaximumWidth() {
-    var maxWidth = this.css('max-width'),
-        maximumWidth = inPixels(maxWidth);
+    const maxWidth = this.css('max-width'),
+          maximumWidth = inPixels(maxWidth);
 
     return maximumWidth;
   }
 
   getMaximumHeight() {
-    var maxHeight = this.css('max-height'),
-        maximumHeight = inPixels(maxHeight);
+    const maxHeight = this.css('max-height'),
+          maximumHeight = inPixels(maxHeight);
 
     return maximumHeight;
   }
@@ -64,10 +64,10 @@ class SizeableElement extends Element {
 module.exports = SizeableElement;
 
 function inPixels(quantity) {
-  var matches = quantity.match(/([0-9]*)px$/),
-      pixels = (matches === null) ?
-                 undefined :
-                   matches[1];
+  const matches = quantity.match(/([0-9]*)px$/),
+        pixels = (matches === null) ?
+                   undefined :
+                     matches[1];
 
   return pixels;
 }
