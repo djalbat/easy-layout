@@ -35,7 +35,7 @@ You will need to do this if you want to look at the examples.
 
 ## Usage
 
-If you're building with [Node.js](http://nodejs.org) the usage is as follows:
+If you are building with [Node.js](http://nodejs.org) the usage is as follows:
 
 ```js
 const easyuilayout = require('easyui-layout'),
@@ -56,7 +56,7 @@ const VerticalSplitter = easyuilayout.VerticalSplitter;
 
 Note the lack of a hyphen.
 
-Alternatively, if you're using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
+Alternatively, if you are using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
 
 ```js
 const easyuilayout = require('lib/easyui-layout'),
@@ -128,7 +128,7 @@ You set the initial, minimum and maximum heights of the sizeable elements in the
 ```
 Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above.
 
-You need an understanding of CSS flexbox to make these elements work, really. Have a look at the `example.html` and `example.css` files to get started and in particular the `easyui-layout.css` file. It's recommended that you start from the example in order to get your own layout working.
+You need an understanding of CSS flexbox to make these elements work, really. It is recommended that you start from the examples above in order to get your own layout working.
 
 ## Contact
 
