@@ -111,10 +111,12 @@ You set the initial, minimum and maximum heights of the sizeable elements in the
   min-width: 5rem;
   max-width: 15rem;
 }
+
 #rightColumn {
   width: 20rem;
   max-width: 40rem;
 }
+
 #bottomRow {
   height: 10rem;
   min-height: 5rem;
