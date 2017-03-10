@@ -6,8 +6,7 @@ var easyui = require('easyui'),
 
 var options = require('./options');
 
-const ESCAPE_KEYCODE = 27,
-      NAMESPACE = 'EasyUI-Layout';
+const ESCAPE_KEYCODE = 27;
 
 class Splitter extends Element {
   constructor(selector, situated, sizeableElement, dragHandler) {
@@ -65,7 +64,7 @@ class Splitter extends Element {
     var escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDragging) {
-      window.on('keydown', this.keyDownHandler.bind(this), NAMESPACE);
+      window.on('keydown', this.keyDownHandler.bind(this));
     }
 
     this.dragging = true;
@@ -75,7 +74,7 @@ class Splitter extends Element {
     var escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDragging) {
-      window.off('keydown', NAMESPACE);
+      window.off('keydown', this.keyDownHandler.bind(this));
     }
 
     this.dragging = false;
