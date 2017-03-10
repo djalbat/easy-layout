@@ -7,6 +7,7 @@ There are three elements, namely a horizontal and a vertical draggable splitter 
 ## Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
+- [EasyUI-JSX](https://github.com/djalbat/EasyUI-JSX) JSX support for Easy-UI.
 - [EasyUI-DragAndDrop](https://github.com/djalbat/EasyUI-DragAndDrop) Drag and drop elements including an explorer and a rubbish bin.
 - [EasyUI-RichTextArea](https://github.com/djalbat/EasyUI-RichTextArea) A textarea component that handles and hands off events well.
 
