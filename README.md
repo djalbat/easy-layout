@@ -31,8 +31,6 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
     npm install
 
-You will need to do this if you want to look at the examples.
-
 ## Usage
 
 If you are building with [Node.js](http://nodejs.org) the usage is as follows:
