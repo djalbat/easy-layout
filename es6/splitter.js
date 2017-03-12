@@ -21,6 +21,7 @@ class Splitter extends Element {
     this.dragging = false;
 
     window.on('mouseup blur', this.mouseUp.bind(this));  ///
+    
     window.onMouseMove(this.mouseMove.bind(this));
 
     this.onMouseDown(this.mouseDown.bind(this));
