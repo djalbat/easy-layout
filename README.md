@@ -6,9 +6,7 @@ There are three elements, namely a horizontal and a vertical draggable splitter 
 
 ### JSX support
 
-There is now support for [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html) and its use is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is here:
-
-The section of the EasyUI-JSX online documentation dealing directly with this project is here:
+There is now support for [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html) and its use is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is the EasyUI-JSX online documentation. The section dealing directly with this project is here:
 
 * [EasyUI-JSX Online documentation - EasyUI Layout](https://djalbat.github.io/EasyUI-JSX/#easyUILayout)
 
