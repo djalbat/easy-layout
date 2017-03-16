@@ -106,35 +106,6 @@ new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(h
 ```
 The last argument is an optional callback enabling you to set the width and height of related sizeable elements.
 
-## HTML and CSS
-
-You set the initial, minimum and maximum heights of the sizeable elements in the CSS:
-
-```css
-#leftColumn {
-  width: 10rem;
-  min-width: 5rem;
-  max-width: 15rem;
-}
-
-#rightColumn {
-  width: 20rem;
-  max-width: 40rem;
-}
-
-#bottomRow {
-  height: 10rem;
-  min-height: 5rem;
-}
-
-#bottomLeft {
-  height: 10rem;
-}
-```
-Note that the `bottomLeft` element has the same initial height as the `bottomRow` element. Afterwards the two elements are kept in line with the callback set on the main horizontal splitter, see above.
-
-You need an understanding of CSS flexbox to make these elements work, really. It is recommended that you start from the examples above in order to get your own layout working.
-
 ## Contact
 
 * james.smith@djalbat.com
