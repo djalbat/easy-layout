@@ -87,12 +87,4 @@ class VerticalSplitter extends Splitter {
     return Splitter.fromProperties(VerticalSplitter, properties);
   }
 }
-
-Object.assign(VerticalSplitter, {
-  situated: {
-    TO_THE_LEFT_OF: +1,
-    TO_THE_RIGHT_OF: -1
-  }
-});
-
 module.exports = VerticalSplitter;

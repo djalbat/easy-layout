@@ -88,11 +88,4 @@ class HorizontalSplitter extends Splitter {
   }
 }
 
-Object.assign(HorizontalSplitter, {
-  situated: {
-    ABOVE: +1,
-    BELOW: -1
-  }
-});
-
 module.exports = HorizontalSplitter;

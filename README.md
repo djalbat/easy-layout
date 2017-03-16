@@ -90,9 +90,9 @@ const leftColumn = new SizeableElement('#leftColumn'),
 There are constants defined on the relevant classes that should be used to specify where the splitters are situated relative to the sizeable elements they resize:
 
 ```js
-const ABOVE = HorizontalSplitter.situated.ABOVE,
-      TO_THE_LEFT_OF = VerticalSplitter.situated.TO_THE_LEFT_OF,
-      TO_THE_RIGHT_OF = VerticalSplitter.situated.TO_THE_RIGHT_OF;
+const ABOVE = options.situated.ABOVE,
+      TO_THE_LEFT_OF = options.situated.TO_THE_LEFT_OF,
+      TO_THE_RIGHT_OF = options.situated.TO_THE_RIGHT_OF;
 ```
 
 These are passed to the splitter constructors between the jQuery selectors and references to the sizeable elements:
