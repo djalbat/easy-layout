@@ -1,14 +1,13 @@
 'use strict';
 
 const easyui = require('easyui'),
-      Element = easyui.Element,
-      window = easyui.window;
+      { window, Div } = easyui;
 
 const options = require('./options');
 
 const ESCAPE_KEYCODE = 27;
 
-class Splitter extends Element {
+class Splitter extends Div {
   constructor(selector, situated, sizeableElement, dragHandler) {
     super(selector);
 
@@ -96,6 +95,16 @@ class Splitter extends Element {
       }
     }
   }
+
+  static fromProperties(properties) {
+    return Div.fromProperties(Splitter, properties);
+  }
 }
+
+Object.assign(Splitter, {
+  customHandlers: [
+    'onDrag'
+  ]
+});
 
 module.exports = Splitter;

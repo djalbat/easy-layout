@@ -78,11 +78,17 @@ class HorizontalSplitter extends Splitter {
       cursor.reset();
     }
   }
+  
+  static fromProperties(properties) {
+    return Splitter.fromProperties(HorizontalSplitter, properties);
+  }
 }
 
-HorizontalSplitter.situated = {
-  ABOVE: +1,
-  BELOW: -1
-};
+Object.assign(VerticalSplitter, {
+  situated: {
+    ABOVE: +1,
+    BELOW: -1
+  }
+});
 
 module.exports = HorizontalSplitter;
