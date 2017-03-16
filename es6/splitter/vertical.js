@@ -79,6 +79,10 @@ class VerticalSplitter extends Splitter {
     }
   }
 
+  static fromHTML(html, situated, sizeableElement, dragHandler) {
+    return Splitter.fromHTML(VerticalSplitter, html, situated, sizeableElement, dragHandler);
+  }
+
   static fromProperties(properties) {
     return Splitter.fromProperties(VerticalSplitter, properties);
   }

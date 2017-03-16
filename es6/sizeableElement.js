@@ -1,9 +1,9 @@
 'use strict';
 
 const easyui = require('easyui'),
-      Element = easyui.Element;
+      { Div } = easyui;
 
-class SizeableElement extends Element {
+class SizeableElement extends Div {
   setWidth(width) {
     const minimumWidth = this.getMinimumWidth(),
           maximumWidth = this.getMaximumWidth();
@@ -59,15 +59,26 @@ class SizeableElement extends Element {
 
     return maximumHeight;
   }
+
+  static fromProperties(properties) {
+    return Div.fromProperties(SizeableElement, properties);
+  }
 }
 
 module.exports = SizeableElement;
 
 function inPixels(quantity) {
-  const matches = quantity.match(/([0-9]*)px$/),
-        pixels = (matches === null) ?
-                   undefined :
-                     matches[1];
+  let pixels;
+
+  const matches = quantity.match(/([0-9]*)px$/);
+
+  if (matches !== null) {
+    const secondMatch = second(matches);
+
+    pixels = secondMatch;  ///
+  }
 
   return pixels;
 }
+
+function second(array) { return array[1]; }

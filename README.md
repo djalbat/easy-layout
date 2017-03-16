@@ -4,6 +4,16 @@ Layout elements that work with CSS flexbox.
 
 There are three elements, namely a horizontal and a vertical draggable splitter and a sizeable element that dragging the splitters will cause to be resized. All the elements are closely tied to CSS. For example, the sizeable element will check the values of its 'min-width', 'max-width', 'min-height', 'max-height' CSS properties and stick to them. Layouts created with these elements can also be nested easily.
 
+### JSX support
+
+There is now support for [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html). The use of this project with JSX is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is here:
+
+* [EasyUI-JSX Online documentation](https://djalbat.github.io/EasyUI-JSX/)
+
+The section of the documentation dealing directly with this project is here:
+
+* [EasyUI-JSX Online documentation - EasyUI Layout](https://djalbat.github.io/EasyUI-JSX/#easyUILayout)
+
 ### Related projects
 
 - [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.

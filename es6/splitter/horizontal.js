@@ -78,13 +78,17 @@ class HorizontalSplitter extends Splitter {
       cursor.reset();
     }
   }
-  
+
+  static fromHTML(html, situated, sizeableElement, dragHandler) {
+    return Splitter.fromHTML(HorizontalSplitter, html, situated, sizeableElement, dragHandler);
+  }
+
   static fromProperties(properties) {
     return Splitter.fromProperties(HorizontalSplitter, properties);
   }
 }
 
-Object.assign(VerticalSplitter, {
+Object.assign(HorizontalSplitter, {
   situated: {
     ABOVE: +1,
     BELOW: -1
