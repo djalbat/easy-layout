@@ -104,7 +104,7 @@ new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(h
   bottomLeft.setHeight(height);
 });
 ```
-The last argument is an optional callback enabling you to set the width and height of related sizeable elements.
+The last argument is an optional callback.
 
 ## Contact
 
