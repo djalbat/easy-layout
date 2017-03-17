@@ -79,10 +79,6 @@ class HorizontalSplitter extends Splitter {
     }
   }
 
-  static fromHTML(html, situated, sizeableElement, dragHandler) {
-    return Splitter.fromHTML(HorizontalSplitter, html, situated, sizeableElement, dragHandler);
-  }
-
   static fromProperties(properties) {
     return Splitter.fromProperties(HorizontalSplitter, properties);
   }

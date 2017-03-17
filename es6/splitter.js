@@ -96,24 +96,21 @@ class Splitter extends Element {
     }
   }
 
-  static fromHTML(Class, html, situated, sizeableElement, dragHandler) {
-    return Element.fromHTML(Class, html, situated, sizeableElement, dragHandler);
-  }
-
   static fromProperties(Class, properties) {
     const { situated, sizeableElement, onDrag } = properties,
           dragHandler = onDrag; ///
-
-    delete properties['situated'];
-    delete properties['sizeableElement'];
-    delete properties['onDrag'];
 
     return Element.fromProperties(Class, properties, situated, sizeableElement, dragHandler);
   }
 }
 
 Object.assign(Splitter, {
-  tagName: 'div'
+  tagName: 'div',
+  ignoredAttributes: [
+    'situated',
+    'sizeableElement',
+    'onDrag'
+  ]
 });
 
 module.exports = Splitter;
