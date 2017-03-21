@@ -1,4 +1,4 @@
-# EasyUI-Layout
+# Easy-Layout
 
 Layout elements that work with CSS flexbox.
 
@@ -6,17 +6,17 @@ There are three elements, namely a horizontal and a vertical draggable splitter 
 
 ### JSX support
 
-There is now support for [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html) and its use is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is the EasyUI-JSX online documentation. The section dealing directly with this project is here:
+There is now support for [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html) and its use is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is the Easy-JSX online documentation. The section dealing directly with this project is here:
 
-* [EasyUI-JSX Online documentation - EasyUI-Layout](http://djalbat.com/easyui-jsx/#easyUILayout)
+* [Easy-JSX Online documentation - Easy-Layout](http://djalbat.com/easy-jsx/#easyUILayout)
 
-From there you can easily navigate to get an overview of EasyUI-JSX. 
+From there you can easily navigate to get an overview of Easy-JSX.
 
 ### Related projects
 
-- [EasyUI](https://github.com/djalbat/EasyUI) A V-framework.
-- [EasyUI-DragAndDrop](https://github.com/djalbat/EasyUI-DragAndDrop) Drag and drop elements including an explorer and a rubbish bin.
-- [EasyUI-RichTextarea](https://github.com/djalbat/EasyUI-RichTextarea) A textarea element that handles and hands off events well.
+- [Easy](https://github.com/djalbat/Easy) A V-framework.
+- [Easy-DragAndDrop](https://github.com/djalbat/Easy-DragAndDrop) Drag and drop elements including an explorer and a rubbish bin.
+- [Easy-RichTextarea](https://github.com/djalbat/Easy-RichTextarea) A textarea element that handles and hands off events well.
 
 ### Are these projects actually used anywhere?
 
@@ -26,13 +26,13 @@ Actually they are, here:
 
 ## Installation
 
-You can install EasyUI-Layout with [npm](https://www.npmjs.com/):
+You can install Easy-Layout with [npm](https://www.npmjs.com/):
 
-    npm install easyui-layout
+    npm install easy-layout
 
 You can also clone the repository with [Git](https://git-scm.com/)...
 
-    git clone https://github.com/djalbat/EasyUI-Layout.git
+    git clone https://github.com/djalbat/Easy-Layout.git
 
 ...and then install the necessary modules with npm from within the project's root directory:
 
@@ -43,20 +43,20 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 If you are building with [Node.js](http://nodejs.org) the usage is as follows:
 
 ```js
-const easyuilayout = require('easyui-layout'),
-      VerticalSplitter = easyuilayout.VerticalSplitter;
+const easylayout = require('easy-layout'),
+      VerticalSplitter = easylayout.VerticalSplitter;
 ```
 
-To use EasyUI-Layout in the browser, take the `easyui-layout.js` file from the project's `dist/` directory and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
+To use Easy-Layout in the browser, take the `easy-layout.js` file from the project's `dist/` directory and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
 
 ```html
-<script src="scripts/lib/easyui-layout.js"> </script>
+<script src="scripts/lib/easy-layout.js"> </script>
 ```
 
-...will give you a global `easyuilayout` variable which can be used directly:
+...will give you a global `easylayout` variable which can be used directly:
 
 ```js
-const VerticalSplitter = easyuilayout.VerticalSplitter;
+const VerticalSplitter = easylayout.VerticalSplitter;
 ```
 
 Note the lack of a hyphen.
@@ -64,8 +64,8 @@ Note the lack of a hyphen.
 Alternatively, if you are using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
 
 ```js
-const easyuilayout = require('lib/easyui-layout'),
-      VerticalSplitter = easyuilayout.VerticalSplitter;
+const easylayout = require('lib/easy-layout'),
+      VerticalSplitter = easylayout.VerticalSplitter;
 ```
 
 ## Compiling from source

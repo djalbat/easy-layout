@@ -1,16 +1,16 @@
 {
-  "name": "easyui-layout",
+  "name": "easy-layout",
   "author": "James Smith",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "license": "MIT",
-  "homepage": "https://github.com/djalbat/EasyUI-Layout",
+  "homepage": "https://github.com/djalbat/Easy-Layout",
   "description": "Layout elements that work with CSS flexbox.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/djalbat/EasyUI-Layout"
+    "url": "https://github.com/djalbat/Easy-Layout"
   },
   "dependencies": {
-    "easyui": "^7.1.54"
+    "easy": "^7.1.54"
   },
   "devDependencies": {
     "babel": "^6.5.2",
@@ -23,8 +23,8 @@
     "clean": "rm -rf ./lib",
     "babel": "babel ./es6 --presets=es2015 --out-dir=./lib",
     "babel-debug": "babel ./es6 --presets=es2015 --source-maps inline --out-dir=./lib",
-    "browserify": "browserify ./index.js --standalone easyuilayout > ./dist/easyui-layout.js",
-    "browserify-debug": "browserify ./index.js --standalone easyuilayout --debug > ./dist/easyui-layout.js",
+    "browserify": "browserify ./index.js --standalone easylayout > ./dist/easy-layout.js",
+    "browserify-debug": "browserify ./index.js --standalone easylayout --debug > ./dist/easy-layout.js",
     "build": "npm run clean && npm run babel && npm run browserify",
     "build-debug": "npm run clean && npm run babel-debug && npm run browserify-debug",
     "watch": "npm run build && chokidar './index.js' './es6/**/*.js' -c 'npm run build'",
