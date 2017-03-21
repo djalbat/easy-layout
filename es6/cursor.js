@@ -1,7 +1,7 @@
 'use strict';
 
-const easyui = require('easyui'),
-      Body = easyui.Body;
+const easy = require('easy'),
+      Body = easy.Body;
 
 const body = new Body();
 

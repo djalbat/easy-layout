@@ -1,7 +1,7 @@
 'use strict';
 
-const easyui = require('easyui'),
-      { Div } = easyui;
+const easy = require('easy'),
+      { Div } = easy;
 
 class SizeableElement extends Div {
   setWidth(width) {

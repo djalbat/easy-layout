@@ -1,7 +1,7 @@
 'use strict';
 
-const easyui = require('easyui'),
-      { window, Element } = easyui;
+const easy = require('easy'),
+      { window, Element } = easy;
 
 const options = require('./options');
 
