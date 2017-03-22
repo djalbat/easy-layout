@@ -8,26 +8,68 @@ const options = require('./options');
 const ESCAPE_KEYCODE = 27;
 
 class Splitter extends Element {
-  constructor(selector, situated, sizeableElement, dragHandler) {
+  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler) {
     super(selector);
 
-    this.situated = situated;
-    this.sizeableElement = sizeableElement;
+    this.beforeSizeableElement = beforeSizeableElement;
+
+    this.afterSizeableElement = afterSizeableElement;
+
     this.dragHandler = dragHandler;
-
+  
     this.disabled = false;
-
+  
     this.dragging = false;
-
+  
     window.on('mouseup blur', this.mouseUp.bind(this));  ///
-    
+   
     window.onMouseMove(this.mouseMove.bind(this));
-
+  
     this.onMouseDown(this.mouseDown.bind(this));
     this.onMouseOver(this.mouseOver.bind(this));
     this.onMouseOut(this.mouseOut.bind(this));
-
+  
     this.options = {};
+  }
+
+  isBeforeSizeableElement() {
+    return this.beforeSizeableElement;
+  }
+
+  isAfterSizeableElement() {
+    return this.afterSizeableElement;
+  }
+
+  getDirection() {
+    let direction = undefined;  ///
+
+    if (this.beforeSizeableElement) {
+      direction = +1;
+    }
+
+    if (this.afterSizeableElement) {
+      direction = -1;
+    }
+
+    return direction;
+  }
+
+  getSizeableElement() {
+    let sizeableElement = undefined;  ///
+
+    const direction = this.getDirection();
+
+    switch (direction) {
+      case -1:
+        sizeableElement = this.getPreviousSiblingElement(); ///
+        break;
+
+      case +1:
+        sizeableElement = this.getNextSiblingElement(); ///
+        break;
+    }
+
+    return sizeableElement;
   }
 
   setOption(option) {
@@ -97,18 +139,18 @@ class Splitter extends Element {
   }
 
   static fromProperties(Class, properties) {
-    const { situated, sizeableElement, onDrag } = properties,
+    const { beforeSizeableElement, afterSizeableElement, onDrag } = properties,
           dragHandler = onDrag; ///
 
-    return Element.fromProperties(Class, properties, situated, sizeableElement, dragHandler);
+    return Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, dragHandler);
   }
 }
 
 Object.assign(Splitter, {
   tagName: 'div',
   ignoredAttributes: [
-    'situated',
-    'sizeableElement',
+    'beforeSizeableElement',
+    'afterSizeableElement',
     'onDrag'
   ]
 });

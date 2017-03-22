@@ -4,8 +4,8 @@ const cursor = require('../cursor'),
       Splitter = require('../splitter');
 
 class HorizontalSplitter extends Splitter {
-  constructor(selector, situated, sizeableElement, dragHandler) {
-    super(selector, situated, sizeableElement, dragHandler);
+  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler) {
+    super(selector, beforeSizeableElement, afterSizeableElement, dragHandler);
 
     this.sizeableElementHeight = null;
 
@@ -31,12 +31,14 @@ class HorizontalSplitter extends Splitter {
       const dragging = this.isDragging();
 
       if (dragging) {
-        const relativeMouseTop = mouseTop - this.mouseTop,
-              height = this.sizeableElementHeight - this.situated * relativeMouseTop;
+        const direction = this.getDirection(),
+              sizeableElement = this.getSizeableElement(),
+              relativeMouseTop = mouseTop - this.mouseTop,
+              height = this.sizeableElementHeight - direction * relativeMouseTop;
 
-        this.sizeableElement.setHeight(height);
+        sizeableElement.setHeight(height);
 
-        const sizeableElementHeight = this.sizeableElement.getHeight();
+        const sizeableElementHeight = sizeableElement.getHeight();
 
         if (this.dragHandler) {
           this.dragHandler(sizeableElementHeight);
@@ -49,11 +51,13 @@ class HorizontalSplitter extends Splitter {
     const disabled = this.isDisabled();
 
     if (!disabled) {
+      const sizeableElement = this.getSizeableElement();
+          
       cursor.rowResize();
 
       this.mouseTop = mouseTop;
 
-      this.sizeableElementHeight = this.sizeableElement.getHeight();
+      this.sizeableElementHeight = sizeableElement.getHeight();
 
       const dragging = this.isDragging();
 

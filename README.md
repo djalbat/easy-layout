@@ -87,15 +87,7 @@ const leftColumn = new SizeableElement('#leftColumn'),
 
 ## Creating splitters
 
-There are constants defined on the relevant classes that should be used to specify where the splitters are situated relative to the sizeable elements they resize:
-
-```js
-const ABOVE = options.situated.ABOVE,
-      TO_THE_LEFT_OF = options.situated.TO_THE_LEFT_OF,
-      TO_THE_RIGHT_OF = options.situated.TO_THE_RIGHT_OF;
-```
-
-These are passed to the splitter constructors between the jQuery selectors and references to the sizeable elements:
+As well as the usual `selector` argument, the constructors take a `beforeSizeableElement` and an `afterSizeableElementThese` argument. These signify whether the splitter is before or after the sizeable element that it affects. These arguments overlap in the sense that both not should be set to `true` at the same time. The reason for this arrangement is that it admits boolean properties on the corresponding JSX. The fourth argument is an optional drag handler.
 
 ```js
 new VerticalSplitter('.left.vertical.splitter', TO_THE_RIGHT_OF, leftColumn);

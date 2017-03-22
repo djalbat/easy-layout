@@ -4,8 +4,8 @@ const cursor = require('../cursor'),
       Splitter = require('../splitter');
 
 class VerticalSplitter extends Splitter {
-  constructor(selector, situated, sizeableElement, dragHandler) {
-    super(selector, situated, sizeableElement, dragHandler);
+  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler) {
+    super(selector, beforeSizeableElement, afterSizeableElement, dragHandler);
 
     this.sizeableElementWidth = null;
 
@@ -31,12 +31,14 @@ class VerticalSplitter extends Splitter {
       const dragging = this.isDragging();
 
       if (dragging) {
-        const relativeMouseLeft = mouseLeft - this.mouseLeft,
-              width = this.sizeableElementWidth - this.situated * relativeMouseLeft;
+        const direction = this.getDirection(),
+              sizeableElement = this.getSizeableElement(),
+              relativeMouseLeft = mouseLeft - this.mouseLeft,
+              width = this.sizeableElementWidth - direction * relativeMouseLeft;
 
-        this.sizeableElement.setWidth(width);
+        sizeableElement.setWidth(width);
 
-        const sizeableElementWidth = this.sizeableElement.getWidth();
+        const sizeableElementWidth = sizeableElement.getWidth();
 
         if (this.dragHandler) {
           this.dragHandler(sizeableElementWidth);
@@ -49,11 +51,13 @@ class VerticalSplitter extends Splitter {
     const disabled = this.isDisabled();
 
     if (!disabled) {
+      const sizeableElement = this.getSizeableElement();
+
       cursor.columnResize();
 
       this.mouseLeft = mouseLeft;
 
-      this.sizeableElementWidth = this.sizeableElement.getWidth();
+      this.sizeableElementWidth = sizeableElement.getWidth();
 
       const dragging = this.isDragging();
 
