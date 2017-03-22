@@ -1,9 +1,9 @@
 'use strict';
 
 const easy = require('easy'),
-      { Div } = easy;
+      { Element } = easy;
 
-class SizeableElement extends Div {
+class SizeableElement extends Element {
   setWidth(width) {
     const minimumWidth = this.getMinimumWidth(),
           maximumWidth = this.getMaximumWidth();
@@ -61,9 +61,13 @@ class SizeableElement extends Div {
   }
 
   static fromProperties(properties) {
-    return Div.fromProperties(SizeableElement, properties);
+    return Element.fromProperties(SizeableElement, properties);
   }
 }
+
+Object.assign(SizeableElement, {
+  tagName: 'div'
+});
 
 module.exports = SizeableElement;
 
