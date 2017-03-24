@@ -88,4 +88,10 @@ class HorizontalSplitter extends Splitter {
   }
 }
 
+Object.assign(HorizontalSplitter, {
+  defaultProperties: {
+    className: 'horizontal splitter'
+  }
+});
+
 module.exports = HorizontalSplitter;

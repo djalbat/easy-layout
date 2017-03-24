@@ -87,4 +87,11 @@ class VerticalSplitter extends Splitter {
     return Splitter.fromProperties(VerticalSplitter, properties);
   }
 }
+
+Object.assign(VerticalSplitter, {
+  defaultProperties: {
+    className: 'vertical splitter'
+  }
+});
+
 module.exports = VerticalSplitter;

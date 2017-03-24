@@ -148,7 +148,7 @@ class Splitter extends Element {
 
 Object.assign(Splitter, {
   tagName: 'div',
-  ignoredAttributes: [
+  ignoredProperties: [
     'beforeSizeableElement',
     'afterSizeableElement',
     'onDrag'
