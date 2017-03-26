@@ -8,17 +8,18 @@
   display: flex;
   align-items: stretch;
   flex-direction: row;
-  height: 100%;
 }
 
 .row {
+  display: flex;
+  align-items: stretch;
   flex: 1;
-  flex-shrink: 1000;
 }
 
 .column {
+  display: flex;
+  align-items: stretch;
   flex: 1;
-  flex-shrink: 1000;
 }
 
 .vertical.splitter {

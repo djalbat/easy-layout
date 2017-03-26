@@ -7,15 +7,22 @@ const options = require('./options');
 
 const ESCAPE_KEYCODE = 27;
 
+const { ESCAPE_KEY_STOPS_DRAGGING } = options;
+
 class Splitter extends Element {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler) {
+  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options) {
     super(selector);
 
     this.beforeSizeableElement = beforeSizeableElement;
-
     this.afterSizeableElement = afterSizeableElement;
 
-    this.dragHandler = dragHandler;
+    if (dragHandler !== undefined) {
+      this.onDrag(dragHandler); 
+    }
+    
+    if (options !== undefined) {
+      this.setOptions(options);
+    }
   
     this.disabled = false;
   
@@ -71,6 +78,10 @@ class Splitter extends Element {
 
     return sizeableElement;
   }
+  
+  setOptions(options) {
+    this.options = options;
+  }
 
   setOption(option) {
     this.options[option] = true;
@@ -103,20 +114,20 @@ class Splitter extends Element {
   }
 
   startDragging() {
-    const escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
+    const escapeKeyStopsDragging = this.hasOption(ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDragging) {
-      window.on('keydown', this.keyDownHandler.bind(this));
+      window.onKeyDown(this.keyDownHandler.bind(this));
     }
 
     this.dragging = true;
   }
 
   stopDragging() {
-    const escapeKeyStopsDragging = this.hasOption(options.ESCAPE_KEY_STOPS_DRAGGING);
+    const escapeKeyStopsDragging = this.hasOption(ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDragging) {
-      window.off('keydown', this.keyDownHandler.bind(this));
+      window.offKeyDown(this.keyDownHandler.bind(this));
     }
 
     this.dragging = false;
@@ -126,9 +137,7 @@ class Splitter extends Element {
     return this.dragging;
   }
 
-  keyDownHandler(event) {
-    const keyCode = event.keyCode;
-
+  keyDownHandler(keyCode) {
     if (keyCode === ESCAPE_KEYCODE) {
       const dragging = this.isDragging();
 
@@ -139,10 +148,10 @@ class Splitter extends Element {
   }
 
   static fromProperties(Class, properties) {
-    const { beforeSizeableElement, afterSizeableElement, onDrag } = properties,
+    const { beforeSizeableElement, afterSizeableElement, onDrag, options } = properties,
           dragHandler = onDrag; ///
 
-    return Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, dragHandler);
+    return Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, dragHandler, options);
   }
 }
 
@@ -151,7 +160,8 @@ Object.assign(Splitter, {
   ignoredProperties: [
     'beforeSizeableElement',
     'afterSizeableElement',
-    'onDrag'
+    'onDrag',
+    'options'
   ]
 });
 
