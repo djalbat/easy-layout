@@ -66,7 +66,8 @@ class SizeableElement extends Element {
 }
 
 Object.assign(SizeableElement, {
-  tagName: 'div'
+  tagName: 'div',
+  className: 'sizeable'
 });
 
 module.exports = SizeableElement;

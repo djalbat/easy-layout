@@ -22,6 +22,11 @@
   flex: 1;
 }
 
+.sizeable {
+  display: flex;
+  align-items: stretch;
+}
+
 .vertical.splitter {
   width: 0.5rem;
 }
