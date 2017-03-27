@@ -5,33 +5,41 @@ const easy = require('easy'),
 
 class SizeableElement extends Element {
   setWidth(width) {
-    const minimumWidth = this.getMinimumWidth(),
-          maximumWidth = this.getMaximumWidth();
+    const widthNumber = (typeof width === 'number');
 
-    if (minimumWidth !== null) {
-      width = Math.max(width, minimumWidth);
-    }
-    if (maximumWidth !== null) {
-      width = Math.min(width, maximumWidth);
-    }
+    if (widthNumber) {
+      const minimumWidth = this.getMinimumWidth(),
+            maximumWidth = this.getMaximumWidth();
 
-    width = `${width}px`; ///
+      if (minimumWidth !== null) {
+        width = Math.max(width, minimumWidth);
+      }
+      if (maximumWidth !== null) {
+        width = Math.min(width, maximumWidth);
+      }
+
+      width = `${width}px`; ///
+    }
 
     super.setWidth(width);
   }
 
   setHeight(height) {
-    const minimumHeight = this.getMinimumHeight(),
-          maximumHeight = this.getMaximumHeight();
+    const heightNumber = (typeof height === 'number');
 
-    if (minimumHeight !== null) {
-      height = Math.max(height, minimumHeight);
-    }
-    if (maximumHeight !== null) {
-      height = Math.min(height, maximumHeight);
-    }
+    if (heightNumber) {
+      const minimumHeight = this.getMinimumHeight(),
+            maximumHeight = this.getMaximumHeight();
 
-    height = `${height}px`; ///
+      if (minimumHeight !== null) {
+        height = Math.max(height, minimumHeight);
+      }
+      if (maximumHeight !== null) {
+        height = Math.min(height, maximumHeight);
+      }
+
+      height = `${height}px`; ///
+    }
 
     super.setHeight(height);
   }
