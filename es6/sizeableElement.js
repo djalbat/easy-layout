@@ -8,12 +8,14 @@ class SizeableElement extends Element {
     const minimumWidth = this.getMinimumWidth(),
           maximumWidth = this.getMaximumWidth();
 
-    if (minimumWidth !== undefined) {
+    if (minimumWidth !== null) {
       width = Math.max(width, minimumWidth);
     }
-    if (maximumWidth !== undefined) {
+    if (maximumWidth !== null) {
       width = Math.min(width, maximumWidth);
     }
+
+    width = `${width}px`; ///
 
     super.setWidth(width);
   }
@@ -22,12 +24,14 @@ class SizeableElement extends Element {
     const minimumHeight = this.getMinimumHeight(),
           maximumHeight = this.getMaximumHeight();
 
-    if (minimumHeight !== undefined) {
+    if (minimumHeight !== null) {
       height = Math.max(height, minimumHeight);
     }
-    if (maximumHeight !== undefined) {
+    if (maximumHeight !== null) {
       height = Math.min(height, maximumHeight);
     }
+
+    height = `${height}`; ///
 
     super.setHeight(height);
   }
@@ -75,7 +79,7 @@ Object.assign(SizeableElement, {
 module.exports = SizeableElement;
 
 function inPixels(quantity) {
-  let pixels;
+  let pixels = null;
 
   const matches = quantity.match(/([0-9]*)px$/);
 
