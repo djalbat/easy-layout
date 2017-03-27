@@ -31,7 +31,7 @@ class SizeableElement extends Element {
       height = Math.min(height, maximumHeight);
     }
 
-    height = `${height}`; ///
+    height = `${height}px`; ///
 
     super.setHeight(height);
   }
