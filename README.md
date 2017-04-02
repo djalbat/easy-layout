@@ -63,9 +63,9 @@ const container =
       ;
 ```
 
-Note the necessary `column` and `columns` classes.
+Note the mandatory `column` and `columns` classes.
 
-##
+## CSS
 
 There is a small amount of CSS needed to make the elements work. This can be found in the `easy-layout.css` file in the `dist` directory. The 'min-width', 'max-width', 'min-height' and 'max-height' CSS properties, if used, must be specified in pixels.
 
