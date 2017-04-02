@@ -6,7 +6,7 @@ There are three elements, namely a horizontal and a vertical draggable splitter 
 
 ### JSX support
 
-There is now support for JSX in the form of [Juxtapose](https://github.com/djalbat/Juxtapose). JSX brings with it [several benefits](http://djalbat.com/juxtapose#jsxIsGreat). So although this and at least some of the other Easy projects will continue to work standalone, their use with Juxtapose is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is the Juxtapose online documentation. The section dealing directly with this project is here:
+There is now support for JSX in the form of [Juxtapose](https://github.com/djalbat/Juxtapose). JSX brings with it [several benefits](http://djalbat.com/juxtapose#jsxIsGreat). So although you will always be able to call constructors directly if you wish, creating Easy elements by way of JSX is *highly recommended*. The contents of this readme file will stay as a reference, however a much better place to start from now on is the online documentation for Juxtapose. The section dealing directly with this project is here:
 
 * [Juxtapose online documentation - Easy-Layout](http://djalbat.com/juxtapose/#easyLayout)
 
@@ -22,7 +22,7 @@ From there you can easily navigate to get an overview of Juxtapose.
 
 Actually they are, here:
 
-- [Occam Proof Assistant](http://djalbat.com/occam)
+- [Occam](http://djalbat.com/occam)
 
 ## Installation
 
@@ -38,35 +38,36 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
     npm install
 
-## Usage
-
-If you are building with [Node.js](http://nodejs.org) the usage is as follows:
-
-```js
-const easylayout = require('easy-layout'),
-      VerticalSplitter = easylayout.VerticalSplitter;
-```
-
-To use Easy-Layout in the browser, take the `easy-layout.js` file from the project's `dist/` directory and put it somewhere such as a `public/scripts/lib` directory. Referencing this distribution file from a `script` element...
-
-```html
-<script src="scripts/lib/easy-layout.js"> </script>
-```
-
-...will give you a global `easylayout` variable which can be used directly:
-
-```js
-const VerticalSplitter = easylayout.VerticalSplitter;
-```
-
-Note the lack of a hyphen.
-
-Alternatively, if you are using an AMD style `require` the usage is similar to the Node.js case, only make sure that the path to the distribution file is correct. The following script should work, assuming it lives in the the `public/scripts/` directory:
+## Creating instances with JSX
 
 ```js
 const easylayout = require('lib/easy-layout'),
-      VerticalSplitter = easylayout.VerticalSplitter;
+      { VerticalSplitter, SizeableElement } = easylayout;
+
+const container =
+
+        <div className="columns">
+          <SizeableElement>
+          ...
+          </SizeableElement>
+          <VerticalSplitter afterSizeableElement
+                            onDrag={(height) => {
+                                ...
+                            }}
+          />
+          <div className="column">
+          ...
+          </div>
+        </div>
+
+      ;
 ```
+
+Note the necessary `column` and `columns` classes.
+
+##
+
+There is a small amount of CSS needed to make the elements work. This can be found in the `easy-layout.css` file in the `dist` directory. The 'min-width', 'max-width', 'min-height' and 'max-height' CSS properties, if used, must be specified in pixels.
 
 ## Compiling from source
 
@@ -74,29 +75,6 @@ Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
     npm run build-debug
     npm run watch-debug
-
-## Creating sizeable elements
-
-This is easily done:
-
-```js
-const leftColumn = new SizeableElement('#leftColumn'),
-      rightColumn = new SizeableElement('#rightColumn'),
-      bottomRow = new SizeableElement('#bottomRow'),
-```
-
-## Creating splitters
-
-As well as the usual `selector` argument, the constructors take a `beforeSizeableElement` and an `afterSizeableElementThese` argument. These signify whether the splitter is before or after the sizeable element that it affects. These arguments overlap in the sense that both not should be set to `true` at the same time. The reason for this arrangement is that it admits boolean properties on the corresponding JSX. The fourth argument is an optional drag handler.
-
-```js
-new VerticalSplitter('.left.vertical.splitter', TO_THE_RIGHT_OF, leftColumn);
-new VerticalSplitter('.right.vertical.splitter', TO_THE_LEFT_OF, rightColumn);
-new HorizontalSplitter('.main.horizontal.splitter', ABOVE, bottomRow, function(height) {
-  bottomLeft.setHeight(height);
-});
-```
-The last argument is an optional callback.
 
 ## Contact
 
