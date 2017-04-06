@@ -1,7 +1,8 @@
 'use strict';
 
-const easy = require('easy'),
-      { Element } = easy;
+const easy = require('easy');
+
+const { Element } = easy;
 
 class SizeableElement extends Element {
   setWidth(width) {

@@ -1,13 +1,13 @@
 'use strict';
 
-const easy = require('easy'),
-      { window, Element } = easy;
+const easy = require('easy');
 
 const options = require('./options');
 
 const ESCAPE_KEYCODE = 27;
 
-const { ESCAPE_KEY_STOPS_DRAGGING } = options;
+const { ESCAPE_KEY_STOPS_DRAGGING } = options,
+      { window, Element } = easy;
 
 class Splitter extends Element {
   constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options) {

@@ -1,7 +1,8 @@
 'use strict';
 
-const easy = require('easy'),
-      Body = easy.Body;
+const easy = require('easy');
+
+const { Body } = easy;
 
 const body = new Body();
 
