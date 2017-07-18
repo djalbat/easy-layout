@@ -17,9 +17,9 @@ class Splitter extends Element {
     
     this.afterSizeableElement = afterSizeableElement;
     
-    this.startDraggingHandler = startDraggingHandler();
+    this.startDraggingHandler = startDraggingHandler;
     
-    this.stopDraggingHandler = stopDraggingHandler();
+    this.stopDraggingHandler = stopDraggingHandler;
 
     this.dragHandler = dragHandler;
 
