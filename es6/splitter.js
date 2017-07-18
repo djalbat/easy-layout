@@ -10,19 +10,16 @@ const { ESCAPE_KEY_STOPS_DRAGGING } = options,
       { window, Element } = easy;
 
 class Splitter extends Element {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options) {
+  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler = function() {}, options = {}) {
     super(selector);
 
     this.beforeSizeableElement = beforeSizeableElement;
-    this.afterSizeableElement = afterSizeableElement;
-
-    if (dragHandler !== undefined) {
-      this.onDrag(dragHandler); 
-    }
     
-    if (options !== undefined) {
-      this.setOptions(options);
-    }
+    this.afterSizeableElement = afterSizeableElement;
+    
+    this.dragHandler = dragHandler;
+    
+    this.options = options;
   
     this.disabled = false;
   
@@ -35,8 +32,6 @@ class Splitter extends Element {
     this.onMouseDown(this.mouseDown.bind(this));
     this.onMouseOver(this.mouseOver.bind(this));
     this.onMouseOut(this.mouseOut.bind(this));
-  
-    this.options = {};
   }
 
   isBeforeSizeableElement() {
@@ -47,8 +42,16 @@ class Splitter extends Element {
     return this.afterSizeableElement;
   }
 
+  isDisabled() {
+    return this.disabled;
+  }
+
+  isDragging() {
+    return this.dragging;
+  }
+
   getDirection() {
-    let direction = undefined;  ///
+    let direction;
 
     if (this.beforeSizeableElement) {
       direction = +1;
@@ -62,7 +65,7 @@ class Splitter extends Element {
   }
 
   getSizeableElement() {
-    let sizeableElement = undefined;  ///
+    let sizeableElement;
 
     const direction = this.getDirection();
 
@@ -78,7 +81,13 @@ class Splitter extends Element {
 
     return sizeableElement;
   }
-  
+
+  hasOption(option) {
+    option = (this.options[option] === true); ///
+
+    return option;
+  }
+
   setOptions(options) {
     this.options = options;
   }
@@ -91,22 +100,12 @@ class Splitter extends Element {
     delete(this.options[option]);
   }
 
-  hasOption(option) {
-    option = (this.options[option] === true); ///
-
-    return option;
-  }
-  
   enable() {
     this.disabled = false;
   }
 
   disable() {
     this.disabled = true;
-  }
-
-  isDisabled() {
-    return this.disabled;
   }
 
   onDrag(dragHandler) {
@@ -131,10 +130,6 @@ class Splitter extends Element {
     }
 
     this.dragging = false;
-  }
-
-  isDragging() {
-    return this.dragging;
   }
 
   keyDownHandler(keyCode) {
