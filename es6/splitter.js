@@ -10,7 +10,7 @@ const { ESCAPE_KEY_STOPS_DRAGGING } = options,
       { window, Element } = easy;
 
 class Splitter extends Element {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler  = function() {}, stopDraggingHandler = function() {}, dragHandler = function() {}, options = {}) {
+  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler  = function() {}, stopDraggingHandler = function() {}, dragHandler = function() {}, disabled = false, options = {}) {
     super(selector);
 
     this.beforeSizeableElement = beforeSizeableElement;
@@ -23,9 +23,9 @@ class Splitter extends Element {
 
     this.dragHandler = dragHandler;
 
+    this.disabled = disabled;
+
     this.options = options;
-  
-    this.disabled = false;
   
     this.dragging = false;
   
@@ -155,12 +155,12 @@ class Splitter extends Element {
   }
 
   static fromProperties(Class, properties) {
-    const { beforeSizeableElement, afterSizeableElement, onStartDragging, onStopDragging, onDrag, options } = properties,
+    const { beforeSizeableElement, afterSizeableElement, onStartDragging, onStopDragging, onDrag, disabled, options } = properties,
           startDraggingHandler = onStartDragging, ///
           stopDraggingHandler = onStopDragging, ///
           dragHandler = onDrag; ///
 
-    return Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
+    return Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, disabled, options);
   }
 }
 
@@ -172,6 +172,7 @@ Object.assign(Splitter, {
     'onStartDragging',
     'onStopDragging',
     'onDrag',
+    'disabled',
     'options'
   ]
 });
