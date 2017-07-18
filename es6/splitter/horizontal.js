@@ -4,8 +4,8 @@ const cursor = require('../cursor'),
       Splitter = require('../splitter');
 
 class HorizontalSplitter extends Splitter {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options) {
-    super(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options);
+  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
+    super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
     this.sizeableElementHeight = null;
 
@@ -38,11 +38,10 @@ class HorizontalSplitter extends Splitter {
 
         sizeableElement.setHeight(height);
 
-        const sizeableElementHeight = sizeableElement.getHeight();
+        const dragHandler = this.getDragHandler(),
+              sizeableElementHeight = sizeableElement.getHeight();
 
-        if (this.dragHandler) {
-          this.dragHandler(sizeableElementHeight);
-        }
+        dragHandler(sizeableElementHeight);
       }
     }
   }

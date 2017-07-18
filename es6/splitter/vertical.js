@@ -4,8 +4,8 @@ const cursor = require('../cursor'),
       Splitter = require('../splitter');
 
 class VerticalSplitter extends Splitter {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options) {
-    super(selector, beforeSizeableElement, afterSizeableElement, dragHandler, options);
+  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
+    super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
     this.sizeableElementWidth = null;
 
@@ -38,11 +38,10 @@ class VerticalSplitter extends Splitter {
 
         sizeableElement.setWidth(width);
 
-        const sizeableElementWidth = sizeableElement.getWidth();
+        const dragHandler = this.getDragHandler(),
+              sizeableElementWidth = sizeableElement.getWidth();
 
-        if (this.dragHandler) {
-          this.dragHandler(sizeableElementWidth);
-        }
+        dragHandler(sizeableElementWidth);
       }
     }
   }
