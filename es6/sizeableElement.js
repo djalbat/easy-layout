@@ -2,6 +2,8 @@
 
 const easy = require('easy');
 
+const arrayUtil = require('./util/array');
+
 const { Element } = easy;
 
 class SizeableElement extends Element {
@@ -93,7 +95,7 @@ function inPixels(quantity) {
   const matches = quantity.match(/([0-9]*)px$/);
 
   if (matches !== null) {
-    const secondMatch = second(matches);
+    const secondMatch = arrayUtil.second(matches);
 
     pixels = secondMatch;  ///
   }
@@ -101,4 +103,3 @@ function inPixels(quantity) {
   return pixels;
 }
 
-function second(array) { return array[1]; }
