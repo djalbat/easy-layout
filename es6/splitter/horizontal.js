@@ -4,23 +4,23 @@ const cursor = require('../cursor'),
       Splitter = require('../splitter');
 
 class HorizontalSplitter extends Splitter {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, disabled, options) {
-    super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, disabled, options);
+  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
+    super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
-    this.sizeableElementHeight = null;
-
-    this.mouseTop = null;
+    this.setInitialState();
   }
 
   mouseUp() {
     const disabled = this.isDisabled();
 
     if (!disabled) {
-      cursor.reset();
+      const dragging = this.isDragging();
 
-      if (this.dragging) {
+      if (dragging) {
         this.stopDragging();
       }
+
+      cursor.reset();
     }
   }
 
@@ -32,14 +32,17 @@ class HorizontalSplitter extends Splitter {
 
       if (dragging) {
         const direction = this.getDirection(),
-              sizeableElement = this.getSizeableElement(),
-              relativeMouseTop = mouseTop - this.mouseTop,
-              height = this.sizeableElementHeight - direction * relativeMouseTop;
+            dragHandler = this.getDragHandler(),
+            sizeableElement = this.getSizeableElement(),
+            previousMouseTop = this.getPreviousMouseTop(),
+            previousSizeableElementHeight = this.getPreviousSizeableElementHeight(),
+            relativeMouseTop = mouseTop - previousMouseTop;
 
-        sizeableElement.setHeight(height);
+        let sizeableElementHeight = previousSizeableElementHeight - direction * relativeMouseTop;
 
-        const dragHandler = this.getDragHandler(),
-              sizeableElementHeight = sizeableElement.getHeight();
+        sizeableElement.setHeight(sizeableElementHeight);
+
+        sizeableElementHeight = sizeableElement.getHeight();  ///
 
         dragHandler(sizeableElementHeight);
       }
@@ -50,19 +53,21 @@ class HorizontalSplitter extends Splitter {
     const disabled = this.isDisabled();
 
     if (!disabled) {
-      const sizeableElement = this.getSizeableElement();
-          
-      cursor.rowResize();
+      const previousMouseTop = mouseTop,  ///
+            dragging = this.isDragging(),
+            sizeableElement = this.getSizeableElement(),
+            sizeableElementHeight = sizeableElement.getHeight(),
+            previousSizeableElementHeight = sizeableElementHeight;  /// 
 
-      this.mouseTop = mouseTop;
+      this.setPreviousMouseTop(previousMouseTop);
 
-      this.sizeableElementHeight = sizeableElement.getHeight();
-
-      const dragging = this.isDragging();
+      this.setPreviousSizeableElementHeight(previousSizeableElementHeight);
 
       if (!dragging) {
         this.startDragging();
       }
+
+      cursor.rowResize();
     }
   }
 
@@ -82,9 +87,33 @@ class HorizontalSplitter extends Splitter {
     }
   }
 
-  static fromProperties(properties) {
-    return Splitter.fromProperties(HorizontalSplitter, properties);
+  getPreviousMouseTop() { return this.fromState('previousMouseTop'); }
+
+  getPreviousSizeableElementHeight() { return this.fromState('previousSizeableElementHeight'); }
+
+  setPreviousMouseTop(previousMouseTop) {
+    this.updateState({
+      previousMouseTop: previousMouseTop
+    });
   }
+
+  setPreviousSizeableElementHeight(previousSizeableElementHeight) {
+    this.updateState({
+      previousSizeableElementHeight: previousSizeableElementHeight
+    });
+  }
+
+  setInitialState() {
+    const previousMouseTop = null,
+        previousSizeableElementHeight = null;
+
+    this.setState({
+      previousMouseTop: previousMouseTop,
+      previousSizeableElementHeight: previousSizeableElementHeight
+    });
+  }
+
+  static fromProperties(properties) { return Splitter.fromProperties(HorizontalSplitter, properties); }
 }
 
 Object.assign(HorizontalSplitter, {
