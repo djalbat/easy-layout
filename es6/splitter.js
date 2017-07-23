@@ -21,6 +21,8 @@ class Splitter extends Element {
     this.dragHandler = dragHandler;
 
     this.options = options;
+
+    this.setInitialState();
   }
 
   isBeforeSizeableElement() {
