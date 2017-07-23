@@ -105,7 +105,7 @@ class HorizontalSplitter extends Splitter {
 
   setInitialState() {
     const previousMouseTop = null,
-        previousSizeableElementHeight = null;
+          previousSizeableElementHeight = null;
 
     this.setState({
       previousMouseTop: previousMouseTop,
