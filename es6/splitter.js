@@ -15,20 +15,14 @@ class Splitter extends Element {
 
     this.beforeSizeableElement = beforeSizeableElement;
     this.afterSizeableElement = afterSizeableElement;
+
     this.startDraggingHandler = startDraggingHandler;
     this.stopDraggingHandler = stopDraggingHandler;
-
     this.dragHandler = dragHandler;
 
     this.options = options;
-  
-    window.on('mouseup blur', this.mouseUp.bind(this));  ///
-   
-    window.onMouseMove(this.mouseMove.bind(this));
-  
-    this.onMouseDown(this.mouseDown.bind(this));
-    this.onMouseOver(this.mouseOver.bind(this));
-    this.onMouseOut(this.mouseOut.bind(this));
+
+    this.initialise();
   }
 
   isBeforeSizeableElement() {
@@ -148,6 +142,18 @@ class Splitter extends Element {
       if (dragging) {
         this.stopDragging();
       }
+    }
+  }
+
+  initialise() {
+    if (!this.initialised) {
+      window.on('mouseup blur', this.mouseUp.bind(this));  ///
+
+      window.onMouseMove(this.mouseMove.bind(this));
+
+      this.onMouseDown(this.mouseDown.bind(this));
+      this.onMouseOver(this.mouseOver.bind(this));
+      this.onMouseOut(this.mouseOut.bind(this));
     }
   }
 

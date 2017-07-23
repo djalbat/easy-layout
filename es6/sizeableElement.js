@@ -75,9 +75,7 @@ class SizeableElement extends Element {
     return maximumHeight;
   }
 
-  static fromProperties(properties) {
-    return Element.fromProperties(SizeableElement, properties);
-  }
+  static fromProperties(properties) { return Element.fromProperties(SizeableElement, properties); }
 }
 
 Object.assign(SizeableElement, {
