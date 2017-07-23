@@ -21,8 +21,6 @@ class Splitter extends Element {
     this.dragHandler = dragHandler;
 
     this.options = options;
-
-    this.initialise();
   }
 
   isBeforeSizeableElement() {
@@ -145,16 +143,18 @@ class Splitter extends Element {
     }
   }
 
-  initialise() {
-    if (!this.initialised) {
-      window.on('mouseup blur', this.mouseUp.bind(this));  ///
+  initialise(disabled) {
+    (disabled === true) ? ///
+      this.disable() :
+        this.enable();
 
-      window.onMouseMove(this.mouseMove.bind(this));
+    window.on('mouseup blur', this.mouseUp.bind(this));  ///
 
-      this.onMouseDown(this.mouseDown.bind(this));
-      this.onMouseOver(this.mouseOver.bind(this));
-      this.onMouseOut(this.mouseOut.bind(this));
-    }
+    window.onMouseMove(this.mouseMove.bind(this));
+
+    this.onMouseDown(this.mouseDown.bind(this));
+    this.onMouseOver(this.mouseOver.bind(this));
+    this.onMouseOut(this.mouseOut.bind(this));
   }
 
   static fromProperties(Class, properties) {
@@ -164,9 +164,7 @@ class Splitter extends Element {
           dragHandler = onDrag, ///
           splitter = Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
-    (disabled === true) ? ///
-      splitter.disable() :
-        splitter.enable();
+    splitter.initialise(disabled);
 
     return splitter;
   }
