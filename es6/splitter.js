@@ -109,7 +109,9 @@ class Splitter extends Element {
     const escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDraggingOptionPresent) {
-      window.onKeyDown(this.keyDownHandler.bind(this));
+      const keyDownHandler = this.getKeyDownHandler();
+
+      window.onKeyDown(keyDownHandler);
     }
 
     this.addClass('dragging');
@@ -121,7 +123,9 @@ class Splitter extends Element {
     const escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDraggingOptionPresent) {
-      window.offKeyDown(this.keyDownHandler.bind(this));
+      const keyDownHandler = this.getKeyDownHandler();
+
+      window.offKeyDown(keyDownHandler);
     }
 
     this.removeClass('dragging');
@@ -155,6 +159,16 @@ class Splitter extends Element {
     this.onMouseDown(this.mouseDown.bind(this));
     this.onMouseOver(this.mouseOver.bind(this));
     this.onMouseOut(this.mouseOut.bind(this));
+  }
+
+  getKeyDownHandler() { return this.fromState('keyDownHandler'); }
+
+  setInitialState() {
+    const keyDownHandler = this.keyDownHandler.bind(this);
+
+    this.setState({
+      keyDownHandler: keyDownHandler
+    });
   }
 
   static fromProperties(Class, properties) {
