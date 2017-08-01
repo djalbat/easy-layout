@@ -18,12 +18,6 @@ From there you can easily navigate to get an overview of Juxtapose.
 - [Easy-DragAndDrop](https://github.com/djalbat/Easy-DragAndDrop) Drag and drop elements including an explorer and a rubbish bin.
 - [Easy-RichTextarea](https://github.com/djalbat/Easy-RichTextarea) A textarea element that handles and hands off events well.
 
-### Are these projects actually used anywhere?
-
-Actually they are, here:
-
-- [Occam](http://djalbat.com/occam)
-
 ## Installation
 
 You can install Easy-Layout with [npm](https://www.npmjs.com/):
