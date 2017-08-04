@@ -1,10 +1,10 @@
 'use strict';
 
-const easy = require('easy');
+const easy = require('easy'),
+      necessary = require('necessary');
 
-const arrayUtil = require('./util/array');
-
-const { Element } = easy;
+const { array } = necessary,
+      { Element } = easy;
 
 class SizeableElement extends Element {
   setWidth(width) {
@@ -93,7 +93,7 @@ function inPixels(quantity) {
   const matches = quantity.match(/([0-9]*)px$/);
 
   if (matches !== null) {
-    const secondMatch = arrayUtil.second(matches);
+    const secondMatch = array.second(matches);
 
     pixels = secondMatch;  ///
   }
