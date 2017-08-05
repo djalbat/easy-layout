@@ -4,7 +4,8 @@ const easy = require('easy'),
       necessary = require('necessary');
 
 const { array } = necessary,
-      { Element } = easy;
+      { Element } = easy,
+      { second } = array;
 
 class SizeableElement extends Element {
   setWidth(width) {
@@ -93,7 +94,7 @@ function inPixels(quantity) {
   const matches = quantity.match(/([0-9]*)px$/);
 
   if (matches !== null) {
-    const secondMatch = array.second(matches);
+    const secondMatch = second(matches);
 
     pixels = secondMatch;  ///
   }
