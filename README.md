@@ -32,7 +32,7 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
     npm install
 
-## Creating instances with JSX
+## Usage
 
 ```js
 const easylayout = require('lib/easy-layout'),
