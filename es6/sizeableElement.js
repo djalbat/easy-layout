@@ -3,9 +3,9 @@
 const easy = require('easy'),
       necessary = require('necessary');
 
-const { array } = necessary,
+const { arrayUtilities } = necessary,
       { Element } = easy,
-      { second } = array;
+      { second } = arrayUtilities;
 
 class SizeableElement extends Element {
   setWidth(width) {
