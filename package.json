@@ -1,7 +1,7 @@
 {
   "name": "easy-layout",
   "author": "James Smith",
-  "version": "2.1.23",
+  "version": "2.1.31",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Easy-Layout",
   "description": "Layout elements that work with CSS flexbox.",
@@ -10,8 +10,7 @@
     "url": "https://github.com/djalbat/Easy-Layout"
   },
   "dependencies": {
-    "easy": "^7.12.25",
-    "necessary": "^1.7.5"
+    "easy": "^7.12.25"
   },
   "devDependencies": {
     "babel": "^6.5.2",

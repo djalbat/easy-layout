@@ -39,8 +39,10 @@ class VerticalSplitter extends Splitter {
               relativeMouseLeft = mouseLeft - previousMouseLeft;
         
         let sizeableElementWidth = previousSizeableElementWidth - direction * relativeMouseLeft;
+        
+        const width = `${sizeableElementWidth}px`;
 
-        sizeableElement.setWidth(sizeableElementWidth);
+        sizeableElement.setWidth(width);
 
         sizeableElementWidth = sizeableElement.getWidth();  ///
 
