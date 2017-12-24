@@ -10,17 +10,16 @@ const { ESCAPE_KEY_STOPS_DRAGGING } = options,
       { window, Element } = easy;
 
 class Splitter extends Element {
-  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler  = function() {}, stopDraggingHandler = function() {}, dragHandler = function() {}, options = {}) {
+  constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector);
 
     this.beforeSizeableElement = beforeSizeableElement;
     this.afterSizeableElement = afterSizeableElement;
 
-    this.startDraggingHandler = startDraggingHandler;
-    this.stopDraggingHandler = stopDraggingHandler;
-    this.dragHandler = dragHandler;
-
-    this.options = options;
+    this.startDraggingHandler = startDraggingHandler || defaultStartDraggingHandler;
+    this.stopDraggingHandler = stopDraggingHandler || defaultStopDraggingHandler;
+    this.dragHandler = dragHandler || defaultDragHandler;
+    this.options = options || defaultOptions;
   }
 
   isBeforeSizeableElement() {
@@ -184,3 +183,9 @@ Object.assign(Splitter, {
 });
 
 module.exports = Splitter;
+
+function defaultStartDraggingHandler() {}
+
+function defaultStopDraggingHandler() {}
+
+function defaultDragHandler() {}
