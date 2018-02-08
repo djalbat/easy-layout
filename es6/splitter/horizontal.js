@@ -40,7 +40,7 @@ class HorizontalSplitter extends Splitter {
 
         let sizeableElementHeight = previousSizeableElementHeight - direction * relativeMouseTop;
 
-        const height = `${sizeableElementHeight}px`;
+        const height = sizeableElementHeight; ///
 
         sizeableElement.setHeight(height);
 
