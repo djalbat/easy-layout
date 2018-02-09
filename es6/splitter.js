@@ -189,3 +189,5 @@ function defaultStartDraggingHandler() {}
 function defaultStopDraggingHandler() {}
 
 function defaultDragHandler() {}
+
+const defaultOptions = {};
