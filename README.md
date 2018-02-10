@@ -34,6 +34,8 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 ## Usage
 
+Only building with [Node.js](http://nodejs.org) (or equivalent) is supported, there is no support for the browser anymore. The usage is as follows:
+
 ```js
 const easylayout = require('lib/easy-layout'),
       { VerticalSplitter, SizeableElement } = easylayout;
@@ -61,7 +63,7 @@ Note the mandatory `column` and `columns` classes.
 
 ## CSS
 
-There is a small amount of CSS needed to make the elements work. This can be found in the `easy-layout.css` file in the `dist` directory. The 'min-width', 'max-width', 'min-height' and 'max-height' CSS properties, if used, must be specified in pixels.
+There is a small amount of CSS needed to make the elements work. This can be found in the `easy-layout.css` file in the `css` directory.
 
 ## Compiling from source
 
