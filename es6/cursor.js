@@ -41,7 +41,7 @@ class cursor {
 
   static setCursor(cursor) {
     const css = {
-      cursor: cursor
+      cursor
     };
 
     body.css(css);

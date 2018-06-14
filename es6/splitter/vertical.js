@@ -95,13 +95,13 @@ class VerticalSplitter extends Splitter {
   
   setPreviousMouseLeft(previousMouseLeft) {
     this.updateState({
-      previousMouseLeft: previousMouseLeft
+      previousMouseLeft
     });
   }
   
   setPreviousSizeableElementWidth(previousSizeableElementWidth) {
     this.updateState({
-      previousSizeableElementWidth: previousSizeableElementWidth
+      previousSizeableElementWidth
     });
   }
 
@@ -110,8 +110,8 @@ class VerticalSplitter extends Splitter {
           previousSizeableElementWidth = null;
     
     this.setState({
-      previousMouseLeft: previousMouseLeft,
-      previousSizeableElementWidth: previousSizeableElementWidth
+      previousMouseLeft,
+      previousSizeableElementWidth
     });    
   }
 
