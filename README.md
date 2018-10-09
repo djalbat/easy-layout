@@ -1,4 +1,4 @@
-# Easy-Layout
+# Easy Layout
 
 Layout elements that work with CSS flexbox.
 
