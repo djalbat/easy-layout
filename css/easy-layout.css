@@ -1,4 +1,17 @@
+.row {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
 .rows {
+  height: 100%;
   display: flex;
   align-items: stretch;
   flex-direction: column;
@@ -8,23 +21,6 @@
   display: flex;
   align-items: stretch;
   flex-direction: row;
-}
-
-.row {
-  display: flex;
-  align-items: stretch;
-  flex: 1;
-}
-
-.column {
-  display: flex;
-  align-items: stretch;
-  flex: 1;
-}
-
-.sizeable {
-  display: flex;
-  align-items: stretch;
 }
 
 .vertical.splitter {
