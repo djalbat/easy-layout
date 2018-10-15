@@ -8,44 +8,46 @@ const body = new Body();
 
 let previousCursor;  ///
 
-class cursor {
-  static columnResize() {
-    const currentCursor = this.getCurrentCursor();
+function columnResize() {
+  const currentCursor = getCurrentCursor();
 
-    if (currentCursor !== 'col-resize') {
-      previousCursor = currentCursor;
+  if (currentCursor !== 'col-resize') {
+    previousCursor = currentCursor;
 
-      this.setCursor('col-resize');
-    }
-  }
-
-  static rowResize() {
-    const currentCursor = this.getCurrentCursor();
-
-    if (currentCursor !== 'row-resize') {
-      previousCursor = currentCursor;
-
-      this.setCursor('row-resize');
-    }
-  }
-
-  static reset() {
-    this.setCursor(previousCursor); ///
-  }
-
-  static getCurrentCursor() {
-    const currentCursor = body.css('cursor');  ///
-
-    return currentCursor || 'auto'; ///
-  }
-
-  static setCursor(cursor) {
-    const css = {
-      cursor
-    };
-
-    body.css(css);
+    setCursor('col-resize');
   }
 }
 
-module.exports = cursor;
+function rowResize() {
+  const currentCursor = getCurrentCursor();
+
+  if (currentCursor !== 'row-resize') {
+    previousCursor = currentCursor;
+
+    setCursor('row-resize');
+  }
+}
+
+function reset() {
+  setCursor(previousCursor); ///
+}
+
+module.exports = {
+  columnResize,
+  rowResize,
+  reset
+};
+
+function setCursor(cursor) {
+  const css = {
+    cursor
+  };
+
+  body.css(css);
+}
+
+function getCurrentCursor() {
+  const currentCursor = body.css('cursor');  ///
+
+  return currentCursor || 'auto'; ///
+}

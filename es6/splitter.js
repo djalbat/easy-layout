@@ -4,10 +4,10 @@ const easy = require('easy');
 
 const options = require('./options');
 
-const ESCAPE_KEYCODE = 27;
+const { window, Element } = easy,
+      { ESCAPE_KEY_STOPS_DRAGGING } = options;
 
-const { ESCAPE_KEY_STOPS_DRAGGING } = options,
-      { window, Element } = easy;
+const ESCAPE_KEY_CODE = 27;
 
 class Splitter extends Element {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
@@ -133,7 +133,7 @@ class Splitter extends Element {
   }
 
   keyDownHandler(keyCode) {
-    if (keyCode === ESCAPE_KEYCODE) {
+    if (keyCode === ESCAPE_KEY_CODE) {
       const dragging = this.isDragging();
 
       if (dragging) {

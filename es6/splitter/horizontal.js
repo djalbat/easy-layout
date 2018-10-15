@@ -89,9 +89,19 @@ class HorizontalSplitter extends Splitter {
     }
   }
 
-  getPreviousMouseTop() { return this.fromState('previousMouseTop'); }
+  getPreviousMouseTop() {
+    const state = this.getState(),
+          { previousMouseTop } = state;
 
-  getPreviousSizeableElementHeight() { return this.fromState('previousSizeableElementHeight'); }
+    return previousMouseTop;
+  }
+
+  getPreviousSizeableElementHeight() {
+    const state = this.getState(),
+          { previousSizeableElementHeight } = state;
+
+    return previousSizeableElementHeight;
+  }
 
   setPreviousMouseTop(previousMouseTop) {
     this.updateState({

@@ -89,9 +89,19 @@ class VerticalSplitter extends Splitter {
     }
   }
   
-  getPreviousMouseLeft() { return this.fromState('previousMouseLeft'); }
+  getPreviousMouseLeft() {
+    const state = this.getState(),
+          { previousMouseLeft } = state;
 
-  getPreviousSizeableElementWidth() { return this.fromState('previousSizeableElementWidth'); }
+    return previousMouseLeft;
+  }
+
+  getPreviousSizeableElementWidth() {
+    const state = this.getState(),
+          { previousSizeableElementWidth } = state;
+
+    return previousSizeableElementWidth;
+  }
   
   setPreviousMouseLeft(previousMouseLeft) {
     this.updateState({
