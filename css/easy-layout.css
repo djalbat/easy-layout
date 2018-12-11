@@ -1,22 +1,27 @@
-.row {
-  flex: 1;
+.sizeable {
   display: flex;
+  flex-grow: 0;
+}
+
+.row {
+  display: flex;
+  flex-grow: 1;
 }
 
 .column {
-  flex: 1;
   display: flex;
+  flex-grow: 1;
 }
 
 .rows {
-  height: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
 }
 
 .columns {
-  height: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: row;
 }
 
