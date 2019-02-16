@@ -12,11 +12,13 @@ class SizeableElement extends Element {
   }
 
   parentContext() {
-    const getSizeableElement = this.getSizeableElement.bind(this);
+    const context = this.getContext(),
+          getSizeableElement = this.getSizeableElement.bind(this),
+          parentContext = Object.assign(context, {
+            getSizeableElement
+          });
 
-    return ({
-      getSizeableElement
-    });
+    return parentContext;
   }
 
   static fromProperties(properties) { return Element.fromProperties(SizeableElement, properties); }

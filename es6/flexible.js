@@ -12,11 +12,13 @@ class FlexibleElement extends Element {
   }
 
   parentContext() {
-    const getFlexibleElement = this.getFlexibleElement.bind(this);
+    const context = this.getContext(),
+          getFlexibleElement = this.getFlexibleElement.bind(this),
+          parentContext = Object.assign(context, {
+            getFlexibleElement
+          });
 
-    return ({
-      getFlexibleElement
-    });
+    return parentContext;
   }
 
   static fromProperties(properties) { return Element.fromProperties(FlexibleElement, properties); }
