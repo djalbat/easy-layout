@@ -3,7 +3,8 @@
 module.exports = {
   options: require('./lib/options'),
   Splitter: require('./lib/splitter'),
-  SizeableElement: require('./lib/sizeableElement'),
+  FlexibleElement: require('./lib/flexible'),
+  SizeableElement: require('./lib/sizeable'),
   VerticalSplitter: require('./lib/splitter/vertical'),
   HorizontalSplitter: require('./lib/splitter/horizontal')
 };
