@@ -10,6 +10,12 @@ class HorizontalSplitter extends Splitter {
     this.setInitialState();
   }
 
+  getHorizontalSplitter() {
+    const horizontalSplitter = this;  ///
+
+    return horizontalSplitter;
+  }
+
   mouseUp() {
     const disabled = this.isDisabled();
 
@@ -122,6 +128,14 @@ class HorizontalSplitter extends Splitter {
     this.setState({
       previousMouseTop,
       previousSizeableElementHeight
+    });
+  }
+
+  parentContext() {
+    const getHorizontalSplitter = this.getHorizontalSplitter.bind(this);
+
+    return ({
+      getHorizontalSplitter
     });
   }
 

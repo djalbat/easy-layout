@@ -10,6 +10,12 @@ class VerticalSplitter extends Splitter {
     this.setInitialState();
   }
 
+  getVerticalSplitter() {
+    const verticalSplitter = this;  ///
+
+    return verticalSplitter;
+  }
+
   mouseUp() {
     const disabled = this.isDisabled();
 
@@ -123,6 +129,14 @@ class VerticalSplitter extends Splitter {
       previousMouseLeft,
       previousSizeableElementWidth
     });    
+  }
+
+  parentContext() {
+    const getVerticalSplitter = this.getVerticalSplitter.bind(this);
+
+    return ({
+      getVerticalSplitter
+    });
   }
 
   static fromProperties(properties) { return Splitter.fromProperties(VerticalSplitter, properties); }
