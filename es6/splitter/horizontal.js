@@ -132,10 +132,12 @@ class HorizontalSplitter extends Splitter {
   }
 
   parentContext() {
-    const getHorizontalSplitter = this.getHorizontalSplitter.bind(this);
+    const enableHorizontalSplitter = this.enable.bind(this),
+          disableHorizontalSplitter = this.disable.bind(this);
 
     return ({
-      getHorizontalSplitter
+      enableHorizontalSplitter,
+      disableHorizontalSplitter
     });
   }
 

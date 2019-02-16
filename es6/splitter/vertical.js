@@ -132,10 +132,12 @@ class VerticalSplitter extends Splitter {
   }
 
   parentContext() {
-    const getVerticalSplitter = this.getVerticalSplitter.bind(this);
+    const enableVerticalSplitter = this.enable.bind(this),
+          disableVerticalSplitter = this.disable.bind(this);
 
     return ({
-      getVerticalSplitter
+      enableVerticalSplitter,
+      disableVerticalSplitter
     });
   }
 
