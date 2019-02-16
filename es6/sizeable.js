@@ -10,14 +10,18 @@ class SizeableElement extends Element {
           getSizeableElementWidth = this.getWidth.bind(this), ///
           setSizeableElementWidth = this.setWidth.bind(this), ///
           getSizeableElementHeight = this.getHeight.bind(this), ///
-          setSizeableElementHeight = this.setHeight.bind(this); ///
+          setSizeableElementHeight = this.setHeight.bind(this), ///
+          addSizeableElementClass = this.addClass.bind(this), ///
+          removeSizeableElementClass = this.removeClass.bind(this); ///
 
     return ({
       sizeableElementStyle,
       getSizeableElementWidth,
       setSizeableElementWidth,
       getSizeableElementHeight,
-      setSizeableElementHeight
+      setSizeableElementHeight,
+      addSizeableElementClass,
+      removeSizeableElementClass
     });
   }
 

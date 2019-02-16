@@ -9,13 +9,17 @@ class FlexibleElement extends Element {
     const getFlexibleElementWidth = this.getWidth.bind(this), ///
           setFlexibleElementWidth = this.setWidth.bind(this), ///
           getFlexibleElementHeight = this.getHeight.bind(this), ///
-          setFlexibleElementHeight = this.setHeight.bind(this); ///
+          setFlexibleElementHeight = this.setHeight.bind(this), ///
+          addFlexibleElementClass = this.addClass.bind(this), ///
+          removeFlexibleElementClass = this.removeClass.bind(this); ///
 
     return ({
       getFlexibleElementWidth,
       setFlexibleElementWidth,
       getFlexibleElementHeight,
-      setFlexibleElementHeight
+      setFlexibleElementHeight,
+      addFlexibleElementClass,
+      removeFlexibleElementClass
     });
   }
 
