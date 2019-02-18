@@ -26,9 +26,9 @@
 }
 
 .vertical.splitter {
-  width: 0.5rem;
+  width: 0.8rem;
 }
 
 .horizontal.splitter {
-  height: 0.5rem;
+  height: 0.8rem;
 }
