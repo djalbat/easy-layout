@@ -6,21 +6,23 @@ const { Element } = easy;
 
 class FlexibleElement extends Element {
   parentContext() {
-    const getFlexibleElementWidth = this.getWidth.bind(this), ///
-          setFlexibleElementWidth = this.setWidth.bind(this), ///
-          getFlexibleElementHeight = this.getHeight.bind(this), ///
-          setFlexibleElementHeight = this.setHeight.bind(this), ///
-          addFlexibleElementClass = this.addClass.bind(this), ///
-          removeFlexibleElementClass = this.removeClass.bind(this); ///
+	  const context = this.getContext(),
+				  getFlexibleElementWidth = this.getWidth.bind(this), ///
+				  setFlexibleElementWidth = this.setWidth.bind(this), ///
+				  getFlexibleElementHeight = this.getHeight.bind(this), ///
+				  setFlexibleElementHeight = this.setHeight.bind(this), ///
+				  addFlexibleElementClass = this.addClass.bind(this), ///
+				  removeFlexibleElementClass = this.removeClass.bind(this), ///
+		      parentContext = Object.assign(context, {
+			      getFlexibleElementWidth,
+			      setFlexibleElementWidth,
+			      getFlexibleElementHeight,
+			      setFlexibleElementHeight,
+			      addFlexibleElementClass,
+			      removeFlexibleElementClass
+				  });
 
-    return ({
-      getFlexibleElementWidth,
-      setFlexibleElementWidth,
-      getFlexibleElementHeight,
-      setFlexibleElementHeight,
-      addFlexibleElementClass,
-      removeFlexibleElementClass
-    });
+    return parentContext;
   }
 
   static fromProperties(properties) { return Element.fromProperties(FlexibleElement, properties); }
