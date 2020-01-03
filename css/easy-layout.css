@@ -27,8 +27,10 @@
 
 .vertical.splitter {
   width: 0.8rem;
+  flex-shrink: 0;
 }
 
 .horizontal.splitter {
   height: 0.8rem;
+  flex-shrink: 0;
 }
