@@ -38,11 +38,11 @@ class HorizontalSplitter extends Splitter {
 
       if (dragging) {
         const direction = this.getDirection(),
-            dragHandler = this.getDragHandler(),
-            sizeableElement = this.getSizeableElement(),
-            previousMouseTop = this.getPreviousMouseTop(),
-            previousSizeableElementHeight = this.getPreviousSizeableElementHeight(),
-            relativeMouseTop = mouseTop - previousMouseTop;
+              dragHandler = this.getDragHandler(),
+              sizeableElement = this.getSizeableElement(),
+              previousMouseTop = this.getPreviousMouseTop(),
+              previousSizeableElementHeight = this.getPreviousSizeableElementHeight(),
+              relativeMouseTop = mouseTop - previousMouseTop;
 
         let sizeableElementHeight = previousSizeableElementHeight - direction * relativeMouseTop;
 
