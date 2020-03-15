@@ -34,8 +34,6 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 ## Usage
 
-Only building with [Node.js](http://nodejs.org) (or equivalent) is supported, there is no support for the browser anymore. The usage is as follows:
-
 ```js
 const easylayout = require('lib/easy-layout'),
       { VerticalSplitter, SizeableElement } = easylayout;
