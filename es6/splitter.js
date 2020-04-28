@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const easy = require('easy');
+const easy = require("easy");
 
-const options = require('./options');
+const options = require("./options");
 
 const { window, Element } = easy,
       { ESCAPE_KEY_STOPS_DRAGGING } = options;
@@ -35,13 +35,13 @@ class Splitter extends Element {
   }
 
   isDisabled() {
-    const disabled = this.hasClass('disabled');
+    const disabled = this.hasClass("disabled");
     
     return disabled;
   }
 
   isDragging() {
-    const dragging = this.hasClass('dragging');
+    const dragging = this.hasClass("dragging");
     
     return dragging;
   }
@@ -97,11 +97,11 @@ class Splitter extends Element {
   }
 
   enable() {
-    this.removeClass('disabled');
+    this.removeClass("disabled");
   }
 
   disable() {
-    this.addClass('disabled');
+    this.addClass("disabled");
   }
 
   startDragging() {
@@ -111,7 +111,7 @@ class Splitter extends Element {
       window.onKeyDown(this.keyDownHandler, this);
     }
 
-    this.addClass('dragging');
+    this.addClass("dragging");
     
     this.startDraggingHandler();
   }
@@ -123,7 +123,7 @@ class Splitter extends Element {
       window.offKeyDown(this.keyDownHandler, this);
     }
 
-    this.removeClass('dragging');
+    this.removeClass("dragging");
 
     this.stopDraggingHandler();
   }
@@ -147,7 +147,7 @@ class Splitter extends Element {
       this.disable() :
         this.enable();
 
-    window.on('mouseup blur', this.mouseUp.bind(this));  ///
+    window.on("mouseup blur", this.mouseUp.bind(this));  ///
 
     window.onMouseMove(this.mouseMove.bind(this));
 
@@ -170,15 +170,15 @@ class Splitter extends Element {
 }
 
 Object.assign(Splitter, {
-  tagName: 'div',
+  tagName: "div",
   ignoredProperties: [
-    'beforeSizeableElement',
-    'afterSizeableElement',
-    'onStartDragging',
-    'onStopDragging',
-    'onDrag',
-    'options',
-    'disabled'
+    "beforeSizeableElement",
+    "afterSizeableElement",
+    "onStartDragging",
+    "onStopDragging",
+    "onDrag",
+    "options",
+    "disabled"
   ]
 });
 

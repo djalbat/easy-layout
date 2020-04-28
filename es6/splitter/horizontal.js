@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const cursor = require('../cursor'),
-      Splitter = require('../splitter');
+const cursor = require("../cursor"),
+      Splitter = require("../splitter");
 
 class HorizontalSplitter extends Splitter {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
@@ -146,7 +146,7 @@ class HorizontalSplitter extends Splitter {
 
 Object.assign(HorizontalSplitter, {
   defaultProperties: {
-    className: 'horizontal splitter'
+    className: "horizontal splitter"
   }
 });
 

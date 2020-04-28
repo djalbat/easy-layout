@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const easy = require('easy');
+const easy = require("easy");
 
 const { Element } = easy;
 
@@ -31,9 +31,9 @@ class SizeableElement extends Element {
 }
 
 Object.assign(SizeableElement, {
-  tagName: 'div',
+  tagName: "div",
   defaultProperties: {
-    className: 'sizeable'
+    className: "sizeable"
   }
 });
 

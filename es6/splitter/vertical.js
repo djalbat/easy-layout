@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const cursor = require('../cursor'),
-      Splitter = require('../splitter');
+const cursor = require("../cursor"),
+      Splitter = require("../splitter");
 
 class VerticalSplitter extends Splitter {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
@@ -146,7 +146,7 @@ class VerticalSplitter extends Splitter {
 
 Object.assign(VerticalSplitter, {
   defaultProperties: {
-    className: 'vertical splitter'
+    className: "vertical splitter"
   }
 });
 

@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const easy = require('easy');
+const easy = require("easy");
 
 const { Body } = easy;
 
@@ -11,20 +11,20 @@ let previousCursor;  ///
 function columnResize() {
   const currentCursor = getCurrentCursor();
 
-  if (currentCursor !== 'col-resize') {
+  if (currentCursor !== "col-resize") {
     previousCursor = currentCursor;
 
-    setCursor('col-resize');
+    setCursor("col-resize");
   }
 }
 
 function rowResize() {
   const currentCursor = getCurrentCursor();
 
-  if (currentCursor !== 'row-resize') {
+  if (currentCursor !== "row-resize") {
     previousCursor = currentCursor;
 
-    setCursor('row-resize');
+    setCursor("row-resize");
   }
 }
 
@@ -47,7 +47,7 @@ function setCursor(cursor) {
 }
 
 function getCurrentCursor() {
-  const currentCursor = body.css('cursor');  ///
+  const currentCursor = body.css("cursor");  ///
 
-  return currentCursor || 'auto'; ///
+  return currentCursor || "auto"; ///
 }

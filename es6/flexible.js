@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const easy = require('easy');
+const easy = require("easy");
 
 const { Element } = easy;
 
@@ -29,9 +29,9 @@ class FlexibleElement extends Element {
 }
 
 Object.assign(FlexibleElement, {
-  tagName: 'div',
+  tagName: "div",
   defaultProperties: {
-    className: 'flexible'
+    className: "flexible"
   }
 });
 
