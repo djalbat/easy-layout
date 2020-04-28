@@ -130,7 +130,11 @@ class SplitterDiv extends Element {
     this.dragHandler = dragHandler;
   }
 
-  keyDownHandler(keyCode) {
+  keyDownHandler(event, element) {
+    const { keyCode } = event;
+
+    debugger
+
     if (keyCode === ESCAPE_KEY_CODE) {
       const dragging = this.isDragging();
 

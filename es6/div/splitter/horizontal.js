@@ -20,7 +20,7 @@ class HorizontalSplitterDiv extends SplitterDiv {
     return horizontalSplitterDiv;
   }
 
-  mouseUp() {
+  mouseUp(event, element) {
     const disabled = this.isDisabled();
 
     if (!disabled) {
@@ -34,8 +34,10 @@ class HorizontalSplitterDiv extends SplitterDiv {
     }
   }
 
-  mouseMove(mouseTop, mouseLeft) {
-    const disabled = this.isDisabled();
+  mouseMove(event, element) {
+    const { pageY } = event,
+          mouseTop = pageY,  ///
+          disabled = this.isDisabled();
 
     if (!disabled) {
       const dragging = this.isDragging();
@@ -61,8 +63,10 @@ class HorizontalSplitterDiv extends SplitterDiv {
     }
   }
 
-  mouseDown(mouseTop, mouseLeft) {
-    const disabled = this.isDisabled();
+  mouseDown(event, element) {
+    const { pageY } = event,
+          mouseTop = pageY,  ///
+          disabled = this.isDisabled();
 
     if (!disabled) {
       const previousMouseTop = mouseTop,  ///
@@ -83,7 +87,7 @@ class HorizontalSplitterDiv extends SplitterDiv {
     }
   }
 
-  mouseOver() {
+  mouseOver(event, element) {
     const disabled = this.isDisabled();
 
     if (!disabled) {
@@ -91,7 +95,7 @@ class HorizontalSplitterDiv extends SplitterDiv {
     }
   }
 
-  mouseOut() {
+  mouseOut(event, element) {
     const disabled = this.isDisabled();
 
     if (!disabled) {
