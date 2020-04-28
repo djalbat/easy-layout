@@ -1,7 +1,7 @@
 "use strict";
 
-const ESCAPE_KEY_STOPS_DRAGGING = "ESCAPE_KEY_STOPS_DRAGGING";
+export const ESCAPE_KEY_STOPS_DRAGGING = "ESCAPE_KEY_STOPS_DRAGGING";
 
-module.exports = {
+export default {
   ESCAPE_KEY_STOPS_DRAGGING
 };

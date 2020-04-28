@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { VerticalSplitter, HorizontalSplitter } from "../../index";
+import { VerticalSplitter, HorizontalSplitter } from "../index";
 
 import ColumnDiv from "../div/column";
 import SizeableRowsDiv from "../div/rows/sizeable";

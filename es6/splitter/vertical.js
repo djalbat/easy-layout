@@ -1,9 +1,10 @@
 "use strict";
 
-const cursor = require("../cursor"),
-      Splitter = require("../splitter");
+import Splitter from "../splitter";
 
-class VerticalSplitter extends Splitter {
+import { columnResizeCursor, resetCursor } from "../cursor";
+
+export default class VerticalSplitter extends Splitter {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
     
@@ -26,7 +27,7 @@ class VerticalSplitter extends Splitter {
         this.stopDragging();
       }
 
-      cursor.reset();
+      resetCursor();
     }
   }
 
@@ -75,7 +76,7 @@ class VerticalSplitter extends Splitter {
         this.startDragging();
       }
 
-      cursor.columnResize();
+      columnResizeCursor();
     }
   }
 
@@ -83,7 +84,7 @@ class VerticalSplitter extends Splitter {
     const disabled = this.isDisabled();
 
     if (!disabled) {
-      cursor.columnResize();
+      columnResizeCursor();
     }
   }
 
@@ -91,7 +92,7 @@ class VerticalSplitter extends Splitter {
     const disabled = this.isDisabled();
 
     if (!disabled) {
-      cursor.reset();
+      resetCursor();
     }
   }
   
@@ -149,5 +150,3 @@ Object.assign(VerticalSplitter, {
     className: "vertical splitter"
   }
 });
-
-module.exports = VerticalSplitter;

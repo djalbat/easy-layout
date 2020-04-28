@@ -1,10 +1,8 @@
 "use strict";
 
-const easy = require("easy");
+import { Element } from "easy";
 
-const { Element } = easy;
-
-class SizeableElement extends Element {
+export default class SizeableElement extends Element {
   parentContext() {
     const context = this.getContext(),
           sizeableElementStyle = this.style.bind(this), ///
@@ -36,5 +34,3 @@ Object.assign(SizeableElement, {
     className: "sizeable"
   }
 });
-
-module.exports = SizeableElement;

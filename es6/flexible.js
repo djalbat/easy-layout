@@ -1,10 +1,8 @@
 "use strict";
 
-const easy = require("easy");
+import { Element } from "easy";
 
-const { Element } = easy;
-
-class FlexibleElement extends Element {
+export default class FlexibleElement extends Element {
   parentContext() {
     const context = this.getContext(),
           getFlexibleElementWidth = this.getWidth.bind(this), ///
@@ -34,5 +32,3 @@ Object.assign(FlexibleElement, {
     className: "flexible"
   }
 });
-
-module.exports = FlexibleElement;

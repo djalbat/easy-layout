@@ -1,15 +1,11 @@
 "use strict";
 
-const easy = require("easy");
+import { window, Element } from "easy";
 
-const options = require("./options");
+import { ESCAPE_KEY_CODE } from "./constants";
+import { ESCAPE_KEY_STOPS_DRAGGING } from "./options";
 
-const { window, Element } = easy,
-      { ESCAPE_KEY_STOPS_DRAGGING } = options;
-
-const ESCAPE_KEY_CODE = 27;
-
-class Splitter extends Element {
+export default class Splitter extends Element {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector);
 
@@ -182,7 +178,6 @@ Object.assign(Splitter, {
   ]
 });
 
-module.exports = Splitter;
 
 function defaultStartDraggingHandler() {}
 

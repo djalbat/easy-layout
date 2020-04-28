@@ -1,14 +1,12 @@
 "use strict";
 
-const easy = require("easy");
-
-const { Body } = easy;
+import { Body } from "easy";
 
 const body = new Body();
 
 let previousCursor;  ///
 
-function columnResize() {
+export function columnResizeCursor() {
   const currentCursor = getCurrentCursor();
 
   if (currentCursor !== "col-resize") {
@@ -18,7 +16,7 @@ function columnResize() {
   }
 }
 
-function rowResize() {
+export function rowResizeCursor() {
   const currentCursor = getCurrentCursor();
 
   if (currentCursor !== "row-resize") {
@@ -28,15 +26,9 @@ function rowResize() {
   }
 }
 
-function reset() {
+export function resetCursor() {
   setCursor(previousCursor); ///
 }
-
-module.exports = {
-  columnResize,
-  rowResize,
-  reset
-};
 
 function setCursor(cursor) {
   const css = {
