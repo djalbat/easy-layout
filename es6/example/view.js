@@ -2,10 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { VerticalSplitterDiv, HorizontalSplitterDiv } from "../index";
-
-import ColumnDiv from "../div/column";
-import SizeableRowsDiv from "../div/rows/sizeable";
+import { ColumnDiv, SizeableRowsDiv, VerticalSplitterDiv, HorizontalSplitterDiv } from "../index";
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
