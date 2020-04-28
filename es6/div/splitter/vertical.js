@@ -142,11 +142,17 @@ export default class VerticalSplitterDiv extends SplitterDiv {
     });
   }
 
-  static fromProperties(properties) { return SplitterDiv.fromProperties(VerticalSplitterDiv, properties); }
-}
+  static defaultProperties = {
+    className: "vertical"
+  };
 
-Object.assign(VerticalSplitterDiv, {
-  defaultProperties: {
-    className: "vertical splitter"
+  static fromProperties(Class, properties) {
+    if (properties === undefined) {
+      properties = Class; ///
+
+      Class = VerticalSplitterDiv;
+    }
+
+    return SplitterDiv.fromProperties(Class, properties);
   }
-});
+}

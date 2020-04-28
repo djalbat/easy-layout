@@ -3,6 +3,7 @@
 import SplitterDiv from "../../div/splitter";
 
 import { rowResizeCursor, resetCursor } from "../../cursor";
+import ColumnsDiv from "../columns";
 
 export default class HorizontalSplitterDiv extends SplitterDiv {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
@@ -142,11 +143,17 @@ export default class HorizontalSplitterDiv extends SplitterDiv {
     });
   }
 
-  static fromProperties(properties) { return SplitterDiv.fromProperties(HorizontalSplitterDiv, properties); }
-}
+  static defaultProperties = {
+    className: "horizontal"
+  };
 
-Object.assign(HorizontalSplitterDiv, {
-  defaultProperties: {
-    className: "horizontal splitter"
+  static fromProperties(Class, properties) {
+    if (properties === undefined) {
+      properties = Class; ///
+
+      Class = HorizontalSplitterDiv;
+    }
+
+    return SplitterDiv.fromProperties(Class, properties);
   }
-});
+}

@@ -2,7 +2,7 @@
 
 import { Element } from "easy";
 
-export default class FlexibleElement extends Element {
+export default class FlexibleDiv extends Element {
   parentContext() {
     const context = this.getContext(),
           getFlexibleElementWidth = this.getWidth.bind(this), ///
@@ -23,12 +23,19 @@ export default class FlexibleElement extends Element {
     return parentContext;
   }
 
-  static fromProperties(properties) { return Element.fromProperties(FlexibleElement, properties); }
-}
+  static tagName = "div";
 
-Object.assign(FlexibleElement, {
-  tagName: "div",
-  defaultProperties: {
+  static defaultProperties = {
     className: "flexible"
+  };
+
+  static fromProperties(Class, properties) {
+    if (properties === undefined) {
+      properties = Class; ///
+
+      Class = FlexibleDiv;
+    }
+
+    return Element.fromProperties(Class, properties);
   }
-});
+}

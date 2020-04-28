@@ -152,7 +152,29 @@ export default class SplitterDiv extends Element {
     this.onMouseOut(this.mouseOut.bind(this));
   }
 
+  static tagName = "div";
+
+  static defaultProperties = {
+    className: "splitter"
+  };
+
+  static ignoredProperties = [
+    "beforeSizeableElement",
+    "afterSizeableElement",
+    "onStartDragging",
+    "onStopDragging",
+    "onDrag",
+    "options",
+    "disabled"
+  ];
+
   static fromProperties(Class, properties) {
+    if (properties === undefined) {
+      properties = Class; ///
+
+      Class = SplitterDiv;
+    }
+
     const { beforeSizeableElement, afterSizeableElement, onStartDragging, onStopDragging, onDrag, options, disabled } = properties,
           startDraggingHandler = onStartDragging, ///
           stopDraggingHandler = onStopDragging, ///
@@ -164,20 +186,6 @@ export default class SplitterDiv extends Element {
     return splitter;
   }
 }
-
-Object.assign(SplitterDiv, {
-  tagName: "div",
-  ignoredProperties: [
-    "beforeSizeableElement",
-    "afterSizeableElement",
-    "onStartDragging",
-    "onStopDragging",
-    "onDrag",
-    "options",
-    "disabled"
-  ]
-});
-
 
 function defaultStartDraggingHandler() {}
 
