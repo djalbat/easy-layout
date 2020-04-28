@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { ColumnDiv, SizeableRowsDiv } from "../index";
+import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, SizeableRowsDiv } from "../index";
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
@@ -36,25 +36,29 @@ const View = (properties) => {
           </SizeableRowsDiv>
         </LeftSizeableDiv>
         <LeftVerticalSplitterDiv afterSizeableElement />
-        <div className="column rows">
-          <div className="row columns">
-            <ColumnDiv />
-            <RightVerticalSplitterDiv beforeSizeableElement />
-            <RightSizeableDiv>
-              <SizeableRowsDiv>
-                <BlueRowDiv />
-              </SizeableRowsDiv>
-            </RightSizeableDiv>
-          </div>
-          <MainHorizontalSplitterDiv beforeSizeableElement
-                                     onDrag={(height) => {
+        <ColumnDiv>
+          <RowsDiv>
+            <RowDiv>
+              <ColumnsDiv>
+                <ColumnDiv />
+                <RightVerticalSplitterDiv beforeSizeableElement />
+                <RightSizeableDiv>
+                  <SizeableRowsDiv>
+                    <BlueRowDiv />
+                  </SizeableRowsDiv>
+                </RightSizeableDiv>
+              </ColumnsDiv>
+            </RowDiv>
+            <MainHorizontalSplitterDiv beforeSizeableElement
+                                       onDrag={(height) => {
 
-                                       bottomLeftDiv.setHeight(height);
+                                         bottomLeftDiv.setHeight(height);
 
-                                     }}
-          />
-          <BottomSizeableDiv />
-        </div>
+                                       }}
+            />
+            <BottomSizeableDiv />
+          </RowsDiv>
+        </ColumnDiv>
       </MainColumnsDiv>
     </div>
 
