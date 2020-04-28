@@ -1,11 +1,13 @@
 "use strict";
 
+import withStyle from "easy-with-style";  ///
+
 import { window, Element } from "easy";
 
 import { ESCAPE_KEY_CODE } from "../constants";
 import { ESCAPE_KEY_STOPS_DRAGGING } from "../options";
 
-export default class SplitterDiv extends Element {
+class SplitterDiv extends Element {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector);
 
@@ -194,3 +196,9 @@ function defaultStopDraggingHandler() {}
 function defaultDragHandler() {}
 
 const defaultOptions = {};
+
+export default withStyle(SplitterDiv)`
+
+  flex-shrink: 0;
+
+`;

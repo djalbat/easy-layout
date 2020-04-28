@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { ColumnDiv, SizeableRowsDiv, VerticalSplitterDiv, HorizontalSplitterDiv } from "../index";
+import { ColumnDiv, SizeableRowsDiv } from "../index";
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
@@ -11,6 +11,9 @@ import MainColumnsDiv from "./div/columns/main";
 import LeftSizeableDiv from "./div/sizeable/left";
 import RightSizeableDiv from "./div/sizeable/right";
 import BottomSizeableDiv from "./div/sizeable/bottom";
+import LeftVerticalSplitterDiv from "./div/splitter/vertical/left";
+import RightVerticalSplitterDiv from "./div/splitter/vertical/right";
+import MainHorizontalSplitterDiv from "./div/splitter/horizontal/main";
 import DummyHorizontalSplitterDiv from "./div/splitter/horizontal/dummy";
 
 const View = (properties) => {
@@ -32,24 +35,23 @@ const View = (properties) => {
             {bottomLeftDiv}
           </SizeableRowsDiv>
         </LeftSizeableDiv>
-        <VerticalSplitterDiv className="black left" afterSizeableElement />
+        <LeftVerticalSplitterDiv afterSizeableElement />
         <div className="column rows">
           <div className="row columns">
             <ColumnDiv />
-            <VerticalSplitterDiv className="black right" beforeSizeableElement />
+            <RightVerticalSplitterDiv beforeSizeableElement />
             <RightSizeableDiv>
               <SizeableRowsDiv>
                 <BlueRowDiv />
               </SizeableRowsDiv>
             </RightSizeableDiv>
           </div>
-          <HorizontalSplitterDiv className="black main"
-                              beforeSizeableElement
-                              onDrag={(height) => {
+          <MainHorizontalSplitterDiv beforeSizeableElement
+                                     onDrag={(height) => {
 
-                                bottomLeftDiv.setHeight(height);
+                                       bottomLeftDiv.setHeight(height);
 
-                              }}
+                                     }}
           />
           <BottomSizeableDiv />
         </div>

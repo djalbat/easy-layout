@@ -1,11 +1,13 @@
 "use strict";
 
+import withStyle from "easy-with-style";  ///
+
 import SplitterDiv from "../../div/splitter";
 
 import { rowResizeCursor, resetCursor } from "../../cursor";
 import ColumnsDiv from "../columns";
 
-export default class HorizontalSplitterDiv extends SplitterDiv {
+class HorizontalSplitterDiv extends SplitterDiv {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
@@ -157,3 +159,9 @@ export default class HorizontalSplitterDiv extends SplitterDiv {
     return SplitterDiv.fromProperties(Class, properties);
   }
 }
+
+export default withStyle(HorizontalSplitterDiv)`
+
+  height: 0.8rem;
+
+`;

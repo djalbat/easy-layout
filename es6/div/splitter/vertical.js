@@ -1,10 +1,12 @@
 "use strict";
 
+import withStyle from "easy-with-style";  ///
+
 import SplitterDiv from "../../div/splitter";
 
 import { columnResizeCursor, resetCursor } from "../../cursor";
 
-export default class VerticalSplitterDiv extends SplitterDiv {
+class VerticalSplitterDiv extends SplitterDiv {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
     
@@ -156,3 +158,9 @@ export default class VerticalSplitterDiv extends SplitterDiv {
     return SplitterDiv.fromProperties(Class, properties);
   }
 }
+
+export default withStyle(VerticalSplitterDiv)`
+
+  width: 0.8rem;
+
+`;
