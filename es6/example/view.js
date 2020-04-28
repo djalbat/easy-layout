@@ -22,7 +22,8 @@ const View = (properties) => {
 
           <BottomLeftDiv />
 
-        ;
+        ,
+        dragHandler = (height) => bottomLeftDiv.setHeight(height);
 
   return (
 
@@ -49,13 +50,7 @@ const View = (properties) => {
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv beforeSizeableElement
-                                       onDrag={(height) => {
-
-                                         bottomLeftDiv.setHeight(height);
-
-                                       }}
-            />
+            <MainHorizontalSplitterDiv onDrag={dragHandler} beforeSizeableElement />
             <BottomSizeableDiv />
           </RowsDiv>
         </ColumnDiv>

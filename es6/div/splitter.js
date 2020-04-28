@@ -185,11 +185,11 @@ class SplitterDiv extends Element {
           startDraggingHandler = onStartDragging, ///
           stopDraggingHandler = onStopDragging, ///
           dragHandler = onDrag, ///
-          splitter = Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
+          splitterDiv = Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
-    splitter.initialise(disabled);
+    splitterDiv.initialise(disabled);
 
-    return splitter;
+    return splitterDiv;
   }
 }
 
