@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import RowDiv from "../../../div/row";
+import { RowDiv } from "../../../index";  ///
 
 class YellowRowDiv extends RowDiv {
   static defaultProperties = {

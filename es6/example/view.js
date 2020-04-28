@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { VerticalSplitter, HorizontalSplitter } from "../index";
+import { VerticalSplitterDiv, HorizontalSplitterDiv } from "../index";
 
 import ColumnDiv from "../div/column";
 import SizeableRowsDiv from "../div/rows/sizeable";
@@ -35,18 +35,18 @@ const View = (properties) => {
             {bottomLeftDiv}
           </SizeableRowsDiv>
         </LeftSizeableDiv>
-        <VerticalSplitter className="black left" afterSizeableElement />
+        <VerticalSplitterDiv className="black left" afterSizeableElement />
         <div className="column rows">
           <div className="row columns">
             <ColumnDiv />
-            <VerticalSplitter className="black right" beforeSizeableElement />
+            <VerticalSplitterDiv className="black right" beforeSizeableElement />
             <RightSizeableDiv>
               <SizeableRowsDiv>
                 <BlueRowDiv />
               </SizeableRowsDiv>
             </RightSizeableDiv>
           </div>
-          <HorizontalSplitter className="black main"
+          <HorizontalSplitterDiv className="black main"
                               beforeSizeableElement
                               onDrag={(height) => {
 

@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import ColumnsDiv from "../../../div/columns";
+import { ColumnsDiv } from "../../../index";  ///
 
 class MainColumnsDiv extends ColumnsDiv {
   static defaultProperties = {

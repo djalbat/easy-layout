@@ -2,10 +2,10 @@
 
 import { window, Element } from "easy";
 
-import { ESCAPE_KEY_CODE } from "./constants";
-import { ESCAPE_KEY_STOPS_DRAGGING } from "./options";
+import { ESCAPE_KEY_CODE } from "../constants";
+import { ESCAPE_KEY_STOPS_DRAGGING } from "../options";
 
-export default class Splitter extends Element {
+export default class SplitterDiv extends Element {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector);
 
@@ -165,7 +165,7 @@ export default class Splitter extends Element {
   }
 }
 
-Object.assign(Splitter, {
+Object.assign(SplitterDiv, {
   tagName: "div",
   ignoredProperties: [
     "beforeSizeableElement",

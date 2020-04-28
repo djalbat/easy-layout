@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import SizeableDiv from "../../../div/sizeable";
+import { SizeableDiv } from "../../../index"; ///
 
 class BottomSizeableDiv extends SizeableDiv {
   static defaultProperties = {

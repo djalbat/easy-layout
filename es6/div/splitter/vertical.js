@@ -1,20 +1,20 @@
 "use strict";
 
-import Splitter from "../splitter";
+import SplitterDiv from "../../div/splitter";
 
-import { columnResizeCursor, resetCursor } from "../cursor";
+import { columnResizeCursor, resetCursor } from "../../cursor";
 
-export default class VerticalSplitter extends Splitter {
+export default class VerticalSplitterDiv extends SplitterDiv {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
     
     this.setInitialState();
   }
 
-  getVerticalSplitter() {
-    const verticalSplitter = this;  ///
+  getVerticalSplitterDiv() {
+    const verticalSplitterDiv = this;  ///
 
-    return verticalSplitter;
+    return verticalSplitterDiv;
   }
 
   mouseUp() {
@@ -133,19 +133,19 @@ export default class VerticalSplitter extends Splitter {
   }
 
   parentContext() {
-    const enableVerticalSplitter = this.enable.bind(this),
-          disableVerticalSplitter = this.disable.bind(this);
+    const enableVerticalSplitterDiv = this.enable.bind(this),
+          disableVerticalSplitterDiv = this.disable.bind(this);
 
     return ({
-      enableVerticalSplitter,
-      disableVerticalSplitter
+      enableVerticalSplitterDiv,
+      disableVerticalSplitterDiv
     });
   }
 
-  static fromProperties(properties) { return Splitter.fromProperties(VerticalSplitter, properties); }
+  static fromProperties(properties) { return SplitterDiv.fromProperties(VerticalSplitterDiv, properties); }
 }
 
-Object.assign(VerticalSplitter, {
+Object.assign(VerticalSplitterDiv, {
   defaultProperties: {
     className: "vertical splitter"
   }

@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import ColumnsDiv from "../../div/rows";
+import ColumnsDiv from "../../div/columns";
 
 class SizeableColumnsDiv extends ColumnsDiv {
   static defaultProperties = {

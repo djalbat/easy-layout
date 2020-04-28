@@ -1,20 +1,20 @@
 "use strict";
 
-import Splitter from "../splitter";
+import SplitterDiv from "../../div/splitter";
 
-import { rowResizeCursor, resetCursor } from "../cursor";
+import { rowResizeCursor, resetCursor } from "../../cursor";
 
-export default class HorizontalSplitter extends Splitter {
+export default class HorizontalSplitterDiv extends SplitterDiv {
   constructor(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options) {
     super(selector, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
     this.setInitialState();
   }
 
-  getHorizontalSplitter() {
-    const horizontalSplitter = this;  ///
+  getHorizontalSplitterDiv() {
+    const horizontalSplitterDiv = this;  ///
 
-    return horizontalSplitter;
+    return horizontalSplitterDiv;
   }
 
   mouseUp() {
@@ -133,19 +133,19 @@ export default class HorizontalSplitter extends Splitter {
   }
 
   parentContext() {
-    const enableHorizontalSplitter = this.enable.bind(this),
-          disableHorizontalSplitter = this.disable.bind(this);
+    const enableHorizontalSplitterDiv = this.enable.bind(this),
+          disableHorizontalSplitterDiv = this.disable.bind(this);
 
     return ({
-      enableHorizontalSplitter,
-      disableHorizontalSplitter
+      enableHorizontalSplitterDiv,
+      disableHorizontalSplitterDiv
     });
   }
 
-  static fromProperties(properties) { return Splitter.fromProperties(HorizontalSplitter, properties); }
+  static fromProperties(properties) { return SplitterDiv.fromProperties(HorizontalSplitterDiv, properties); }
 }
 
-Object.assign(HorizontalSplitter, {
+Object.assign(HorizontalSplitterDiv, {
   defaultProperties: {
     className: "horizontal splitter"
   }
