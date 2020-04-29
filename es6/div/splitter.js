@@ -159,6 +159,8 @@ class SplitterDiv extends Element {
       if (dragging) {
         this.stopDrag();
       }
+
+      resetCursor();
     }
   }
 
