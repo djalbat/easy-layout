@@ -2,7 +2,7 @@
 
 Layout elements that work with CSS flexbox.
 
-There are three elements, namely a horizontal and a vertical draggable splitter and a sizeable element that dragging the splitters will cause to be resized. All the elements are closely tied to CSS. For example, the sizeable element will check the values of its 'min-width', 'max-width', 'min-height' and 'max-height' CSS properties and stick to them. Layouts created with these elements can also be nested easily.
+There are several elements that can be nested. Broadly speaking there are row and column divs together with sizeable and splitter divs. Splitter divs can be dragged with a mouse in order to resize sizeable divs.
 
 ### JSX support
 
@@ -35,33 +35,41 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 ## Usage
 
 ```js
-const easylayout = require('lib/easy-layout'),
-      { VerticalSplitter, SizeableElement } = easylayout;
+import withStyle from "easy-with-style";
 
-const container =
+import { ColumnDiv, ColumnsDiv, SizeableDiv, VerticalSplitterDiv } = "easy-layout";
 
-        <div className="columns">
-          <SizeableElement>
+const View = (properties) => {
+  const { className } = properties;
+
+  return (
+
+    <div className={`${className} view`}>
+      <ColumnsDiv>
+        <SizeableDiv>
+
           ...
-          </SizeableElement>
-          <VerticalSplitter afterSizeableElement
-                            onDrag={(height) => {
-                                ...
-                            }}
-          />
-          <div className="column">
-          ...
-          </div>
-        </div>
 
-      ;
+        </SizeableDiv>
+        <VerticalSplitterDiv before />
+        <ColumnDiv>
+          ...
+
+        </ColumnDiv>
+      </ColumnsDiv>
+    </div>
+
+  );
+}
+
+export default withStyle(View)`
+
+  width: 64rem;
+  height: 64rem;
+
+`;
+
 ```
-
-Note the mandatory `column` and `columns` classes.
-
-## CSS
-
-There is a small amount of CSS needed to make the elements work. This can be found in the `easy-layout.css` file in the `css` directory.
 
 ## Compiling from source
 
