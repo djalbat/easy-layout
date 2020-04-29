@@ -2,9 +2,9 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { SplitterDiv } from "../../../index";
+import { HorizontalSplitterDiv } from "../../../../index";
 
-class LeftSplitterDiv extends SplitterDiv {
+class MainHorizontalSplitterDiv extends HorizontalSplitterDiv {
   initialise(properties) {
     const { bottomLeftDiv } = properties;
 
@@ -18,23 +18,21 @@ class LeftSplitterDiv extends SplitterDiv {
   };
 
   static fromClass(Class, properties) {
-    const before = true,
-          horizontal = true;
+    const before = true;
 
     Object.assign(properties, {
-      before,
-      horizontal
+      before
     });
 
-    const leftSplitterDiv = SplitterDiv.fromClass(Class, properties);
+    const leftHorizontalSplitterDiv = HorizontalSplitterDiv.fromClass(Class, properties);
 
-    leftSplitterDiv.initialise(properties);
+    leftHorizontalSplitterDiv.initialise(properties);
 
-    return leftSplitterDiv;
+    return leftHorizontalSplitterDiv;
   }
 }
 
-export default withStyle(LeftSplitterDiv)`
+export default withStyle(MainHorizontalSplitterDiv)`
 
   background-color: black;
 
