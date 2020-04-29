@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv } from "../index";
+import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, options } from "../index";
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
@@ -16,6 +16,8 @@ import RightVerticalSplitterDiv from "./div/splitter/vertical/right";
 import MainHorizontalSplitterDiv from "./div/splitter/horizontal/main";
 import DummyHorizontalSplitterDiv from "./div/splitter/horizontal/dummy";
 
+const { ESCAPE_KEY_STOPS_DRAGGING } = options;
+
 const View = (properties) => {
   const { className } = properties,
         bottomLeftDiv =
@@ -23,7 +25,9 @@ const View = (properties) => {
           <BottomLeftDiv />
 
         ,
-        dragHandler = (height) => bottomLeftDiv.setHeight(height);
+        options = {
+          ESCAPE_KEY_STOPS_DRAGGING
+        };
 
   return (
 
@@ -36,13 +40,13 @@ const View = (properties) => {
             {bottomLeftDiv}
           </RowsDiv>
         </LeftSizeableDiv>
-        <LeftVerticalSplitterDiv afterSizeableElement />
+        <LeftVerticalSplitterDiv options={options} afterSizeableElement />
         <ColumnDiv>
           <RowsDiv>
             <RowDiv>
               <ColumnsDiv>
                 <ColumnDiv />
-                <RightVerticalSplitterDiv beforeSizeableElement />
+                <RightVerticalSplitterDiv options={options} beforeSizeableElement />
                 <RightSizeableDiv>
                   <RowsDiv>
                     <BlueRowDiv />
@@ -50,7 +54,7 @@ const View = (properties) => {
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv onDrag={dragHandler} beforeSizeableElement />
+            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options} beforeSizeableElement />
             <BottomSizeableDiv />
           </RowsDiv>
         </ColumnDiv>

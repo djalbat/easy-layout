@@ -10,16 +10,6 @@ class RowDiv extends Element {
   static defaultProperties = {
     className: "row"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = RowDiv;
-    }
-
-    return Element.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(RowDiv)`

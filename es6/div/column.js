@@ -10,16 +10,6 @@ class ColumnDiv extends Element {
   static defaultProperties = {
     className: "column"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = ColumnDiv;
-    }
-
-    return Element.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(ColumnDiv)`

@@ -8,16 +8,6 @@ class RightVerticalSplitterDiv extends VerticalSplitterDiv {
   static defaultProperties = {
     className: "right"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = RightVerticalSplitterDiv;
-    }
-
-    return VerticalSplitterDiv.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(RightVerticalSplitterDiv)`

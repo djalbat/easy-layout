@@ -152,16 +152,6 @@ class HorizontalSplitterDiv extends SplitterDiv {
   static defaultProperties = {
     className: "horizontal"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = HorizontalSplitterDiv;
-    }
-
-    return SplitterDiv.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(HorizontalSplitterDiv)`

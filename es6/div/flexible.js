@@ -28,14 +28,4 @@ export default class FlexibleDiv extends Element {
   static defaultProperties = {
     className: "flexible"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = FlexibleDiv;
-    }
-
-    return Element.fromProperties(Class, properties);
-  }
 }

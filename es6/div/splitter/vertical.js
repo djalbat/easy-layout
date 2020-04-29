@@ -151,16 +151,6 @@ class VerticalSplitterDiv extends SplitterDiv {
   static defaultProperties = {
     className: "vertical"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = VerticalSplitterDiv;
-    }
-
-    return SplitterDiv.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(VerticalSplitterDiv)`

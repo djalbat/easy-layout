@@ -8,16 +8,6 @@ class MainColumnsDiv extends ColumnsDiv {
   static defaultProperties = {
     className: "main"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = MainColumnsDiv;
-    }
-
-    return ColumnsDiv.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(MainColumnsDiv)`

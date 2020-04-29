@@ -144,7 +144,9 @@ class SplitterDiv extends Element {
     }
   }
 
-  initialise(disabled) {
+  initialise(properties) {
+    const { disabled  } = properties;
+
     (disabled === true) ? ///
       this.disable() :
         this.enable();
@@ -174,20 +176,14 @@ class SplitterDiv extends Element {
     "disabled"
   ];
 
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = SplitterDiv;
-    }
-
-    const { beforeSizeableElement, afterSizeableElement, onStartDragging, onStopDragging, onDrag, options, disabled } = properties,
+  static fromClass(Class, properties) {
+    const { beforeSizeableElement, afterSizeableElement, onStartDragging, onStopDragging, onDrag, options } = properties,
           startDraggingHandler = onStartDragging, ///
           stopDraggingHandler = onStopDragging, ///
           dragHandler = onDrag, ///
-          splitterDiv = Element.fromProperties(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
+          splitterDiv = Element.fromClass(Class, properties, beforeSizeableElement, afterSizeableElement, startDraggingHandler, stopDraggingHandler, dragHandler, options);
 
-    splitterDiv.initialise(disabled);
+    splitterDiv.initialise(properties);
 
     return splitterDiv;
   }

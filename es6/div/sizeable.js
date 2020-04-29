@@ -10,16 +10,6 @@ class SizeableDiv extends Element {
   static defaultProperties = {
     className: "sizeable"
   };
-
-  static fromProperties(Class, properties) {
-    if (properties === undefined) {
-      properties = Class; ///
-
-      Class = SizeableDiv;
-    }
-
-    return Element.fromProperties(Class, properties);
-  }
 }
 
 export default withStyle(SizeableDiv)`
