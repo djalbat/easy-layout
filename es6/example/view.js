@@ -7,7 +7,6 @@ import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, options } from "../index";
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
 import BottomLeftDiv from "./div/bottomLeft";
-import MainColumnsDiv from "./div/columns/main";
 import LeftSizeableDiv from "./div/sizeable/left";
 import DummySplitterDiv from "./div/splitter/dummy";
 import RightSizeableDiv from "./div/sizeable/right";
@@ -32,7 +31,7 @@ const View = (properties) => {
   return (
 
     <div className={`${className} view`}>
-      <MainColumnsDiv>
+      <ColumnsDiv>
         <LeftSizeableDiv>
           <RowsDiv>
             <YellowRowDiv />
@@ -58,7 +57,7 @@ const View = (properties) => {
             <BottomSizeableDiv />
           </RowsDiv>
         </ColumnDiv>
-      </MainColumnsDiv>
+      </ColumnsDiv>
     </div>
 
   );
@@ -68,5 +67,6 @@ export default withStyle(View)`
 
   width: 64rem;
   height: 64rem;
+  display: flex;
   
 `;

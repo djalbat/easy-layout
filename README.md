@@ -66,6 +66,7 @@ export default withStyle(View)`
 
   width: 64rem;
   height: 64rem;
+  display: flex;
 
 `;
 ```
