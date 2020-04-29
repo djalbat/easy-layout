@@ -8,13 +8,13 @@ import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
 import BottomLeftDiv from "./div/bottomLeft";
 import MainColumnsDiv from "./div/columns/main";
+import LeftSplitterDiv from "./div/splitter/left";
+import MainSplitterDiv from "./div/splitter/main";
 import LeftSizeableDiv from "./div/sizeable/left";
+import RightSplitterDiv from "./div/splitter/right";
+import DummySplitterDiv from "./div/splitter/dummy";
 import RightSizeableDiv from "./div/sizeable/right";
 import BottomSizeableDiv from "./div/sizeable/bottom";
-import LeftVerticalSplitterDiv from "./div/splitter/vertical/left";
-import RightVerticalSplitterDiv from "./div/splitter/vertical/right";
-import MainHorizontalSplitterDiv from "./div/splitter/horizontal/main";
-import DummyHorizontalSplitterDiv from "./div/splitter/horizontal/dummy";
 
 const { ESCAPE_KEY_STOPS_DRAGGING } = options;
 
@@ -36,17 +36,17 @@ const View = (properties) => {
         <LeftSizeableDiv>
           <RowsDiv>
             <YellowRowDiv />
-            <DummyHorizontalSplitterDiv />
+            <DummySplitterDiv />
             {bottomLeftDiv}
           </RowsDiv>
         </LeftSizeableDiv>
-        <LeftVerticalSplitterDiv options={options} afterSizeableElement />
+        <LeftSplitterDiv options={options} />
         <ColumnDiv>
           <RowsDiv>
             <RowDiv>
               <ColumnsDiv>
                 <ColumnDiv />
-                <RightVerticalSplitterDiv options={options} beforeSizeableElement />
+                <RightSplitterDiv options={options} />
                 <RightSizeableDiv>
                   <RowsDiv>
                     <BlueRowDiv />
@@ -54,7 +54,7 @@ const View = (properties) => {
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options} beforeSizeableElement />
+            <MainSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options} />
             <BottomSizeableDiv />
           </RowsDiv>
         </ColumnDiv>
