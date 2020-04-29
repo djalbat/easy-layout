@@ -15,8 +15,8 @@ From there you can easily navigate to get an overview of Juxtapose.
 ### Related projects
 
 - [Easy](https://github.com/djalbat/easy) Elements that abstract away from the DOM.
-- [Easy DragAndDrop](https://github.com/djalbat/easy-draganddrop) Drag and drop elements including an explorer and a rubbish bin.
 - [Easy RichTextarea](https://github.com/djalbat/easy-richtextarea) A textarea element that handles and hands off events well.
+- [Easy DragAndDrop](https://github.com/djalbat/easy-draganddrop) Drag and drop elements including an explorer and a rubbish bin.
 
 ## Installation
 
