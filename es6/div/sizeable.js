@@ -1,8 +1,10 @@
 "use strict";
 
+import withStyle from "easy-with-style";  ///
+
 import { Element } from "easy";
 
-export default class SizeableDiv extends Element {
+class SizeableDiv extends Element {
   static tagName = "div";
 
   static defaultProperties = {
@@ -19,3 +21,9 @@ export default class SizeableDiv extends Element {
     return Element.fromProperties(Class, properties);
   }
 }
+
+export default withStyle(SizeableDiv)`
+
+  display: flex;
+  
+`;

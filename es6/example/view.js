@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, SizeableRowsDiv } from "../index";
+import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv } from "../index";
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
@@ -30,11 +30,11 @@ const View = (properties) => {
     <div className={`${className} view`}>
       <MainColumnsDiv>
         <LeftSizeableDiv>
-          <SizeableRowsDiv>
+          <RowsDiv>
             <YellowRowDiv />
             <DummyHorizontalSplitterDiv />
             {bottomLeftDiv}
-          </SizeableRowsDiv>
+          </RowsDiv>
         </LeftSizeableDiv>
         <LeftVerticalSplitterDiv afterSizeableElement />
         <ColumnDiv>
@@ -44,9 +44,9 @@ const View = (properties) => {
                 <ColumnDiv />
                 <RightVerticalSplitterDiv beforeSizeableElement />
                 <RightSizeableDiv>
-                  <SizeableRowsDiv>
+                  <RowsDiv>
                     <BlueRowDiv />
-                  </SizeableRowsDiv>
+                  </RowsDiv>
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
