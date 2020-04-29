@@ -68,7 +68,6 @@ export default withStyle(View)`
   height: 64rem;
 
 `;
-
 ```
 
 ## Compiling from source
