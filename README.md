@@ -34,7 +34,7 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 ## Usage
 
-```js
+```
 import withStyle from "easy-with-style";
 
 import { ColumnDiv, ColumnsDiv, SizeableDiv, VerticalSplitterDiv } = "easy-layout";
