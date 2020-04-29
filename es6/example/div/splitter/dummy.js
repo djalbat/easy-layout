@@ -7,7 +7,7 @@ const DummyHorizontalSplitterDiv = (properties) => {
 
   return (
 
-    <div className={`${className} dummy-horizontal splitter`} />
+    <div className={`${className} dummy horizontal splitter`} />
 
   );
 };

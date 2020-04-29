@@ -8,16 +8,6 @@ class LeftVerticalSplitterDiv extends VerticalSplitterDiv {
   static defaultProperties = {
     className: "left"
   };
-
-  static fromClass(Class, properties) {
-    const after = true;
-
-    Object.assign(properties, {
-      after
-    });
-
-    return VerticalSplitterDiv.fromClass(Class, properties);
-  }
 }
 
 export default withStyle(LeftVerticalSplitterDiv)`

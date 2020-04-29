@@ -18,12 +18,6 @@ class MainHorizontalSplitterDiv extends HorizontalSplitterDiv {
   };
 
   static fromClass(Class, properties) {
-    const before = true;
-
-    Object.assign(properties, {
-      before
-    });
-
     const leftHorizontalSplitterDiv = HorizontalSplitterDiv.fromClass(Class, properties);
 
     leftHorizontalSplitterDiv.initialise(properties);

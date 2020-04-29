@@ -4,21 +4,19 @@ import withStyle from "easy-with-style";  ///
 
 import { window, Element } from "easy";
 
+import SizeableDiv from "../div/sizeable";
+
 import { resetCursor } from "../cursor";
 import { ESCAPE_KEY_CODE } from "../constants";
 import { ESCAPE_KEY_STOPS_DRAGGING } from "../options";
 
 class SplitterDiv extends Element {
-  constructor(selector, startDragHandler, stopDragHandler, dragHandler, before, after, options) {
+  constructor(selector, startDragHandler, stopDragHandler, dragHandler, options) {
     super(selector);
 
     this.startDragHandler = startDragHandler;
     this.stopDragHandler = stopDragHandler;
     this.dragHandler = dragHandler;
-
-    this.before = before;
-    this.after = after;
-
     this.options = options;
   }
 
@@ -67,11 +65,14 @@ class SplitterDiv extends Element {
   getDirection() {
     let direction;
 
-    if (this.before) {
+    const nextSiblingElement = this.getNextSiblingElement(),
+          previousSiblingElement = this.getPreviousSiblingElement();
+
+    if (nextSiblingElement instanceof SizeableDiv) {
       direction = +1;
     }
 
-    if (this.after) {
+    if (previousSiblingElement instanceof SizeableDiv) {
       direction = -1;
     }
 
@@ -81,15 +82,14 @@ class SplitterDiv extends Element {
   getSizeableDiv() {
     let sizeableDiv;
 
-    if (this.before) {
-      const nextSiblingElement = this.getNextSiblingElement();
+    const nextSiblingElement = this.getNextSiblingElement(),
+          previousSiblingElement = this.getPreviousSiblingElement();
 
+    if (nextSiblingElement instanceof SizeableDiv) {
       sizeableDiv = nextSiblingElement; ///
     }
 
-    if (this.after) {
-      const previousSiblingElement = this.getPreviousSiblingElement();
-
+    if (previousSiblingElement instanceof SizeableDiv) {
       sizeableDiv = previousSiblingElement; ///
     }
 
@@ -190,18 +190,16 @@ class SplitterDiv extends Element {
     "onStartDrag",
     "onStopDrag",
     "onDrag",
-    "before",
-    "after",
     "options",
     "disabled"
   ];
 
   static fromClass(Class, properties) {
-    const { onStartDrag, onStopDrag, onDrag, before, after, options = {} } = properties,
+    const { onStartDrag, onStopDrag, onDrag, options = {} } = properties,
           startDragHandler = onStartDrag, ///
           stopDragHandler = onStopDrag, ///
           dragHandler = onDrag, ///
-          splitterDiv = Element.fromClass(Class, properties, startDragHandler, stopDragHandler, dragHandler, before, after, options);
+          splitterDiv = Element.fromClass(Class, properties, startDragHandler, stopDragHandler, dragHandler, options);
 
     splitterDiv.initialise(properties);
 
