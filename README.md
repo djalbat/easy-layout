@@ -14,9 +14,9 @@ From there you can easily navigate to get an overview of Juxtapose.
 
 ### Related projects
 
-- [Easy](https://github.com/djalbat/Easy) Elements that abstract away from the DOM.
-- [Easy DragAndDrop](https://github.com/djalbat/Easy-DragAndDrop) Drag and drop elements including an explorer and a rubbish bin.
-- [Easy RichTextarea](https://github.com/djalbat/Easy-RichTextarea) A textarea element that handles and hands off events well.
+- [Easy](https://github.com/djalbat/easy) Elements that abstract away from the DOM.
+- [Easy DragAndDrop](https://github.com/djalbat/easy-draganddrop) Drag and drop elements including an explorer and a rubbish bin.
+- [Easy RichTextarea](https://github.com/djalbat/easy-richtextarea) A textarea element that handles and hands off events well.
 
 ## Installation
 
@@ -67,6 +67,20 @@ export default withStyle(View)`
   width: 64rem;
   height: 64rem;
   display: flex;
+
+`;
+```
+
+## Styles
+
+There is a small amount of styling by default. By far the best way to override this is to use [Easy with Style](https://github.com/djalbat/easy-with-style);
+
+```
+import withStyle from "easy-with-style"; ///
+
+export default (VerticalSplitter)`
+
+ ...
 
 `;
 ```
