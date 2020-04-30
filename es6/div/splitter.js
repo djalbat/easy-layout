@@ -197,7 +197,7 @@ class SplitterDiv extends Element {
   ];
 
   static fromClass(Class, properties) {
-    const { onStartDrag, onStopDrag, onDrag, options = {} } = properties,
+    const { onStartDrag, onStopDrag, onDrag, options = defaultOptions} = properties,
           startDragHandler = onStartDrag, ///
           stopDragHandler = onStopDrag, ///
           dragHandler = onDrag, ///
@@ -208,6 +208,8 @@ class SplitterDiv extends Element {
     return splitterDiv;
   }
 }
+
+const defaultOptions = {};
 
 export default withStyle(SplitterDiv)`
 
