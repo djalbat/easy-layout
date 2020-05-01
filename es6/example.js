@@ -2,11 +2,11 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { Body, React } from "easy";
+import { Body, React, window } from "easy";
 
 import View from "./example/view";
 
-Object.assign(window, {
+window.assign({
   React
 });
 
