@@ -73,7 +73,7 @@ export default withStyle(View)`
 
 ## Styles
 
-There is a small amount of styling by default. By far the best way to override this is to use [Easy with Style](https://github.com/djalbat/easy-with-style);
+There is a small amount of default styling. All the elements have class names, however, allowing you to override this with CSS. A better way, however, is to use [Easy with Style](https://github.com/djalbat/easy-with-style). For example:
 
 ```
 import withStyle from "easy-with-style"; ///
