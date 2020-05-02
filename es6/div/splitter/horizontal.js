@@ -112,7 +112,6 @@ class HorizontalSplitter extends Splitter {
 
 export default withStyle(HorizontalSplitter)`
 
-  width: 100%;
   height: 1rem;
 
 `;

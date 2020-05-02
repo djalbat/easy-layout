@@ -113,6 +113,5 @@ class VerticalSplitter extends Splitter {
 export default withStyle(VerticalSplitter)`
 
   width: 1rem;
-  height: 100%;
 
 `;
