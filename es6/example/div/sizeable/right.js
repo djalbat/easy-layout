@@ -13,6 +13,6 @@ class RightSizeableDiv extends SizeableDiv {
 export default withStyle(RightSizeableDiv)`
 
   width: 24rem;
-  max-width: 57.6rem;
+  max-width: 56rem;
 
 `;
