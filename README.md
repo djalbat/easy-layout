@@ -34,6 +34,8 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 ## Usage
 
+The enclosing element should have its `display` style set to `flex`:
+
 ```
 import withStyle from "easy-with-style";
 
@@ -51,7 +53,7 @@ const View = (properties) => {
           ...
 
         </SizeableDiv>
-        <VerticalSplitterDiv before />
+        <VerticalSplitterDiv />
         <ColumnDiv>
           ...
 
