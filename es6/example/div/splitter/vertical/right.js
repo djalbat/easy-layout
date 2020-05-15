@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { VerticalSplitterDiv } from "../../../../index";
+import { VerticalSplitterDiv } from "../../../../index";  ///
 
 class RightVerticalSplitterDiv extends VerticalSplitterDiv {
   static defaultProperties = {

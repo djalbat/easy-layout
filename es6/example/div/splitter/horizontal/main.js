@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { HorizontalSplitterDiv } from "../../../../index";
+import { HorizontalSplitterDiv } from "../../../../index";  ///
 
 class MainHorizontalSplitterDiv extends HorizontalSplitterDiv {
   initialise(properties) {
