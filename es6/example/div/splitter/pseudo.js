@@ -2,17 +2,17 @@
 
 import withStyle from "easy-with-style";  ///
 
-const DummyHorizontalSplitterDiv = (properties) => {
+const PseudoHorizontalSplitterDiv = (properties) => {
   const { className } = properties;
 
   return (
 
-    <div className={`${className} dummy horizontal splitter`} />
+    <div className={`${className} pseudo horizontal splitter`} />
 
   );
 };
 
-export default withStyle(DummyHorizontalSplitterDiv)`
+export default withStyle(PseudoHorizontalSplitterDiv)`
 
   height: 0.8rem;
   flex-shrink: 0;

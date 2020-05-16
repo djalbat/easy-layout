@@ -8,8 +8,8 @@ import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
 import BottomLeftDiv from "./div/bottomLeft";
 import LeftSizeableDiv from "./div/sizeable/left";
-import DummySplitterDiv from "./div/splitter/dummy";
 import RightSizeableDiv from "./div/sizeable/right";
+import PseudoSplitterDiv from "./div/splitter/pseudo";
 import BottomSizeableDiv from "./div/sizeable/bottom";
 import LeftVerticalSplitterDiv from "./div/splitter/vertical/left";
 import RightVerticalSplitterDiv from "./div/splitter/vertical/right";
@@ -35,7 +35,7 @@ const View = (properties) => {
         <LeftSizeableDiv>
           <RowsDiv>
             <YellowRowDiv />
-            <DummySplitterDiv />
+            <PseudoSplitterDiv />
             {bottomLeftDiv}
           </RowsDiv>
         </LeftSizeableDiv>
