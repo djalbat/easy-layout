@@ -11,8 +11,8 @@ import { ESCAPE_KEY_CODE } from "../constants";
 import { ESCAPE_KEY_STOPS_DRAGGING } from "../options";
 
 class SplitterDiv extends Element {
-  constructor(selector, startDragHandler, stopDragHandler, dragHandler, options) {
-    super(selector);
+  constructor(selectorOrDOMElement, startDragHandler, stopDragHandler, dragHandler, options) {
+    super(selectorOrDOMElement);
 
     this.startDragHandler = startDragHandler;
     this.stopDragHandler = stopDragHandler;
