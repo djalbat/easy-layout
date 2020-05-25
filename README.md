@@ -39,7 +39,7 @@ Below the `ColumnDiv`, `ColumnDivs`, `SizeableDiv` and `VerticalSplitterDiv` ele
 ```
 import withStyle from "easy-with-style";
 
-import { ColumnDiv, ColumnsDiv, SizeableDiv, VerticalSplitterDiv } = "easy-layout";
+import { ColumnDiv, ColumnsDiv, SizeableDiv, VerticalSplitterDiv } from "easy-layout";
 
 const View = (properties) => {
   const { className } = properties;
