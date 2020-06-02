@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, options } from "../index";
+import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, options } from "../index"; ///
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
