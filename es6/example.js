@@ -16,7 +16,7 @@ const body = new Body();
 
 renderStyles();
 
-body.prepend(
+body.mount(
 
   <View />
 
