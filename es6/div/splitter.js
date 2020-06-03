@@ -11,8 +11,8 @@ import { ESCAPE_KEY_CODE } from "../constants";
 import { ESCAPE_KEY_STOPS_DRAGGING } from "../options";
 
 class SplitterDiv extends Element {
-  constructor(selectorOrDOMElement, startDragHandler, stopDragHandler, dragHandler, options) {
-    super(selectorOrDOMElement);
+  constructor(selector, startDragHandler, stopDragHandler, dragHandler, options) {
+    super(selector);
 
     this.startDragHandler = startDragHandler;
     this.stopDragHandler = stopDragHandler;
@@ -164,8 +164,8 @@ class SplitterDiv extends Element {
     }
   }
 
-  initialise(properties) {
-    const { disabled } = properties;
+  initialise() {
+    const { disabled } = this.properties;
 
     (disabled === true) ? ///
       this.disable() :
@@ -197,19 +197,17 @@ class SplitterDiv extends Element {
   ];
 
   static fromClass(Class, properties) {
-    const { onStartDrag, onStopDrag, onDrag, options = defaultOptions} = properties,
+    const { onStartDrag, onStopDrag, onDrag, options = {} } = properties,
           startDragHandler = onStartDrag, ///
           stopDragHandler = onStopDrag, ///
           dragHandler = onDrag, ///
           splitterDiv = Element.fromClass(Class, properties, startDragHandler, stopDragHandler, dragHandler, options);
 
-    splitterDiv.initialise(properties);
+    splitterDiv.initialise();
 
     return splitterDiv;
   }
 }
-
-const defaultOptions = {};
 
 export default withStyle(SplitterDiv)`
 

@@ -5,12 +5,12 @@ import withStyle from "easy-with-style";  ///
 import { HorizontalSplitterDiv } from "../../../../index";  ///
 
 class MainHorizontalSplitterDiv extends HorizontalSplitterDiv {
-  initialise(properties) {
-    const { bottomLeftDiv } = properties;
+  initialise() {
+    const { bottomLeftDiv } = this.properties;
 
     this.onDrag((height) => bottomLeftDiv.setHeight(height));
 
-    super.initialise(properties);
+    super.initialise();
   }
 
   static defaultProperties = {
@@ -20,7 +20,7 @@ class MainHorizontalSplitterDiv extends HorizontalSplitterDiv {
   static fromClass(Class, properties) {
     const leftHorizontalSplitterDiv = HorizontalSplitterDiv.fromClass(Class, properties);
 
-    leftHorizontalSplitterDiv.initialise(properties);
+    leftHorizontalSplitterDiv.initialise();
 
     return leftHorizontalSplitterDiv;
   }
