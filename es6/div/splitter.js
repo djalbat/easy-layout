@@ -164,12 +164,20 @@ class SplitterDiv extends Element {
     }
   }
 
-  initialise() {
+  didMount() {
     const { disabled } = this.properties;
 
     (disabled === true) ? ///
       this.disable() :
         this.enable();
+  }
+
+  willUnmout() {
+    ///
+  }
+
+  initialise() {
+    this.setInitialState();
 
     window.on("mouseup blur", this.mouseUpHandler.bind(this));  ///
 
@@ -178,8 +186,6 @@ class SplitterDiv extends Element {
     this.onMouseDown(this.mouseDownHandler.bind(this));
     this.onMouseOver(this.mouseOverHandler.bind(this));
     this.onMouseOut(this.mouseOutHandler.bind(this));
-
-    this.setInitialState();
   }
 
   static tagName = "div";
