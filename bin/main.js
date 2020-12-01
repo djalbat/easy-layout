@@ -7,7 +7,7 @@ const { createReloadHandler } = lively;
 
 const server = express(), ///
       staticRouter = express.static("."),
-      reloadHandler = createReloadHandler("./example.js")
+      reloadHandler = createReloadHandler("./example.js");
 
 server.use(staticRouter);
 
