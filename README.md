@@ -99,4 +99,3 @@ Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have
 ## Contact
 
 * james.smith@djalbat.com
-* http://djalbat.com
