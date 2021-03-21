@@ -3860,7 +3860,7 @@
     exports.default = _default;
   });
 
-  // node_modules/necessary/lib/constants.js
+  // node_modules/occam-lexers/node_modules/necessary/lib/constants.js
   var require_constants2 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -3919,7 +3919,7 @@
     exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
   });
 
-  // node_modules/necessary/lib/utilities/ajax.js
+  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/ajax.js
   var require_ajax = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4016,7 +4016,7 @@
     }
   });
 
-  // node_modules/necessary/lib/utilities/array.js
+  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/array.js
   var require_array2 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4330,7 +4330,7 @@
     exports.default = _default;
   });
 
-  // node_modules/necessary/lib/utilities/path.js
+  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/path.js
   var require_path = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4454,7 +4454,7 @@
     exports.default = _default;
   });
 
-  // node_modules/necessary/lib/utilities/asynchronous.js
+  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/asynchronous.js
   var require_asynchronous = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4578,7 +4578,7 @@
     exports.default = _default;
   });
 
-  // node_modules/necessary/lib/browser.js
+  // node_modules/occam-lexers/node_modules/necessary/lib/browser.js
   var require_browser = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -9334,8 +9334,767 @@
     exports.default = Rule;
   });
 
-  // node_modules/occam-parsers/lib/utilities/array.js
+  // node_modules/occam-parsers/node_modules/necessary/lib/constants.js
+  var require_constants3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.BACKSPACE_CHARACTER = exports.ETX_CHARACTER = exports.DATA_EVENT = exports.CONTENT_TYPE = exports.DEFAULT_LOG_FILE_BASE_NAME = exports.TRACE = exports.POST = exports.CARRIAGE_RETURN_CHARACTER = exports.DEFAULT_ENCODING = exports.ERROR = exports.ACCEPT = exports.DEBUG = exports.DEFAULT_RC_BASE_EXTENSION = exports.DEFAULT_ATTEMPTS = exports.CTRL_C = exports.FATAL = exports.DEFAULT_INITIAL_ANSWER = exports.WARNING = exports.APPLICATION_JSON = exports.INFO = exports.GET = exports.LINE_FEED_CHARACTER = exports.DEFAULT_LOG_LEVEL = exports.DEFAULT_LOG_DIRECTORY_PATH = exports.UTF8_ENCODING = void 0;
+    var TRACE = "TRACE";
+    exports.TRACE = TRACE;
+    var DEBUG = "DEBUG";
+    exports.DEBUG = DEBUG;
+    var INFO = "INFO";
+    exports.INFO = INFO;
+    var WARNING = "WARNING";
+    exports.WARNING = WARNING;
+    var ERROR = "ERROR";
+    exports.ERROR = ERROR;
+    var FATAL = "FATAL";
+    exports.FATAL = FATAL;
+    var DEFAULT_LOG_LEVEL = WARNING;
+    exports.DEFAULT_LOG_LEVEL = DEFAULT_LOG_LEVEL;
+    var DEFAULT_LOG_DIRECTORY_PATH = null;
+    exports.DEFAULT_LOG_DIRECTORY_PATH = DEFAULT_LOG_DIRECTORY_PATH;
+    var DEFAULT_LOG_FILE_BASE_NAME = "default";
+    exports.DEFAULT_LOG_FILE_BASE_NAME = DEFAULT_LOG_FILE_BASE_NAME;
+    var GET = "GET";
+    exports.GET = GET;
+    var POST = "POST";
+    exports.POST = POST;
+    var ACCEPT = "accept";
+    exports.ACCEPT = ACCEPT;
+    var CONTENT_TYPE = "content-type";
+    exports.CONTENT_TYPE = CONTENT_TYPE;
+    var APPLICATION_JSON = "application/json";
+    exports.APPLICATION_JSON = APPLICATION_JSON;
+    var CTRL_C = "^C";
+    exports.CTRL_C = CTRL_C;
+    var DATA_EVENT = "data";
+    exports.DATA_EVENT = DATA_EVENT;
+    var UTF8_ENCODING = "utf8";
+    exports.UTF8_ENCODING = UTF8_ENCODING;
+    var ETX_CHARACTER = "";
+    exports.ETX_CHARACTER = ETX_CHARACTER;
+    var DEFAULT_ATTEMPTS = 3;
+    exports.DEFAULT_ATTEMPTS = DEFAULT_ATTEMPTS;
+    var DEFAULT_ENCODING = UTF8_ENCODING;
+    exports.DEFAULT_ENCODING = DEFAULT_ENCODING;
+    var LINE_FEED_CHARACTER = "\n";
+    exports.LINE_FEED_CHARACTER = LINE_FEED_CHARACTER;
+    var BACKSPACE_CHARACTER = String.fromCharCode(127);
+    exports.BACKSPACE_CHARACTER = BACKSPACE_CHARACTER;
+    var DEFAULT_INITIAL_ANSWER = "";
+    exports.DEFAULT_INITIAL_ANSWER = DEFAULT_INITIAL_ANSWER;
+    var CARRIAGE_RETURN_CHARACTER = "\r";
+    exports.CARRIAGE_RETURN_CHARACTER = CARRIAGE_RETURN_CHARACTER;
+    var DEFAULT_RC_BASE_EXTENSION = "";
+    exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
+  });
+
+  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/ajax.js
+  var require_ajax2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.get = get;
+    exports.post = post;
+    exports.request = request;
+    exports.default = void 0;
+    var _constants = require_constants3();
+    function get(host, uri, parameters, headers, callback) {
+      if (callback === void 0) {
+        callback = headers;
+        headers = {};
+      }
+      var method = _constants.GET, body2 = null;
+      guaranteeAccept(headers);
+      request(host, uri, parameters, method, body2, headers, callback);
+    }
+    function post(host, uri, parameters, body2, headers, callback) {
+      if (callback === void 0) {
+        callback = headers;
+        headers = {};
+      }
+      var method = _constants.POST;
+      guaranteeAccept(headers);
+      guaranteeContentType(headers);
+      request(host, uri, parameters, method, body2, headers, callback);
+    }
+    function request(host, uri, parameters, method, body2, headers, callback) {
+      var url = urlFromHostURIAndParameters(host, uri, parameters), accept = headers[_constants.ACCEPT] || null, contentType = headers[_constants.CONTENT_TYPE] || null, xmlHttpRequest = new XMLHttpRequest();
+      if (contentType === _constants.APPLICATION_JSON) {
+        var json = body2, jsonString = JSON.stringify(json);
+        body2 = jsonString;
+      }
+      xmlHttpRequest.onreadystatechange = function() {
+        var readyState = xmlHttpRequest.readyState, status = xmlHttpRequest.status, responseText = xmlHttpRequest.responseText;
+        if (readyState == 4) {
+          var body1 = responseText;
+          if (accept === _constants.APPLICATION_JSON) {
+            try {
+              var jsonString2 = body1, json2 = JSON.parse(jsonString2);
+              body1 = json2;
+            } catch (error) {
+              body1 = null;
+            }
+            callback(body1, status);
+          }
+        }
+      };
+      xmlHttpRequest.open(method, url);
+      if (accept !== null) {
+        xmlHttpRequest.setRequestHeader(_constants.ACCEPT, accept);
+      }
+      if (contentType !== null) {
+        xmlHttpRequest.setRequestHeader(_constants.CONTENT_TYPE, contentType);
+      }
+      body2 !== null ? xmlHttpRequest.send(body2) : xmlHttpRequest.send();
+    }
+    var _default = {
+      get,
+      post,
+      request
+    };
+    exports.default = _default;
+    function guarantee(headers, name, value) {
+      var propertyNames = Object.getOwnPropertyNames(headers), names = propertyNames.map(function(propertyName) {
+        var lowerCasePropertyName = propertyName.toLowerCase(), name1 = lowerCasePropertyName;
+        return name1;
+      }), namesIncludesName = names.includes(name);
+      if (!namesIncludesName) {
+        headers[name] = value;
+      }
+    }
+    function guaranteeAccept(headers) {
+      var name = _constants.ACCEPT, value = _constants.APPLICATION_JSON;
+      guarantee(headers, name, value);
+    }
+    function guaranteeContentType(headers) {
+      var name = _constants.CONTENT_TYPE, value = _constants.APPLICATION_JSON;
+      guarantee(headers, name, value);
+    }
+    function queryStringFromParameters(parameters) {
+      var names = Object.keys(parameters), namesLength = names.length, lastIndex = namesLength - 1, queryString = names.reduce(function(queryString1, name, index) {
+        var value = parameters[name], encodedName = encodeURIComponent(name), encodedValue = encodeURIComponent(value), ampersandOrNothing = index !== lastIndex ? "&" : "";
+        queryString1 += "".concat(encodedName, "=").concat(encodedValue).concat(ampersandOrNothing);
+        return queryString1;
+      }, "");
+      return queryString;
+    }
+    function urlFromHostURIAndParameters(host, uri, parameters) {
+      var queryString = queryStringFromParameters(parameters), url = queryString === "" ? "".concat(host).concat(uri) : "".concat(host).concat(uri, "?").concat(queryString);
+      return url;
+    }
+  });
+
+  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/array.js
   var require_array3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.first = first;
+    exports.second = second;
+    exports.third = third;
+    exports.fourth = fourth;
+    exports.fifth = fifth;
+    exports.fifthLast = fifthLast;
+    exports.fourthLast = fourthLast;
+    exports.thirdLast = thirdLast;
+    exports.secondLast = secondLast;
+    exports.last = last;
+    exports.head = head;
+    exports.tail = tail;
+    exports.push = push;
+    exports.unshift = unshift;
+    exports.concat = concat;
+    exports.clear = clear;
+    exports.copy = copy;
+    exports.merge = merge;
+    exports.splice = splice;
+    exports.replace = replace;
+    exports.filter = filter;
+    exports.find = find;
+    exports.prune = prune;
+    exports.patch = patch;
+    exports.augment = augment;
+    exports.separate = separate;
+    exports.forwardsSome = forwardsSome;
+    exports.backwardsSome = backwardsSome;
+    exports.forwardsEvery = forwardsEvery;
+    exports.backwardsEvery = backwardsEvery;
+    exports.forwardsReduce = forwardsReduce;
+    exports.backwardsReduce = backwardsReduce;
+    exports.forwardsForEach = forwardsForEach;
+    exports.backwardsForEach = backwardsForEach;
+    exports.default = void 0;
+    function _arrayWithoutHoles(arr) {
+      if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+          arr2[i] = arr[i];
+        }
+        return arr2;
+      }
+    }
+    function _instanceof(left, right) {
+      if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+        return right[Symbol.hasInstance](left);
+      } else {
+        return left instanceof right;
+      }
+    }
+    function _iterableToArray(iter) {
+      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
+        return Array.from(iter);
+    }
+    function _nonIterableSpread() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance");
+    }
+    function _toConsumableArray(arr) {
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+    }
+    function first(array) {
+      return array[0];
+    }
+    function second(array) {
+      return array[1];
+    }
+    function third(array) {
+      return array[2];
+    }
+    function fourth(array) {
+      return array[3];
+    }
+    function fifth(array) {
+      return array[4];
+    }
+    function fifthLast(array) {
+      return array[array.length - 5];
+    }
+    function fourthLast(array) {
+      return array[array.length - 4];
+    }
+    function thirdLast(array) {
+      return array[array.length - 3];
+    }
+    function secondLast(array) {
+      return array[array.length - 2];
+    }
+    function last(array) {
+      return array[array.length - 1];
+    }
+    function head(array) {
+      return array.slice(0, 1);
+    }
+    function tail(array) {
+      return array.slice(1);
+    }
+    function push(array1, array2) {
+      Array.prototype.push.apply(array1, array2);
+    }
+    function unshift(array1, array2) {
+      Array.prototype.unshift.apply(array1, array2);
+    }
+    function concat(array1, elementOrArray2) {
+      var array2 = _instanceof(elementOrArray2, Array) ? elementOrArray2 : [
+        elementOrArray2
+      ];
+      push(array1, array2);
+    }
+    function clear(array) {
+      var start = 0;
+      return array.splice(start);
+    }
+    function copy(array1, array2) {
+      var start = 0, deleteCount = array2.length;
+      splice(array1, start, deleteCount, array2);
+    }
+    function merge(array1, array2) {
+      Array.prototype.push.apply(array1, array2);
+    }
+    function splice(array1, start, param, param1) {
+      var deleteCount = param === void 0 ? Infinity : param, array2 = param1 === void 0 ? [] : param1;
+      var args = [
+        start,
+        deleteCount
+      ].concat(_toConsumableArray(array2)), deletedItemsArray = Array.prototype.splice.apply(array1, args);
+      return deletedItemsArray;
+    }
+    function replace(array, element, test) {
+      var start;
+      var found = array.some(function(element1, index) {
+        var passed = test(element1, index);
+        if (passed) {
+          start = index;
+          return true;
+        }
+      });
+      if (found) {
+        var deleteCount = 1;
+        array.splice(start, deleteCount, element);
+      }
+      return found;
+    }
+    function filter(array, test) {
+      var filteredElements = [];
+      backwardsForEach(array, function(element, index) {
+        var passed = test(element, index);
+        if (!passed) {
+          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
+          filteredElements.unshift(firstDeletedElement);
+        }
+      });
+      return filteredElements;
+    }
+    function find(array, test) {
+      var elements = [];
+      forwardsForEach(array, function(element, index) {
+        var passed = test(element, index);
+        if (passed) {
+          elements.push(element);
+        }
+      });
+      return elements;
+    }
+    function prune(array, test) {
+      var prunedElement = void 0;
+      array.some(function(element, index) {
+        var passed = test(element, index);
+        if (!passed) {
+          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
+          prunedElement = firstDeletedElement;
+          return true;
+        }
+      });
+      return prunedElement;
+    }
+    function patch(array, element, test) {
+      var found = array.some(function(element1, index) {
+        var passed = test(element1, index);
+        if (passed) {
+          return true;
+        }
+      });
+      if (found) {
+        array.push(element);
+      }
+      return found;
+    }
+    function augment(array1, array2, test) {
+      array2.forEach(function(element, index) {
+        var passed = test(element, index);
+        if (passed) {
+          array1.push(element);
+        }
+      });
+    }
+    function separate(array, array1, array2, test) {
+      array.forEach(function(element, index) {
+        var passed = test(element, index);
+        passed ? array1.push(element) : array2.push(element);
+      });
+    }
+    function forwardsSome(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index], result = callback(element, index);
+        if (result) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function backwardsSome(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index], result = callback(element, index);
+        if (result) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function forwardsEvery(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index], result = callback(element, index);
+        if (!result) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function backwardsEvery(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index], result = callback(element, index);
+        if (!result) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function forwardsReduce(array, callback, initialValue) {
+      var value = initialValue;
+      forwardsForEach(array, function(element, index) {
+        value = callback(value, element, index);
+      });
+      return value;
+    }
+    function backwardsReduce(array, callback, initialValue) {
+      var value = initialValue;
+      backwardsForEach(array, function(element, index) {
+        value = callback(value, element, index);
+      });
+      return value;
+    }
+    function forwardsForEach(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index];
+        callback(element, index);
+      }
+    }
+    function backwardsForEach(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index];
+        callback(element, index);
+      }
+    }
+    var _default = {
+      first,
+      second,
+      third,
+      fourth,
+      fifth,
+      fifthLast,
+      fourthLast,
+      thirdLast,
+      secondLast,
+      last,
+      head,
+      tail,
+      push,
+      unshift,
+      concat,
+      clear,
+      copy,
+      merge,
+      splice,
+      replace,
+      filter,
+      find,
+      prune,
+      patch,
+      augment,
+      separate,
+      forwardsSome,
+      backwardsSome,
+      forwardsEvery,
+      backwardsEvery,
+      forwardsReduce,
+      backwardsReduce,
+      forwardsForEach,
+      backwardsForEach
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/path.js
+  var require_path2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.isPathName = isPathName;
+    exports.isPathTopmostName = isPathTopmostName;
+    exports.isPathRelativePath = isPathRelativePath;
+    exports.isPathAbsolutePath = isPathAbsolutePath;
+    exports.isTopmostNameInAbsolutePath = isTopmostNameInAbsolutePath;
+    exports.combinePaths = combinePaths;
+    exports.concatenatePaths = concatenatePaths;
+    exports.bottommostNameFromPath = bottommostNameFromPath;
+    exports.topmostDirectoryPathFromPath = topmostDirectoryPathFromPath;
+    exports.topmostDirectoryNameFromPath = topmostDirectoryNameFromPath;
+    exports.pathWithoutBottommostNameFromPath = pathWithoutBottommostNameFromPath;
+    exports.pathWithoutTopmostDirectoryNameFromPath = pathWithoutTopmostDirectoryNameFromPath;
+    exports.default = void 0;
+    var _array = require_array3();
+    function isPathName(path) {
+      path = path.replace(/^\//, "").replace(/\/$/, "");
+      var pathName = /\//.test(path) === false;
+      return pathName;
+    }
+    function isPathTopmostName(path) {
+      var pathName = isPathName(path), pathAbsolutePath = isPathAbsolutePath(path), pathTopmostName = pathName && pathAbsolutePath;
+      return pathTopmostName;
+    }
+    function isPathRelativePath(path) {
+      var pathRelativePath = !/^\//.test(path);
+      return pathRelativePath;
+    }
+    function isPathAbsolutePath(path) {
+      var pathAbsolutePath = /^\//.test(path);
+      return pathAbsolutePath;
+    }
+    function isTopmostNameInAbsolutePath(topmostName, absolutePath) {
+      var regExp = new RegExp("^".concat(topmostName, "(?:\\/.+)?$")), topmostNameInAbsolutePath = regExp.test(absolutePath);
+      return topmostNameInAbsolutePath;
+    }
+    function combinePaths(path, relativePath) {
+      var combinedPath = null;
+      var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
+      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
+      if (firstRelativePathName === ".") {
+        relativePathNames.shift();
+      }
+      firstRelativePathName = _array.first(relativePathNames);
+      lastPathName = _array.last(pathNames);
+      while (firstRelativePathName === ".." && lastPathName !== void 0) {
+        relativePathNames.shift();
+        pathNames.pop();
+        firstRelativePathName = _array.first(relativePathNames);
+        lastPathName = _array.last(pathNames);
+      }
+      if (lastPathName !== void 0) {
+        var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
+        combinedPath = combinedPathNames.join("/");
+      }
+      return combinedPath;
+    }
+    function concatenatePaths(path, relativePath) {
+      path = path.replace(/\/$/, "");
+      var concatenatedPath = "".concat(path, "/").concat(relativePath);
+      return concatenatedPath;
+    }
+    function bottommostNameFromPath(path) {
+      var bottommostName = null;
+      var matches = path.match(/^.*\/([^\/]+\/?)$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        bottommostName = secondMatch;
+      }
+      return bottommostName;
+    }
+    function topmostDirectoryPathFromPath(path) {
+      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
+      return topmostDirectoryPath;
+    }
+    function topmostDirectoryNameFromPath(path) {
+      var topmostDirectoryName = null;
+      var matches = path.match(/^([^\/]+)\/.+$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        topmostDirectoryName = secondMatch;
+      }
+      return topmostDirectoryName;
+    }
+    function pathWithoutBottommostNameFromPath(path) {
+      var pathWithoutBottommostName = null;
+      var matches = path.match(/^(.*)\/[^\/]+\/?$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        pathWithoutBottommostName = secondMatch;
+      }
+      return pathWithoutBottommostName;
+    }
+    function pathWithoutTopmostDirectoryNameFromPath(path) {
+      var pathWithoutTopmostDirectoryName = null;
+      var matches = path.match(/^[^\/]+\/(.+)$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        pathWithoutTopmostDirectoryName = secondMatch;
+      }
+      return pathWithoutTopmostDirectoryName;
+    }
+    var _default = {
+      isPathName,
+      isPathTopmostName,
+      isPathRelativePath,
+      isPathAbsolutePath,
+      isTopmostNameInAbsolutePath,
+      combinePaths,
+      concatenatePaths,
+      bottommostNameFromPath,
+      topmostDirectoryPathFromPath,
+      topmostDirectoryNameFromPath,
+      pathWithoutBottommostNameFromPath,
+      pathWithoutTopmostDirectoryNameFromPath
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/asynchronous.js
+  var require_asynchronous2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.whilst = whilst;
+    exports.forEach = forEach;
+    exports.sequence = sequence;
+    exports.eventually = eventually;
+    exports.repeatedly = repeatedly;
+    exports.forwardsForEach = forwardsForEach;
+    exports.backwardsForEach = backwardsForEach;
+    exports.default = void 0;
+    function whilst(callback, done, context) {
+      var count = -1;
+      function next() {
+        count++;
+        var index = count, terminate = callback(next, done, context, index);
+        if (terminate) {
+          done();
+        }
+      }
+      next();
+    }
+    function forEach(array, callback, done, context) {
+      var length = array.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    function sequence(callbacks, done, context) {
+      var length = callbacks.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, callback = callbacks[index];
+          callback(next, done, context, index);
+        }
+      }
+      next();
+    }
+    function eventually(callbacks, done, context) {
+      var next = function next2() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        }
+      };
+      var length = callbacks.length;
+      var count = 0;
+      callbacks.forEach(function(callback, index) {
+        callback(next, done, context, index);
+      });
+    }
+    function repeatedly(callback, length, done, context) {
+      var next = function next2() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        }
+      };
+      var count = 0;
+      for (var index = 0; index < length; index++) {
+        callback(next, done, context, index);
+      }
+    }
+    function forwardsForEach(array, callback, done, context) {
+      var length = array.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    function backwardsForEach(array, callback, done, context) {
+      var length = array.length;
+      var count = length;
+      function next() {
+        count--;
+        var terminate = count === -1;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    var _default = {
+      whilst,
+      forEach,
+      sequence,
+      eventually,
+      repeatedly,
+      forwardsForEach,
+      backwardsForEach
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/occam-parsers/node_modules/necessary/lib/browser.js
+  var require_browser2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var _ajax = _interopRequireDefault2(require_ajax2());
+    var _path = _interopRequireDefault2(require_path2());
+    var _array = _interopRequireDefault2(require_array3());
+    var _asynchronous = _interopRequireDefault2(require_asynchronous2());
+    function _interopRequireDefault2(obj) {
+      return obj && obj.__esModule ? obj : {
+        default: obj
+      };
+    }
+    Object.defineProperty(exports, "ajaxUtilities", {
+      enumerable: true,
+      get: function() {
+        return _ajax.default;
+      }
+    });
+    Object.defineProperty(exports, "pathUtilities", {
+      enumerable: true,
+      get: function() {
+        return _path.default;
+      }
+    });
+    Object.defineProperty(exports, "arrayUtilities", {
+      enumerable: true,
+      get: function() {
+        return _array.default;
+      }
+    });
+    Object.defineProperty(exports, "asynchronousUtilities", {
+      enumerable: true,
+      get: function() {
+        return _asynchronous.default;
+      }
+    });
+  });
+
+  // node_modules/occam-parsers/lib/utilities/array.js
+  var require_array4 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -9344,7 +10103,7 @@
     exports.allButFirst = allButFirst;
     exports.allButFirstAndLast = allButFirstAndLast;
     exports.third = exports.push = exports.filter = exports.first = exports.last = exports.second = exports.backwardsSome = exports.forwardsSome = void 0;
-    var _necessary = require_browser();
+    var _necessary = require_browser2();
     var first = _necessary.arrayUtilities.first;
     var second = _necessary.arrayUtilities.second;
     var third = _necessary.arrayUtilities.third;
@@ -9390,7 +10149,7 @@
       value: true
     });
     exports.default = void 0;
-    var _array = require_array3();
+    var _array = require_array4();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -9964,7 +10723,7 @@
     exports.default = void 0;
     var _verticalBranch = _interopRequireDefault2(require_verticalBranch());
     var _horizontalBranch = _interopRequireDefault2(require_horizontalBranch());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -10236,7 +10995,7 @@
     });
     exports.default = void 0;
     var _nonTerminalNode = _interopRequireDefault2(require_nonTerminalNode());
-    var _array = require_array3();
+    var _array = require_array4();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -10386,7 +11145,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -10519,7 +11278,7 @@
       value: true
     });
     exports.default = void 0;
-    var _array = require_array3();
+    var _array = require_array4();
     var _part = require_part();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
@@ -11873,7 +12632,7 @@
     exports.default = void 0;
     var _occamLexers = require_lib2();
     var _collectionOfParts = _interopRequireDefault2(require_collectionOfParts());
-    var _array = require_array3();
+    var _array = require_array4();
     var _partTypes = require_partTypes();
     function _assertThisInitialized(self) {
       if (self === void 0) {
@@ -12212,7 +12971,7 @@
     exports.isNodeQuantifierNode = isNodeQuantifierNode;
     exports.isNodeLookAheadModifierNode = isNodeLookAheadModifierNode;
     exports.ruleNameFromQuantifierNode = ruleNameFromQuantifierNode;
-    var _array = require_array3();
+    var _array = require_array4();
     var _ruleNames = require_ruleNames();
     function isNodeChoiceNode(node) {
       var nodeNoChoiceNode = false;
@@ -12271,7 +13030,7 @@
     var _optionalPart = _interopRequireDefault2(require_optionalPart());
     var _oneOrMoreParts = _interopRequireDefault2(require_oneOrMoreParts());
     var _zeroOrMoreParts = _interopRequireDefault2(require_zeroOrMoreParts());
-    var _array = require_array3();
+    var _array = require_array4();
     var _bnf = require_bnf2();
     var _ruleNames = require_ruleNames();
     function _assertThisInitialized(self) {
@@ -12918,7 +13677,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -14392,7 +15151,7 @@
   });
 
   // node_modules/occam-parsers/lib/constants.js
-  var require_constants3 = __commonJS((exports) => {
+  var require_constants4 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -14409,7 +15168,7 @@
       value: true
     });
     exports.default = void 0;
-    var _constants = require_constants3();
+    var _constants = require_constants4();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -14571,7 +15330,7 @@
     });
     exports.default = void 0;
     var _context = _interopRequireDefault2(require_context());
-    var _array = require_array3();
+    var _array = require_array4();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -14771,7 +15530,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal2());
     var _partTypes = require_partTypes();
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -15105,7 +15864,7 @@
     exports.default = void 0;
     var _ruleName = _interopRequireDefault2(require_ruleName2());
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -16375,7 +17134,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -16483,7 +17242,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal2());
-    var _array = require_array3();
+    var _array = require_array4();
     var _partTypes = require_partTypes();
     function _assertThisInitialized(self) {
       if (self === void 0) {
@@ -16852,7 +17611,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -17311,7 +18070,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
     var _terminalSymbol = _interopRequireDefault2(require_terminalSymbol());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -18939,7 +19698,7 @@
     exports.default = void 0;
     var _terminal = _interopRequireDefault2(require_terminal());
     var _terminal1 = _interopRequireDefault2(require_terminal2());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -19103,7 +19862,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
     var _regularExpression = _interopRequireDefault2(require_regularExpression2());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -19623,7 +20382,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
     var _significantTokenType = _interopRequireDefault2(require_significantTokenType());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -19857,7 +20616,7 @@
     var _oneOrMoreQuantifier = _interopRequireDefault2(require_oneOrMoreQuantifier());
     var _zeroOrMoreQuantifier = _interopRequireDefault2(require_zeroOrMoreQuantifier());
     var _significantTokenType = _interopRequireDefault2(require_significantTokenType4());
-    var _array = require_array3();
+    var _array = require_array4();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -20405,8 +21164,767 @@
     exports.default = CSSParser;
   });
 
+  // node_modules/occam-dom/node_modules/necessary/lib/constants.js
+  var require_constants5 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.BACKSPACE_CHARACTER = exports.ETX_CHARACTER = exports.DATA_EVENT = exports.CONTENT_TYPE = exports.DEFAULT_LOG_FILE_BASE_NAME = exports.TRACE = exports.POST = exports.CARRIAGE_RETURN_CHARACTER = exports.DEFAULT_ENCODING = exports.ERROR = exports.ACCEPT = exports.DEBUG = exports.DEFAULT_RC_BASE_EXTENSION = exports.DEFAULT_ATTEMPTS = exports.CTRL_C = exports.FATAL = exports.DEFAULT_INITIAL_ANSWER = exports.WARNING = exports.APPLICATION_JSON = exports.INFO = exports.GET = exports.LINE_FEED_CHARACTER = exports.DEFAULT_LOG_LEVEL = exports.DEFAULT_LOG_DIRECTORY_PATH = exports.UTF8_ENCODING = void 0;
+    var TRACE = "TRACE";
+    exports.TRACE = TRACE;
+    var DEBUG = "DEBUG";
+    exports.DEBUG = DEBUG;
+    var INFO = "INFO";
+    exports.INFO = INFO;
+    var WARNING = "WARNING";
+    exports.WARNING = WARNING;
+    var ERROR = "ERROR";
+    exports.ERROR = ERROR;
+    var FATAL = "FATAL";
+    exports.FATAL = FATAL;
+    var DEFAULT_LOG_LEVEL = WARNING;
+    exports.DEFAULT_LOG_LEVEL = DEFAULT_LOG_LEVEL;
+    var DEFAULT_LOG_DIRECTORY_PATH = null;
+    exports.DEFAULT_LOG_DIRECTORY_PATH = DEFAULT_LOG_DIRECTORY_PATH;
+    var DEFAULT_LOG_FILE_BASE_NAME = "default";
+    exports.DEFAULT_LOG_FILE_BASE_NAME = DEFAULT_LOG_FILE_BASE_NAME;
+    var GET = "GET";
+    exports.GET = GET;
+    var POST = "POST";
+    exports.POST = POST;
+    var ACCEPT = "accept";
+    exports.ACCEPT = ACCEPT;
+    var CONTENT_TYPE = "content-type";
+    exports.CONTENT_TYPE = CONTENT_TYPE;
+    var APPLICATION_JSON = "application/json";
+    exports.APPLICATION_JSON = APPLICATION_JSON;
+    var CTRL_C = "^C";
+    exports.CTRL_C = CTRL_C;
+    var DATA_EVENT = "data";
+    exports.DATA_EVENT = DATA_EVENT;
+    var UTF8_ENCODING = "utf8";
+    exports.UTF8_ENCODING = UTF8_ENCODING;
+    var ETX_CHARACTER = "";
+    exports.ETX_CHARACTER = ETX_CHARACTER;
+    var DEFAULT_ATTEMPTS = 3;
+    exports.DEFAULT_ATTEMPTS = DEFAULT_ATTEMPTS;
+    var DEFAULT_ENCODING = UTF8_ENCODING;
+    exports.DEFAULT_ENCODING = DEFAULT_ENCODING;
+    var LINE_FEED_CHARACTER = "\n";
+    exports.LINE_FEED_CHARACTER = LINE_FEED_CHARACTER;
+    var BACKSPACE_CHARACTER = String.fromCharCode(127);
+    exports.BACKSPACE_CHARACTER = BACKSPACE_CHARACTER;
+    var DEFAULT_INITIAL_ANSWER = "";
+    exports.DEFAULT_INITIAL_ANSWER = DEFAULT_INITIAL_ANSWER;
+    var CARRIAGE_RETURN_CHARACTER = "\r";
+    exports.CARRIAGE_RETURN_CHARACTER = CARRIAGE_RETURN_CHARACTER;
+    var DEFAULT_RC_BASE_EXTENSION = "";
+    exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
+  });
+
+  // node_modules/occam-dom/node_modules/necessary/lib/utilities/ajax.js
+  var require_ajax3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.get = get;
+    exports.post = post;
+    exports.request = request;
+    exports.default = void 0;
+    var _constants = require_constants5();
+    function get(host, uri, parameters, headers, callback) {
+      if (callback === void 0) {
+        callback = headers;
+        headers = {};
+      }
+      var method = _constants.GET, body2 = null;
+      guaranteeAccept(headers);
+      request(host, uri, parameters, method, body2, headers, callback);
+    }
+    function post(host, uri, parameters, body2, headers, callback) {
+      if (callback === void 0) {
+        callback = headers;
+        headers = {};
+      }
+      var method = _constants.POST;
+      guaranteeAccept(headers);
+      guaranteeContentType(headers);
+      request(host, uri, parameters, method, body2, headers, callback);
+    }
+    function request(host, uri, parameters, method, body2, headers, callback) {
+      var url = urlFromHostURIAndParameters(host, uri, parameters), accept = headers[_constants.ACCEPT] || null, contentType = headers[_constants.CONTENT_TYPE] || null, xmlHttpRequest = new XMLHttpRequest();
+      if (contentType === _constants.APPLICATION_JSON) {
+        var json = body2, jsonString = JSON.stringify(json);
+        body2 = jsonString;
+      }
+      xmlHttpRequest.onreadystatechange = function() {
+        var readyState = xmlHttpRequest.readyState, status = xmlHttpRequest.status, responseText = xmlHttpRequest.responseText;
+        if (readyState == 4) {
+          var body1 = responseText;
+          if (accept === _constants.APPLICATION_JSON) {
+            try {
+              var jsonString2 = body1, json2 = JSON.parse(jsonString2);
+              body1 = json2;
+            } catch (error) {
+              body1 = null;
+            }
+            callback(body1, status);
+          }
+        }
+      };
+      xmlHttpRequest.open(method, url);
+      if (accept !== null) {
+        xmlHttpRequest.setRequestHeader(_constants.ACCEPT, accept);
+      }
+      if (contentType !== null) {
+        xmlHttpRequest.setRequestHeader(_constants.CONTENT_TYPE, contentType);
+      }
+      body2 !== null ? xmlHttpRequest.send(body2) : xmlHttpRequest.send();
+    }
+    var _default = {
+      get,
+      post,
+      request
+    };
+    exports.default = _default;
+    function guarantee(headers, name, value) {
+      var propertyNames = Object.getOwnPropertyNames(headers), names = propertyNames.map(function(propertyName) {
+        var lowerCasePropertyName = propertyName.toLowerCase(), name1 = lowerCasePropertyName;
+        return name1;
+      }), namesIncludesName = names.includes(name);
+      if (!namesIncludesName) {
+        headers[name] = value;
+      }
+    }
+    function guaranteeAccept(headers) {
+      var name = _constants.ACCEPT, value = _constants.APPLICATION_JSON;
+      guarantee(headers, name, value);
+    }
+    function guaranteeContentType(headers) {
+      var name = _constants.CONTENT_TYPE, value = _constants.APPLICATION_JSON;
+      guarantee(headers, name, value);
+    }
+    function queryStringFromParameters(parameters) {
+      var names = Object.keys(parameters), namesLength = names.length, lastIndex = namesLength - 1, queryString = names.reduce(function(queryString1, name, index) {
+        var value = parameters[name], encodedName = encodeURIComponent(name), encodedValue = encodeURIComponent(value), ampersandOrNothing = index !== lastIndex ? "&" : "";
+        queryString1 += "".concat(encodedName, "=").concat(encodedValue).concat(ampersandOrNothing);
+        return queryString1;
+      }, "");
+      return queryString;
+    }
+    function urlFromHostURIAndParameters(host, uri, parameters) {
+      var queryString = queryStringFromParameters(parameters), url = queryString === "" ? "".concat(host).concat(uri) : "".concat(host).concat(uri, "?").concat(queryString);
+      return url;
+    }
+  });
+
+  // node_modules/occam-dom/node_modules/necessary/lib/utilities/array.js
+  var require_array5 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.first = first;
+    exports.second = second;
+    exports.third = third;
+    exports.fourth = fourth;
+    exports.fifth = fifth;
+    exports.fifthLast = fifthLast;
+    exports.fourthLast = fourthLast;
+    exports.thirdLast = thirdLast;
+    exports.secondLast = secondLast;
+    exports.last = last;
+    exports.head = head;
+    exports.tail = tail;
+    exports.push = push;
+    exports.unshift = unshift;
+    exports.concat = concat;
+    exports.clear = clear;
+    exports.copy = copy;
+    exports.merge = merge;
+    exports.splice = splice;
+    exports.replace = replace;
+    exports.filter = filter;
+    exports.find = find;
+    exports.prune = prune;
+    exports.patch = patch;
+    exports.augment = augment;
+    exports.separate = separate;
+    exports.forwardsSome = forwardsSome;
+    exports.backwardsSome = backwardsSome;
+    exports.forwardsEvery = forwardsEvery;
+    exports.backwardsEvery = backwardsEvery;
+    exports.forwardsReduce = forwardsReduce;
+    exports.backwardsReduce = backwardsReduce;
+    exports.forwardsForEach = forwardsForEach;
+    exports.backwardsForEach = backwardsForEach;
+    exports.default = void 0;
+    function _arrayWithoutHoles(arr) {
+      if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+          arr2[i] = arr[i];
+        }
+        return arr2;
+      }
+    }
+    function _instanceof(left, right) {
+      if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+        return right[Symbol.hasInstance](left);
+      } else {
+        return left instanceof right;
+      }
+    }
+    function _iterableToArray(iter) {
+      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
+        return Array.from(iter);
+    }
+    function _nonIterableSpread() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance");
+    }
+    function _toConsumableArray(arr) {
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+    }
+    function first(array) {
+      return array[0];
+    }
+    function second(array) {
+      return array[1];
+    }
+    function third(array) {
+      return array[2];
+    }
+    function fourth(array) {
+      return array[3];
+    }
+    function fifth(array) {
+      return array[4];
+    }
+    function fifthLast(array) {
+      return array[array.length - 5];
+    }
+    function fourthLast(array) {
+      return array[array.length - 4];
+    }
+    function thirdLast(array) {
+      return array[array.length - 3];
+    }
+    function secondLast(array) {
+      return array[array.length - 2];
+    }
+    function last(array) {
+      return array[array.length - 1];
+    }
+    function head(array) {
+      return array.slice(0, 1);
+    }
+    function tail(array) {
+      return array.slice(1);
+    }
+    function push(array1, array2) {
+      Array.prototype.push.apply(array1, array2);
+    }
+    function unshift(array1, array2) {
+      Array.prototype.unshift.apply(array1, array2);
+    }
+    function concat(array1, elementOrArray2) {
+      var array2 = _instanceof(elementOrArray2, Array) ? elementOrArray2 : [
+        elementOrArray2
+      ];
+      push(array1, array2);
+    }
+    function clear(array) {
+      var start = 0;
+      return array.splice(start);
+    }
+    function copy(array1, array2) {
+      var start = 0, deleteCount = array2.length;
+      splice(array1, start, deleteCount, array2);
+    }
+    function merge(array1, array2) {
+      Array.prototype.push.apply(array1, array2);
+    }
+    function splice(array1, start, param, param1) {
+      var deleteCount = param === void 0 ? Infinity : param, array2 = param1 === void 0 ? [] : param1;
+      var args = [
+        start,
+        deleteCount
+      ].concat(_toConsumableArray(array2)), deletedItemsArray = Array.prototype.splice.apply(array1, args);
+      return deletedItemsArray;
+    }
+    function replace(array, element, test) {
+      var start;
+      var found = array.some(function(element1, index) {
+        var passed = test(element1, index);
+        if (passed) {
+          start = index;
+          return true;
+        }
+      });
+      if (found) {
+        var deleteCount = 1;
+        array.splice(start, deleteCount, element);
+      }
+      return found;
+    }
+    function filter(array, test) {
+      var filteredElements = [];
+      backwardsForEach(array, function(element, index) {
+        var passed = test(element, index);
+        if (!passed) {
+          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
+          filteredElements.unshift(firstDeletedElement);
+        }
+      });
+      return filteredElements;
+    }
+    function find(array, test) {
+      var elements = [];
+      forwardsForEach(array, function(element, index) {
+        var passed = test(element, index);
+        if (passed) {
+          elements.push(element);
+        }
+      });
+      return elements;
+    }
+    function prune(array, test) {
+      var prunedElement = void 0;
+      array.some(function(element, index) {
+        var passed = test(element, index);
+        if (!passed) {
+          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
+          prunedElement = firstDeletedElement;
+          return true;
+        }
+      });
+      return prunedElement;
+    }
+    function patch(array, element, test) {
+      var found = array.some(function(element1, index) {
+        var passed = test(element1, index);
+        if (passed) {
+          return true;
+        }
+      });
+      if (found) {
+        array.push(element);
+      }
+      return found;
+    }
+    function augment(array1, array2, test) {
+      array2.forEach(function(element, index) {
+        var passed = test(element, index);
+        if (passed) {
+          array1.push(element);
+        }
+      });
+    }
+    function separate(array, array1, array2, test) {
+      array.forEach(function(element, index) {
+        var passed = test(element, index);
+        passed ? array1.push(element) : array2.push(element);
+      });
+    }
+    function forwardsSome(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index], result = callback(element, index);
+        if (result) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function backwardsSome(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index], result = callback(element, index);
+        if (result) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function forwardsEvery(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index], result = callback(element, index);
+        if (!result) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function backwardsEvery(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index], result = callback(element, index);
+        if (!result) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function forwardsReduce(array, callback, initialValue) {
+      var value = initialValue;
+      forwardsForEach(array, function(element, index) {
+        value = callback(value, element, index);
+      });
+      return value;
+    }
+    function backwardsReduce(array, callback, initialValue) {
+      var value = initialValue;
+      backwardsForEach(array, function(element, index) {
+        value = callback(value, element, index);
+      });
+      return value;
+    }
+    function forwardsForEach(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index];
+        callback(element, index);
+      }
+    }
+    function backwardsForEach(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index];
+        callback(element, index);
+      }
+    }
+    var _default = {
+      first,
+      second,
+      third,
+      fourth,
+      fifth,
+      fifthLast,
+      fourthLast,
+      thirdLast,
+      secondLast,
+      last,
+      head,
+      tail,
+      push,
+      unshift,
+      concat,
+      clear,
+      copy,
+      merge,
+      splice,
+      replace,
+      filter,
+      find,
+      prune,
+      patch,
+      augment,
+      separate,
+      forwardsSome,
+      backwardsSome,
+      forwardsEvery,
+      backwardsEvery,
+      forwardsReduce,
+      backwardsReduce,
+      forwardsForEach,
+      backwardsForEach
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/occam-dom/node_modules/necessary/lib/utilities/path.js
+  var require_path3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.isPathName = isPathName;
+    exports.isPathTopmostName = isPathTopmostName;
+    exports.isPathRelativePath = isPathRelativePath;
+    exports.isPathAbsolutePath = isPathAbsolutePath;
+    exports.isTopmostNameInAbsolutePath = isTopmostNameInAbsolutePath;
+    exports.combinePaths = combinePaths;
+    exports.concatenatePaths = concatenatePaths;
+    exports.bottommostNameFromPath = bottommostNameFromPath;
+    exports.topmostDirectoryPathFromPath = topmostDirectoryPathFromPath;
+    exports.topmostDirectoryNameFromPath = topmostDirectoryNameFromPath;
+    exports.pathWithoutBottommostNameFromPath = pathWithoutBottommostNameFromPath;
+    exports.pathWithoutTopmostDirectoryNameFromPath = pathWithoutTopmostDirectoryNameFromPath;
+    exports.default = void 0;
+    var _array = require_array5();
+    function isPathName(path) {
+      path = path.replace(/^\//, "").replace(/\/$/, "");
+      var pathName = /\//.test(path) === false;
+      return pathName;
+    }
+    function isPathTopmostName(path) {
+      var pathName = isPathName(path), pathAbsolutePath = isPathAbsolutePath(path), pathTopmostName = pathName && pathAbsolutePath;
+      return pathTopmostName;
+    }
+    function isPathRelativePath(path) {
+      var pathRelativePath = !/^\//.test(path);
+      return pathRelativePath;
+    }
+    function isPathAbsolutePath(path) {
+      var pathAbsolutePath = /^\//.test(path);
+      return pathAbsolutePath;
+    }
+    function isTopmostNameInAbsolutePath(topmostName, absolutePath) {
+      var regExp = new RegExp("^".concat(topmostName, "(?:\\/.+)?$")), topmostNameInAbsolutePath = regExp.test(absolutePath);
+      return topmostNameInAbsolutePath;
+    }
+    function combinePaths(path, relativePath) {
+      var combinedPath = null;
+      var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
+      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
+      if (firstRelativePathName === ".") {
+        relativePathNames.shift();
+      }
+      firstRelativePathName = _array.first(relativePathNames);
+      lastPathName = _array.last(pathNames);
+      while (firstRelativePathName === ".." && lastPathName !== void 0) {
+        relativePathNames.shift();
+        pathNames.pop();
+        firstRelativePathName = _array.first(relativePathNames);
+        lastPathName = _array.last(pathNames);
+      }
+      if (lastPathName !== void 0) {
+        var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
+        combinedPath = combinedPathNames.join("/");
+      }
+      return combinedPath;
+    }
+    function concatenatePaths(path, relativePath) {
+      path = path.replace(/\/$/, "");
+      var concatenatedPath = "".concat(path, "/").concat(relativePath);
+      return concatenatedPath;
+    }
+    function bottommostNameFromPath(path) {
+      var bottommostName = null;
+      var matches = path.match(/^.*\/([^\/]+\/?)$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        bottommostName = secondMatch;
+      }
+      return bottommostName;
+    }
+    function topmostDirectoryPathFromPath(path) {
+      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
+      return topmostDirectoryPath;
+    }
+    function topmostDirectoryNameFromPath(path) {
+      var topmostDirectoryName = null;
+      var matches = path.match(/^([^\/]+)\/.+$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        topmostDirectoryName = secondMatch;
+      }
+      return topmostDirectoryName;
+    }
+    function pathWithoutBottommostNameFromPath(path) {
+      var pathWithoutBottommostName = null;
+      var matches = path.match(/^(.*)\/[^\/]+\/?$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        pathWithoutBottommostName = secondMatch;
+      }
+      return pathWithoutBottommostName;
+    }
+    function pathWithoutTopmostDirectoryNameFromPath(path) {
+      var pathWithoutTopmostDirectoryName = null;
+      var matches = path.match(/^[^\/]+\/(.+)$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        pathWithoutTopmostDirectoryName = secondMatch;
+      }
+      return pathWithoutTopmostDirectoryName;
+    }
+    var _default = {
+      isPathName,
+      isPathTopmostName,
+      isPathRelativePath,
+      isPathAbsolutePath,
+      isTopmostNameInAbsolutePath,
+      combinePaths,
+      concatenatePaths,
+      bottommostNameFromPath,
+      topmostDirectoryPathFromPath,
+      topmostDirectoryNameFromPath,
+      pathWithoutBottommostNameFromPath,
+      pathWithoutTopmostDirectoryNameFromPath
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/occam-dom/node_modules/necessary/lib/utilities/asynchronous.js
+  var require_asynchronous3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.whilst = whilst;
+    exports.forEach = forEach;
+    exports.sequence = sequence;
+    exports.eventually = eventually;
+    exports.repeatedly = repeatedly;
+    exports.forwardsForEach = forwardsForEach;
+    exports.backwardsForEach = backwardsForEach;
+    exports.default = void 0;
+    function whilst(callback, done, context) {
+      var count = -1;
+      function next() {
+        count++;
+        var index = count, terminate = callback(next, done, context, index);
+        if (terminate) {
+          done();
+        }
+      }
+      next();
+    }
+    function forEach(array, callback, done, context) {
+      var length = array.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    function sequence(callbacks, done, context) {
+      var length = callbacks.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, callback = callbacks[index];
+          callback(next, done, context, index);
+        }
+      }
+      next();
+    }
+    function eventually(callbacks, done, context) {
+      var next = function next2() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        }
+      };
+      var length = callbacks.length;
+      var count = 0;
+      callbacks.forEach(function(callback, index) {
+        callback(next, done, context, index);
+      });
+    }
+    function repeatedly(callback, length, done, context) {
+      var next = function next2() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        }
+      };
+      var count = 0;
+      for (var index = 0; index < length; index++) {
+        callback(next, done, context, index);
+      }
+    }
+    function forwardsForEach(array, callback, done, context) {
+      var length = array.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    function backwardsForEach(array, callback, done, context) {
+      var length = array.length;
+      var count = length;
+      function next() {
+        count--;
+        var terminate = count === -1;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    var _default = {
+      whilst,
+      forEach,
+      sequence,
+      eventually,
+      repeatedly,
+      forwardsForEach,
+      backwardsForEach
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/occam-dom/node_modules/necessary/lib/browser.js
+  var require_browser3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var _ajax = _interopRequireDefault2(require_ajax3());
+    var _path = _interopRequireDefault2(require_path3());
+    var _array = _interopRequireDefault2(require_array5());
+    var _asynchronous = _interopRequireDefault2(require_asynchronous3());
+    function _interopRequireDefault2(obj) {
+      return obj && obj.__esModule ? obj : {
+        default: obj
+      };
+    }
+    Object.defineProperty(exports, "ajaxUtilities", {
+      enumerable: true,
+      get: function() {
+        return _ajax.default;
+      }
+    });
+    Object.defineProperty(exports, "pathUtilities", {
+      enumerable: true,
+      get: function() {
+        return _path.default;
+      }
+    });
+    Object.defineProperty(exports, "arrayUtilities", {
+      enumerable: true,
+      get: function() {
+        return _array.default;
+      }
+    });
+    Object.defineProperty(exports, "asynchronousUtilities", {
+      enumerable: true,
+      get: function() {
+        return _asynchronous.default;
+      }
+    });
+  });
+
   // node_modules/occam-dom/lib/utilities/array.js
-  var require_array4 = __commonJS((exports) => {
+  var require_array6 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -20414,7 +21932,7 @@
     exports.trim = trim;
     exports.includes = includes;
     exports.third = exports.second = exports.push = exports.fifth = exports.fourth = exports.clear = void 0;
-    var _necessary = require_browser();
+    var _necessary = require_browser3();
     var clear = _necessary.arrayUtilities.clear;
     var push = _necessary.arrayUtilities.push;
     var second = _necessary.arrayUtilities.second;
@@ -20448,7 +21966,7 @@
   });
 
   // node_modules/occam-dom/lib/constants.js
-  var require_constants4 = __commonJS((exports) => {
+  var require_constants6 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -20467,8 +21985,8 @@
       value: true
     });
     exports.default = void 0;
-    var _array = require_array4();
-    var _constants = require_constants4();
+    var _array = require_array6();
+    var _constants = require_constants6();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -20554,8 +22072,8 @@
     });
     exports.default = void 0;
     var _spread = _interopRequireDefault2(require_spread());
-    var _constants = require_constants4();
-    var _array = require_array4();
+    var _constants = require_constants6();
+    var _array = require_array6();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -20815,6 +22333,765 @@
     });
   });
 
+  // node_modules/with-style/node_modules/necessary/lib/constants.js
+  var require_constants7 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.BACKSPACE_CHARACTER = exports.ETX_CHARACTER = exports.DATA_EVENT = exports.CONTENT_TYPE = exports.DEFAULT_LOG_FILE_BASE_NAME = exports.TRACE = exports.POST = exports.CARRIAGE_RETURN_CHARACTER = exports.DEFAULT_ENCODING = exports.ERROR = exports.ACCEPT = exports.DEBUG = exports.DEFAULT_RC_BASE_EXTENSION = exports.DEFAULT_ATTEMPTS = exports.CTRL_C = exports.FATAL = exports.DEFAULT_INITIAL_ANSWER = exports.WARNING = exports.APPLICATION_JSON = exports.INFO = exports.GET = exports.LINE_FEED_CHARACTER = exports.DEFAULT_LOG_LEVEL = exports.DEFAULT_LOG_DIRECTORY_PATH = exports.UTF8_ENCODING = void 0;
+    var TRACE = "TRACE";
+    exports.TRACE = TRACE;
+    var DEBUG = "DEBUG";
+    exports.DEBUG = DEBUG;
+    var INFO = "INFO";
+    exports.INFO = INFO;
+    var WARNING = "WARNING";
+    exports.WARNING = WARNING;
+    var ERROR = "ERROR";
+    exports.ERROR = ERROR;
+    var FATAL = "FATAL";
+    exports.FATAL = FATAL;
+    var DEFAULT_LOG_LEVEL = WARNING;
+    exports.DEFAULT_LOG_LEVEL = DEFAULT_LOG_LEVEL;
+    var DEFAULT_LOG_DIRECTORY_PATH = null;
+    exports.DEFAULT_LOG_DIRECTORY_PATH = DEFAULT_LOG_DIRECTORY_PATH;
+    var DEFAULT_LOG_FILE_BASE_NAME = "default";
+    exports.DEFAULT_LOG_FILE_BASE_NAME = DEFAULT_LOG_FILE_BASE_NAME;
+    var GET = "GET";
+    exports.GET = GET;
+    var POST = "POST";
+    exports.POST = POST;
+    var ACCEPT = "accept";
+    exports.ACCEPT = ACCEPT;
+    var CONTENT_TYPE = "content-type";
+    exports.CONTENT_TYPE = CONTENT_TYPE;
+    var APPLICATION_JSON = "application/json";
+    exports.APPLICATION_JSON = APPLICATION_JSON;
+    var CTRL_C = "^C";
+    exports.CTRL_C = CTRL_C;
+    var DATA_EVENT = "data";
+    exports.DATA_EVENT = DATA_EVENT;
+    var UTF8_ENCODING = "utf8";
+    exports.UTF8_ENCODING = UTF8_ENCODING;
+    var ETX_CHARACTER = "";
+    exports.ETX_CHARACTER = ETX_CHARACTER;
+    var DEFAULT_ATTEMPTS = 3;
+    exports.DEFAULT_ATTEMPTS = DEFAULT_ATTEMPTS;
+    var DEFAULT_ENCODING = UTF8_ENCODING;
+    exports.DEFAULT_ENCODING = DEFAULT_ENCODING;
+    var LINE_FEED_CHARACTER = "\n";
+    exports.LINE_FEED_CHARACTER = LINE_FEED_CHARACTER;
+    var BACKSPACE_CHARACTER = String.fromCharCode(127);
+    exports.BACKSPACE_CHARACTER = BACKSPACE_CHARACTER;
+    var DEFAULT_INITIAL_ANSWER = "";
+    exports.DEFAULT_INITIAL_ANSWER = DEFAULT_INITIAL_ANSWER;
+    var CARRIAGE_RETURN_CHARACTER = "\r";
+    exports.CARRIAGE_RETURN_CHARACTER = CARRIAGE_RETURN_CHARACTER;
+    var DEFAULT_RC_BASE_EXTENSION = "";
+    exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
+  });
+
+  // node_modules/with-style/node_modules/necessary/lib/utilities/ajax.js
+  var require_ajax4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.get = get;
+    exports.post = post;
+    exports.request = request;
+    exports.default = void 0;
+    var _constants = require_constants7();
+    function get(host, uri, parameters, headers, callback) {
+      if (callback === void 0) {
+        callback = headers;
+        headers = {};
+      }
+      var method = _constants.GET, body2 = null;
+      guaranteeAccept(headers);
+      request(host, uri, parameters, method, body2, headers, callback);
+    }
+    function post(host, uri, parameters, body2, headers, callback) {
+      if (callback === void 0) {
+        callback = headers;
+        headers = {};
+      }
+      var method = _constants.POST;
+      guaranteeAccept(headers);
+      guaranteeContentType(headers);
+      request(host, uri, parameters, method, body2, headers, callback);
+    }
+    function request(host, uri, parameters, method, body2, headers, callback) {
+      var url = urlFromHostURIAndParameters(host, uri, parameters), accept = headers[_constants.ACCEPT] || null, contentType = headers[_constants.CONTENT_TYPE] || null, xmlHttpRequest = new XMLHttpRequest();
+      if (contentType === _constants.APPLICATION_JSON) {
+        var json = body2, jsonString = JSON.stringify(json);
+        body2 = jsonString;
+      }
+      xmlHttpRequest.onreadystatechange = function() {
+        var readyState = xmlHttpRequest.readyState, status = xmlHttpRequest.status, responseText = xmlHttpRequest.responseText;
+        if (readyState == 4) {
+          var body1 = responseText;
+          if (accept === _constants.APPLICATION_JSON) {
+            try {
+              var jsonString2 = body1, json2 = JSON.parse(jsonString2);
+              body1 = json2;
+            } catch (error) {
+              body1 = null;
+            }
+            callback(body1, status);
+          }
+        }
+      };
+      xmlHttpRequest.open(method, url);
+      if (accept !== null) {
+        xmlHttpRequest.setRequestHeader(_constants.ACCEPT, accept);
+      }
+      if (contentType !== null) {
+        xmlHttpRequest.setRequestHeader(_constants.CONTENT_TYPE, contentType);
+      }
+      body2 !== null ? xmlHttpRequest.send(body2) : xmlHttpRequest.send();
+    }
+    var _default = {
+      get,
+      post,
+      request
+    };
+    exports.default = _default;
+    function guarantee(headers, name, value) {
+      var propertyNames = Object.getOwnPropertyNames(headers), names = propertyNames.map(function(propertyName) {
+        var lowerCasePropertyName = propertyName.toLowerCase(), name1 = lowerCasePropertyName;
+        return name1;
+      }), namesIncludesName = names.includes(name);
+      if (!namesIncludesName) {
+        headers[name] = value;
+      }
+    }
+    function guaranteeAccept(headers) {
+      var name = _constants.ACCEPT, value = _constants.APPLICATION_JSON;
+      guarantee(headers, name, value);
+    }
+    function guaranteeContentType(headers) {
+      var name = _constants.CONTENT_TYPE, value = _constants.APPLICATION_JSON;
+      guarantee(headers, name, value);
+    }
+    function queryStringFromParameters(parameters) {
+      var names = Object.keys(parameters), namesLength = names.length, lastIndex = namesLength - 1, queryString = names.reduce(function(queryString1, name, index) {
+        var value = parameters[name], encodedName = encodeURIComponent(name), encodedValue = encodeURIComponent(value), ampersandOrNothing = index !== lastIndex ? "&" : "";
+        queryString1 += "".concat(encodedName, "=").concat(encodedValue).concat(ampersandOrNothing);
+        return queryString1;
+      }, "");
+      return queryString;
+    }
+    function urlFromHostURIAndParameters(host, uri, parameters) {
+      var queryString = queryStringFromParameters(parameters), url = queryString === "" ? "".concat(host).concat(uri) : "".concat(host).concat(uri, "?").concat(queryString);
+      return url;
+    }
+  });
+
+  // node_modules/with-style/node_modules/necessary/lib/utilities/array.js
+  var require_array7 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.first = first;
+    exports.second = second;
+    exports.third = third;
+    exports.fourth = fourth;
+    exports.fifth = fifth;
+    exports.fifthLast = fifthLast;
+    exports.fourthLast = fourthLast;
+    exports.thirdLast = thirdLast;
+    exports.secondLast = secondLast;
+    exports.last = last;
+    exports.head = head;
+    exports.tail = tail;
+    exports.push = push;
+    exports.unshift = unshift;
+    exports.concat = concat;
+    exports.clear = clear;
+    exports.copy = copy;
+    exports.merge = merge;
+    exports.splice = splice;
+    exports.replace = replace;
+    exports.filter = filter;
+    exports.find = find;
+    exports.prune = prune;
+    exports.patch = patch;
+    exports.augment = augment;
+    exports.separate = separate;
+    exports.forwardsSome = forwardsSome;
+    exports.backwardsSome = backwardsSome;
+    exports.forwardsEvery = forwardsEvery;
+    exports.backwardsEvery = backwardsEvery;
+    exports.forwardsReduce = forwardsReduce;
+    exports.backwardsReduce = backwardsReduce;
+    exports.forwardsForEach = forwardsForEach;
+    exports.backwardsForEach = backwardsForEach;
+    exports.default = void 0;
+    function _arrayWithoutHoles(arr) {
+      if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+          arr2[i] = arr[i];
+        }
+        return arr2;
+      }
+    }
+    function _instanceof(left, right) {
+      if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
+        return right[Symbol.hasInstance](left);
+      } else {
+        return left instanceof right;
+      }
+    }
+    function _iterableToArray(iter) {
+      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
+        return Array.from(iter);
+    }
+    function _nonIterableSpread() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance");
+    }
+    function _toConsumableArray(arr) {
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+    }
+    function first(array) {
+      return array[0];
+    }
+    function second(array) {
+      return array[1];
+    }
+    function third(array) {
+      return array[2];
+    }
+    function fourth(array) {
+      return array[3];
+    }
+    function fifth(array) {
+      return array[4];
+    }
+    function fifthLast(array) {
+      return array[array.length - 5];
+    }
+    function fourthLast(array) {
+      return array[array.length - 4];
+    }
+    function thirdLast(array) {
+      return array[array.length - 3];
+    }
+    function secondLast(array) {
+      return array[array.length - 2];
+    }
+    function last(array) {
+      return array[array.length - 1];
+    }
+    function head(array) {
+      return array.slice(0, 1);
+    }
+    function tail(array) {
+      return array.slice(1);
+    }
+    function push(array1, array2) {
+      Array.prototype.push.apply(array1, array2);
+    }
+    function unshift(array1, array2) {
+      Array.prototype.unshift.apply(array1, array2);
+    }
+    function concat(array1, elementOrArray2) {
+      var array2 = _instanceof(elementOrArray2, Array) ? elementOrArray2 : [
+        elementOrArray2
+      ];
+      push(array1, array2);
+    }
+    function clear(array) {
+      var start = 0;
+      return array.splice(start);
+    }
+    function copy(array1, array2) {
+      var start = 0, deleteCount = array2.length;
+      splice(array1, start, deleteCount, array2);
+    }
+    function merge(array1, array2) {
+      Array.prototype.push.apply(array1, array2);
+    }
+    function splice(array1, start, param, param1) {
+      var deleteCount = param === void 0 ? Infinity : param, array2 = param1 === void 0 ? [] : param1;
+      var args = [
+        start,
+        deleteCount
+      ].concat(_toConsumableArray(array2)), deletedItemsArray = Array.prototype.splice.apply(array1, args);
+      return deletedItemsArray;
+    }
+    function replace(array, element, test) {
+      var start;
+      var found = array.some(function(element1, index) {
+        var passed = test(element1, index);
+        if (passed) {
+          start = index;
+          return true;
+        }
+      });
+      if (found) {
+        var deleteCount = 1;
+        array.splice(start, deleteCount, element);
+      }
+      return found;
+    }
+    function filter(array, test) {
+      var filteredElements = [];
+      backwardsForEach(array, function(element, index) {
+        var passed = test(element, index);
+        if (!passed) {
+          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
+          filteredElements.unshift(firstDeletedElement);
+        }
+      });
+      return filteredElements;
+    }
+    function find(array, test) {
+      var elements = [];
+      forwardsForEach(array, function(element, index) {
+        var passed = test(element, index);
+        if (passed) {
+          elements.push(element);
+        }
+      });
+      return elements;
+    }
+    function prune(array, test) {
+      var prunedElement = void 0;
+      array.some(function(element, index) {
+        var passed = test(element, index);
+        if (!passed) {
+          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
+          prunedElement = firstDeletedElement;
+          return true;
+        }
+      });
+      return prunedElement;
+    }
+    function patch(array, element, test) {
+      var found = array.some(function(element1, index) {
+        var passed = test(element1, index);
+        if (passed) {
+          return true;
+        }
+      });
+      if (found) {
+        array.push(element);
+      }
+      return found;
+    }
+    function augment(array1, array2, test) {
+      array2.forEach(function(element, index) {
+        var passed = test(element, index);
+        if (passed) {
+          array1.push(element);
+        }
+      });
+    }
+    function separate(array, array1, array2, test) {
+      array.forEach(function(element, index) {
+        var passed = test(element, index);
+        passed ? array1.push(element) : array2.push(element);
+      });
+    }
+    function forwardsSome(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index], result = callback(element, index);
+        if (result) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function backwardsSome(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index], result = callback(element, index);
+        if (result) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function forwardsEvery(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index], result = callback(element, index);
+        if (!result) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function backwardsEvery(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index], result = callback(element, index);
+        if (!result) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function forwardsReduce(array, callback, initialValue) {
+      var value = initialValue;
+      forwardsForEach(array, function(element, index) {
+        value = callback(value, element, index);
+      });
+      return value;
+    }
+    function backwardsReduce(array, callback, initialValue) {
+      var value = initialValue;
+      backwardsForEach(array, function(element, index) {
+        value = callback(value, element, index);
+      });
+      return value;
+    }
+    function forwardsForEach(array, callback) {
+      var arrayLength = array.length;
+      for (var index = 0; index < arrayLength; index++) {
+        var element = array[index];
+        callback(element, index);
+      }
+    }
+    function backwardsForEach(array, callback) {
+      var arrayLength = array.length;
+      for (var index = arrayLength - 1; index >= 0; index--) {
+        var element = array[index];
+        callback(element, index);
+      }
+    }
+    var _default = {
+      first,
+      second,
+      third,
+      fourth,
+      fifth,
+      fifthLast,
+      fourthLast,
+      thirdLast,
+      secondLast,
+      last,
+      head,
+      tail,
+      push,
+      unshift,
+      concat,
+      clear,
+      copy,
+      merge,
+      splice,
+      replace,
+      filter,
+      find,
+      prune,
+      patch,
+      augment,
+      separate,
+      forwardsSome,
+      backwardsSome,
+      forwardsEvery,
+      backwardsEvery,
+      forwardsReduce,
+      backwardsReduce,
+      forwardsForEach,
+      backwardsForEach
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/with-style/node_modules/necessary/lib/utilities/path.js
+  var require_path4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.isPathName = isPathName;
+    exports.isPathTopmostName = isPathTopmostName;
+    exports.isPathRelativePath = isPathRelativePath;
+    exports.isPathAbsolutePath = isPathAbsolutePath;
+    exports.isTopmostNameInAbsolutePath = isTopmostNameInAbsolutePath;
+    exports.combinePaths = combinePaths;
+    exports.concatenatePaths = concatenatePaths;
+    exports.bottommostNameFromPath = bottommostNameFromPath;
+    exports.topmostDirectoryPathFromPath = topmostDirectoryPathFromPath;
+    exports.topmostDirectoryNameFromPath = topmostDirectoryNameFromPath;
+    exports.pathWithoutBottommostNameFromPath = pathWithoutBottommostNameFromPath;
+    exports.pathWithoutTopmostDirectoryNameFromPath = pathWithoutTopmostDirectoryNameFromPath;
+    exports.default = void 0;
+    var _array = require_array7();
+    function isPathName(path) {
+      path = path.replace(/^\//, "").replace(/\/$/, "");
+      var pathName = /\//.test(path) === false;
+      return pathName;
+    }
+    function isPathTopmostName(path) {
+      var pathName = isPathName(path), pathAbsolutePath = isPathAbsolutePath(path), pathTopmostName = pathName && pathAbsolutePath;
+      return pathTopmostName;
+    }
+    function isPathRelativePath(path) {
+      var pathRelativePath = !/^\//.test(path);
+      return pathRelativePath;
+    }
+    function isPathAbsolutePath(path) {
+      var pathAbsolutePath = /^\//.test(path);
+      return pathAbsolutePath;
+    }
+    function isTopmostNameInAbsolutePath(topmostName, absolutePath) {
+      var regExp = new RegExp("^".concat(topmostName, "(?:\\/.+)?$")), topmostNameInAbsolutePath = regExp.test(absolutePath);
+      return topmostNameInAbsolutePath;
+    }
+    function combinePaths(path, relativePath) {
+      var combinedPath = null;
+      var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
+      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
+      if (firstRelativePathName === ".") {
+        relativePathNames.shift();
+      }
+      firstRelativePathName = _array.first(relativePathNames);
+      lastPathName = _array.last(pathNames);
+      while (firstRelativePathName === ".." && lastPathName !== void 0) {
+        relativePathNames.shift();
+        pathNames.pop();
+        firstRelativePathName = _array.first(relativePathNames);
+        lastPathName = _array.last(pathNames);
+      }
+      if (lastPathName !== void 0) {
+        var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
+        combinedPath = combinedPathNames.join("/");
+      }
+      return combinedPath;
+    }
+    function concatenatePaths(path, relativePath) {
+      path = path.replace(/\/$/, "");
+      var concatenatedPath = "".concat(path, "/").concat(relativePath);
+      return concatenatedPath;
+    }
+    function bottommostNameFromPath(path) {
+      var bottommostName = null;
+      var matches = path.match(/^.*\/([^\/]+\/?)$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        bottommostName = secondMatch;
+      }
+      return bottommostName;
+    }
+    function topmostDirectoryPathFromPath(path) {
+      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
+      return topmostDirectoryPath;
+    }
+    function topmostDirectoryNameFromPath(path) {
+      var topmostDirectoryName = null;
+      var matches = path.match(/^([^\/]+)\/.+$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        topmostDirectoryName = secondMatch;
+      }
+      return topmostDirectoryName;
+    }
+    function pathWithoutBottommostNameFromPath(path) {
+      var pathWithoutBottommostName = null;
+      var matches = path.match(/^(.*)\/[^\/]+\/?$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        pathWithoutBottommostName = secondMatch;
+      }
+      return pathWithoutBottommostName;
+    }
+    function pathWithoutTopmostDirectoryNameFromPath(path) {
+      var pathWithoutTopmostDirectoryName = null;
+      var matches = path.match(/^[^\/]+\/(.+)$/);
+      if (matches !== null) {
+        var secondMatch = _array.second(matches);
+        pathWithoutTopmostDirectoryName = secondMatch;
+      }
+      return pathWithoutTopmostDirectoryName;
+    }
+    var _default = {
+      isPathName,
+      isPathTopmostName,
+      isPathRelativePath,
+      isPathAbsolutePath,
+      isTopmostNameInAbsolutePath,
+      combinePaths,
+      concatenatePaths,
+      bottommostNameFromPath,
+      topmostDirectoryPathFromPath,
+      topmostDirectoryNameFromPath,
+      pathWithoutBottommostNameFromPath,
+      pathWithoutTopmostDirectoryNameFromPath
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/with-style/node_modules/necessary/lib/utilities/asynchronous.js
+  var require_asynchronous4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.whilst = whilst;
+    exports.forEach = forEach;
+    exports.sequence = sequence;
+    exports.eventually = eventually;
+    exports.repeatedly = repeatedly;
+    exports.forwardsForEach = forwardsForEach;
+    exports.backwardsForEach = backwardsForEach;
+    exports.default = void 0;
+    function whilst(callback, done, context) {
+      var count = -1;
+      function next() {
+        count++;
+        var index = count, terminate = callback(next, done, context, index);
+        if (terminate) {
+          done();
+        }
+      }
+      next();
+    }
+    function forEach(array, callback, done, context) {
+      var length = array.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    function sequence(callbacks, done, context) {
+      var length = callbacks.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, callback = callbacks[index];
+          callback(next, done, context, index);
+        }
+      }
+      next();
+    }
+    function eventually(callbacks, done, context) {
+      var next = function next2() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        }
+      };
+      var length = callbacks.length;
+      var count = 0;
+      callbacks.forEach(function(callback, index) {
+        callback(next, done, context, index);
+      });
+    }
+    function repeatedly(callback, length, done, context) {
+      var next = function next2() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        }
+      };
+      var count = 0;
+      for (var index = 0; index < length; index++) {
+        callback(next, done, context, index);
+      }
+    }
+    function forwardsForEach(array, callback, done, context) {
+      var length = array.length;
+      var count = -1;
+      function next() {
+        count++;
+        var terminate = count === length;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    function backwardsForEach(array, callback, done, context) {
+      var length = array.length;
+      var count = length;
+      function next() {
+        count--;
+        var terminate = count === -1;
+        if (terminate) {
+          done();
+        } else {
+          var index = count, element = array[index];
+          callback(element, next, done, context, index);
+        }
+      }
+      next();
+    }
+    var _default = {
+      whilst,
+      forEach,
+      sequence,
+      eventually,
+      repeatedly,
+      forwardsForEach,
+      backwardsForEach
+    };
+    exports.default = _default;
+  });
+
+  // node_modules/with-style/node_modules/necessary/lib/browser.js
+  var require_browser4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    var _ajax = _interopRequireDefault2(require_ajax4());
+    var _path = _interopRequireDefault2(require_path4());
+    var _array = _interopRequireDefault2(require_array7());
+    var _asynchronous = _interopRequireDefault2(require_asynchronous4());
+    function _interopRequireDefault2(obj) {
+      return obj && obj.__esModule ? obj : {
+        default: obj
+      };
+    }
+    Object.defineProperty(exports, "ajaxUtilities", {
+      enumerable: true,
+      get: function() {
+        return _ajax.default;
+      }
+    });
+    Object.defineProperty(exports, "pathUtilities", {
+      enumerable: true,
+      get: function() {
+        return _path.default;
+      }
+    });
+    Object.defineProperty(exports, "arrayUtilities", {
+      enumerable: true,
+      get: function() {
+        return _array.default;
+      }
+    });
+    Object.defineProperty(exports, "asynchronousUtilities", {
+      enumerable: true,
+      get: function() {
+        return _asynchronous.default;
+      }
+    });
+  });
+
   // node_modules/with-style/lib/utilities/content.js
   var require_content2 = __commonJS((exports) => {
     "use strict";
@@ -20822,7 +23099,7 @@
       value: true
     });
     exports.contentFromQueryNodeAndTokens = contentFromQueryNodeAndTokens;
-    var _necessary = require_browser();
+    var _necessary = require_browser4();
     var first = _necessary.arrayUtilities.first;
     function contentFromQueryNodeAndTokens(query, node, tokens) {
       var nodes = query.execute(node), firstNode = first(nodes);
@@ -21832,7 +24109,7 @@
   });
 
   // node_modules/with-style/lib/constants.js
-  var require_constants5 = __commonJS((exports) => {
+  var require_constants8 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -21855,7 +24132,7 @@
     exports.default = void 0;
     var _v4 = _interopRequireDefault2(require_v4());
     var _randomSeed = _interopRequireDefault2(require_random_seed());
-    var _constants = require_constants5();
+    var _constants = require_constants8();
     function _interopRequireDefault2(obj) {
       return obj && obj.__esModule ? obj : {
         default: obj
@@ -23104,7 +25381,7 @@
   });
 
   // lib/constants.js
-  var require_constants6 = __commonJS((exports) => {
+  var require_constants9 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -23125,7 +25402,7 @@
     var _easy2 = require_lib();
     var _sizeable = _interopRequireDefault2(require_sizeable());
     var _cursor = require_cursor();
-    var _constants = require_constants6();
+    var _constants = require_constants9();
     var _options = require_options();
     function _assertThisInitialized(self) {
       if (self === void 0) {
