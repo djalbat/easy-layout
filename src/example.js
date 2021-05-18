@@ -18,6 +18,6 @@ renderStyles();
 
 body.mount(
 
-  <View />
+  <View/>
 
 );

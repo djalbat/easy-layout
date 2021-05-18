@@ -21,7 +21,7 @@ const View = (properties) => {
   const { className } = properties,
         bottomLeftDiv =
 
-          <BottomLeftDiv />
+          <BottomLeftDiv/>
 
         ,
         options = {
@@ -34,27 +34,27 @@ const View = (properties) => {
       <ColumnsDiv>
         <LeftSizeableDiv>
           <RowsDiv>
-            <YellowRowDiv />
-            <PseudoSplitterDiv />
+            <YellowRowDiv/>
+            <PseudoSplitterDiv/>
             {bottomLeftDiv}
           </RowsDiv>
         </LeftSizeableDiv>
-        <LeftVerticalSplitterDiv options={options} />
+        <LeftVerticalSplitterDiv options={options}/>
         <ColumnDiv>
           <RowsDiv>
             <RowDiv>
               <ColumnsDiv>
-                <ColumnDiv />
-                <RightVerticalSplitterDiv options={options} />
+                <ColumnDiv/>
+                <RightVerticalSplitterDiv options={options}/>
                 <RightSizeableDiv>
                   <RowsDiv>
-                    <BlueRowDiv />
+                    <BlueRowDiv/>
                   </RowsDiv>
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options} />
-            <BottomSizeableDiv />
+            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options}/>
+            <BottomSizeableDiv/>
           </RowsDiv>
         </ColumnDiv>
       </ColumnsDiv>

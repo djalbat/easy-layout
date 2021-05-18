@@ -7,16 +7,13 @@ import { window, Element } from "easy";
 import SizeableDiv from "../div/sizeable";
 
 import { resetCursor } from "../cursor";
-import { ESCAPE_KEY_CODE } from "../constants";
 import { ESCAPE_KEY_STOPS_DRAGGING } from "../options";
+import { DRAG, STOP_DRAG, START_DRAG, MOUSEUP_BLUR, ESCAPE_KEY_CODE } from "../constants";
 
 class SplitterDiv extends Element {
-  constructor(selector, startDragHandler, stopDragHandler, dragHandler, options) {
+  constructor(selector, options) {
     super(selector);
 
-    this.startDragHandler = startDragHandler;
-    this.stopDragHandler = stopDragHandler;
-    this.dragHandler = dragHandler;
     this.options = options;
   }
 
@@ -38,8 +35,56 @@ class SplitterDiv extends Element {
     delete(this.options[option]);
   }
 
-  onDrag(dragHandler) {
-    this.dragHandler = dragHandler;
+  onDrag(dragHandler, element) {
+    const eventType = DRAG,
+          handler = dragHandler;  ///
+
+    this.addEventListener(eventType, handler, element);
+  }
+
+  offDrag(dragHandler, element) {
+    const eventType = DRAG,
+          handler = dragHandler;  ///
+
+    this.removeEventListener(eventType, handler, element);
+  }
+
+  onStopDrag(stopDragHandler, element) {
+    const eventType = STOP_DRAG,
+          handler = stopDragHandler;  ///
+
+    this.addEventListener(eventType, handler, element);
+  }
+
+  offStopDrag(stopDragHandler, element) {
+    const eventType = STOP_DRAG,
+          handler = stopDragHandler;  ///
+
+    this.removeEventListener(eventType, handler, element);
+  }
+
+  onStartDrag(stopDragHandler, element) {
+    const eventType = START_DRAG,
+          handler = stopDragHandler;  ///
+
+    this.addEventListener(eventType, handler, element);
+  }
+
+  offStartDrag(stopDragHandler, element) {
+    const eventType = START_DRAG,
+          handler = stopDragHandler;  ///
+
+    this.removeEventListener(eventType, handler, element);
+  }
+
+  callHandlers(eventType, ...remainingArguments) {
+    const eventListeners = this.findEventListeners(eventType);
+
+    eventListeners.forEach((eventListener) => {
+      const { handler, element } = eventListener;
+
+      handler.call(element, ...remainingArguments);
+    });
   }
 
   enable() {
@@ -96,12 +141,9 @@ class SplitterDiv extends Element {
     return sizeableDiv;
   }
 
-  getDragHandler() {
-    return this.dragHandler;
-  }
-
   startDrag() {
-    const escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(ESCAPE_KEY_STOPS_DRAGGING);
+    const eventType = START_DRAG,
+          escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDraggingOptionPresent) {
       window.onKeyDown(this.keyDownHandler, this);
@@ -109,11 +151,12 @@ class SplitterDiv extends Element {
 
     this.addClass("dragging");
 
-    this.startDragHandler && this.startDragHandler();
+    this.callHandlers(eventType)
   }
 
   stopDrag() {
-    const escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(ESCAPE_KEY_STOPS_DRAGGING);
+    const eventType = STOP_DRAG,
+          escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(ESCAPE_KEY_STOPS_DRAGGING);
 
     if (escapeKeyStopsDraggingOptionPresent) {
       window.offKeyDown(this.keyDownHandler, this);
@@ -121,7 +164,7 @@ class SplitterDiv extends Element {
 
     this.removeClass("dragging");
 
-    this.stopDragHandler && this.stopDragHandler();
+    this.callHandlers(eventType);
   }
 
   mouseUpHandler(event, element) {
@@ -165,27 +208,49 @@ class SplitterDiv extends Element {
   }
 
   didMount() {
-    const { disabled } = this.properties;
+    const { onDrag, onStopDrag, onStartDrag, disabled } = this.properties,
+          dragHandler = onDrag, ///
+          stopDragHandler = onStopDrag, ///
+          startDragHandler = onStartDrag; ///
 
     (disabled === true) ? ///
       this.disable() :
         this.enable();
+
+    dragHandler && this.onDrag(dragHandler);
+    stopDragHandler && this.onStopDrag(stopDragHandler);
+    startDragHandler && this.onStartDrag(startDragHandler);
+
+    window.on(MOUSEUP_BLUR, this.mouseUpHandler, this);  ///
+
+    window.onMouseMove(this.mouseMoveHandler, this);
+
+    this.onMouseDown(this.mouseDownHandler, this);
+    this.onMouseOver(this.mouseOverHandler, this);
+    this.onMouseOut(this.mouseOutHandler, this);
   }
 
-  willUnmout() {
-    ///
+  willUnmount() {
+    const { onDrag, onStopDrag, onStartDrag } = this.properties,
+          dragHandler = onDrag, ///
+          stopDragHandler = onStopDrag, ///
+          startDragHandler = onStartDrag; ///
+
+    dragHandler && this.offDrag(dragHandler);
+    stopDragHandler && this.offStopDrag(stopDragHandler);
+    startDragHandler && this.offStartDrag(startDragHandler);
+
+    window.off(MOUSEUP_BLUR, this.mouseUpHandler, this);  ///
+
+    window.offMouseMove(this.mouseMoveHandler, this);
+
+    this.offMouseDown(this.mouseDownHandler, this);
+    this.offMouseOver(this.mouseOverHandler, this);
+    this.offMouseOut(this.mouseOutHandler, this);
   }
 
   initialise() {
     this.setInitialState();
-
-    window.on("mouseup blur", this.mouseUpHandler.bind(this));  ///
-
-    window.onMouseMove(this.mouseMoveHandler.bind(this));
-
-    this.onMouseDown(this.mouseDownHandler.bind(this));
-    this.onMouseOver(this.mouseOverHandler.bind(this));
-    this.onMouseOut(this.mouseOutHandler.bind(this));
   }
 
   static tagName = "div";
@@ -203,13 +268,8 @@ class SplitterDiv extends Element {
   ];
 
   static fromClass(Class, properties) {
-    const { onStartDrag, onStopDrag, onDrag, options = {} } = properties,
-          startDragHandler = onStartDrag, ///
-          stopDragHandler = onStopDrag, ///
-          dragHandler = onDrag, ///
-          splitterDiv = Element.fromClass(Class, properties, startDragHandler, stopDragHandler, dragHandler, options);
-
-    splitterDiv.initialise();
+    const { options = {} } = properties,
+          splitterDiv = Element.fromClass(Class, properties, options);
 
     return splitterDiv;
   }

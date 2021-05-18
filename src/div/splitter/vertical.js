@@ -4,6 +4,7 @@ import withStyle from "easy-with-style";  ///
 
 import Splitter from "../splitter";
 
+import { DRAG } from "../../constants";
 import { columnResizeCursor } from "../../cursor";
 
 class VerticalSplitter extends Splitter {
@@ -25,8 +26,7 @@ class VerticalSplitter extends Splitter {
 
       if (dragging) {
         const direction = this.getDirection(),
-              sizeableDiv = this.getSizeableDiv(),
-              dragHandler = this.getDragHandler();
+              sizeableDiv = this.getSizeableDiv();
 
         const previousMouseLeft = this.getPreviousMouseLeft(),
               previousSizeableDivWidth = this.getPreviousSizeableDivWidth(),
@@ -34,13 +34,14 @@ class VerticalSplitter extends Splitter {
 
         let sizeableDivWidth = previousSizeableDivWidth - direction * relativeMouseLeft;
 
-        const width = sizeableDivWidth; ///
+        const width = sizeableDivWidth, ///
+              eventType = DRAG;
 
         sizeableDiv.setWidth(width);
 
         sizeableDivWidth = sizeableDiv.getWidth();  ///
 
-        dragHandler && dragHandler(sizeableDivWidth);
+        this.callHandlers(eventType, sizeableDivWidth);
       }
     }
   }

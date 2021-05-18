@@ -36,7 +36,7 @@
         _defineProperties(Constructor, staticProps);
       return Constructor;
     }
-    var Offset = function() {
+    var Offset = /* @__PURE__ */ function() {
       function Offset2(top, left) {
         _classCallCheck(this, Offset2);
         this.top = top;
@@ -90,7 +90,7 @@
         _defineProperties(Constructor, staticProps);
       return Constructor;
     }
-    var Bounds = function() {
+    var Bounds = /* @__PURE__ */ function() {
       function Bounds2(top, left, bottom, right) {
         _classCallCheck(this, Bounds2);
         this.top = top;
@@ -860,7 +860,7 @@
     function descendantDOMNodesFromDOMNode(domNode, param) {
       var descendantDOMNodes = param === void 0 ? [] : param;
       var childDOMNodes = domNode.childNodes;
-      _array.push(descendantDOMNodes, childDOMNodes);
+      (0, _array).push(descendantDOMNodes, childDOMNodes);
       childDOMNodes.forEach(function(childDOMNode) {
         return descendantDOMNodesFromDOMNode(childDOMNode, descendantDOMNodes);
       });
@@ -910,12 +910,12 @@
     var _dom = require_dom();
     function getDescendantElements(param) {
       var selector = param === void 0 ? "*" : param;
-      var domNode = this.domElement, descendantDOMNodes = _dom.descendantDOMNodesFromDOMNode(domNode), descendantDOMElements = _dom.filterDOMNodesBySelector(descendantDOMNodes, selector), descendantElements = _dom.elementsFromDOMElements(descendantDOMElements);
+      var domNode = this.domElement, descendantDOMNodes = (0, _dom).descendantDOMNodesFromDOMNode(domNode), descendantDOMElements = (0, _dom).filterDOMNodesBySelector(descendantDOMNodes, selector), descendantElements = (0, _dom).elementsFromDOMElements(descendantDOMElements);
       return descendantElements;
     }
     function getChildElements(param) {
       var selector = param === void 0 ? "*" : param;
-      var childDOMNodes = this.domElement.childNodes, childDOMElements = _dom.filterDOMNodesBySelector(childDOMNodes, selector), childElements = _dom.elementsFromDOMElements(childDOMElements);
+      var childDOMNodes = this.domElement.childNodes, childDOMElements = (0, _dom).filterDOMNodesBySelector(childDOMNodes, selector), childElements = (0, _dom).elementsFromDOMElements(childDOMElements);
       return childElements;
     }
     function getParentElement(param) {
@@ -926,7 +926,7 @@
         if (parentDOMElement.matches(selector)) {
           var parentDOMElements = [
             parentDOMElement
-          ], parentElements = _dom.elementsFromDOMElements(parentDOMElements), firstParentElement = _array.first(parentElements);
+          ], parentElements = (0, _dom).elementsFromDOMElements(parentDOMElements), firstParentElement = (0, _array).first(parentElements);
           parentElement = firstParentElement || null;
         }
       }
@@ -934,14 +934,14 @@
     }
     function getAscendantElements(param) {
       var selector = param === void 0 ? "*" : param;
-      var domNode = this.domElement, ascendantDOMNodes = _dom.ascendantDOMNodesFromDOMNode(domNode), ascendantDOMElements = _dom.filterDOMNodesBySelector(ascendantDOMNodes, selector), ascendantElements = _dom.elementsFromDOMElements(ascendantDOMElements);
+      var domNode = this.domElement, ascendantDOMNodes = (0, _dom).ascendantDOMNodesFromDOMNode(domNode), ascendantDOMElements = (0, _dom).filterDOMNodesBySelector(ascendantDOMNodes, selector), ascendantElements = (0, _dom).elementsFromDOMElements(ascendantDOMElements);
       return ascendantElements;
     }
     function getPreviousSiblingElement(param) {
       var selector = param === void 0 ? "*" : param;
       var previousSiblingElement = null;
       var previousSiblingDOMNode = this.domElement.previousSibling;
-      if (previousSiblingDOMNode !== null && _dom.domNodeMatchesSelector(previousSiblingDOMNode, selector)) {
+      if (previousSiblingDOMNode !== null && (0, _dom).domNodeMatchesSelector(previousSiblingDOMNode, selector)) {
         previousSiblingElement = previousSiblingDOMNode.__element__ || null;
       }
       return previousSiblingElement;
@@ -950,7 +950,7 @@
       var selector = param === void 0 ? "*" : param;
       var nextSiblingElement = null;
       var nextSiblingDOMNode = this.domElement.nextSibling;
-      if (nextSiblingDOMNode !== null && _dom.domNodeMatchesSelector(nextSiblingDOMNode, selector)) {
+      if (nextSiblingDOMNode !== null && (0, _dom).domNodeMatchesSelector(nextSiblingDOMNode, selector)) {
         nextSiblingElement = nextSiblingDOMNode.__element__ || null;
       }
       return nextSiblingElement;
@@ -1005,7 +1005,7 @@
         default: obj
       };
     }
-    var TextElement = function() {
+    var TextElement = /* @__PURE__ */ function() {
       function TextElement2(text) {
         _classCallCheck(this, TextElement2);
         this.domElement = document.createTextNode(text);
@@ -1156,9 +1156,9 @@
     function applyProperties(properties, defaultProperties, ignoredProperties) {
       this.properties = properties;
       properties = Object.assign({}, properties);
-      _object.combine(properties, defaultProperties);
+      (0, _object).combine(properties, defaultProperties);
       var childElements = childElementsFromElement(this) || properties.childElements;
-      _object.prune(properties, ignoredProperties);
+      (0, _object).prune(properties, ignoredProperties);
       var _domElement = this.domElement, namespaceURI = _domElement.namespaceURI, svg = namespaceURI === _constants.SVG_NAMESPACE_URI, names = Object.keys(properties);
       names.forEach(function(name) {
         var value = properties[name];
@@ -1186,7 +1186,7 @@
     function assignContext(names, thenDelete) {
       var argumentsLength = arguments.length;
       if (argumentsLength === 1) {
-        var firstArgument = _array.first(arguments);
+        var firstArgument = (0, _array).first(arguments);
         if (typeof firstArgument === "boolean") {
           names = Object.keys(this.context);
           thenDelete = firstArgument;
@@ -1220,9 +1220,9 @@
       var childElements = null;
       if (typeof element.childElements === "function") {
         childElements = element.childElements.call(element);
-        childElements = _array.guarantee(childElements);
-        childElements = _elements.removeFalseyElements(childElements);
-        childElements = _elements.replaceStringsWithTextElements(childElements);
+        childElements = (0, _array).guarantee(childElements);
+        childElements = (0, _elements).removeFalseyElements(childElements);
+        childElements = (0, _elements).replaceStringsWithTextElements(childElements);
       }
       return childElements;
     }
@@ -1259,7 +1259,7 @@
       return name.match(/^on/);
     }
     function isAttributeName(name, svg) {
-      return svg ? _name.isSVGAttributeName(name) : _name.isHTMLAttributeName(name);
+      return svg ? (0, _name).isSVGAttributeName(name) : (0, _name).isHTMLAttributeName(name);
     }
   });
 
@@ -1415,7 +1415,7 @@
         if (eventType === "resize") {
           var resizeEventListeners = this.findEventListeners("resize"), resizeEventListenersLength = resizeEventListeners.length;
           if (resizeEventListenersLength === 0) {
-            _resize.removeResizeObject(this);
+            (0, _resize).removeResizeObject(this);
           }
         }
       }.bind(this));
@@ -1641,7 +1641,7 @@
       return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
     }
     var _bind;
-    var Element1 = function() {
+    var Element1 = /* @__PURE__ */ function() {
       function Element12(selector) {
         _classCallCheck(this, Element12);
         if (selector) {
@@ -2011,6 +2011,7 @@
               tagName
             ].concat(_toConsumableArray(remainingArguments))), defaultProperties = {}, ignoredProperties = [];
             element.applyProperties(properties, defaultProperties, ignoredProperties);
+            element.initialise && element.initialise();
             return element;
           }
         },
@@ -2025,6 +2026,7 @@
               tagName
             ].concat(_toConsumableArray(remainingArguments))), defaultProperties = defaultPropertiesFromClass(Class), ignoredProperties = ignoredPropertiesFromClass(Class);
             element.applyProperties(properties, defaultProperties, ignoredProperties);
+            element.initialise && element.initialise();
             return element;
           }
         }
@@ -2051,14 +2053,14 @@
         null,
         selector
       ].concat(_toConsumableArray(remainingArguments))))();
-      element.domElement = _name.isSVGTagName(tagName) ? document.createElementNS(_constants.SVG_NAMESPACE_URI, tagName) : document.createElement(tagName);
+      element.domElement = (0, _name).isSVGTagName(tagName) ? document.createElementNS(_constants.SVG_NAMESPACE_URI, tagName) : document.createElement(tagName);
       element.domElement.__element__ = element;
       return element;
     }
     function defaultPropertiesFromClass(Class, param) {
       var defaultProperties = param === void 0 ? {} : param;
       if (Class.hasOwnProperty("defaultProperties")) {
-        _object.combine(defaultProperties, Class.defaultProperties);
+        (0, _object).combine(defaultProperties, Class.defaultProperties);
       }
       var superClass = Object.getPrototypeOf(Class);
       if (superClass !== null) {
@@ -2069,7 +2071,7 @@
     function ignoredPropertiesFromClass(Class, param) {
       var ignoredProperties = param === void 0 ? [] : param;
       if (Class.hasOwnProperty("ignoredProperties")) {
-        _array.augment(ignoredProperties, Class.ignoredProperties, function(ignoredProperty) {
+        (0, _array).augment(ignoredProperties, Class.ignoredProperties, function(ignoredProperty) {
           return !ignoredProperties.includes(ignoredProperty);
         });
       }
@@ -2218,8 +2220,8 @@
       };
       return _wrapNativeSuper(Class);
     }
-    var Body = function(Element1) {
-      _inherits(Body2, _element.default);
+    var Body = /* @__PURE__ */ function(Element1) {
+      _inherits(Body2, Element1);
       function Body2(param) {
         var selector = param === void 0 ? "body" : param;
         _classCallCheck(this, Body2);
@@ -2368,8 +2370,8 @@
       };
       return _wrapNativeSuper(Class);
     }
-    var Button = function(Element1) {
-      _inherits(Button2, _element.default);
+    var Button = /* @__PURE__ */ function(Element1) {
+      _inherits(Button2, Element1);
       function Button2() {
         _classCallCheck(this, Button2);
         return _possibleConstructorReturn(this, _getPrototypeOf(Button2).apply(this, arguments));
@@ -2556,8 +2558,8 @@
       };
       return _wrapNativeSuper(Class);
     }
-    var Checkbox = function(Element1) {
-      _inherits(Checkbox2, _element.default);
+    var Checkbox = /* @__PURE__ */ function(Element1) {
+      _inherits(Checkbox2, Element1);
       function Checkbox2() {
         _classCallCheck(this, Checkbox2);
         return _possibleConstructorReturn(this, _getPrototypeOf(Checkbox2).apply(this, arguments));
@@ -2742,8 +2744,8 @@
       };
       return _wrapNativeSuper(Class);
     }
-    var Link = function(Element1) {
-      _inherits(Link2, _element.default);
+    var Link = /* @__PURE__ */ function(Element1) {
+      _inherits(Link2, Element1);
       function Link2() {
         _classCallCheck(this, Link2);
         return _possibleConstructorReturn(this, _getPrototypeOf(Link2).apply(this, arguments));
@@ -2923,8 +2925,8 @@
       };
       return _wrapNativeSuper(Class);
     }
-    var Select = function(Element1) {
-      _inherits(Select2, _element.default);
+    var Select = /* @__PURE__ */ function(Element1) {
+      _inherits(Select2, Element1);
       function Select2() {
         _classCallCheck(this, Select2);
         return _possibleConstructorReturn(this, _getPrototypeOf(Select2).apply(this, arguments));
@@ -3103,8 +3105,8 @@
       };
       return _wrapNativeSuper(Class);
     }
-    var InputElement = function(Element1) {
-      _inherits(InputElement2, _element.default);
+    var InputElement = /* @__PURE__ */ function(Element1) {
+      _inherits(InputElement2, Element1);
       function InputElement2() {
         _classCallCheck(this, InputElement2);
         return _possibleConstructorReturn(this, _getPrototypeOf(InputElement2).apply(this, arguments));
@@ -3267,8 +3269,8 @@
     var _typeof = function(obj) {
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
-    var Input = function(InputElement) {
-      _inherits(Input2, _inputElement.default);
+    var Input = /* @__PURE__ */ function(InputElement) {
+      _inherits(Input2, InputElement);
       function Input2() {
         _classCallCheck(this, Input2);
         return _possibleConstructorReturn(this, _getPrototypeOf(Input2).apply(this, arguments));
@@ -3352,8 +3354,8 @@
     var _typeof = function(obj) {
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
-    var Textarea = function(InputElement) {
-      _inherits(Textarea2, _inputElement.default);
+    var Textarea = /* @__PURE__ */ function(InputElement) {
+      _inherits(Textarea2, InputElement);
       function Textarea2() {
         _classCallCheck(this, Textarea2);
         return _possibleConstructorReturn(this, _getPrototypeOf(Textarea2).apply(this, arguments));
@@ -3424,7 +3426,7 @@
     var _Object;
     var onResize = _resize.default.onResize;
     var offResize = _resize.default.offResize;
-    var Window1 = function() {
+    var Window1 = /* @__PURE__ */ function() {
       function Window12() {
         _classCallCheck(this, Window12);
         this.domElement = window;
@@ -3569,10 +3571,10 @@
     var _default = React2;
     exports.default = _default;
     function childElementsFromRemainingArguments(remainingArguments) {
-      remainingArguments = _array.flatten(remainingArguments);
+      remainingArguments = (0, _array).flatten(remainingArguments);
       var childElements = remainingArguments;
-      childElements = _elements.removeFalseyElements(childElements);
-      childElements = _elements.replaceStringsWithTextElements(childElements);
+      childElements = (0, _elements).removeFalseyElements(childElements);
+      childElements = (0, _elements).replaceStringsWithTextElements(childElements);
       return childElements;
     }
     function isSubclassOf(argument, Class) {
@@ -3860,7 +3862,7 @@
     exports.default = _default;
   });
 
-  // node_modules/occam-lexers/node_modules/necessary/lib/constants.js
+  // node_modules/necessary/lib/constants.js
   var require_constants2 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -3919,7 +3921,7 @@
     exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
   });
 
-  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/ajax.js
+  // node_modules/necessary/lib/utilities/ajax.js
   var require_ajax = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4016,7 +4018,7 @@
     }
   });
 
-  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/array.js
+  // node_modules/necessary/lib/utilities/array.js
   var require_array2 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4330,7 +4332,7 @@
     exports.default = _default;
   });
 
-  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/path.js
+  // node_modules/necessary/lib/utilities/path.js
   var require_path = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4374,17 +4376,17 @@
     function combinePaths(path, relativePath) {
       var combinedPath = null;
       var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
-      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
+      var lastPathName, firstRelativePathName = (0, _array).first(relativePathNames);
       if (firstRelativePathName === ".") {
         relativePathNames.shift();
       }
-      firstRelativePathName = _array.first(relativePathNames);
-      lastPathName = _array.last(pathNames);
+      firstRelativePathName = (0, _array).first(relativePathNames);
+      lastPathName = (0, _array).last(pathNames);
       while (firstRelativePathName === ".." && lastPathName !== void 0) {
         relativePathNames.shift();
         pathNames.pop();
-        firstRelativePathName = _array.first(relativePathNames);
-        lastPathName = _array.last(pathNames);
+        firstRelativePathName = (0, _array).first(relativePathNames);
+        lastPathName = (0, _array).last(pathNames);
       }
       if (lastPathName !== void 0) {
         var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
@@ -4401,20 +4403,20 @@
       var bottommostName = null;
       var matches = path.match(/^.*\/([^\/]+\/?)$/);
       if (matches !== null) {
-        var secondMatch = _array.second(matches);
+        var secondMatch = (0, _array).second(matches);
         bottommostName = secondMatch;
       }
       return bottommostName;
     }
     function topmostDirectoryPathFromPath(path) {
-      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
+      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = (0, _array).second(matches), topmostDirectoryPath = secondMatch;
       return topmostDirectoryPath;
     }
     function topmostDirectoryNameFromPath(path) {
       var topmostDirectoryName = null;
       var matches = path.match(/^([^\/]+)\/.+$/);
       if (matches !== null) {
-        var secondMatch = _array.second(matches);
+        var secondMatch = (0, _array).second(matches);
         topmostDirectoryName = secondMatch;
       }
       return topmostDirectoryName;
@@ -4423,7 +4425,7 @@
       var pathWithoutBottommostName = null;
       var matches = path.match(/^(.*)\/[^\/]+\/?$/);
       if (matches !== null) {
-        var secondMatch = _array.second(matches);
+        var secondMatch = (0, _array).second(matches);
         pathWithoutBottommostName = secondMatch;
       }
       return pathWithoutBottommostName;
@@ -4432,7 +4434,7 @@
       var pathWithoutTopmostDirectoryName = null;
       var matches = path.match(/^[^\/]+\/(.+)$/);
       if (matches !== null) {
-        var secondMatch = _array.second(matches);
+        var secondMatch = (0, _array).second(matches);
         pathWithoutTopmostDirectoryName = secondMatch;
       }
       return pathWithoutTopmostDirectoryName;
@@ -4454,7 +4456,7 @@
     exports.default = _default;
   });
 
-  // node_modules/occam-lexers/node_modules/necessary/lib/utilities/asynchronous.js
+  // node_modules/necessary/lib/utilities/asynchronous.js
   var require_asynchronous = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4578,7 +4580,7 @@
     exports.default = _default;
   });
 
-  // node_modules/occam-lexers/node_modules/necessary/lib/browser.js
+  // node_modules/necessary/lib/browser.js
   var require_browser = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
@@ -4866,7 +4868,7 @@
             if (startPosition !== endPosition) {
               var content = this.getContent();
               content = content.substring(startPosition, endPosition);
-              var type = this.getType(), sanitisedContent = _content.sanitiseContent(content), innerHTML = sanitisedContent;
+              var type = this.getType(), sanitisedContent = (0, _content).sanitiseContent(content), innerHTML = sanitisedContent;
               token = _construct(Class, [
                 type,
                 content,
@@ -4893,7 +4895,7 @@
                 content = firstMatch;
                 var contentLength = content.length;
                 if (contentLength > 0) {
-                  var sanitisedContent = _content.sanitiseContent(content), innerHTML = sanitisedContent;
+                  var sanitisedContent = (0, _content).sanitiseContent(content), innerHTML = sanitisedContent;
                   token = _construct(Class, [
                     type,
                     content,
@@ -4912,7 +4914,7 @@
             for (var _len = arguments.length, remainingArguments = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
               remainingArguments[_key - 3] = arguments[_key];
             }
-            var type = Class.type, sanitisedContent = _content.sanitiseContent(content), innerHTML = sanitisedContent, token = _construct(Class, [
+            var type = Class.type, sanitisedContent = (0, _content).sanitiseContent(content), innerHTML = sanitisedContent, token = _construct(Class, [
               type,
               content,
               innerHTML,
@@ -4927,7 +4929,7 @@
             for (var _len = arguments.length, remainingArguments = new Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
               remainingArguments[_key - 4] = arguments[_key];
             }
-            var sanitisedContent = _content.sanitiseContent(content), innerHTML = sanitisedContent, token = _construct(Class, [
+            var sanitisedContent = (0, _content).sanitiseContent(content), innerHTML = sanitisedContent, token = _construct(Class, [
               type,
               content,
               innerHTML,
@@ -5068,7 +5070,7 @@
     var _Token2;
     var significant = true;
     var SignificantToken = function(Token) {
-      _inherits(SignificantToken2, _token.default);
+      _inherits(SignificantToken2, Token);
       function SignificantToken2() {
         _classCallCheck(this, SignificantToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(SignificantToken2).apply(this, arguments));
@@ -5377,7 +5379,7 @@
     };
     var significant = false;
     var NonSignificantToken = function(Token) {
-      _inherits(NonSignificantToken2, _token.default);
+      _inherits(NonSignificantToken2, Token);
       function NonSignificantToken2() {
         _classCallCheck(this, NonSignificantToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NonSignificantToken2).apply(this, arguments));
@@ -5531,7 +5533,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var WhitespaceToken = function(NonSignificantToken) {
-      _inherits(WhitespaceToken2, _nonSignificant.default);
+      _inherits(WhitespaceToken2, NonSignificantToken);
       function WhitespaceToken2() {
         _classCallCheck(this, WhitespaceToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(WhitespaceToken2).apply(this, arguments));
@@ -5688,7 +5690,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var BrokenCommentToken = function(NonSignificantToken) {
-      _inherits(BrokenCommentToken2, _nonSignificant.default);
+      _inherits(BrokenCommentToken2, NonSignificantToken);
       function BrokenCommentToken2() {
         _classCallCheck(this, BrokenCommentToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BrokenCommentToken2).apply(this, arguments));
@@ -5838,7 +5840,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RegularExpressionToken = function(SignificantToken) {
-      _inherits(RegularExpressionToken2, _significant.default);
+      _inherits(RegularExpressionToken2, SignificantToken);
       function RegularExpressionToken2() {
         _classCallCheck(this, RegularExpressionToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RegularExpressionToken2).apply(this, arguments));
@@ -5988,7 +5990,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SingleLineCommentToken = function(NonSignificantToken) {
-      _inherits(SingleLineCommentToken2, _nonSignificant.default);
+      _inherits(SingleLineCommentToken2, NonSignificantToken);
       function SingleLineCommentToken2() {
         _classCallCheck(this, SingleLineCommentToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(SingleLineCommentToken2).apply(this, arguments));
@@ -6145,7 +6147,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var EndOfMultiLineCommentToken = function(NonSignificantToken) {
-      _inherits(EndOfMultiLineCommentToken2, _nonSignificant.default);
+      _inherits(EndOfMultiLineCommentToken2, NonSignificantToken);
       function EndOfMultiLineCommentToken2() {
         _classCallCheck(this, EndOfMultiLineCommentToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EndOfMultiLineCommentToken2).apply(this, arguments));
@@ -6292,7 +6294,7 @@
     };
     var first = _necessary.arrayUtilities.first;
     var EndOfLineNonSignificantToken = function(NonSignificantToken) {
-      _inherits(EndOfLineNonSignificantToken2, _nonSignificant.default);
+      _inherits(EndOfLineNonSignificantToken2, NonSignificantToken);
       function EndOfLineNonSignificantToken2(type, content, innerHTML, significant, index) {
         _classCallCheck(this, EndOfLineNonSignificantToken2);
         var _this;
@@ -6331,7 +6333,7 @@
               content = firstMatch;
               var contentLength = content.length;
               if (contentLength > 0) {
-                var type = _types.endOfLineType, sanitisedContent = _content.sanitiseContent(content), innerHTML = sanitisedContent, significant = false, index = matches.index;
+                var type = _types.endOfLineType, sanitisedContent = (0, _content).sanitiseContent(content), innerHTML = sanitisedContent, significant = false, index = matches.index;
                 endOfLineNonSignificantToken = new EndOfLineNonSignificantToken2(type, content, innerHTML, significant, index);
               }
             }
@@ -6461,7 +6463,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var StartOfMultiLineCommentToken = function(NonSignificantToken) {
-      _inherits(StartOfMultiLineCommentToken2, _nonSignificant.default);
+      _inherits(StartOfMultiLineCommentToken2, NonSignificantToken);
       function StartOfMultiLineCommentToken2() {
         _classCallCheck(this, StartOfMultiLineCommentToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(StartOfMultiLineCommentToken2).apply(this, arguments));
@@ -6618,7 +6620,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var MiddleOfMultiLineCommentToken = function(NonSignificantToken) {
-      _inherits(MiddleOfMultiLineCommentToken2, _nonSignificant.default);
+      _inherits(MiddleOfMultiLineCommentToken2, NonSignificantToken);
       function MiddleOfMultiLineCommentToken2() {
         _classCallCheck(this, MiddleOfMultiLineCommentToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(MiddleOfMultiLineCommentToken2).apply(this, arguments));
@@ -6761,7 +6763,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var StringLiteralToken = function(SignificantToken) {
-      _inherits(StringLiteralToken2, _significant.default);
+      _inherits(StringLiteralToken2, SignificantToken);
       function StringLiteralToken2() {
         _classCallCheck(this, StringLiteralToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(StringLiteralToken2).apply(this, arguments));
@@ -6916,7 +6918,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SinglyQuotedStringLiteralToken = function(StringLiteralToken) {
-      _inherits(SinglyQuotedStringLiteralToken2, _stringLiteral.default);
+      _inherits(SinglyQuotedStringLiteralToken2, StringLiteralToken);
       function SinglyQuotedStringLiteralToken2() {
         _classCallCheck(this, SinglyQuotedStringLiteralToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(SinglyQuotedStringLiteralToken2).apply(this, arguments));
@@ -7066,7 +7068,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DoublyQuotedStringLiteralToken = function(StringLiteralToken) {
-      _inherits(DoublyQuotedStringLiteralToken2, _stringLiteral.default);
+      _inherits(DoublyQuotedStringLiteralToken2, StringLiteralToken);
       function DoublyQuotedStringLiteralToken2() {
         _classCallCheck(this, DoublyQuotedStringLiteralToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(DoublyQuotedStringLiteralToken2).apply(this, arguments));
@@ -7216,7 +7218,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SinglyQuotedBrokenStringLiteralToken = function(SignificantToken) {
-      _inherits(SinglyQuotedBrokenStringLiteralToken2, _significant.default);
+      _inherits(SinglyQuotedBrokenStringLiteralToken2, SignificantToken);
       function SinglyQuotedBrokenStringLiteralToken2() {
         _classCallCheck(this, SinglyQuotedBrokenStringLiteralToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(SinglyQuotedBrokenStringLiteralToken2).apply(this, arguments));
@@ -7366,7 +7368,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DoublyQuotedBrokenStringLiteralToken = function(SignificantToken) {
-      _inherits(DoublyQuotedBrokenStringLiteralToken2, _significant.default);
+      _inherits(DoublyQuotedBrokenStringLiteralToken2, SignificantToken);
       function DoublyQuotedBrokenStringLiteralToken2() {
         _classCallCheck(this, DoublyQuotedBrokenStringLiteralToken2);
         return _possibleConstructorReturn(this, _getPrototypeOf(DoublyQuotedBrokenStringLiteralToken2).apply(this, arguments));
@@ -7730,7 +7732,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var BNFLexer = function(CommonLexer) {
-      _inherits(BNFLexer2, _lexer.default);
+      _inherits(BNFLexer2, CommonLexer);
       function BNFLexer2() {
         _classCallCheck(this, BNFLexer2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BNFLexer2).apply(this, arguments));
@@ -7907,7 +7909,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var BasicLexer = function(CommonLexer) {
-      _inherits(BasicLexer2, _lexer.default);
+      _inherits(BasicLexer2, CommonLexer);
       function BasicLexer2() {
         _classCallCheck(this, BasicLexer2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BasicLexer2).apply(this, arguments));
@@ -8133,7 +8135,7 @@
     };
     var first = _necessary.arrayUtilities.first;
     var EndOfLineSignificantToken = function(SignificantToken) {
-      _inherits(EndOfLineSignificantToken2, _significant.default);
+      _inherits(EndOfLineSignificantToken2, SignificantToken);
       function EndOfLineSignificantToken2(type, content, innerHTML, significant, index) {
         _classCallCheck(this, EndOfLineSignificantToken2);
         var _this;
@@ -8172,7 +8174,7 @@
               content = firstMatch;
               var contentLength = content.length;
               if (contentLength > 0) {
-                var type = _types.endOfLineType, sanitisedContent = _content.sanitiseContent(content), innerHTML = sanitisedContent, significant = true, index = matches.index;
+                var type = _types.endOfLineType, sanitisedContent = (0, _content).sanitiseContent(content), innerHTML = sanitisedContent, significant = true, index = matches.index;
                 endOfLineSignificantToken = new EndOfLineSignificantToken2(type, content, innerHTML, significant, index);
               }
             }
@@ -9302,7 +9304,7 @@
             var multiLine = param === void 0 ? true : param;
             var definitionsLength = this.definitions.length;
             multiLine = multiLine && definitionsLength > 1;
-            var maximumPadding = _string.paddingFromPaddingLength(maximumRuleNameLength), definitionsString = this.definitions.reduce(function(definitionsString1, definition) {
+            var maximumPadding = (0, _string).paddingFromPaddingLength(maximumRuleNameLength), definitionsString = this.definitions.reduce(function(definitionsString1, definition) {
               var definitionString = definition.asString();
               if (definitionsString1 === "") {
                 definitionsString1 = definitionString;
@@ -9310,8 +9312,8 @@
                 definitionsString1 = multiLine ? "".concat(definitionsString1, "\n\n").concat(maximumPadding, "   | ").concat(definitionString) : "".concat(definitionsString1, " | ").concat(definitionString);
               }
               return definitionsString1;
-            }, ""), ruleName = this.name, ruleNameLength = ruleName.length, paddingLength = maximumRuleNameLength - ruleNameLength, padding = _string.paddingFromPaddingLength(paddingLength);
-            var semicolonString = multiLine ? "\\n\\n".concat(maximumPadding, "   ;") : " ;", string = "\\n\\n".concat(this.name).concat(padding, " ::= ").concat(definitionsString).concat(semicolonString);
+            }, ""), ruleName = this.name, ruleNameLength = ruleName.length, paddingLength = maximumRuleNameLength - ruleNameLength, padding = (0, _string).paddingFromPaddingLength(paddingLength);
+            var semicolonString = multiLine ? "\n\n".concat(maximumPadding, "   ;") : " ;", string = "\n\n".concat(this.name).concat(padding, " ::= ").concat(definitionsString).concat(semicolonString);
             return string;
           }
         }
@@ -9334,767 +9336,8 @@
     exports.default = Rule;
   });
 
-  // node_modules/occam-parsers/node_modules/necessary/lib/constants.js
-  var require_constants3 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.BACKSPACE_CHARACTER = exports.ETX_CHARACTER = exports.DATA_EVENT = exports.CONTENT_TYPE = exports.DEFAULT_LOG_FILE_BASE_NAME = exports.TRACE = exports.POST = exports.CARRIAGE_RETURN_CHARACTER = exports.DEFAULT_ENCODING = exports.ERROR = exports.ACCEPT = exports.DEBUG = exports.DEFAULT_RC_BASE_EXTENSION = exports.DEFAULT_ATTEMPTS = exports.CTRL_C = exports.FATAL = exports.DEFAULT_INITIAL_ANSWER = exports.WARNING = exports.APPLICATION_JSON = exports.INFO = exports.GET = exports.LINE_FEED_CHARACTER = exports.DEFAULT_LOG_LEVEL = exports.DEFAULT_LOG_DIRECTORY_PATH = exports.UTF8_ENCODING = void 0;
-    var TRACE = "TRACE";
-    exports.TRACE = TRACE;
-    var DEBUG = "DEBUG";
-    exports.DEBUG = DEBUG;
-    var INFO = "INFO";
-    exports.INFO = INFO;
-    var WARNING = "WARNING";
-    exports.WARNING = WARNING;
-    var ERROR = "ERROR";
-    exports.ERROR = ERROR;
-    var FATAL = "FATAL";
-    exports.FATAL = FATAL;
-    var DEFAULT_LOG_LEVEL = WARNING;
-    exports.DEFAULT_LOG_LEVEL = DEFAULT_LOG_LEVEL;
-    var DEFAULT_LOG_DIRECTORY_PATH = null;
-    exports.DEFAULT_LOG_DIRECTORY_PATH = DEFAULT_LOG_DIRECTORY_PATH;
-    var DEFAULT_LOG_FILE_BASE_NAME = "default";
-    exports.DEFAULT_LOG_FILE_BASE_NAME = DEFAULT_LOG_FILE_BASE_NAME;
-    var GET = "GET";
-    exports.GET = GET;
-    var POST = "POST";
-    exports.POST = POST;
-    var ACCEPT = "accept";
-    exports.ACCEPT = ACCEPT;
-    var CONTENT_TYPE = "content-type";
-    exports.CONTENT_TYPE = CONTENT_TYPE;
-    var APPLICATION_JSON = "application/json";
-    exports.APPLICATION_JSON = APPLICATION_JSON;
-    var CTRL_C = "^C";
-    exports.CTRL_C = CTRL_C;
-    var DATA_EVENT = "data";
-    exports.DATA_EVENT = DATA_EVENT;
-    var UTF8_ENCODING = "utf8";
-    exports.UTF8_ENCODING = UTF8_ENCODING;
-    var ETX_CHARACTER = "";
-    exports.ETX_CHARACTER = ETX_CHARACTER;
-    var DEFAULT_ATTEMPTS = 3;
-    exports.DEFAULT_ATTEMPTS = DEFAULT_ATTEMPTS;
-    var DEFAULT_ENCODING = UTF8_ENCODING;
-    exports.DEFAULT_ENCODING = DEFAULT_ENCODING;
-    var LINE_FEED_CHARACTER = "\n";
-    exports.LINE_FEED_CHARACTER = LINE_FEED_CHARACTER;
-    var BACKSPACE_CHARACTER = String.fromCharCode(127);
-    exports.BACKSPACE_CHARACTER = BACKSPACE_CHARACTER;
-    var DEFAULT_INITIAL_ANSWER = "";
-    exports.DEFAULT_INITIAL_ANSWER = DEFAULT_INITIAL_ANSWER;
-    var CARRIAGE_RETURN_CHARACTER = "\r";
-    exports.CARRIAGE_RETURN_CHARACTER = CARRIAGE_RETURN_CHARACTER;
-    var DEFAULT_RC_BASE_EXTENSION = "";
-    exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
-  });
-
-  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/ajax.js
-  var require_ajax2 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.get = get;
-    exports.post = post;
-    exports.request = request;
-    exports.default = void 0;
-    var _constants = require_constants3();
-    function get(host, uri, parameters, headers, callback) {
-      if (callback === void 0) {
-        callback = headers;
-        headers = {};
-      }
-      var method = _constants.GET, body2 = null;
-      guaranteeAccept(headers);
-      request(host, uri, parameters, method, body2, headers, callback);
-    }
-    function post(host, uri, parameters, body2, headers, callback) {
-      if (callback === void 0) {
-        callback = headers;
-        headers = {};
-      }
-      var method = _constants.POST;
-      guaranteeAccept(headers);
-      guaranteeContentType(headers);
-      request(host, uri, parameters, method, body2, headers, callback);
-    }
-    function request(host, uri, parameters, method, body2, headers, callback) {
-      var url = urlFromHostURIAndParameters(host, uri, parameters), accept = headers[_constants.ACCEPT] || null, contentType = headers[_constants.CONTENT_TYPE] || null, xmlHttpRequest = new XMLHttpRequest();
-      if (contentType === _constants.APPLICATION_JSON) {
-        var json = body2, jsonString = JSON.stringify(json);
-        body2 = jsonString;
-      }
-      xmlHttpRequest.onreadystatechange = function() {
-        var readyState = xmlHttpRequest.readyState, status = xmlHttpRequest.status, responseText = xmlHttpRequest.responseText;
-        if (readyState == 4) {
-          var body1 = responseText;
-          if (accept === _constants.APPLICATION_JSON) {
-            try {
-              var jsonString2 = body1, json2 = JSON.parse(jsonString2);
-              body1 = json2;
-            } catch (error) {
-              body1 = null;
-            }
-            callback(body1, status);
-          }
-        }
-      };
-      xmlHttpRequest.open(method, url);
-      if (accept !== null) {
-        xmlHttpRequest.setRequestHeader(_constants.ACCEPT, accept);
-      }
-      if (contentType !== null) {
-        xmlHttpRequest.setRequestHeader(_constants.CONTENT_TYPE, contentType);
-      }
-      body2 !== null ? xmlHttpRequest.send(body2) : xmlHttpRequest.send();
-    }
-    var _default = {
-      get,
-      post,
-      request
-    };
-    exports.default = _default;
-    function guarantee(headers, name, value) {
-      var propertyNames = Object.getOwnPropertyNames(headers), names = propertyNames.map(function(propertyName) {
-        var lowerCasePropertyName = propertyName.toLowerCase(), name1 = lowerCasePropertyName;
-        return name1;
-      }), namesIncludesName = names.includes(name);
-      if (!namesIncludesName) {
-        headers[name] = value;
-      }
-    }
-    function guaranteeAccept(headers) {
-      var name = _constants.ACCEPT, value = _constants.APPLICATION_JSON;
-      guarantee(headers, name, value);
-    }
-    function guaranteeContentType(headers) {
-      var name = _constants.CONTENT_TYPE, value = _constants.APPLICATION_JSON;
-      guarantee(headers, name, value);
-    }
-    function queryStringFromParameters(parameters) {
-      var names = Object.keys(parameters), namesLength = names.length, lastIndex = namesLength - 1, queryString = names.reduce(function(queryString1, name, index) {
-        var value = parameters[name], encodedName = encodeURIComponent(name), encodedValue = encodeURIComponent(value), ampersandOrNothing = index !== lastIndex ? "&" : "";
-        queryString1 += "".concat(encodedName, "=").concat(encodedValue).concat(ampersandOrNothing);
-        return queryString1;
-      }, "");
-      return queryString;
-    }
-    function urlFromHostURIAndParameters(host, uri, parameters) {
-      var queryString = queryStringFromParameters(parameters), url = queryString === "" ? "".concat(host).concat(uri) : "".concat(host).concat(uri, "?").concat(queryString);
-      return url;
-    }
-  });
-
-  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/array.js
-  var require_array3 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.first = first;
-    exports.second = second;
-    exports.third = third;
-    exports.fourth = fourth;
-    exports.fifth = fifth;
-    exports.fifthLast = fifthLast;
-    exports.fourthLast = fourthLast;
-    exports.thirdLast = thirdLast;
-    exports.secondLast = secondLast;
-    exports.last = last;
-    exports.head = head;
-    exports.tail = tail;
-    exports.push = push;
-    exports.unshift = unshift;
-    exports.concat = concat;
-    exports.clear = clear;
-    exports.copy = copy;
-    exports.merge = merge;
-    exports.splice = splice;
-    exports.replace = replace;
-    exports.filter = filter;
-    exports.find = find;
-    exports.prune = prune;
-    exports.patch = patch;
-    exports.augment = augment;
-    exports.separate = separate;
-    exports.forwardsSome = forwardsSome;
-    exports.backwardsSome = backwardsSome;
-    exports.forwardsEvery = forwardsEvery;
-    exports.backwardsEvery = backwardsEvery;
-    exports.forwardsReduce = forwardsReduce;
-    exports.backwardsReduce = backwardsReduce;
-    exports.forwardsForEach = forwardsForEach;
-    exports.backwardsForEach = backwardsForEach;
-    exports.default = void 0;
-    function _arrayWithoutHoles(arr) {
-      if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-          arr2[i] = arr[i];
-        }
-        return arr2;
-      }
-    }
-    function _instanceof(left, right) {
-      if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
-        return right[Symbol.hasInstance](left);
-      } else {
-        return left instanceof right;
-      }
-    }
-    function _iterableToArray(iter) {
-      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
-        return Array.from(iter);
-    }
-    function _nonIterableSpread() {
-      throw new TypeError("Invalid attempt to spread non-iterable instance");
-    }
-    function _toConsumableArray(arr) {
-      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-    }
-    function first(array) {
-      return array[0];
-    }
-    function second(array) {
-      return array[1];
-    }
-    function third(array) {
-      return array[2];
-    }
-    function fourth(array) {
-      return array[3];
-    }
-    function fifth(array) {
-      return array[4];
-    }
-    function fifthLast(array) {
-      return array[array.length - 5];
-    }
-    function fourthLast(array) {
-      return array[array.length - 4];
-    }
-    function thirdLast(array) {
-      return array[array.length - 3];
-    }
-    function secondLast(array) {
-      return array[array.length - 2];
-    }
-    function last(array) {
-      return array[array.length - 1];
-    }
-    function head(array) {
-      return array.slice(0, 1);
-    }
-    function tail(array) {
-      return array.slice(1);
-    }
-    function push(array1, array2) {
-      Array.prototype.push.apply(array1, array2);
-    }
-    function unshift(array1, array2) {
-      Array.prototype.unshift.apply(array1, array2);
-    }
-    function concat(array1, elementOrArray2) {
-      var array2 = _instanceof(elementOrArray2, Array) ? elementOrArray2 : [
-        elementOrArray2
-      ];
-      push(array1, array2);
-    }
-    function clear(array) {
-      var start = 0;
-      return array.splice(start);
-    }
-    function copy(array1, array2) {
-      var start = 0, deleteCount = array2.length;
-      splice(array1, start, deleteCount, array2);
-    }
-    function merge(array1, array2) {
-      Array.prototype.push.apply(array1, array2);
-    }
-    function splice(array1, start, param, param1) {
-      var deleteCount = param === void 0 ? Infinity : param, array2 = param1 === void 0 ? [] : param1;
-      var args = [
-        start,
-        deleteCount
-      ].concat(_toConsumableArray(array2)), deletedItemsArray = Array.prototype.splice.apply(array1, args);
-      return deletedItemsArray;
-    }
-    function replace(array, element, test) {
-      var start;
-      var found = array.some(function(element1, index) {
-        var passed = test(element1, index);
-        if (passed) {
-          start = index;
-          return true;
-        }
-      });
-      if (found) {
-        var deleteCount = 1;
-        array.splice(start, deleteCount, element);
-      }
-      return found;
-    }
-    function filter(array, test) {
-      var filteredElements = [];
-      backwardsForEach(array, function(element, index) {
-        var passed = test(element, index);
-        if (!passed) {
-          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
-          filteredElements.unshift(firstDeletedElement);
-        }
-      });
-      return filteredElements;
-    }
-    function find(array, test) {
-      var elements = [];
-      forwardsForEach(array, function(element, index) {
-        var passed = test(element, index);
-        if (passed) {
-          elements.push(element);
-        }
-      });
-      return elements;
-    }
-    function prune(array, test) {
-      var prunedElement = void 0;
-      array.some(function(element, index) {
-        var passed = test(element, index);
-        if (!passed) {
-          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
-          prunedElement = firstDeletedElement;
-          return true;
-        }
-      });
-      return prunedElement;
-    }
-    function patch(array, element, test) {
-      var found = array.some(function(element1, index) {
-        var passed = test(element1, index);
-        if (passed) {
-          return true;
-        }
-      });
-      if (found) {
-        array.push(element);
-      }
-      return found;
-    }
-    function augment(array1, array2, test) {
-      array2.forEach(function(element, index) {
-        var passed = test(element, index);
-        if (passed) {
-          array1.push(element);
-        }
-      });
-    }
-    function separate(array, array1, array2, test) {
-      array.forEach(function(element, index) {
-        var passed = test(element, index);
-        passed ? array1.push(element) : array2.push(element);
-      });
-    }
-    function forwardsSome(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index], result = callback(element, index);
-        if (result) {
-          return true;
-        }
-      }
-      return false;
-    }
-    function backwardsSome(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index], result = callback(element, index);
-        if (result) {
-          return true;
-        }
-      }
-      return false;
-    }
-    function forwardsEvery(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index], result = callback(element, index);
-        if (!result) {
-          return false;
-        }
-      }
-      return true;
-    }
-    function backwardsEvery(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index], result = callback(element, index);
-        if (!result) {
-          return false;
-        }
-      }
-      return true;
-    }
-    function forwardsReduce(array, callback, initialValue) {
-      var value = initialValue;
-      forwardsForEach(array, function(element, index) {
-        value = callback(value, element, index);
-      });
-      return value;
-    }
-    function backwardsReduce(array, callback, initialValue) {
-      var value = initialValue;
-      backwardsForEach(array, function(element, index) {
-        value = callback(value, element, index);
-      });
-      return value;
-    }
-    function forwardsForEach(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index];
-        callback(element, index);
-      }
-    }
-    function backwardsForEach(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index];
-        callback(element, index);
-      }
-    }
-    var _default = {
-      first,
-      second,
-      third,
-      fourth,
-      fifth,
-      fifthLast,
-      fourthLast,
-      thirdLast,
-      secondLast,
-      last,
-      head,
-      tail,
-      push,
-      unshift,
-      concat,
-      clear,
-      copy,
-      merge,
-      splice,
-      replace,
-      filter,
-      find,
-      prune,
-      patch,
-      augment,
-      separate,
-      forwardsSome,
-      backwardsSome,
-      forwardsEvery,
-      backwardsEvery,
-      forwardsReduce,
-      backwardsReduce,
-      forwardsForEach,
-      backwardsForEach
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/path.js
-  var require_path2 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.isPathName = isPathName;
-    exports.isPathTopmostName = isPathTopmostName;
-    exports.isPathRelativePath = isPathRelativePath;
-    exports.isPathAbsolutePath = isPathAbsolutePath;
-    exports.isTopmostNameInAbsolutePath = isTopmostNameInAbsolutePath;
-    exports.combinePaths = combinePaths;
-    exports.concatenatePaths = concatenatePaths;
-    exports.bottommostNameFromPath = bottommostNameFromPath;
-    exports.topmostDirectoryPathFromPath = topmostDirectoryPathFromPath;
-    exports.topmostDirectoryNameFromPath = topmostDirectoryNameFromPath;
-    exports.pathWithoutBottommostNameFromPath = pathWithoutBottommostNameFromPath;
-    exports.pathWithoutTopmostDirectoryNameFromPath = pathWithoutTopmostDirectoryNameFromPath;
-    exports.default = void 0;
-    var _array = require_array3();
-    function isPathName(path) {
-      path = path.replace(/^\//, "").replace(/\/$/, "");
-      var pathName = /\//.test(path) === false;
-      return pathName;
-    }
-    function isPathTopmostName(path) {
-      var pathName = isPathName(path), pathAbsolutePath = isPathAbsolutePath(path), pathTopmostName = pathName && pathAbsolutePath;
-      return pathTopmostName;
-    }
-    function isPathRelativePath(path) {
-      var pathRelativePath = !/^\//.test(path);
-      return pathRelativePath;
-    }
-    function isPathAbsolutePath(path) {
-      var pathAbsolutePath = /^\//.test(path);
-      return pathAbsolutePath;
-    }
-    function isTopmostNameInAbsolutePath(topmostName, absolutePath) {
-      var regExp = new RegExp("^".concat(topmostName, "(?:\\/.+)?$")), topmostNameInAbsolutePath = regExp.test(absolutePath);
-      return topmostNameInAbsolutePath;
-    }
-    function combinePaths(path, relativePath) {
-      var combinedPath = null;
-      var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
-      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
-      if (firstRelativePathName === ".") {
-        relativePathNames.shift();
-      }
-      firstRelativePathName = _array.first(relativePathNames);
-      lastPathName = _array.last(pathNames);
-      while (firstRelativePathName === ".." && lastPathName !== void 0) {
-        relativePathNames.shift();
-        pathNames.pop();
-        firstRelativePathName = _array.first(relativePathNames);
-        lastPathName = _array.last(pathNames);
-      }
-      if (lastPathName !== void 0) {
-        var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
-        combinedPath = combinedPathNames.join("/");
-      }
-      return combinedPath;
-    }
-    function concatenatePaths(path, relativePath) {
-      path = path.replace(/\/$/, "");
-      var concatenatedPath = "".concat(path, "/").concat(relativePath);
-      return concatenatedPath;
-    }
-    function bottommostNameFromPath(path) {
-      var bottommostName = null;
-      var matches = path.match(/^.*\/([^\/]+\/?)$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        bottommostName = secondMatch;
-      }
-      return bottommostName;
-    }
-    function topmostDirectoryPathFromPath(path) {
-      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
-      return topmostDirectoryPath;
-    }
-    function topmostDirectoryNameFromPath(path) {
-      var topmostDirectoryName = null;
-      var matches = path.match(/^([^\/]+)\/.+$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        topmostDirectoryName = secondMatch;
-      }
-      return topmostDirectoryName;
-    }
-    function pathWithoutBottommostNameFromPath(path) {
-      var pathWithoutBottommostName = null;
-      var matches = path.match(/^(.*)\/[^\/]+\/?$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        pathWithoutBottommostName = secondMatch;
-      }
-      return pathWithoutBottommostName;
-    }
-    function pathWithoutTopmostDirectoryNameFromPath(path) {
-      var pathWithoutTopmostDirectoryName = null;
-      var matches = path.match(/^[^\/]+\/(.+)$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        pathWithoutTopmostDirectoryName = secondMatch;
-      }
-      return pathWithoutTopmostDirectoryName;
-    }
-    var _default = {
-      isPathName,
-      isPathTopmostName,
-      isPathRelativePath,
-      isPathAbsolutePath,
-      isTopmostNameInAbsolutePath,
-      combinePaths,
-      concatenatePaths,
-      bottommostNameFromPath,
-      topmostDirectoryPathFromPath,
-      topmostDirectoryNameFromPath,
-      pathWithoutBottommostNameFromPath,
-      pathWithoutTopmostDirectoryNameFromPath
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/occam-parsers/node_modules/necessary/lib/utilities/asynchronous.js
-  var require_asynchronous2 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.whilst = whilst;
-    exports.forEach = forEach;
-    exports.sequence = sequence;
-    exports.eventually = eventually;
-    exports.repeatedly = repeatedly;
-    exports.forwardsForEach = forwardsForEach;
-    exports.backwardsForEach = backwardsForEach;
-    exports.default = void 0;
-    function whilst(callback, done, context) {
-      var count = -1;
-      function next() {
-        count++;
-        var index = count, terminate = callback(next, done, context, index);
-        if (terminate) {
-          done();
-        }
-      }
-      next();
-    }
-    function forEach(array, callback, done, context) {
-      var length = array.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    function sequence(callbacks, done, context) {
-      var length = callbacks.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, callback = callbacks[index];
-          callback(next, done, context, index);
-        }
-      }
-      next();
-    }
-    function eventually(callbacks, done, context) {
-      var next = function next2() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        }
-      };
-      var length = callbacks.length;
-      var count = 0;
-      callbacks.forEach(function(callback, index) {
-        callback(next, done, context, index);
-      });
-    }
-    function repeatedly(callback, length, done, context) {
-      var next = function next2() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        }
-      };
-      var count = 0;
-      for (var index = 0; index < length; index++) {
-        callback(next, done, context, index);
-      }
-    }
-    function forwardsForEach(array, callback, done, context) {
-      var length = array.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    function backwardsForEach(array, callback, done, context) {
-      var length = array.length;
-      var count = length;
-      function next() {
-        count--;
-        var terminate = count === -1;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    var _default = {
-      whilst,
-      forEach,
-      sequence,
-      eventually,
-      repeatedly,
-      forwardsForEach,
-      backwardsForEach
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/occam-parsers/node_modules/necessary/lib/browser.js
-  var require_browser2 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    var _ajax = _interopRequireDefault2(require_ajax2());
-    var _path = _interopRequireDefault2(require_path2());
-    var _array = _interopRequireDefault2(require_array3());
-    var _asynchronous = _interopRequireDefault2(require_asynchronous2());
-    function _interopRequireDefault2(obj) {
-      return obj && obj.__esModule ? obj : {
-        default: obj
-      };
-    }
-    Object.defineProperty(exports, "ajaxUtilities", {
-      enumerable: true,
-      get: function() {
-        return _ajax.default;
-      }
-    });
-    Object.defineProperty(exports, "pathUtilities", {
-      enumerable: true,
-      get: function() {
-        return _path.default;
-      }
-    });
-    Object.defineProperty(exports, "arrayUtilities", {
-      enumerable: true,
-      get: function() {
-        return _array.default;
-      }
-    });
-    Object.defineProperty(exports, "asynchronousUtilities", {
-      enumerable: true,
-      get: function() {
-        return _asynchronous.default;
-      }
-    });
-  });
-
   // node_modules/occam-parsers/lib/utilities/array.js
-  var require_array4 = __commonJS((exports) => {
+  var require_array3 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -10103,7 +9346,7 @@
     exports.allButFirst = allButFirst;
     exports.allButFirstAndLast = allButFirstAndLast;
     exports.third = exports.push = exports.filter = exports.first = exports.last = exports.second = exports.backwardsSome = exports.forwardsSome = void 0;
-    var _necessary = require_browser2();
+    var _necessary = require_browser();
     var first = _necessary.arrayUtilities.first;
     var second = _necessary.arrayUtilities.second;
     var third = _necessary.arrayUtilities.third;
@@ -10149,7 +9392,7 @@
       value: true
     });
     exports.default = void 0;
-    var _array = require_array4();
+    var _array = require_array3();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -10193,7 +9436,7 @@
             if (linesLength === 0) {
               width = 0;
             } else {
-              var lastLine = _array.last(this.lines), lastLineLength = lastLine.length;
+              var lastLine = (0, _array).last(this.lines), lastLineLength = lastLine.length;
               width = lastLineLength;
             }
             return width;
@@ -10431,7 +9674,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var VerticalBranchParseTree = function(ParseTree) {
-      _inherits(VerticalBranchParseTree2, _parseTree.default);
+      _inherits(VerticalBranchParseTree2, ParseTree);
       function VerticalBranchParseTree2(lines, verticalBranchPosition) {
         _classCallCheck(this, VerticalBranchParseTree2);
         var _this;
@@ -10584,7 +9827,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleNameParseTree = function(VerticalBranchParseTree) {
-      _inherits(RuleNameParseTree2, _verticalBranch.default);
+      _inherits(RuleNameParseTree2, VerticalBranchParseTree);
       function RuleNameParseTree2() {
         _classCallCheck(this, RuleNameParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RuleNameParseTree2).apply(this, arguments));
@@ -10686,7 +9929,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var HorizontalBranchParseTree = function(ParseTree) {
-      _inherits(HorizontalBranchParseTree2, _parseTree.default);
+      _inherits(HorizontalBranchParseTree2, ParseTree);
       function HorizontalBranchParseTree2() {
         _classCallCheck(this, HorizontalBranchParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(HorizontalBranchParseTree2).apply(this, arguments));
@@ -10723,7 +9966,7 @@
     exports.default = void 0;
     var _verticalBranch = _interopRequireDefault2(require_verticalBranch());
     var _horizontalBranch = _interopRequireDefault2(require_horizontalBranch());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -10794,7 +10037,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ChildNodesParseTree = function(VerticalBranchParseTree) {
-      _inherits(ChildNodesParseTree2, _verticalBranch.default);
+      _inherits(ChildNodesParseTree2, VerticalBranchParseTree);
       function ChildNodesParseTree2() {
         _classCallCheck(this, ChildNodesParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(ChildNodesParseTree2).apply(this, arguments));
@@ -10810,7 +10053,7 @@
               return childNodeParseTrees1;
             }, []), childNodeParseTreesLength = childNodeParseTrees.length;
             if (childNodeParseTreesLength === 1) {
-              var firstChildNodeParseTree = _array.first(childNodeParseTrees);
+              var firstChildNodeParseTree = (0, _array).first(childNodeParseTrees);
               childNodesParseTree = firstChildNodeParseTree;
             } else {
               var firstVerticalBranchPosition = void 0, lastVerticalBranchPosition = 0, childNodeParseTreesWidth = 0, childNodeParseTreesDepth = 0;
@@ -10943,7 +10186,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NonTerminalNodeParseTree = function(VerticalBranchParseTree) {
-      _inherits(NonTerminalNodeParseTree2, _verticalBranch.default);
+      _inherits(NonTerminalNodeParseTree2, VerticalBranchParseTree);
       function NonTerminalNodeParseTree2() {
         _classCallCheck(this, NonTerminalNodeParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NonTerminalNodeParseTree2).apply(this, arguments));
@@ -10995,7 +10238,7 @@
     });
     exports.default = void 0;
     var _nonTerminalNode = _interopRequireDefault2(require_nonTerminalNode());
-    var _array = require_array4();
+    var _array = require_array3();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -11067,7 +10310,7 @@
           key: "getFirstSignificantToken",
           value: function getFirstSignificantToken() {
             var firstSignificantToken = null;
-            _array.forwardsSome(this.childNodes, function(childNode) {
+            (0, _array).forwardsSome(this.childNodes, function(childNode) {
               firstSignificantToken = childNode.getFirstSignificantToken();
               if (firstSignificantToken !== null) {
                 return true;
@@ -11080,7 +10323,7 @@
           key: "getLastSignificantToken",
           value: function getLastSignificantToken() {
             var lastSignificantToken = null;
-            _array.backwardsSome(this.childNodes, function(childNode) {
+            (0, _array).backwardsSome(this.childNodes, function(childNode) {
               lastSignificantToken = childNode.getLastSignificantToken();
               if (lastSignificantToken !== null) {
                 return true;
@@ -11145,7 +10388,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -11216,7 +10459,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NameNode = function(NonTerminalNode) {
-      _inherits(NameNode2, _nonTerminal.default);
+      _inherits(NameNode2, NonTerminalNode);
       function NameNode2() {
         _classCallCheck(this, NameNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NameNode2).apply(this, arguments));
@@ -11225,7 +10468,7 @@
         {
           key: "getName",
           value: function getName() {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), name = terminalNodeContent;
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), name = terminalNodeContent;
             return name;
           }
         }
@@ -11278,7 +10521,7 @@
       value: true
     });
     exports.default = void 0;
-    var _array = require_array4();
+    var _array = require_array3();
     var _part = require_part();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
@@ -11317,7 +10560,7 @@
         {
           key: "getFirstPart",
           value: function getFirstPart() {
-            var firstPart = _array.first(this.parts);
+            var firstPart = (0, _array).first(this.parts);
             return firstPart;
           }
         },
@@ -11331,7 +10574,7 @@
         {
           key: "getAllButFirstParts",
           value: function getAllButFirstParts() {
-            var allButFirstParts = _array.allButFirst(this.parts);
+            var allButFirstParts = (0, _array).allButFirst(this.parts);
             return allButFirstParts;
           }
         },
@@ -11391,17 +10634,17 @@
           return parseParts(parts, partsNodes, index, context, callback);
         });
         if (parsed) {
-          _array.push(nodes, partsNodes);
+          (0, _array).push(nodes, partsNodes);
         }
       } else {
-        var partRuleNamePartWithLookAhead = _part.isPartRuleNamePartWithLookAhead(part);
+        var partRuleNamePartWithLookAhead = (0, _part).isPartRuleNamePartWithLookAhead(part);
         if (partRuleNamePartWithLookAhead) {
           var ruleNamePart = part, partsNodes = [];
           parsed = ruleNamePart.parse(nodes, context, function() {
             return parseParts(parts, partsNodes, index, context);
           });
           if (parsed) {
-            _array.push(nodes, partsNodes);
+            (0, _array).push(nodes, partsNodes);
           }
         } else {
           parsed = part.parse(nodes, context);
@@ -11627,7 +10870,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalNodeParseTree = function(VerticalBranchParseTree) {
-      _inherits(TerminalNodeParseTree2, _verticalBranch.default);
+      _inherits(TerminalNodeParseTree2, VerticalBranchParseTree);
       function TerminalNodeParseTree2() {
         _classCallCheck(this, TerminalNodeParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(TerminalNodeParseTree2).apply(this, arguments));
@@ -11896,7 +11139,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SignificantTokenTypePart = function(TerminalPart) {
-      _inherits(SignificantTokenTypePart2, _terminal.default);
+      _inherits(SignificantTokenTypePart2, TerminalPart);
       function SignificantTokenTypePart2(significantTokenType) {
         _classCallCheck(this, SignificantTokenTypePart2);
         var _this;
@@ -12016,7 +11259,7 @@
     };
     var nameType = _occamLexers.types.nameType;
     var NameDefinition = function(Definition) {
-      _inherits(NameDefinition2, _definition.default);
+      _inherits(NameDefinition2, Definition);
       function NameDefinition2() {
         _classCallCheck(this, NameDefinition2);
         var nameSignificantTokenType = nameType, nameSignificantTokenTypePart = new _significantTokenType.default(nameSignificantTokenType), parts = [
@@ -12150,7 +11393,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NameRule = function(Rule) {
-      _inherits(NameRule2, _rule.default);
+      _inherits(NameRule2, Rule);
       function NameRule2() {
         _classCallCheck(this, NameRule2);
         var nameDefinition = new _name1.default(), name = _ruleNames.NameRuleName, definitions = [
@@ -12434,7 +11677,7 @@
     };
     var questionMark = _occamLexers.specialSymbols.questionMark;
     var OptionalPartPart = function(NonTerminalPart) {
-      _inherits(OptionalPartPart2, _nonTerminal.default);
+      _inherits(OptionalPartPart2, NonTerminalPart);
       function OptionalPartPart2(part) {
         _classCallCheck(this, OptionalPartPart2);
         var _this;
@@ -12589,7 +11832,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var CollectionOfPartsPart = function(NonTerminalPart) {
-      _inherits(CollectionOfPartsPart2, _nonTerminal.default);
+      _inherits(CollectionOfPartsPart2, NonTerminalPart);
       function CollectionOfPartsPart2(type, part) {
         _classCallCheck(this, CollectionOfPartsPart2);
         var _this;
@@ -12632,7 +11875,7 @@
     exports.default = void 0;
     var _occamLexers = require_lib2();
     var _collectionOfParts = _interopRequireDefault2(require_collectionOfParts());
-    var _array = require_array4();
+    var _array = require_array3();
     var _partTypes = require_partTypes();
     function _assertThisInitialized(self) {
       if (self === void 0) {
@@ -12730,7 +11973,7 @@
     };
     var plus = _occamLexers.specialSymbols.plus;
     var OneOrMorePartsPart = function(CollectionOfPartsPart) {
-      _inherits(OneOrMorePartsPart2, _collectionOfParts.default);
+      _inherits(OneOrMorePartsPart2, CollectionOfPartsPart);
       function OneOrMorePartsPart2(part) {
         _classCallCheck(this, OneOrMorePartsPart2);
         var type = _partTypes.OneOrMorePartsPartType;
@@ -12769,7 +12012,7 @@
             }
             parsed = count !== 0;
             if (parsed) {
-              _array.push(nodes, partsNodes);
+              (0, _array).push(nodes, partsNodes);
             }
             if (!parsed) {
               context.backtrack(savedIndex);
@@ -12902,7 +12145,7 @@
     };
     var asterisk = _occamLexers.specialSymbols.asterisk;
     var ZeroOrMorePartsPart = function(CollectionOfPartsPart) {
-      _inherits(ZeroOrMorePartsPart2, _collectionOfParts.default);
+      _inherits(ZeroOrMorePartsPart2, CollectionOfPartsPart);
       function ZeroOrMorePartsPart2(part) {
         _classCallCheck(this, ZeroOrMorePartsPart2);
         var type = _partTypes.ZeroOrMorePartsPartType;
@@ -12971,7 +12214,7 @@
     exports.isNodeQuantifierNode = isNodeQuantifierNode;
     exports.isNodeLookAheadModifierNode = isNodeLookAheadModifierNode;
     exports.ruleNameFromQuantifierNode = ruleNameFromQuantifierNode;
-    var _array = require_array4();
+    var _array = require_array3();
     var _ruleNames = require_ruleNames();
     function isNodeChoiceNode(node) {
       var nodeNoChoiceNode = false;
@@ -13012,7 +12255,7 @@
     function ruleNameFromQuantifierNode(quantifierNode) {
       var nonTerminalNode;
       nonTerminalNode = quantifierNode;
-      var childNodes = nonTerminalNode.getChildNodes(), firstChildNode = _array.first(childNodes);
+      var childNodes = nonTerminalNode.getChildNodes(), firstChildNode = (0, _array).first(childNodes);
       nonTerminalNode = firstChildNode;
       var ruleName = nonTerminalNode.getRuleName();
       return ruleName;
@@ -13030,7 +12273,7 @@
     var _optionalPart = _interopRequireDefault2(require_optionalPart());
     var _oneOrMoreParts = _interopRequireDefault2(require_oneOrMoreParts());
     var _zeroOrMoreParts = _interopRequireDefault2(require_zeroOrMoreParts());
-    var _array = require_array4();
+    var _array = require_array3();
     var _bnf = require_bnf2();
     var _ruleNames = require_ruleNames();
     function _assertThisInitialized(self) {
@@ -13103,7 +12346,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var PartNode = function(NonTerminalNode) {
-      _inherits(PartNode2, _nonTerminal.default);
+      _inherits(PartNode2, NonTerminalNode);
       function PartNode2() {
         _classCallCheck(this, PartNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(PartNode2).apply(this, arguments));
@@ -13138,7 +12381,7 @@
         if (lastNodeQuantifierNode) {
           var node = nodes.pop(), quantifierNode = node;
           part = partFromNodes(nodes);
-          var ruleName = _bnf.ruleNameFromQuantifierNode(quantifierNode), collectionOfPartsPart = collectionOfPartsPartFromPartAndRuleName(part, ruleName);
+          var ruleName = (0, _bnf).ruleNameFromQuantifierNode(quantifierNode), collectionOfPartsPart = collectionOfPartsPartFromPartAndRuleName(part, ruleName);
           part = collectionOfPartsPart;
         } else {
           nodes.shift();
@@ -13148,7 +12391,7 @@
       return part;
     }
     function isLastNodeQuantifierNode(nodes) {
-      var lastNode = _array.last(nodes), lastNodeQuantifierNode = _bnf.isNodeQuantifierNode(lastNode);
+      var lastNode = (0, _array).last(nodes), lastNodeQuantifierNode = (0, _bnf).isNodeQuantifierNode(lastNode);
       return lastNodeQuantifierNode;
     }
     function collectionOfPartsPartFromPartAndRuleName(part, ruleName) {
@@ -13277,7 +12520,7 @@
     };
     var exclamationMark = _occamLexers.specialSymbols.exclamationMark;
     var RuleNamePart = function(NonTerminalPart) {
-      _inherits(RuleNamePart2, _nonTerminal.default);
+      _inherits(RuleNamePart2, NonTerminalPart);
       function RuleNamePart2(ruleName, param) {
         var lookAhead = param === void 0 ? false : param;
         _classCallCheck(this, RuleNamePart2);
@@ -13419,7 +12662,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleNameDefinition = function(Definition) {
-      _inherits(RuleNameDefinition2, _definition.default);
+      _inherits(RuleNameDefinition2, Definition);
       function RuleNameDefinition2(ruleName) {
         _classCallCheck(this, RuleNameDefinition2);
         var ruleNameRuleNamePart = new _ruleName.default(ruleName), parts = [
@@ -13496,7 +12739,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalPartRuleDefinition = function(Definition) {
-      _inherits(TerminalPartRuleDefinition2, _definition.default);
+      _inherits(TerminalPartRuleDefinition2, Definition);
       function TerminalPartRuleDefinition2() {
         _classCallCheck(this, TerminalPartRuleDefinition2);
         var quantifierRuleName = _ruleNames.QuantifierRuleName, terminalPartRuleName = _ruleNames.TerminalPartRuleName, quantifierRuleNamePart = new _ruleName.default(quantifierRuleName), terminalPartRuleNamePart = new _ruleName.default(terminalPartRuleName), zeroOrMoreQuantifierRuleNamePartsPart = new _zeroOrMoreParts.default(quantifierRuleNamePart), parts = [
@@ -13574,7 +12817,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NonTerminalPartRuleDefinition = function(Definition) {
-      _inherits(NonTerminalPartRuleDefinition2, _definition.default);
+      _inherits(NonTerminalPartRuleDefinition2, Definition);
       function NonTerminalPartRuleDefinition2() {
         _classCallCheck(this, NonTerminalPartRuleDefinition2);
         var quantifierRuleName = _ruleNames.QuantifierRuleName, nonTerminalPartRuleName = _ruleNames.NonTerminalPartRuleName, quantifierRuleNamePart = new _ruleName.default(quantifierRuleName), nonTerminalPartRuleNamePart = new _ruleName.default(nonTerminalPartRuleName), zeroOrMoreQuantifierRuleNamePartsPart = new _zeroOrMoreParts.default(quantifierRuleNamePart), parts = [
@@ -13654,7 +12897,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var PartRule = function(Rule) {
-      _inherits(PartRule2, _rule.default);
+      _inherits(PartRule2, Rule);
       function PartRule2() {
         _classCallCheck(this, PartRule2);
         var name = _ruleNames.PartRuleName, terminalPartRuleDefinition = new _terminal.default(), nonTerminalPartRuleDefinition = new _nonTerminal.default(), noWhitespacePartRuleNameDefinition = new _ruleName.default(_ruleNames.NoWhitespacePartRuleName), definitions = [
@@ -13677,7 +12920,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -13748,7 +12991,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleNode = function(NonTerminalNode) {
-      _inherits(RuleNode2, _nonTerminal.default);
+      _inherits(RuleNode2, NonTerminalNode);
       function RuleNode2() {
         _classCallCheck(this, RuleNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RuleNode2).apply(this, arguments));
@@ -13764,14 +13007,14 @@
         {
           key: "getName",
           value: function getName() {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), nameNode = firstChildNode, name = nameNode.getName();
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), nameNode = firstChildNode, name = nameNode.getName();
             return name;
           }
         },
         {
           key: "generateDefinitions",
           value: function generateDefinitions() {
-            var childNodes = this.getChildNodes(), thirdChildNode = _array.third(childNodes), definitionsNode = thirdChildNode, definitions = definitionsNode.generateDefinitions();
+            var childNodes = this.getChildNodes(), thirdChildNode = (0, _array).third(childNodes), definitionsNode = thirdChildNode, definitions = definitionsNode.generateDefinitions();
             return definitions;
           }
         }
@@ -13892,7 +13135,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalSymbolPart = function(TerminalPart) {
-      _inherits(TerminalSymbolPart2, _terminal.default);
+      _inherits(TerminalSymbolPart2, TerminalPart);
       function TerminalSymbolPart2(content) {
         _classCallCheck(this, TerminalSymbolPart2);
         var _this;
@@ -14015,7 +13258,7 @@
     var separator = _occamLexers.specialSymbols.separator;
     var terminator = _occamLexers.specialSymbols.terminator;
     var RuleDefinition = function(Definition) {
-      _inherits(RuleDefinition2, _definition.default);
+      _inherits(RuleDefinition2, Definition);
       function RuleDefinition2() {
         _classCallCheck(this, RuleDefinition2);
         var separatorTerminalSymbolContent = separator, terminatorTerminalSymbolContent = terminator, nameRuleName = _ruleNames.NameRuleName, definitionsRuleName = _ruleNames.DefinitionsRuleName, nameRuleNamePart = new _ruleName.default(nameRuleName), separatorTerminalSymbolPart = new _terminalSymbol.default(separatorTerminalSymbolContent), definitionsRuleNamePart = new _ruleName.default(definitionsRuleName), terminatorTerminalSymbolPart = new _terminalSymbol.default(terminatorTerminalSymbolContent), parts = [
@@ -14095,7 +13338,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleRule = function(Rule) {
-      _inherits(RuleRule2, _rule.default);
+      _inherits(RuleRule2, Rule);
       function RuleRule2() {
         _classCallCheck(this, RuleRule2);
         var ruleDefinition = new _rule2.default(), name = _ruleNames.RuleRuleName, definitions = [
@@ -14186,7 +13429,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ErrorNode = function(NonTerminalNode) {
-      _inherits(ErrorNode2, _nonTerminal.default);
+      _inherits(ErrorNode2, NonTerminalNode);
       function ErrorNode2() {
         _classCallCheck(this, ErrorNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(ErrorNode2).apply(this, arguments));
@@ -14310,7 +13553,7 @@
     };
     var wildcard = _occamLexers.specialSymbols.wildcard;
     var WildcardPart = function(TerminalPart) {
-      _inherits(WildcardPart2, _terminal.default);
+      _inherits(WildcardPart2, TerminalPart);
       function WildcardPart2() {
         _classCallCheck(this, WildcardPart2);
         return _possibleConstructorReturn(this, _getPrototypeOf(WildcardPart2).apply(this, arguments));
@@ -14422,7 +13665,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ErrorDefinition = function(Definition) {
-      _inherits(ErrorDefinition2, _definition.default);
+      _inherits(ErrorDefinition2, Definition);
       function ErrorDefinition2() {
         _classCallCheck(this, ErrorDefinition2);
         var wildcardPart = new _wildcard.default(), parts = [
@@ -14499,7 +13742,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ErrorRule = function(Rule) {
-      _inherits(ErrorRule2, _rule.default);
+      _inherits(ErrorRule2, Rule);
       function ErrorRule2() {
         _classCallCheck(this, ErrorRule2);
         var errorDefinition = new _error1.default(), name = _ruleNames.ErrorRuleName, definitions = [
@@ -14592,7 +13835,7 @@
     };
     var epsilon = _occamLexers.specialSymbols.epsilon;
     var EpsilonNodeParseTree = function(VerticalBranchParseTree) {
-      _inherits(EpsilonNodeParseTree2, _verticalBranch.default);
+      _inherits(EpsilonNodeParseTree2, VerticalBranchParseTree);
       function EpsilonNodeParseTree2() {
         _classCallCheck(this, EpsilonNodeParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EpsilonNodeParseTree2).apply(this, arguments));
@@ -14694,7 +13937,7 @@
     };
     var epsilon = _occamLexers.specialSymbols.epsilon;
     var EpsilonNode = function(TerminalNode) {
-      _inherits(EpsilonNode2, _terminal.default);
+      _inherits(EpsilonNode2, TerminalNode);
       function EpsilonNode2() {
         _classCallCheck(this, EpsilonNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EpsilonNode2).apply(this, arguments));
@@ -14841,7 +14084,7 @@
     };
     var epsilon = _occamLexers.specialSymbols.epsilon;
     var EpsilonPart = function(TerminalPart) {
-      _inherits(EpsilonPart2, _terminal.default);
+      _inherits(EpsilonPart2, TerminalPart);
       function EpsilonPart2() {
         _classCallCheck(this, EpsilonPart2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EpsilonPart2).apply(this, arguments));
@@ -14970,7 +14213,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var EpsilonNode = function(NonTerminalNode) {
-      _inherits(EpsilonNode2, _nonTerminal.default);
+      _inherits(EpsilonNode2, NonTerminalNode);
       function EpsilonNode2() {
         _classCallCheck(this, EpsilonNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EpsilonNode2).apply(this, arguments));
@@ -15058,7 +14301,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalSymbolDefinition = function(Definition) {
-      _inherits(TerminalSymbolDefinition2, _definition.default);
+      _inherits(TerminalSymbolDefinition2, Definition);
       function TerminalSymbolDefinition2(content) {
         _classCallCheck(this, TerminalSymbolDefinition2);
         var terminalSymbolPart = new _terminalSymbol.default(content), parts = [
@@ -15137,7 +14380,7 @@
     };
     var epsilon = _occamLexers.specialSymbols.epsilon;
     var EpsilonRule = function(Rule) {
-      _inherits(EpsilonRule2, _rule.default);
+      _inherits(EpsilonRule2, Rule);
       function EpsilonRule2() {
         _classCallCheck(this, EpsilonRule2);
         var epsilonTerminalSymbolContent = epsilon, epsilonTerminalSymbolDefinition = new _terminalSymbol.default(epsilonTerminalSymbolContent), name = _ruleNames.EpsilonRuleName, definitions = [
@@ -15151,7 +14394,7 @@
   });
 
   // node_modules/occam-parsers/lib/constants.js
-  var require_constants4 = __commonJS((exports) => {
+  var require_constants3 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -15168,7 +14411,7 @@
       value: true
     });
     exports.default = void 0;
-    var _constants = require_constants4();
+    var _constants = require_constants3();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -15330,7 +14573,7 @@
     });
     exports.default = void 0;
     var _context = _interopRequireDefault2(require_context());
-    var _array = require_array4();
+    var _array = require_array3();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -15389,7 +14632,7 @@
         {
           key: "fromRules",
           value: function fromRules(Parser, rules) {
-            var firstRule = _array.first(rules), startRule = firstRule, ruleMap = rules.reduce(function(ruleMap1, rule) {
+            var firstRule = (0, _array).first(rules), startRule = firstRule, ruleMap = rules.reduce(function(ruleMap1, rule) {
               var ruleName = rule.getName();
               ruleMap1[ruleName] = rule;
               return ruleMap1;
@@ -15482,7 +14725,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DocumentNode = function(NonTerminalNode) {
-      _inherits(DocumentNode2, _nonTerminal.default);
+      _inherits(DocumentNode2, NonTerminalNode);
       function DocumentNode2() {
         _classCallCheck(this, DocumentNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(DocumentNode2).apply(this, arguments));
@@ -15530,7 +14773,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal2());
     var _partTypes = require_partTypes();
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -15626,7 +14869,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ChoiceOfPartsPart = function(NonTerminalPart) {
-      _inherits(ChoiceOfPartsPart2, _nonTerminal.default);
+      _inherits(ChoiceOfPartsPart2, NonTerminalPart);
       function ChoiceOfPartsPart2(parts) {
         _classCallCheck(this, ChoiceOfPartsPart2);
         var _this;
@@ -15680,9 +14923,9 @@
         {
           key: "fromNodes",
           value: function fromNodes(nodes) {
-            var allButFirstAndLastNodes = _array.allButFirstAndLast(nodes);
+            var allButFirstAndLastNodes = (0, _array).allButFirstAndLast(nodes);
             nodes = allButFirstAndLastNodes;
-            var evenNodes = _array.even(nodes);
+            var evenNodes = (0, _array).even(nodes);
             nodes = evenNodes;
             var lookAhead = false, parts = nodes.map(function(node) {
               var part = node.generatePart(lookAhead);
@@ -15762,7 +15005,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DocumentDefinition = function(Definition) {
-      _inherits(DocumentDefinition2, _definition.default);
+      _inherits(DocumentDefinition2, Definition);
       function DocumentDefinition2() {
         _classCallCheck(this, DocumentDefinition2);
         var ruleRuleName = _ruleNames.RuleRuleName, errorRuleName = _ruleNames.ErrorRuleName, ruleRuleNamePart = new _ruleName.default(ruleRuleName), errorRuleNamePart = new _ruleName.default(errorRuleName), ruleRuleNameAndErrorRuleNameParts = [
@@ -15842,7 +15085,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DocumentRule = function(Rule) {
-      _inherits(DocumentRule2, _rule.default);
+      _inherits(DocumentRule2, Rule);
       function DocumentRule2() {
         _classCallCheck(this, DocumentRule2);
         var documentDefinition = new _document1.default(), name = _ruleNames.DocumentRuleName, definitions = [
@@ -15864,7 +15107,7 @@
     exports.default = void 0;
     var _ruleName = _interopRequireDefault2(require_ruleName2());
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -15935,7 +15178,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleNameNode = function(NonTerminalNode) {
-      _inherits(RuleNameNode2, _nonTerminal.default);
+      _inherits(RuleNameNode2, NonTerminalNode);
       function RuleNameNode2() {
         _classCallCheck(this, RuleNameNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RuleNameNode2).apply(this, arguments));
@@ -15951,7 +15194,7 @@
         {
           key: "getRuleName",
           value: function getRuleName() {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), ruleName = terminalNodeContent;
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), ruleName = terminalNodeContent;
             return ruleName;
           }
         }
@@ -16032,7 +15275,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleNameRule = function(Rule) {
-      _inherits(RuleNameRule2, _rule.default);
+      _inherits(RuleNameRule2, Rule);
       function RuleNameRule2() {
         _classCallCheck(this, RuleNameRule2);
         var nameDefinition = new _name.default(), name = _ruleNames.RuleNameRuleName, definitions = [
@@ -16124,7 +15367,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var WildcardNode = function(NonTerminalNode) {
-      _inherits(WildcardNode2, _nonTerminal.default);
+      _inherits(WildcardNode2, NonTerminalNode);
       function WildcardNode2() {
         _classCallCheck(this, WildcardNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(WildcardNode2).apply(this, arguments));
@@ -16216,7 +15459,7 @@
     };
     var wildcard = _occamLexers.specialSymbols.wildcard;
     var WildcardRule = function(Rule) {
-      _inherits(WildcardRule2, _rule.default);
+      _inherits(WildcardRule2, Rule);
       function WildcardRule2() {
         _classCallCheck(this, WildcardRule2);
         var wildcardTerminalSymbolContent = wildcard, wildcardTerminalSymbolDefinition = new _terminalSymbol.default(wildcardTerminalSymbolContent), name = _ruleNames.WildcardRuleName, definitions = [
@@ -16309,7 +15552,7 @@
     };
     var END_OF_LINE = _occamLexers.specialSymbols.END_OF_LINE;
     var EndOfLineNodeParseTree = function(VerticalBranchParseTree) {
-      _inherits(EndOfLineNodeParseTree2, _verticalBranch.default);
+      _inherits(EndOfLineNodeParseTree2, VerticalBranchParseTree);
       function EndOfLineNodeParseTree2() {
         _classCallCheck(this, EndOfLineNodeParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EndOfLineNodeParseTree2).apply(this, arguments));
@@ -16409,7 +15652,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var EndOfLineNode = function(TerminalNode) {
-      _inherits(EndOfLineNode2, _terminal.default);
+      _inherits(EndOfLineNode2, TerminalNode);
       function EndOfLineNode2() {
         _classCallCheck(this, EndOfLineNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EndOfLineNode2).apply(this, arguments));
@@ -16548,7 +15791,7 @@
     };
     var END_OF_LINE = _occamLexers.specialSymbols.END_OF_LINE;
     var EndOfLinePart = function(TerminalPart) {
-      _inherits(EndOfLinePart2, _terminal.default);
+      _inherits(EndOfLinePart2, TerminalPart);
       function EndOfLinePart2() {
         _classCallCheck(this, EndOfLinePart2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EndOfLinePart2).apply(this, arguments));
@@ -16680,7 +15923,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var EndOfLineNode = function(NonTerminalNode) {
-      _inherits(EndOfLineNode2, _nonTerminal.default);
+      _inherits(EndOfLineNode2, NonTerminalNode);
       function EndOfLineNode2() {
         _classCallCheck(this, EndOfLineNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(EndOfLineNode2).apply(this, arguments));
@@ -16772,7 +16015,7 @@
     };
     var END_OF_LINE = _occamLexers.specialSymbols.END_OF_LINE;
     var EndOfLineRule = function(Rule) {
-      _inherits(EndOfLineRule2, _rule.default);
+      _inherits(EndOfLineRule2, Rule);
       function EndOfLineRule2() {
         _classCallCheck(this, EndOfLineRule2);
         var endOfLineTerminalSymbolContent = END_OF_LINE, endOfLineTerminalSymbolDefinition = new _terminalSymbol.default(endOfLineTerminalSymbolContent), name = _ruleNames.EndOfLineRuleName, definitions = [
@@ -16849,7 +16092,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var QuantifierRule = function(Rule) {
-      _inherits(QuantifierRule2, _rule.default);
+      _inherits(QuantifierRule2, Rule);
       function QuantifierRule2() {
         _classCallCheck(this, QuantifierRule2);
         var name = _ruleNames.QuantifierRuleName, optionalQuantifierRuleName = _ruleNames.OptionalQuantifierRuleName, oneOrMoreQuantifierRuleName = _ruleNames.OneOrMoreQuantifierRuleName, zeroOrMoreQuantifierRuleName = _ruleNames.ZeroOrMoreQuantifierRuleName, optionalQuantifierRuleNameDefinition = new _ruleName.default(optionalQuantifierRuleName), oneOrMoreQuantifierRuleNameDefinition = new _ruleName.default(oneOrMoreQuantifierRuleName), zeroOrMoreQuantifierRuleNameDefinition = new _ruleName.default(zeroOrMoreQuantifierRuleName), definitions = [
@@ -16943,7 +16186,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DefinitionNode = function(NonTerminalNode) {
-      _inherits(DefinitionNode2, _nonTerminal.default);
+      _inherits(DefinitionNode2, NonTerminalNode);
       function DefinitionNode2() {
         _classCallCheck(this, DefinitionNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(DefinitionNode2).apply(this, arguments));
@@ -17036,7 +16279,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DefinitionDefinition = function(Definition) {
-      _inherits(DefinitionDefinition2, _definition.default);
+      _inherits(DefinitionDefinition2, Definition);
       function DefinitionDefinition2() {
         _classCallCheck(this, DefinitionDefinition2);
         var partRuleName = _ruleNames.PartRuleName, partRuleNamePart = new _ruleName.default(partRuleName), oneOrMoreRuleNamePartsPart = new _oneOrMoreParts.default(partRuleNamePart), parts = [
@@ -17113,7 +16356,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DefinitionRule = function(Rule) {
-      _inherits(DefinitionRule2, _rule.default);
+      _inherits(DefinitionRule2, Rule);
       function DefinitionRule2() {
         _classCallCheck(this, DefinitionRule2);
         var name = _ruleNames.DefinitionRuleName, definitionDefinition = new _definition1.default(), definitions = [
@@ -17134,7 +16377,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -17205,7 +16448,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DefinitionsNode = function(NonTerminalNode) {
-      _inherits(DefinitionsNode2, _nonTerminal.default);
+      _inherits(DefinitionsNode2, NonTerminalNode);
       function DefinitionsNode2() {
         _classCallCheck(this, DefinitionsNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(DefinitionsNode2).apply(this, arguments));
@@ -17214,7 +16457,7 @@
         {
           key: "generateDefinitions",
           value: function generateDefinitions() {
-            var childNodes = this.getChildNodes(), evenChildNodes = _array.even(childNodes), definitionNodes = evenChildNodes, definitions = definitionNodes.map(function(definitionNode) {
+            var childNodes = this.getChildNodes(), evenChildNodes = (0, _array).even(childNodes), definitionNodes = evenChildNodes, definitions = definitionNodes.map(function(definitionNode) {
               var definition = definitionNode.generateDefinition();
               return definition;
             });
@@ -17242,7 +16485,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal2());
-    var _array = require_array4();
+    var _array = require_array3();
     var _partTypes = require_partTypes();
     function _assertThisInitialized(self) {
       if (self === void 0) {
@@ -17339,7 +16582,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SequenceOfPartsPart = function(NonTerminalPart) {
-      _inherits(SequenceOfPartsPart2, _nonTerminal.default);
+      _inherits(SequenceOfPartsPart2, NonTerminalPart);
       function SequenceOfPartsPart2(parts) {
         _classCallCheck(this, SequenceOfPartsPart2);
         var _this;
@@ -17379,7 +16622,7 @@
                   return parseParts(partsNodes1, index1);
                 });
                 if (parsed1) {
-                  _array.push(nodes1, partsNodes1);
+                  (0, _array).push(nodes1, partsNodes1);
                 }
                 return parsed1;
               };
@@ -17393,7 +16636,7 @@
               });
             }
             if (parsed) {
-              _array.push(nodes, partsNodes);
+              (0, _array).push(nodes, partsNodes);
             }
             if (!parsed) {
               context.backtrack(savedIndex);
@@ -17426,7 +16669,7 @@
         {
           key: "fromNodes",
           value: function fromNodes(nodes) {
-            var allButFirstAndLastNodes = _array.allButFirstAndLast(nodes);
+            var allButFirstAndLastNodes = (0, _array).allButFirstAndLast(nodes);
             nodes = allButFirstAndLastNodes;
             var lookAhead = false, parts = nodes.map(function(node) {
               var part = node.generatePart(lookAhead);
@@ -17509,7 +16752,7 @@
     };
     var verticalBar = _occamLexers.specialSymbols.verticalBar;
     var DefinitionsDefinition = function(Definition) {
-      _inherits(DefinitionsDefinition2, _definition.default);
+      _inherits(DefinitionsDefinition2, Definition);
       function DefinitionsDefinition2() {
         _classCallCheck(this, DefinitionsDefinition2);
         var definitionRuleName = _ruleNames.DefinitionRuleName, verticalBarTerminalSymbolContent = verticalBar, definitionRuleNamePart = new _ruleName.default(definitionRuleName), verticalBarTerminalSymbolPart = new _terminalSymbol.default(verticalBarTerminalSymbolContent), verticalBarTerminalSymbolThenDefinitionRuleNameParts = [
@@ -17590,7 +16833,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var DefinitionsRule = function(Rule) {
-      _inherits(DefinitionsRule2, _rule.default);
+      _inherits(DefinitionsRule2, Rule);
       function DefinitionsRule2() {
         _classCallCheck(this, DefinitionsRule2);
         var definitionsDefinition = new _definitions1.default(), name = _ruleNames.DefinitionsRuleName, definitions = [
@@ -17611,7 +16854,7 @@
     });
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -17682,7 +16925,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalPartNode = function(NonTerminalNode) {
-      _inherits(TerminalPartNode2, _nonTerminal.default);
+      _inherits(TerminalPartNode2, NonTerminalNode);
       function TerminalPartNode2() {
         _classCallCheck(this, TerminalPartNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(TerminalPartNode2).apply(this, arguments));
@@ -17691,7 +16934,7 @@
         {
           key: "generatePart",
           value: function generatePart(lookAhead) {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), node = firstChildNode, part = node.generatePart(lookAhead);
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), node = firstChildNode, part = node.generatePart(lookAhead);
             return part;
           }
         }
@@ -17772,7 +17015,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalPartRule = function(Rule) {
-      _inherits(TerminalPartRule2, _rule.default);
+      _inherits(TerminalPartRule2, Rule);
       function TerminalPartRule2() {
         _classCallCheck(this, TerminalPartRule2);
         var name = _ruleNames.TerminalPartRuleName, epsilonRuleName = _ruleNames.EpsilonRuleName, wildcardRuleName = _ruleNames.WildcardRuleName, endOfLineRuleName = _ruleNames.EndOfLineRuleName, terminalSymbolRuleName = _ruleNames.TerminalSymbolRuleName, regularExpressionRuleName = _ruleNames.RegularExpressionRuleName, significantTokenTypeRuleName = _ruleNames.SignificantTokenTypeRuleName, epsilonRuleNameDefinition = new _ruleName.default(epsilonRuleName), wildcardRuleNameDefinition = new _ruleName.default(wildcardRuleName), endOfLineRuleNameDefinition = new _ruleName.default(endOfLineRuleName), terminalSymbolRuleNameDefinition = new _ruleName.default(terminalSymbolRuleName), regularExpressionRuleNameDefinition = new _ruleName.default(regularExpressionRuleName), significantTokenTypeRuleNameDefinition = new _ruleName.default(significantTokenTypeRuleName), definitions = [
@@ -17869,7 +17112,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ChoiceOfPartsNode = function(NonTerminalNode) {
-      _inherits(ChoiceOfPartsNode2, _nonTerminal.default);
+      _inherits(ChoiceOfPartsNode2, NonTerminalNode);
       function ChoiceOfPartsNode2() {
         _classCallCheck(this, ChoiceOfPartsNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(ChoiceOfPartsNode2).apply(this, arguments));
@@ -17965,7 +17208,7 @@
     var openBracket = _occamLexers.specialSymbols.openBracket;
     var closeBracket = _occamLexers.specialSymbols.closeBracket;
     var ChoiceOfPartsDefinition = function(Definition) {
-      _inherits(ChoiceOfPartsDefinition2, _definition.default);
+      _inherits(ChoiceOfPartsDefinition2, Definition);
       function ChoiceOfPartsDefinition2() {
         _classCallCheck(this, ChoiceOfPartsDefinition2);
         var partRuleName = _ruleNames.PartRuleName, verticalBarTerminalSymbolContent = verticalBar, openBracketTerminalSymbolContent = openBracket, closeBracketTerminalSymbolContent = closeBracket, partRuleNamePart = new _ruleName.default(partRuleName), verticalBarTerminalSymbolPart = new _terminalSymbol.default(verticalBarTerminalSymbolContent), openBracketTerminalSymbolPart = new _terminalSymbol.default(openBracketTerminalSymbolContent), closeBracketTerminalSymbolPart = new _terminalSymbol.default(closeBracketTerminalSymbolContent), verticalBarTerminalSymbolThenPartRuleNameParts = [
@@ -18048,7 +17291,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var ChoiceOfPartsRule = function(Rule) {
-      _inherits(ChoiceOfPartsRule2, _rule.default);
+      _inherits(ChoiceOfPartsRule2, Rule);
       function ChoiceOfPartsRule2() {
         _classCallCheck(this, ChoiceOfPartsRule2);
         var name = _ruleNames.ChoiceOfPartsRuleName, choiceOfPartsDefinition = new _choiceOfParts1.default(), definitions = [
@@ -18070,7 +17313,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
     var _terminalSymbol = _interopRequireDefault2(require_terminalSymbol());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -18154,7 +17397,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var TerminalSymbolNode = function(NonTerminalNode) {
-      _inherits(TerminalSymbolNode2, _nonTerminal.default);
+      _inherits(TerminalSymbolNode2, NonTerminalNode);
       function TerminalSymbolNode2() {
         _classCallCheck(this, TerminalSymbolNode2);
         var _this;
@@ -18173,7 +17416,7 @@
         {
           key: "getContent",
           value: function getContent() {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), matches = terminalNodeContent.match(this.regularExpression), secondMatch = _array.second(matches), content = secondMatch.replace(/\\\\/g, "\\").replace(/\\"/g, '"');
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), matches = terminalNodeContent.match(this.regularExpression), secondMatch = (0, _array).second(matches), content = secondMatch.replace(/\\\\/g, "\\").replace(/\\"/g, '"');
             return content;
           }
         }
@@ -18252,7 +17495,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SignificantTokenTypeDefinition = function(Definition) {
-      _inherits(SignificantTokenTypeDefinition2, _definition.default);
+      _inherits(SignificantTokenTypeDefinition2, Definition);
       function SignificantTokenTypeDefinition2(significantTokenType) {
         _classCallCheck(this, SignificantTokenTypeDefinition2);
         var significantTokenTypePart = new _significantTokenType.default(significantTokenType), parts = [
@@ -18331,7 +17574,7 @@
     };
     var stringLiteralType = _occamLexers.types.stringLiteralType;
     var TerminalSymbolRule = function(Rule) {
-      _inherits(TerminalSymbolRule2, _rule.default);
+      _inherits(TerminalSymbolRule2, Rule);
       function TerminalSymbolRule2() {
         _classCallCheck(this, TerminalSymbolRule2);
         var stringLiteralSignificantTokenType = stringLiteralType, stringLiteralSignificantTokenTypeDefinition = new _significantTokenType.default(stringLiteralSignificantTokenType), name = _ruleNames.TerminalSymbolRuleName, definitions = [
@@ -18422,7 +17665,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NonTerminalPartNode = function(NonTerminalNode) {
-      _inherits(NonTerminalPartNode2, _nonTerminal.default);
+      _inherits(NonTerminalPartNode2, NonTerminalNode);
       function NonTerminalPartNode2() {
         _classCallCheck(this, NonTerminalPartNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NonTerminalPartNode2).apply(this, arguments));
@@ -18525,7 +17768,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RuleNameNonTerminalPartRuleDefinition = function(Definition) {
-      _inherits(RuleNameNonTerminalPartRuleDefinition2, _definition.default);
+      _inherits(RuleNameNonTerminalPartRuleDefinition2, Definition);
       function RuleNameNonTerminalPartRuleDefinition2() {
         _classCallCheck(this, RuleNameNonTerminalPartRuleDefinition2);
         var ruleNameRuleName = _ruleNames.RuleNameRuleName, lookAheadModifierRuleName = _ruleNames.LookAheadModifierRuleName, ruleNameRuleNamePart = new _ruleName.default(ruleNameRuleName), lookAheadModifierRuleNamePart = new _ruleName.default(lookAheadModifierRuleName), optionalLookAheadRuleNamePartPart = new _optionalPart.default(lookAheadModifierRuleNamePart), parts = [
@@ -18604,7 +17847,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NonTerminalPartRule = function(Rule) {
-      _inherits(NonTerminalPartRule2, _rule.default);
+      _inherits(NonTerminalPartRule2, Rule);
       function NonTerminalPartRule2() {
         _classCallCheck(this, NonTerminalPartRule2);
         var name = _ruleNames.NonTerminalPartRuleName, choiceOfPartsRuleName = _ruleNames.ChoiceOfPartsRuleName, sequenceOfPartsRuleName = _ruleNames.SequenceOfPartsRuleName, choiceOfPartsRuleNameDefinition = new _ruleName.default(choiceOfPartsRuleName), sequenceOfPartsRuleNameDefinition = new _ruleName.default(sequenceOfPartsRuleName), ruleNameNonTerminalPartRuleDefinition = new _ruleName1.default(), definitions = [
@@ -18698,7 +17941,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SequenceOfPartsNode = function(NonTerminalNode) {
-      _inherits(SequenceOfPartsNode2, _nonTerminal.default);
+      _inherits(SequenceOfPartsNode2, NonTerminalNode);
       function SequenceOfPartsNode2() {
         _classCallCheck(this, SequenceOfPartsNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(SequenceOfPartsNode2).apply(this, arguments));
@@ -18792,7 +18035,7 @@
     var openBracket = _occamLexers.specialSymbols.openBracket;
     var closeBracket = _occamLexers.specialSymbols.closeBracket;
     var SequenceOfPartsDefinition = function(Definition) {
-      _inherits(SequenceOfPartsDefinition2, _definition.default);
+      _inherits(SequenceOfPartsDefinition2, Definition);
       function SequenceOfPartsDefinition2() {
         _classCallCheck(this, SequenceOfPartsDefinition2);
         var partRuleName = _ruleNames.PartRuleName, openBracketTerminalSymbolContent = openBracket, closeBracketTerminalSymbolContent = closeBracket, partRuleNamePart = new _ruleName.default(partRuleName), openBracketTerminalSymbolPart = new _terminalSymbol.default(openBracketTerminalSymbolContent), closeBracketTerminalSymbolPart = new _terminalSymbol.default(closeBracketTerminalSymbolContent), oneOrMorePartRuleNamePartsPart = new _oneOrMoreParts.default(partRuleNamePart), parts = [
@@ -18872,7 +18115,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SequenceOfPartsRule = function(Rule) {
-      _inherits(SequenceOfPartsRule2, _rule.default);
+      _inherits(SequenceOfPartsRule2, Rule);
       function SequenceOfPartsRule2() {
         _classCallCheck(this, SequenceOfPartsRule2);
         var name = _ruleNames.SequenceOfPartsRuleName, sequenceOfPartsDefinition = new _sequenceOfParts1.default(), definitions = [
@@ -18965,7 +18208,7 @@
     };
     var NO_WHITESPACE = _occamLexers.specialSymbols.NO_WHITESPACE;
     var NoWhitespaceNodeParseTree = function(VerticalBranchParseTree) {
-      _inherits(NoWhitespaceNodeParseTree2, _verticalBranch.default);
+      _inherits(NoWhitespaceNodeParseTree2, VerticalBranchParseTree);
       function NoWhitespaceNodeParseTree2() {
         _classCallCheck(this, NoWhitespaceNodeParseTree2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NoWhitespaceNodeParseTree2).apply(this, arguments));
@@ -19065,7 +18308,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NoWhitespaceNode = function(TerminalNode) {
-      _inherits(NoWhitespaceNode2, _terminal.default);
+      _inherits(NoWhitespaceNode2, TerminalNode);
       function NoWhitespaceNode2() {
         _classCallCheck(this, NoWhitespaceNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NoWhitespaceNode2).apply(this, arguments));
@@ -19219,7 +18462,7 @@
     };
     var NO_WHITESPACE = _occamLexers.specialSymbols.NO_WHITESPACE;
     var NoWhitespacePart = function(TerminalPart) {
-      _inherits(NoWhitespacePart2, _terminal.default);
+      _inherits(NoWhitespacePart2, TerminalPart);
       function NoWhitespacePart2() {
         _classCallCheck(this, NoWhitespacePart2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NoWhitespacePart2).apply(this, arguments));
@@ -19355,7 +18598,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NoWhitespacePartNode = function(NonTerminalNode) {
-      _inherits(NoWhitespacePartNode2, _nonTerminal.default);
+      _inherits(NoWhitespacePartNode2, NonTerminalNode);
       function NoWhitespacePartNode2() {
         _classCallCheck(this, NoWhitespacePartNode2);
         return _possibleConstructorReturn(this, _getPrototypeOf(NoWhitespacePartNode2).apply(this, arguments));
@@ -19445,7 +18688,7 @@
     };
     var NO_WHITESPACE = _occamLexers.specialSymbols.NO_WHITESPACE;
     var NoWhitespacePartDefinition = function(Definition) {
-      _inherits(NoWhitespacePartDefinition2, _definition.default);
+      _inherits(NoWhitespacePartDefinition2, Definition);
       function NoWhitespacePartDefinition2() {
         _classCallCheck(this, NoWhitespacePartDefinition2);
         var content = NO_WHITESPACE, terminalSymbolPart = new _terminalSymbol.default(content), parts = [
@@ -19522,7 +18765,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var NoWhitespacePartRule = function(Rule) {
-      _inherits(NoWhitespacePartRule2, _rule.default);
+      _inherits(NoWhitespacePartRule2, Rule);
       function NoWhitespacePartRule2() {
         _classCallCheck(this, NoWhitespacePartRule2);
         var noWhitespacePartDefinition = new _noWhitespacePart1.default(), name = _ruleNames.NoWhitespacePartRuleName, definitions = [
@@ -19599,7 +18842,7 @@
     };
     var exclamationMark = _occamLexers.specialSymbols.exclamationMark;
     var LookAheadModifierRuleDefinition = function(Definition) {
-      _inherits(LookAheadModifierRuleDefinition2, _definition.default);
+      _inherits(LookAheadModifierRuleDefinition2, Definition);
       function LookAheadModifierRuleDefinition2() {
         _classCallCheck(this, LookAheadModifierRuleDefinition2);
         var content = exclamationMark, terminalSymbolPart = new _terminalSymbol.default(content), parts = [
@@ -19676,7 +18919,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var LookAheadModifierRule = function(Rule) {
-      _inherits(LookAheadModifierRule2, _rule.default);
+      _inherits(LookAheadModifierRule2, Rule);
       function LookAheadModifierRule2() {
         _classCallCheck(this, LookAheadModifierRule2);
         var name = _ruleNames.LookAheadModifierRuleName, lookAheadModifierRuleDefinition = new _lookAheadModifierRule.default(), definitions = [
@@ -19698,7 +18941,7 @@
     exports.default = void 0;
     var _terminal = _interopRequireDefault2(require_terminal());
     var _terminal1 = _interopRequireDefault2(require_terminal2());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -19794,7 +19037,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RegularExpressionPart = function(TerminalPart) {
-      _inherits(RegularExpressionPart2, _terminal.default);
+      _inherits(RegularExpressionPart2, TerminalPart);
       function RegularExpressionPart2(regularExpression) {
         _classCallCheck(this, RegularExpressionPart2);
         var _this;
@@ -19812,7 +19055,7 @@
             if (significantToken !== null) {
               var content = significantToken.getContent(), matches = content.match(this.regularExpression);
               if (matches !== null) {
-                var firstMatch = _array.first(matches);
+                var firstMatch = (0, _array).first(matches);
                 if (firstMatch === content) {
                   terminalNode = _terminal1.default.fromSignificantToken(significantToken);
                 }
@@ -19862,7 +19105,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
     var _regularExpression = _interopRequireDefault2(require_regularExpression2());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -19946,7 +19189,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var RegularExpressionNode = function(NonTerminalNode) {
-      _inherits(RegularExpressionNode2, _nonTerminal.default);
+      _inherits(RegularExpressionNode2, NonTerminalNode);
       function RegularExpressionNode2() {
         _classCallCheck(this, RegularExpressionNode2);
         var _this;
@@ -19965,7 +19208,7 @@
         {
           key: "getRegularExpression",
           value: function getRegularExpression() {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), matches = terminalNodeContent.match(this.regularExpression), secondMatch = _array.second(matches), pattern = secondMatch, regularExpression = new RegExp(pattern);
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), matches = terminalNodeContent.match(this.regularExpression), secondMatch = (0, _array).second(matches), pattern = secondMatch, regularExpression = new RegExp(pattern);
             return regularExpression;
           }
         }
@@ -20048,7 +19291,7 @@
     };
     var regularExpressionType = _occamLexers.types.regularExpressionType;
     var RegularExpressionRule = function(Rule) {
-      _inherits(RegularExpressionRule2, _rule.default);
+      _inherits(RegularExpressionRule2, Rule);
       function RegularExpressionRule2() {
         _classCallCheck(this, RegularExpressionRule2);
         var regularExpressionSignificantTokenType = regularExpressionType, regularExpressionSignificantTokenTypeDefinition = new _significantTokenType.default(regularExpressionSignificantTokenType), name = _ruleNames.RegularExpressionRuleName, definitions = [
@@ -20123,7 +19366,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var QuantifierRuleDefinition = function(Definition) {
-      _inherits(QuantifierRuleDefinition2, _definition.default);
+      _inherits(QuantifierRuleDefinition2, Definition);
       function QuantifierRuleDefinition2(terminalSymbolContent) {
         _classCallCheck(this, QuantifierRuleDefinition2);
         var content = terminalSymbolContent, terminalSymbolPart = new _terminalSymbol.default(content), parts = [
@@ -20202,7 +19445,7 @@
     };
     var questionMark = _occamLexers.specialSymbols.questionMark;
     var OptionalQuantifierRule = function(Rule) {
-      _inherits(OptionalQuantifierRule2, _rule.default);
+      _inherits(OptionalQuantifierRule2, Rule);
       function OptionalQuantifierRule2() {
         _classCallCheck(this, OptionalQuantifierRule2);
         var name = _ruleNames.OptionalQuantifierRuleName, optionalQuantifierTerminalSymbolContent = questionMark, optionalQuantifierRuleDefinition = new _quantifierRule.default(optionalQuantifierTerminalSymbolContent), definitions = [
@@ -20281,7 +19524,7 @@
     };
     var plus = _occamLexers.specialSymbols.plus;
     var OneOrMoreQuantifierRule = function(Rule) {
-      _inherits(OneOrMoreQuantifierRule2, _rule.default);
+      _inherits(OneOrMoreQuantifierRule2, Rule);
       function OneOrMoreQuantifierRule2() {
         _classCallCheck(this, OneOrMoreQuantifierRule2);
         var name = _ruleNames.OneOrMoreQuantifierRuleName, oneOrMoreQuantifierTerminalSymbolContent = plus, oneOrMoreQuantifierRuleDefinition = new _quantifierRule.default(oneOrMoreQuantifierTerminalSymbolContent), definitions = [
@@ -20360,7 +19603,7 @@
     };
     var asterisk = _occamLexers.specialSymbols.asterisk;
     var ZeroOrMoreQuantifierRule = function(Rule) {
-      _inherits(ZeroOrMoreQuantifierRule2, _rule.default);
+      _inherits(ZeroOrMoreQuantifierRule2, Rule);
       function ZeroOrMoreQuantifierRule2() {
         _classCallCheck(this, ZeroOrMoreQuantifierRule2);
         var name = _ruleNames.ZeroOrMoreQuantifierRuleName, zeroOrMoreQuantifierTerminalSymbolContent = asterisk, zeroOrMoreQuantifierRuleDefinition = new _quantifierRule.default(zeroOrMoreQuantifierTerminalSymbolContent), definitions = [
@@ -20382,7 +19625,7 @@
     exports.default = void 0;
     var _nonTerminal = _interopRequireDefault2(require_nonTerminal());
     var _significantTokenType = _interopRequireDefault2(require_significantTokenType());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -20466,7 +19709,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var SignificantTokenTypeNode = function(NonTerminalNode) {
-      _inherits(SignificantTokenTypeNode2, _nonTerminal.default);
+      _inherits(SignificantTokenTypeNode2, NonTerminalNode);
       function SignificantTokenTypeNode2() {
         _classCallCheck(this, SignificantTokenTypeNode2);
         var _this;
@@ -20485,7 +19728,7 @@
         {
           key: "getSignificantTokenType",
           value: function getSignificantTokenType() {
-            var childNodes = this.getChildNodes(), firstChildNode = _array.first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), matches = terminalNodeContent.match(this.regularExpression), secondMatch = _array.second(matches), significantTokenType = secondMatch;
+            var childNodes = this.getChildNodes(), firstChildNode = (0, _array).first(childNodes), terminalNode = firstChildNode, terminalNodeContent = terminalNode.getContent(), matches = terminalNodeContent.match(this.regularExpression), secondMatch = (0, _array).second(matches), significantTokenType = secondMatch;
             return significantTokenType;
           }
         }
@@ -20569,7 +19812,7 @@
     };
     var typeType = _occamLexers.types.typeType;
     var SignificantTokenTypeRule = function(Rule) {
-      _inherits(SignificantTokenTypeRule2, _rule.default);
+      _inherits(SignificantTokenTypeRule2, Rule);
       function SignificantTokenTypeRule2() {
         _classCallCheck(this, SignificantTokenTypeRule2);
         var typeSignificantTokenType = typeType, typeSignificantTokenTypeDefinition = new _significantTokenType1.default(typeSignificantTokenType), name = _ruleNames.SignificantTokenTypeRuleName, definitions = [
@@ -20616,7 +19859,7 @@
     var _oneOrMoreQuantifier = _interopRequireDefault2(require_oneOrMoreQuantifier());
     var _zeroOrMoreQuantifier = _interopRequireDefault2(require_zeroOrMoreQuantifier());
     var _significantTokenType = _interopRequireDefault2(require_significantTokenType4());
-    var _array = require_array4();
+    var _array = require_array3();
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -20700,7 +19943,7 @@
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
     };
     var BNFParser = function(CommonParser) {
-      _inherits(BNFParser2, _parser.default);
+      _inherits(BNFParser2, CommonParser);
       function BNFParser2() {
         _classCallCheck(this, BNFParser2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BNFParser2).apply(this, arguments));
@@ -20753,7 +19996,7 @@
               zeroOrMoreQuantifierRule,
               errorRule
             ];
-            var firstRule = _array.first(rules), startRule = firstRule, ruleMap = rules.reduce(function(ruleMap1, rule) {
+            var firstRule = (0, _array).first(rules), startRule = firstRule, ruleMap = rules.reduce(function(ruleMap1, rule) {
               var ruleName = rule.getName();
               ruleMap1[ruleName] = rule;
               return ruleMap1;
@@ -20775,7 +20018,7 @@
       value: true
     });
     exports.default = void 0;
-    var bnf = '\n\n  expression  ::= expression_ operator expression expression~*\n\n                | expression_\n\n                ;\n\n  operator    ::= "+"\n\n                | "-"\n\n                | "/"\n\n                | "*"\n\n                ;\n\n  term        ::= /\\\\d+/ ;\n\n  expression_ ::= "(" expression ")"\n\n                | term\n\n                ;\n\n  expression~ ::= operator expression ;\n  \n';
+    var bnf = '\n\n  expression  ::= expression_ operator expression expression~*\n\n                | expression_\n\n                ;\n\n  operator    ::= "+"\n\n                | "-"\n\n                | "/"\n\n                | "*"\n\n                ;\n\n  term        ::= /d+/ ;\n\n  expression_ ::= "(" expression ")"\n\n                | term\n\n                ;\n\n  expression~ ::= operator expression ;\n  \n';
     var _default = bnf;
     exports.default = _default;
   });
@@ -20876,7 +20119,7 @@
     var bnfLexer = _occamLexers.BNFLexer.fromNothing();
     var bnfParser = _parser.default.fromNothing();
     var BasicParser = function(CommonParser) {
-      _inherits(BasicParser2, _parser1.default);
+      _inherits(BasicParser2, CommonParser);
       function BasicParser2() {
         _classCallCheck(this, BasicParser2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BasicParser2).apply(this, arguments));
@@ -21164,767 +20407,8 @@
     exports.default = CSSParser;
   });
 
-  // node_modules/occam-dom/node_modules/necessary/lib/constants.js
-  var require_constants5 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.BACKSPACE_CHARACTER = exports.ETX_CHARACTER = exports.DATA_EVENT = exports.CONTENT_TYPE = exports.DEFAULT_LOG_FILE_BASE_NAME = exports.TRACE = exports.POST = exports.CARRIAGE_RETURN_CHARACTER = exports.DEFAULT_ENCODING = exports.ERROR = exports.ACCEPT = exports.DEBUG = exports.DEFAULT_RC_BASE_EXTENSION = exports.DEFAULT_ATTEMPTS = exports.CTRL_C = exports.FATAL = exports.DEFAULT_INITIAL_ANSWER = exports.WARNING = exports.APPLICATION_JSON = exports.INFO = exports.GET = exports.LINE_FEED_CHARACTER = exports.DEFAULT_LOG_LEVEL = exports.DEFAULT_LOG_DIRECTORY_PATH = exports.UTF8_ENCODING = void 0;
-    var TRACE = "TRACE";
-    exports.TRACE = TRACE;
-    var DEBUG = "DEBUG";
-    exports.DEBUG = DEBUG;
-    var INFO = "INFO";
-    exports.INFO = INFO;
-    var WARNING = "WARNING";
-    exports.WARNING = WARNING;
-    var ERROR = "ERROR";
-    exports.ERROR = ERROR;
-    var FATAL = "FATAL";
-    exports.FATAL = FATAL;
-    var DEFAULT_LOG_LEVEL = WARNING;
-    exports.DEFAULT_LOG_LEVEL = DEFAULT_LOG_LEVEL;
-    var DEFAULT_LOG_DIRECTORY_PATH = null;
-    exports.DEFAULT_LOG_DIRECTORY_PATH = DEFAULT_LOG_DIRECTORY_PATH;
-    var DEFAULT_LOG_FILE_BASE_NAME = "default";
-    exports.DEFAULT_LOG_FILE_BASE_NAME = DEFAULT_LOG_FILE_BASE_NAME;
-    var GET = "GET";
-    exports.GET = GET;
-    var POST = "POST";
-    exports.POST = POST;
-    var ACCEPT = "accept";
-    exports.ACCEPT = ACCEPT;
-    var CONTENT_TYPE = "content-type";
-    exports.CONTENT_TYPE = CONTENT_TYPE;
-    var APPLICATION_JSON = "application/json";
-    exports.APPLICATION_JSON = APPLICATION_JSON;
-    var CTRL_C = "^C";
-    exports.CTRL_C = CTRL_C;
-    var DATA_EVENT = "data";
-    exports.DATA_EVENT = DATA_EVENT;
-    var UTF8_ENCODING = "utf8";
-    exports.UTF8_ENCODING = UTF8_ENCODING;
-    var ETX_CHARACTER = "";
-    exports.ETX_CHARACTER = ETX_CHARACTER;
-    var DEFAULT_ATTEMPTS = 3;
-    exports.DEFAULT_ATTEMPTS = DEFAULT_ATTEMPTS;
-    var DEFAULT_ENCODING = UTF8_ENCODING;
-    exports.DEFAULT_ENCODING = DEFAULT_ENCODING;
-    var LINE_FEED_CHARACTER = "\n";
-    exports.LINE_FEED_CHARACTER = LINE_FEED_CHARACTER;
-    var BACKSPACE_CHARACTER = String.fromCharCode(127);
-    exports.BACKSPACE_CHARACTER = BACKSPACE_CHARACTER;
-    var DEFAULT_INITIAL_ANSWER = "";
-    exports.DEFAULT_INITIAL_ANSWER = DEFAULT_INITIAL_ANSWER;
-    var CARRIAGE_RETURN_CHARACTER = "\r";
-    exports.CARRIAGE_RETURN_CHARACTER = CARRIAGE_RETURN_CHARACTER;
-    var DEFAULT_RC_BASE_EXTENSION = "";
-    exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
-  });
-
-  // node_modules/occam-dom/node_modules/necessary/lib/utilities/ajax.js
-  var require_ajax3 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.get = get;
-    exports.post = post;
-    exports.request = request;
-    exports.default = void 0;
-    var _constants = require_constants5();
-    function get(host, uri, parameters, headers, callback) {
-      if (callback === void 0) {
-        callback = headers;
-        headers = {};
-      }
-      var method = _constants.GET, body2 = null;
-      guaranteeAccept(headers);
-      request(host, uri, parameters, method, body2, headers, callback);
-    }
-    function post(host, uri, parameters, body2, headers, callback) {
-      if (callback === void 0) {
-        callback = headers;
-        headers = {};
-      }
-      var method = _constants.POST;
-      guaranteeAccept(headers);
-      guaranteeContentType(headers);
-      request(host, uri, parameters, method, body2, headers, callback);
-    }
-    function request(host, uri, parameters, method, body2, headers, callback) {
-      var url = urlFromHostURIAndParameters(host, uri, parameters), accept = headers[_constants.ACCEPT] || null, contentType = headers[_constants.CONTENT_TYPE] || null, xmlHttpRequest = new XMLHttpRequest();
-      if (contentType === _constants.APPLICATION_JSON) {
-        var json = body2, jsonString = JSON.stringify(json);
-        body2 = jsonString;
-      }
-      xmlHttpRequest.onreadystatechange = function() {
-        var readyState = xmlHttpRequest.readyState, status = xmlHttpRequest.status, responseText = xmlHttpRequest.responseText;
-        if (readyState == 4) {
-          var body1 = responseText;
-          if (accept === _constants.APPLICATION_JSON) {
-            try {
-              var jsonString2 = body1, json2 = JSON.parse(jsonString2);
-              body1 = json2;
-            } catch (error) {
-              body1 = null;
-            }
-            callback(body1, status);
-          }
-        }
-      };
-      xmlHttpRequest.open(method, url);
-      if (accept !== null) {
-        xmlHttpRequest.setRequestHeader(_constants.ACCEPT, accept);
-      }
-      if (contentType !== null) {
-        xmlHttpRequest.setRequestHeader(_constants.CONTENT_TYPE, contentType);
-      }
-      body2 !== null ? xmlHttpRequest.send(body2) : xmlHttpRequest.send();
-    }
-    var _default = {
-      get,
-      post,
-      request
-    };
-    exports.default = _default;
-    function guarantee(headers, name, value) {
-      var propertyNames = Object.getOwnPropertyNames(headers), names = propertyNames.map(function(propertyName) {
-        var lowerCasePropertyName = propertyName.toLowerCase(), name1 = lowerCasePropertyName;
-        return name1;
-      }), namesIncludesName = names.includes(name);
-      if (!namesIncludesName) {
-        headers[name] = value;
-      }
-    }
-    function guaranteeAccept(headers) {
-      var name = _constants.ACCEPT, value = _constants.APPLICATION_JSON;
-      guarantee(headers, name, value);
-    }
-    function guaranteeContentType(headers) {
-      var name = _constants.CONTENT_TYPE, value = _constants.APPLICATION_JSON;
-      guarantee(headers, name, value);
-    }
-    function queryStringFromParameters(parameters) {
-      var names = Object.keys(parameters), namesLength = names.length, lastIndex = namesLength - 1, queryString = names.reduce(function(queryString1, name, index) {
-        var value = parameters[name], encodedName = encodeURIComponent(name), encodedValue = encodeURIComponent(value), ampersandOrNothing = index !== lastIndex ? "&" : "";
-        queryString1 += "".concat(encodedName, "=").concat(encodedValue).concat(ampersandOrNothing);
-        return queryString1;
-      }, "");
-      return queryString;
-    }
-    function urlFromHostURIAndParameters(host, uri, parameters) {
-      var queryString = queryStringFromParameters(parameters), url = queryString === "" ? "".concat(host).concat(uri) : "".concat(host).concat(uri, "?").concat(queryString);
-      return url;
-    }
-  });
-
-  // node_modules/occam-dom/node_modules/necessary/lib/utilities/array.js
-  var require_array5 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.first = first;
-    exports.second = second;
-    exports.third = third;
-    exports.fourth = fourth;
-    exports.fifth = fifth;
-    exports.fifthLast = fifthLast;
-    exports.fourthLast = fourthLast;
-    exports.thirdLast = thirdLast;
-    exports.secondLast = secondLast;
-    exports.last = last;
-    exports.head = head;
-    exports.tail = tail;
-    exports.push = push;
-    exports.unshift = unshift;
-    exports.concat = concat;
-    exports.clear = clear;
-    exports.copy = copy;
-    exports.merge = merge;
-    exports.splice = splice;
-    exports.replace = replace;
-    exports.filter = filter;
-    exports.find = find;
-    exports.prune = prune;
-    exports.patch = patch;
-    exports.augment = augment;
-    exports.separate = separate;
-    exports.forwardsSome = forwardsSome;
-    exports.backwardsSome = backwardsSome;
-    exports.forwardsEvery = forwardsEvery;
-    exports.backwardsEvery = backwardsEvery;
-    exports.forwardsReduce = forwardsReduce;
-    exports.backwardsReduce = backwardsReduce;
-    exports.forwardsForEach = forwardsForEach;
-    exports.backwardsForEach = backwardsForEach;
-    exports.default = void 0;
-    function _arrayWithoutHoles(arr) {
-      if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-          arr2[i] = arr[i];
-        }
-        return arr2;
-      }
-    }
-    function _instanceof(left, right) {
-      if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
-        return right[Symbol.hasInstance](left);
-      } else {
-        return left instanceof right;
-      }
-    }
-    function _iterableToArray(iter) {
-      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
-        return Array.from(iter);
-    }
-    function _nonIterableSpread() {
-      throw new TypeError("Invalid attempt to spread non-iterable instance");
-    }
-    function _toConsumableArray(arr) {
-      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-    }
-    function first(array) {
-      return array[0];
-    }
-    function second(array) {
-      return array[1];
-    }
-    function third(array) {
-      return array[2];
-    }
-    function fourth(array) {
-      return array[3];
-    }
-    function fifth(array) {
-      return array[4];
-    }
-    function fifthLast(array) {
-      return array[array.length - 5];
-    }
-    function fourthLast(array) {
-      return array[array.length - 4];
-    }
-    function thirdLast(array) {
-      return array[array.length - 3];
-    }
-    function secondLast(array) {
-      return array[array.length - 2];
-    }
-    function last(array) {
-      return array[array.length - 1];
-    }
-    function head(array) {
-      return array.slice(0, 1);
-    }
-    function tail(array) {
-      return array.slice(1);
-    }
-    function push(array1, array2) {
-      Array.prototype.push.apply(array1, array2);
-    }
-    function unshift(array1, array2) {
-      Array.prototype.unshift.apply(array1, array2);
-    }
-    function concat(array1, elementOrArray2) {
-      var array2 = _instanceof(elementOrArray2, Array) ? elementOrArray2 : [
-        elementOrArray2
-      ];
-      push(array1, array2);
-    }
-    function clear(array) {
-      var start = 0;
-      return array.splice(start);
-    }
-    function copy(array1, array2) {
-      var start = 0, deleteCount = array2.length;
-      splice(array1, start, deleteCount, array2);
-    }
-    function merge(array1, array2) {
-      Array.prototype.push.apply(array1, array2);
-    }
-    function splice(array1, start, param, param1) {
-      var deleteCount = param === void 0 ? Infinity : param, array2 = param1 === void 0 ? [] : param1;
-      var args = [
-        start,
-        deleteCount
-      ].concat(_toConsumableArray(array2)), deletedItemsArray = Array.prototype.splice.apply(array1, args);
-      return deletedItemsArray;
-    }
-    function replace(array, element, test) {
-      var start;
-      var found = array.some(function(element1, index) {
-        var passed = test(element1, index);
-        if (passed) {
-          start = index;
-          return true;
-        }
-      });
-      if (found) {
-        var deleteCount = 1;
-        array.splice(start, deleteCount, element);
-      }
-      return found;
-    }
-    function filter(array, test) {
-      var filteredElements = [];
-      backwardsForEach(array, function(element, index) {
-        var passed = test(element, index);
-        if (!passed) {
-          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
-          filteredElements.unshift(firstDeletedElement);
-        }
-      });
-      return filteredElements;
-    }
-    function find(array, test) {
-      var elements = [];
-      forwardsForEach(array, function(element, index) {
-        var passed = test(element, index);
-        if (passed) {
-          elements.push(element);
-        }
-      });
-      return elements;
-    }
-    function prune(array, test) {
-      var prunedElement = void 0;
-      array.some(function(element, index) {
-        var passed = test(element, index);
-        if (!passed) {
-          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
-          prunedElement = firstDeletedElement;
-          return true;
-        }
-      });
-      return prunedElement;
-    }
-    function patch(array, element, test) {
-      var found = array.some(function(element1, index) {
-        var passed = test(element1, index);
-        if (passed) {
-          return true;
-        }
-      });
-      if (found) {
-        array.push(element);
-      }
-      return found;
-    }
-    function augment(array1, array2, test) {
-      array2.forEach(function(element, index) {
-        var passed = test(element, index);
-        if (passed) {
-          array1.push(element);
-        }
-      });
-    }
-    function separate(array, array1, array2, test) {
-      array.forEach(function(element, index) {
-        var passed = test(element, index);
-        passed ? array1.push(element) : array2.push(element);
-      });
-    }
-    function forwardsSome(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index], result = callback(element, index);
-        if (result) {
-          return true;
-        }
-      }
-      return false;
-    }
-    function backwardsSome(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index], result = callback(element, index);
-        if (result) {
-          return true;
-        }
-      }
-      return false;
-    }
-    function forwardsEvery(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index], result = callback(element, index);
-        if (!result) {
-          return false;
-        }
-      }
-      return true;
-    }
-    function backwardsEvery(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index], result = callback(element, index);
-        if (!result) {
-          return false;
-        }
-      }
-      return true;
-    }
-    function forwardsReduce(array, callback, initialValue) {
-      var value = initialValue;
-      forwardsForEach(array, function(element, index) {
-        value = callback(value, element, index);
-      });
-      return value;
-    }
-    function backwardsReduce(array, callback, initialValue) {
-      var value = initialValue;
-      backwardsForEach(array, function(element, index) {
-        value = callback(value, element, index);
-      });
-      return value;
-    }
-    function forwardsForEach(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index];
-        callback(element, index);
-      }
-    }
-    function backwardsForEach(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index];
-        callback(element, index);
-      }
-    }
-    var _default = {
-      first,
-      second,
-      third,
-      fourth,
-      fifth,
-      fifthLast,
-      fourthLast,
-      thirdLast,
-      secondLast,
-      last,
-      head,
-      tail,
-      push,
-      unshift,
-      concat,
-      clear,
-      copy,
-      merge,
-      splice,
-      replace,
-      filter,
-      find,
-      prune,
-      patch,
-      augment,
-      separate,
-      forwardsSome,
-      backwardsSome,
-      forwardsEvery,
-      backwardsEvery,
-      forwardsReduce,
-      backwardsReduce,
-      forwardsForEach,
-      backwardsForEach
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/occam-dom/node_modules/necessary/lib/utilities/path.js
-  var require_path3 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.isPathName = isPathName;
-    exports.isPathTopmostName = isPathTopmostName;
-    exports.isPathRelativePath = isPathRelativePath;
-    exports.isPathAbsolutePath = isPathAbsolutePath;
-    exports.isTopmostNameInAbsolutePath = isTopmostNameInAbsolutePath;
-    exports.combinePaths = combinePaths;
-    exports.concatenatePaths = concatenatePaths;
-    exports.bottommostNameFromPath = bottommostNameFromPath;
-    exports.topmostDirectoryPathFromPath = topmostDirectoryPathFromPath;
-    exports.topmostDirectoryNameFromPath = topmostDirectoryNameFromPath;
-    exports.pathWithoutBottommostNameFromPath = pathWithoutBottommostNameFromPath;
-    exports.pathWithoutTopmostDirectoryNameFromPath = pathWithoutTopmostDirectoryNameFromPath;
-    exports.default = void 0;
-    var _array = require_array5();
-    function isPathName(path) {
-      path = path.replace(/^\//, "").replace(/\/$/, "");
-      var pathName = /\//.test(path) === false;
-      return pathName;
-    }
-    function isPathTopmostName(path) {
-      var pathName = isPathName(path), pathAbsolutePath = isPathAbsolutePath(path), pathTopmostName = pathName && pathAbsolutePath;
-      return pathTopmostName;
-    }
-    function isPathRelativePath(path) {
-      var pathRelativePath = !/^\//.test(path);
-      return pathRelativePath;
-    }
-    function isPathAbsolutePath(path) {
-      var pathAbsolutePath = /^\//.test(path);
-      return pathAbsolutePath;
-    }
-    function isTopmostNameInAbsolutePath(topmostName, absolutePath) {
-      var regExp = new RegExp("^".concat(topmostName, "(?:\\/.+)?$")), topmostNameInAbsolutePath = regExp.test(absolutePath);
-      return topmostNameInAbsolutePath;
-    }
-    function combinePaths(path, relativePath) {
-      var combinedPath = null;
-      var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
-      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
-      if (firstRelativePathName === ".") {
-        relativePathNames.shift();
-      }
-      firstRelativePathName = _array.first(relativePathNames);
-      lastPathName = _array.last(pathNames);
-      while (firstRelativePathName === ".." && lastPathName !== void 0) {
-        relativePathNames.shift();
-        pathNames.pop();
-        firstRelativePathName = _array.first(relativePathNames);
-        lastPathName = _array.last(pathNames);
-      }
-      if (lastPathName !== void 0) {
-        var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
-        combinedPath = combinedPathNames.join("/");
-      }
-      return combinedPath;
-    }
-    function concatenatePaths(path, relativePath) {
-      path = path.replace(/\/$/, "");
-      var concatenatedPath = "".concat(path, "/").concat(relativePath);
-      return concatenatedPath;
-    }
-    function bottommostNameFromPath(path) {
-      var bottommostName = null;
-      var matches = path.match(/^.*\/([^\/]+\/?)$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        bottommostName = secondMatch;
-      }
-      return bottommostName;
-    }
-    function topmostDirectoryPathFromPath(path) {
-      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
-      return topmostDirectoryPath;
-    }
-    function topmostDirectoryNameFromPath(path) {
-      var topmostDirectoryName = null;
-      var matches = path.match(/^([^\/]+)\/.+$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        topmostDirectoryName = secondMatch;
-      }
-      return topmostDirectoryName;
-    }
-    function pathWithoutBottommostNameFromPath(path) {
-      var pathWithoutBottommostName = null;
-      var matches = path.match(/^(.*)\/[^\/]+\/?$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        pathWithoutBottommostName = secondMatch;
-      }
-      return pathWithoutBottommostName;
-    }
-    function pathWithoutTopmostDirectoryNameFromPath(path) {
-      var pathWithoutTopmostDirectoryName = null;
-      var matches = path.match(/^[^\/]+\/(.+)$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        pathWithoutTopmostDirectoryName = secondMatch;
-      }
-      return pathWithoutTopmostDirectoryName;
-    }
-    var _default = {
-      isPathName,
-      isPathTopmostName,
-      isPathRelativePath,
-      isPathAbsolutePath,
-      isTopmostNameInAbsolutePath,
-      combinePaths,
-      concatenatePaths,
-      bottommostNameFromPath,
-      topmostDirectoryPathFromPath,
-      topmostDirectoryNameFromPath,
-      pathWithoutBottommostNameFromPath,
-      pathWithoutTopmostDirectoryNameFromPath
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/occam-dom/node_modules/necessary/lib/utilities/asynchronous.js
-  var require_asynchronous3 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.whilst = whilst;
-    exports.forEach = forEach;
-    exports.sequence = sequence;
-    exports.eventually = eventually;
-    exports.repeatedly = repeatedly;
-    exports.forwardsForEach = forwardsForEach;
-    exports.backwardsForEach = backwardsForEach;
-    exports.default = void 0;
-    function whilst(callback, done, context) {
-      var count = -1;
-      function next() {
-        count++;
-        var index = count, terminate = callback(next, done, context, index);
-        if (terminate) {
-          done();
-        }
-      }
-      next();
-    }
-    function forEach(array, callback, done, context) {
-      var length = array.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    function sequence(callbacks, done, context) {
-      var length = callbacks.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, callback = callbacks[index];
-          callback(next, done, context, index);
-        }
-      }
-      next();
-    }
-    function eventually(callbacks, done, context) {
-      var next = function next2() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        }
-      };
-      var length = callbacks.length;
-      var count = 0;
-      callbacks.forEach(function(callback, index) {
-        callback(next, done, context, index);
-      });
-    }
-    function repeatedly(callback, length, done, context) {
-      var next = function next2() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        }
-      };
-      var count = 0;
-      for (var index = 0; index < length; index++) {
-        callback(next, done, context, index);
-      }
-    }
-    function forwardsForEach(array, callback, done, context) {
-      var length = array.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    function backwardsForEach(array, callback, done, context) {
-      var length = array.length;
-      var count = length;
-      function next() {
-        count--;
-        var terminate = count === -1;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    var _default = {
-      whilst,
-      forEach,
-      sequence,
-      eventually,
-      repeatedly,
-      forwardsForEach,
-      backwardsForEach
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/occam-dom/node_modules/necessary/lib/browser.js
-  var require_browser3 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    var _ajax = _interopRequireDefault2(require_ajax3());
-    var _path = _interopRequireDefault2(require_path3());
-    var _array = _interopRequireDefault2(require_array5());
-    var _asynchronous = _interopRequireDefault2(require_asynchronous3());
-    function _interopRequireDefault2(obj) {
-      return obj && obj.__esModule ? obj : {
-        default: obj
-      };
-    }
-    Object.defineProperty(exports, "ajaxUtilities", {
-      enumerable: true,
-      get: function() {
-        return _ajax.default;
-      }
-    });
-    Object.defineProperty(exports, "pathUtilities", {
-      enumerable: true,
-      get: function() {
-        return _path.default;
-      }
-    });
-    Object.defineProperty(exports, "arrayUtilities", {
-      enumerable: true,
-      get: function() {
-        return _array.default;
-      }
-    });
-    Object.defineProperty(exports, "asynchronousUtilities", {
-      enumerable: true,
-      get: function() {
-        return _asynchronous.default;
-      }
-    });
-  });
-
   // node_modules/occam-dom/lib/utilities/array.js
-  var require_array6 = __commonJS((exports) => {
+  var require_array4 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -21932,7 +20416,7 @@
     exports.trim = trim;
     exports.includes = includes;
     exports.third = exports.second = exports.push = exports.fifth = exports.fourth = exports.clear = void 0;
-    var _necessary = require_browser3();
+    var _necessary = require_browser();
     var clear = _necessary.arrayUtilities.clear;
     var push = _necessary.arrayUtilities.push;
     var second = _necessary.arrayUtilities.second;
@@ -21966,7 +20450,7 @@
   });
 
   // node_modules/occam-dom/lib/constants.js
-  var require_constants6 = __commonJS((exports) => {
+  var require_constants4 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -21985,8 +20469,8 @@
       value: true
     });
     exports.default = void 0;
-    var _array = require_array6();
-    var _constants = require_constants6();
+    var _array = require_array4();
+    var _constants = require_constants4();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -22023,10 +20507,10 @@
             if (this.unique) {
               var nodesLength = nodes.length;
               if (nodesLength > 1) {
-                _array.clear(nodes);
+                (0, _array).clear(nodes);
               }
             } else {
-              _array.trim(nodes, this.startIndex, this.endIndex);
+              (0, _array).trim(nodes, this.startIndex, this.endIndex);
             }
           }
         }
@@ -22039,7 +20523,7 @@
               if (spreadExpression === _constants.UNIQUE_SPREAD_EXPRESSION) {
                 unique = true;
               } else {
-                var regExp = /\[(\d+)?(\.\.\.)?(\d+)?]/, matches = spreadExpression.match(regExp), secondMatch = _array.second(matches), thirdMatch = _array.third(matches), fourthMatch = _array.fourth(matches);
+                var regExp = /\[(\d+)?(\.\.\.)?(\d+)?]/, matches = spreadExpression.match(regExp), secondMatch = (0, _array).second(matches), thirdMatch = (0, _array).third(matches), fourthMatch = (0, _array).fourth(matches);
                 if (secondMatch !== void 0) {
                   startIndex = parseInt(secondMatch);
                   if (thirdMatch === void 0) {
@@ -22072,8 +20556,8 @@
     });
     exports.default = void 0;
     var _spread = _interopRequireDefault2(require_spread());
-    var _constants = require_constants6();
-    var _array = require_array6();
+    var _constants = require_constants4();
+    var _array = require_array4();
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -22127,7 +20611,7 @@
         {
           key: "clear",
           value: function clear() {
-            _array.clear(this.intermediateNodes);
+            (0, _array).clear(this.intermediateNodes);
           }
         },
         {
@@ -22140,11 +20624,11 @@
             var found;
             if (nodeTerminalNode) {
               var terminalNode = node, type = terminalNode.getType();
-              found = _array.includes(this.types, type, _constants.WILDCARD_CHARACTER);
+              found = (0, _array).includes(this.types, type, _constants.WILDCARD_CHARACTER);
             }
             if (nodeNonTerminalNode) {
               var nonTerminalNode = node, ruleName = nonTerminalNode.getRuleName();
-              found = _array.includes(this.ruleNames, ruleName, _constants.WILDCARD_CHARACTER);
+              found = (0, _array).includes(this.ruleNames, ruleName, _constants.WILDCARD_CHARACTER);
             }
             if (found) {
               var intermediateNode = node;
@@ -22166,7 +20650,7 @@
           value: function apply(nodes, depth, maximumDepth) {
             this.spread.adjustNodes(this.intermediateNodes);
             if (this.subQuery === null) {
-              _array.push(nodes, this.intermediateNodes);
+              (0, _array).push(nodes, this.intermediateNodes);
             } else {
               this.intermediateNodes.forEach(function(intermediateNode) {
                 var intermediateNodeNonTerminalNode = intermediateNode.isNonTerminalNode();
@@ -22202,7 +20686,7 @@
           key: "fromExpression",
           value: function fromExpression(expression, param) {
             var maximumDepth = param === void 0 ? Infinity : param;
-            var regExp = /^\/(\/)?([^/\[!]+)(\[[^\]]+]|!)?(\/.*)?$/, matches = expression.match(regExp), secondMatch = _array.second(matches), thirdMatch = _array.third(matches), fourthMatch = _array.fourth(matches), fifthMatch = _array.fifth(matches), selectors = thirdMatch.split("|"), subExpression = fifthMatch || null, spreadExpression = fourthMatch || null, types = typesFromSelectors(selectors), ruleNames = ruleNamesFromSelectorsAndTypes(selectors, types), spread = _spread.default.fromSpreadExpression(spreadExpression), subQuery = Query2.fromSubExpressionAndTypes(subExpression, types), infiniteDescent = secondMatch === "/", intermediateNodes = [], query = new Query2(ruleNames, types, spread, subQuery, maximumDepth, infiniteDescent, intermediateNodes);
+            var regExp = /^\/(\/)?([^/\[!]+)(\[[^\]]+]|!)?(\/.*)?$/, matches = expression.match(regExp), secondMatch = (0, _array).second(matches), thirdMatch = (0, _array).third(matches), fourthMatch = (0, _array).fourth(matches), fifthMatch = (0, _array).fifth(matches), selectors = thirdMatch.split("|"), subExpression = fifthMatch || null, spreadExpression = fourthMatch || null, types = typesFromSelectors(selectors), ruleNames = ruleNamesFromSelectorsAndTypes(selectors, types), spread = _spread.default.fromSpreadExpression(spreadExpression), subQuery = Query2.fromSubExpressionAndTypes(subExpression, types), infiniteDescent = secondMatch === "/", intermediateNodes = [], query = new Query2(ruleNames, types, spread, subQuery, maximumDepth, infiniteDescent, intermediateNodes);
             return query;
           }
         }
@@ -22333,765 +20817,6 @@
     });
   });
 
-  // node_modules/with-style/node_modules/necessary/lib/constants.js
-  var require_constants7 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.BACKSPACE_CHARACTER = exports.ETX_CHARACTER = exports.DATA_EVENT = exports.CONTENT_TYPE = exports.DEFAULT_LOG_FILE_BASE_NAME = exports.TRACE = exports.POST = exports.CARRIAGE_RETURN_CHARACTER = exports.DEFAULT_ENCODING = exports.ERROR = exports.ACCEPT = exports.DEBUG = exports.DEFAULT_RC_BASE_EXTENSION = exports.DEFAULT_ATTEMPTS = exports.CTRL_C = exports.FATAL = exports.DEFAULT_INITIAL_ANSWER = exports.WARNING = exports.APPLICATION_JSON = exports.INFO = exports.GET = exports.LINE_FEED_CHARACTER = exports.DEFAULT_LOG_LEVEL = exports.DEFAULT_LOG_DIRECTORY_PATH = exports.UTF8_ENCODING = void 0;
-    var TRACE = "TRACE";
-    exports.TRACE = TRACE;
-    var DEBUG = "DEBUG";
-    exports.DEBUG = DEBUG;
-    var INFO = "INFO";
-    exports.INFO = INFO;
-    var WARNING = "WARNING";
-    exports.WARNING = WARNING;
-    var ERROR = "ERROR";
-    exports.ERROR = ERROR;
-    var FATAL = "FATAL";
-    exports.FATAL = FATAL;
-    var DEFAULT_LOG_LEVEL = WARNING;
-    exports.DEFAULT_LOG_LEVEL = DEFAULT_LOG_LEVEL;
-    var DEFAULT_LOG_DIRECTORY_PATH = null;
-    exports.DEFAULT_LOG_DIRECTORY_PATH = DEFAULT_LOG_DIRECTORY_PATH;
-    var DEFAULT_LOG_FILE_BASE_NAME = "default";
-    exports.DEFAULT_LOG_FILE_BASE_NAME = DEFAULT_LOG_FILE_BASE_NAME;
-    var GET = "GET";
-    exports.GET = GET;
-    var POST = "POST";
-    exports.POST = POST;
-    var ACCEPT = "accept";
-    exports.ACCEPT = ACCEPT;
-    var CONTENT_TYPE = "content-type";
-    exports.CONTENT_TYPE = CONTENT_TYPE;
-    var APPLICATION_JSON = "application/json";
-    exports.APPLICATION_JSON = APPLICATION_JSON;
-    var CTRL_C = "^C";
-    exports.CTRL_C = CTRL_C;
-    var DATA_EVENT = "data";
-    exports.DATA_EVENT = DATA_EVENT;
-    var UTF8_ENCODING = "utf8";
-    exports.UTF8_ENCODING = UTF8_ENCODING;
-    var ETX_CHARACTER = "";
-    exports.ETX_CHARACTER = ETX_CHARACTER;
-    var DEFAULT_ATTEMPTS = 3;
-    exports.DEFAULT_ATTEMPTS = DEFAULT_ATTEMPTS;
-    var DEFAULT_ENCODING = UTF8_ENCODING;
-    exports.DEFAULT_ENCODING = DEFAULT_ENCODING;
-    var LINE_FEED_CHARACTER = "\n";
-    exports.LINE_FEED_CHARACTER = LINE_FEED_CHARACTER;
-    var BACKSPACE_CHARACTER = String.fromCharCode(127);
-    exports.BACKSPACE_CHARACTER = BACKSPACE_CHARACTER;
-    var DEFAULT_INITIAL_ANSWER = "";
-    exports.DEFAULT_INITIAL_ANSWER = DEFAULT_INITIAL_ANSWER;
-    var CARRIAGE_RETURN_CHARACTER = "\r";
-    exports.CARRIAGE_RETURN_CHARACTER = CARRIAGE_RETURN_CHARACTER;
-    var DEFAULT_RC_BASE_EXTENSION = "";
-    exports.DEFAULT_RC_BASE_EXTENSION = DEFAULT_RC_BASE_EXTENSION;
-  });
-
-  // node_modules/with-style/node_modules/necessary/lib/utilities/ajax.js
-  var require_ajax4 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.get = get;
-    exports.post = post;
-    exports.request = request;
-    exports.default = void 0;
-    var _constants = require_constants7();
-    function get(host, uri, parameters, headers, callback) {
-      if (callback === void 0) {
-        callback = headers;
-        headers = {};
-      }
-      var method = _constants.GET, body2 = null;
-      guaranteeAccept(headers);
-      request(host, uri, parameters, method, body2, headers, callback);
-    }
-    function post(host, uri, parameters, body2, headers, callback) {
-      if (callback === void 0) {
-        callback = headers;
-        headers = {};
-      }
-      var method = _constants.POST;
-      guaranteeAccept(headers);
-      guaranteeContentType(headers);
-      request(host, uri, parameters, method, body2, headers, callback);
-    }
-    function request(host, uri, parameters, method, body2, headers, callback) {
-      var url = urlFromHostURIAndParameters(host, uri, parameters), accept = headers[_constants.ACCEPT] || null, contentType = headers[_constants.CONTENT_TYPE] || null, xmlHttpRequest = new XMLHttpRequest();
-      if (contentType === _constants.APPLICATION_JSON) {
-        var json = body2, jsonString = JSON.stringify(json);
-        body2 = jsonString;
-      }
-      xmlHttpRequest.onreadystatechange = function() {
-        var readyState = xmlHttpRequest.readyState, status = xmlHttpRequest.status, responseText = xmlHttpRequest.responseText;
-        if (readyState == 4) {
-          var body1 = responseText;
-          if (accept === _constants.APPLICATION_JSON) {
-            try {
-              var jsonString2 = body1, json2 = JSON.parse(jsonString2);
-              body1 = json2;
-            } catch (error) {
-              body1 = null;
-            }
-            callback(body1, status);
-          }
-        }
-      };
-      xmlHttpRequest.open(method, url);
-      if (accept !== null) {
-        xmlHttpRequest.setRequestHeader(_constants.ACCEPT, accept);
-      }
-      if (contentType !== null) {
-        xmlHttpRequest.setRequestHeader(_constants.CONTENT_TYPE, contentType);
-      }
-      body2 !== null ? xmlHttpRequest.send(body2) : xmlHttpRequest.send();
-    }
-    var _default = {
-      get,
-      post,
-      request
-    };
-    exports.default = _default;
-    function guarantee(headers, name, value) {
-      var propertyNames = Object.getOwnPropertyNames(headers), names = propertyNames.map(function(propertyName) {
-        var lowerCasePropertyName = propertyName.toLowerCase(), name1 = lowerCasePropertyName;
-        return name1;
-      }), namesIncludesName = names.includes(name);
-      if (!namesIncludesName) {
-        headers[name] = value;
-      }
-    }
-    function guaranteeAccept(headers) {
-      var name = _constants.ACCEPT, value = _constants.APPLICATION_JSON;
-      guarantee(headers, name, value);
-    }
-    function guaranteeContentType(headers) {
-      var name = _constants.CONTENT_TYPE, value = _constants.APPLICATION_JSON;
-      guarantee(headers, name, value);
-    }
-    function queryStringFromParameters(parameters) {
-      var names = Object.keys(parameters), namesLength = names.length, lastIndex = namesLength - 1, queryString = names.reduce(function(queryString1, name, index) {
-        var value = parameters[name], encodedName = encodeURIComponent(name), encodedValue = encodeURIComponent(value), ampersandOrNothing = index !== lastIndex ? "&" : "";
-        queryString1 += "".concat(encodedName, "=").concat(encodedValue).concat(ampersandOrNothing);
-        return queryString1;
-      }, "");
-      return queryString;
-    }
-    function urlFromHostURIAndParameters(host, uri, parameters) {
-      var queryString = queryStringFromParameters(parameters), url = queryString === "" ? "".concat(host).concat(uri) : "".concat(host).concat(uri, "?").concat(queryString);
-      return url;
-    }
-  });
-
-  // node_modules/with-style/node_modules/necessary/lib/utilities/array.js
-  var require_array7 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.first = first;
-    exports.second = second;
-    exports.third = third;
-    exports.fourth = fourth;
-    exports.fifth = fifth;
-    exports.fifthLast = fifthLast;
-    exports.fourthLast = fourthLast;
-    exports.thirdLast = thirdLast;
-    exports.secondLast = secondLast;
-    exports.last = last;
-    exports.head = head;
-    exports.tail = tail;
-    exports.push = push;
-    exports.unshift = unshift;
-    exports.concat = concat;
-    exports.clear = clear;
-    exports.copy = copy;
-    exports.merge = merge;
-    exports.splice = splice;
-    exports.replace = replace;
-    exports.filter = filter;
-    exports.find = find;
-    exports.prune = prune;
-    exports.patch = patch;
-    exports.augment = augment;
-    exports.separate = separate;
-    exports.forwardsSome = forwardsSome;
-    exports.backwardsSome = backwardsSome;
-    exports.forwardsEvery = forwardsEvery;
-    exports.backwardsEvery = backwardsEvery;
-    exports.forwardsReduce = forwardsReduce;
-    exports.backwardsReduce = backwardsReduce;
-    exports.forwardsForEach = forwardsForEach;
-    exports.backwardsForEach = backwardsForEach;
-    exports.default = void 0;
-    function _arrayWithoutHoles(arr) {
-      if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-          arr2[i] = arr[i];
-        }
-        return arr2;
-      }
-    }
-    function _instanceof(left, right) {
-      if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) {
-        return right[Symbol.hasInstance](left);
-      } else {
-        return left instanceof right;
-      }
-    }
-    function _iterableToArray(iter) {
-      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
-        return Array.from(iter);
-    }
-    function _nonIterableSpread() {
-      throw new TypeError("Invalid attempt to spread non-iterable instance");
-    }
-    function _toConsumableArray(arr) {
-      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-    }
-    function first(array) {
-      return array[0];
-    }
-    function second(array) {
-      return array[1];
-    }
-    function third(array) {
-      return array[2];
-    }
-    function fourth(array) {
-      return array[3];
-    }
-    function fifth(array) {
-      return array[4];
-    }
-    function fifthLast(array) {
-      return array[array.length - 5];
-    }
-    function fourthLast(array) {
-      return array[array.length - 4];
-    }
-    function thirdLast(array) {
-      return array[array.length - 3];
-    }
-    function secondLast(array) {
-      return array[array.length - 2];
-    }
-    function last(array) {
-      return array[array.length - 1];
-    }
-    function head(array) {
-      return array.slice(0, 1);
-    }
-    function tail(array) {
-      return array.slice(1);
-    }
-    function push(array1, array2) {
-      Array.prototype.push.apply(array1, array2);
-    }
-    function unshift(array1, array2) {
-      Array.prototype.unshift.apply(array1, array2);
-    }
-    function concat(array1, elementOrArray2) {
-      var array2 = _instanceof(elementOrArray2, Array) ? elementOrArray2 : [
-        elementOrArray2
-      ];
-      push(array1, array2);
-    }
-    function clear(array) {
-      var start = 0;
-      return array.splice(start);
-    }
-    function copy(array1, array2) {
-      var start = 0, deleteCount = array2.length;
-      splice(array1, start, deleteCount, array2);
-    }
-    function merge(array1, array2) {
-      Array.prototype.push.apply(array1, array2);
-    }
-    function splice(array1, start, param, param1) {
-      var deleteCount = param === void 0 ? Infinity : param, array2 = param1 === void 0 ? [] : param1;
-      var args = [
-        start,
-        deleteCount
-      ].concat(_toConsumableArray(array2)), deletedItemsArray = Array.prototype.splice.apply(array1, args);
-      return deletedItemsArray;
-    }
-    function replace(array, element, test) {
-      var start;
-      var found = array.some(function(element1, index) {
-        var passed = test(element1, index);
-        if (passed) {
-          start = index;
-          return true;
-        }
-      });
-      if (found) {
-        var deleteCount = 1;
-        array.splice(start, deleteCount, element);
-      }
-      return found;
-    }
-    function filter(array, test) {
-      var filteredElements = [];
-      backwardsForEach(array, function(element, index) {
-        var passed = test(element, index);
-        if (!passed) {
-          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
-          filteredElements.unshift(firstDeletedElement);
-        }
-      });
-      return filteredElements;
-    }
-    function find(array, test) {
-      var elements = [];
-      forwardsForEach(array, function(element, index) {
-        var passed = test(element, index);
-        if (passed) {
-          elements.push(element);
-        }
-      });
-      return elements;
-    }
-    function prune(array, test) {
-      var prunedElement = void 0;
-      array.some(function(element, index) {
-        var passed = test(element, index);
-        if (!passed) {
-          var start = index, deleteCount = 1, deletedElements = array.splice(start, deleteCount), firstDeletedElement = first(deletedElements);
-          prunedElement = firstDeletedElement;
-          return true;
-        }
-      });
-      return prunedElement;
-    }
-    function patch(array, element, test) {
-      var found = array.some(function(element1, index) {
-        var passed = test(element1, index);
-        if (passed) {
-          return true;
-        }
-      });
-      if (found) {
-        array.push(element);
-      }
-      return found;
-    }
-    function augment(array1, array2, test) {
-      array2.forEach(function(element, index) {
-        var passed = test(element, index);
-        if (passed) {
-          array1.push(element);
-        }
-      });
-    }
-    function separate(array, array1, array2, test) {
-      array.forEach(function(element, index) {
-        var passed = test(element, index);
-        passed ? array1.push(element) : array2.push(element);
-      });
-    }
-    function forwardsSome(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index], result = callback(element, index);
-        if (result) {
-          return true;
-        }
-      }
-      return false;
-    }
-    function backwardsSome(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index], result = callback(element, index);
-        if (result) {
-          return true;
-        }
-      }
-      return false;
-    }
-    function forwardsEvery(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index], result = callback(element, index);
-        if (!result) {
-          return false;
-        }
-      }
-      return true;
-    }
-    function backwardsEvery(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index], result = callback(element, index);
-        if (!result) {
-          return false;
-        }
-      }
-      return true;
-    }
-    function forwardsReduce(array, callback, initialValue) {
-      var value = initialValue;
-      forwardsForEach(array, function(element, index) {
-        value = callback(value, element, index);
-      });
-      return value;
-    }
-    function backwardsReduce(array, callback, initialValue) {
-      var value = initialValue;
-      backwardsForEach(array, function(element, index) {
-        value = callback(value, element, index);
-      });
-      return value;
-    }
-    function forwardsForEach(array, callback) {
-      var arrayLength = array.length;
-      for (var index = 0; index < arrayLength; index++) {
-        var element = array[index];
-        callback(element, index);
-      }
-    }
-    function backwardsForEach(array, callback) {
-      var arrayLength = array.length;
-      for (var index = arrayLength - 1; index >= 0; index--) {
-        var element = array[index];
-        callback(element, index);
-      }
-    }
-    var _default = {
-      first,
-      second,
-      third,
-      fourth,
-      fifth,
-      fifthLast,
-      fourthLast,
-      thirdLast,
-      secondLast,
-      last,
-      head,
-      tail,
-      push,
-      unshift,
-      concat,
-      clear,
-      copy,
-      merge,
-      splice,
-      replace,
-      filter,
-      find,
-      prune,
-      patch,
-      augment,
-      separate,
-      forwardsSome,
-      backwardsSome,
-      forwardsEvery,
-      backwardsEvery,
-      forwardsReduce,
-      backwardsReduce,
-      forwardsForEach,
-      backwardsForEach
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/with-style/node_modules/necessary/lib/utilities/path.js
-  var require_path4 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.isPathName = isPathName;
-    exports.isPathTopmostName = isPathTopmostName;
-    exports.isPathRelativePath = isPathRelativePath;
-    exports.isPathAbsolutePath = isPathAbsolutePath;
-    exports.isTopmostNameInAbsolutePath = isTopmostNameInAbsolutePath;
-    exports.combinePaths = combinePaths;
-    exports.concatenatePaths = concatenatePaths;
-    exports.bottommostNameFromPath = bottommostNameFromPath;
-    exports.topmostDirectoryPathFromPath = topmostDirectoryPathFromPath;
-    exports.topmostDirectoryNameFromPath = topmostDirectoryNameFromPath;
-    exports.pathWithoutBottommostNameFromPath = pathWithoutBottommostNameFromPath;
-    exports.pathWithoutTopmostDirectoryNameFromPath = pathWithoutTopmostDirectoryNameFromPath;
-    exports.default = void 0;
-    var _array = require_array7();
-    function isPathName(path) {
-      path = path.replace(/^\//, "").replace(/\/$/, "");
-      var pathName = /\//.test(path) === false;
-      return pathName;
-    }
-    function isPathTopmostName(path) {
-      var pathName = isPathName(path), pathAbsolutePath = isPathAbsolutePath(path), pathTopmostName = pathName && pathAbsolutePath;
-      return pathTopmostName;
-    }
-    function isPathRelativePath(path) {
-      var pathRelativePath = !/^\//.test(path);
-      return pathRelativePath;
-    }
-    function isPathAbsolutePath(path) {
-      var pathAbsolutePath = /^\//.test(path);
-      return pathAbsolutePath;
-    }
-    function isTopmostNameInAbsolutePath(topmostName, absolutePath) {
-      var regExp = new RegExp("^".concat(topmostName, "(?:\\/.+)?$")), topmostNameInAbsolutePath = regExp.test(absolutePath);
-      return topmostNameInAbsolutePath;
-    }
-    function combinePaths(path, relativePath) {
-      var combinedPath = null;
-      var pathNames = path.split(/\//), relativePathNames = relativePath.split(/\//);
-      var lastPathName, firstRelativePathName = _array.first(relativePathNames);
-      if (firstRelativePathName === ".") {
-        relativePathNames.shift();
-      }
-      firstRelativePathName = _array.first(relativePathNames);
-      lastPathName = _array.last(pathNames);
-      while (firstRelativePathName === ".." && lastPathName !== void 0) {
-        relativePathNames.shift();
-        pathNames.pop();
-        firstRelativePathName = _array.first(relativePathNames);
-        lastPathName = _array.last(pathNames);
-      }
-      if (lastPathName !== void 0) {
-        var combinedPathNames = [].concat(pathNames).concat(relativePathNames);
-        combinedPath = combinedPathNames.join("/");
-      }
-      return combinedPath;
-    }
-    function concatenatePaths(path, relativePath) {
-      path = path.replace(/\/$/, "");
-      var concatenatedPath = "".concat(path, "/").concat(relativePath);
-      return concatenatedPath;
-    }
-    function bottommostNameFromPath(path) {
-      var bottommostName = null;
-      var matches = path.match(/^.*\/([^\/]+\/?)$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        bottommostName = secondMatch;
-      }
-      return bottommostName;
-    }
-    function topmostDirectoryPathFromPath(path) {
-      var matches = path.match(/^(.+)\/[^\/]+\/?$/), secondMatch = _array.second(matches), topmostDirectoryPath = secondMatch;
-      return topmostDirectoryPath;
-    }
-    function topmostDirectoryNameFromPath(path) {
-      var topmostDirectoryName = null;
-      var matches = path.match(/^([^\/]+)\/.+$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        topmostDirectoryName = secondMatch;
-      }
-      return topmostDirectoryName;
-    }
-    function pathWithoutBottommostNameFromPath(path) {
-      var pathWithoutBottommostName = null;
-      var matches = path.match(/^(.*)\/[^\/]+\/?$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        pathWithoutBottommostName = secondMatch;
-      }
-      return pathWithoutBottommostName;
-    }
-    function pathWithoutTopmostDirectoryNameFromPath(path) {
-      var pathWithoutTopmostDirectoryName = null;
-      var matches = path.match(/^[^\/]+\/(.+)$/);
-      if (matches !== null) {
-        var secondMatch = _array.second(matches);
-        pathWithoutTopmostDirectoryName = secondMatch;
-      }
-      return pathWithoutTopmostDirectoryName;
-    }
-    var _default = {
-      isPathName,
-      isPathTopmostName,
-      isPathRelativePath,
-      isPathAbsolutePath,
-      isTopmostNameInAbsolutePath,
-      combinePaths,
-      concatenatePaths,
-      bottommostNameFromPath,
-      topmostDirectoryPathFromPath,
-      topmostDirectoryNameFromPath,
-      pathWithoutBottommostNameFromPath,
-      pathWithoutTopmostDirectoryNameFromPath
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/with-style/node_modules/necessary/lib/utilities/asynchronous.js
-  var require_asynchronous4 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    exports.whilst = whilst;
-    exports.forEach = forEach;
-    exports.sequence = sequence;
-    exports.eventually = eventually;
-    exports.repeatedly = repeatedly;
-    exports.forwardsForEach = forwardsForEach;
-    exports.backwardsForEach = backwardsForEach;
-    exports.default = void 0;
-    function whilst(callback, done, context) {
-      var count = -1;
-      function next() {
-        count++;
-        var index = count, terminate = callback(next, done, context, index);
-        if (terminate) {
-          done();
-        }
-      }
-      next();
-    }
-    function forEach(array, callback, done, context) {
-      var length = array.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    function sequence(callbacks, done, context) {
-      var length = callbacks.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, callback = callbacks[index];
-          callback(next, done, context, index);
-        }
-      }
-      next();
-    }
-    function eventually(callbacks, done, context) {
-      var next = function next2() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        }
-      };
-      var length = callbacks.length;
-      var count = 0;
-      callbacks.forEach(function(callback, index) {
-        callback(next, done, context, index);
-      });
-    }
-    function repeatedly(callback, length, done, context) {
-      var next = function next2() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        }
-      };
-      var count = 0;
-      for (var index = 0; index < length; index++) {
-        callback(next, done, context, index);
-      }
-    }
-    function forwardsForEach(array, callback, done, context) {
-      var length = array.length;
-      var count = -1;
-      function next() {
-        count++;
-        var terminate = count === length;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    function backwardsForEach(array, callback, done, context) {
-      var length = array.length;
-      var count = length;
-      function next() {
-        count--;
-        var terminate = count === -1;
-        if (terminate) {
-          done();
-        } else {
-          var index = count, element = array[index];
-          callback(element, next, done, context, index);
-        }
-      }
-      next();
-    }
-    var _default = {
-      whilst,
-      forEach,
-      sequence,
-      eventually,
-      repeatedly,
-      forwardsForEach,
-      backwardsForEach
-    };
-    exports.default = _default;
-  });
-
-  // node_modules/with-style/node_modules/necessary/lib/browser.js
-  var require_browser4 = __commonJS((exports) => {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-    var _ajax = _interopRequireDefault2(require_ajax4());
-    var _path = _interopRequireDefault2(require_path4());
-    var _array = _interopRequireDefault2(require_array7());
-    var _asynchronous = _interopRequireDefault2(require_asynchronous4());
-    function _interopRequireDefault2(obj) {
-      return obj && obj.__esModule ? obj : {
-        default: obj
-      };
-    }
-    Object.defineProperty(exports, "ajaxUtilities", {
-      enumerable: true,
-      get: function() {
-        return _ajax.default;
-      }
-    });
-    Object.defineProperty(exports, "pathUtilities", {
-      enumerable: true,
-      get: function() {
-        return _path.default;
-      }
-    });
-    Object.defineProperty(exports, "arrayUtilities", {
-      enumerable: true,
-      get: function() {
-        return _array.default;
-      }
-    });
-    Object.defineProperty(exports, "asynchronousUtilities", {
-      enumerable: true,
-      get: function() {
-        return _asynchronous.default;
-      }
-    });
-  });
-
   // node_modules/with-style/lib/utilities/content.js
   var require_content2 = __commonJS((exports) => {
     "use strict";
@@ -23099,7 +20824,7 @@
       value: true
     });
     exports.contentFromQueryNodeAndTokens = contentFromQueryNodeAndTokens;
-    var _necessary = require_browser4();
+    var _necessary = require_browser();
     var first = _necessary.arrayUtilities.first;
     function contentFromQueryNodeAndTokens(query, node, tokens) {
       var nodes = query.execute(node), firstNode = first(nodes);
@@ -24109,7 +21834,7 @@
   });
 
   // node_modules/with-style/lib/constants.js
-  var require_constants8 = __commonJS((exports) => {
+  var require_constants5 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -24132,7 +21857,7 @@
     exports.default = void 0;
     var _v4 = _interopRequireDefault2(require_v4());
     var _randomSeed = _interopRequireDefault2(require_random_seed());
-    var _constants = require_constants8();
+    var _constants = require_constants5();
     function _interopRequireDefault2(obj) {
       return obj && obj.__esModule ? obj : {
         default: obj
@@ -24244,7 +21969,7 @@
     exports.default = void 0;
     var _easy2 = require_lib();
     var _withStyle = require_lib5();
-    var _class = require_class();
+    var _class1 = require_class();
     function _arrayWithoutHoles(arr) {
       if (Array.isArray(arr)) {
         for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
@@ -24368,35 +22093,32 @@
         var superStyle = retrieveStyle(className);
         className = generateClassName();
         generateStyle(args, className, superStyle);
-        var ClassOrFunctionClass = _class.isClass(ClassOrFunction);
+        var ClassOrFunctionClass = (0, _class1).isClass(ClassOrFunction);
         if (ClassOrFunctionClass) {
           var Class = ClassOrFunction;
-          ClassOrFunction = function() {
-            var _class1 = function(Class2) {
-              _inherits(_class12, Class2);
-              function _class12() {
-                _classCallCheck(this, _class12);
-                return _possibleConstructorReturn(this, _getPrototypeOf(_class12).apply(this, arguments));
-              }
-              _createClass(_class12, null, [
-                {
-                  key: "fromClass",
-                  value: function fromClass(_Class1, properties) {
-                    for (var _len = arguments.length, remainingArguments = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-                      remainingArguments[_key - 2] = arguments[_key];
-                    }
-                    properties = appendClassNameToProperties(className, properties);
-                    return (_Class = Class2).fromClass.apply(_Class, [
-                      _Class1,
-                      properties
-                    ].concat(_toConsumableArray(remainingArguments)));
+          ClassOrFunction = /* @__PURE__ */ function(Class1) {
+            _inherits(_class2, Class1);
+            function _class2() {
+              _classCallCheck(this, _class2);
+              return _possibleConstructorReturn(this, _getPrototypeOf(_class2).apply(this, arguments));
+            }
+            _createClass(_class2, null, [
+              {
+                key: "fromClass",
+                value: function fromClass(_Class1, properties) {
+                  for (var _len = arguments.length, remainingArguments = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+                    remainingArguments[_key - 2] = arguments[_key];
                   }
+                  properties = appendClassNameToProperties(className, properties);
+                  return (_Class = Class).fromClass.apply(_Class, [
+                    _Class1,
+                    properties
+                  ].concat(_toConsumableArray(remainingArguments)));
                 }
-              ]);
-              return _class12;
-            }(Class);
-            return _class1;
-          }();
+              }
+            ]);
+            return _class2;
+          }(Class);
         } else {
           var Function1 = ClassOrFunction;
           ClassOrFunction = function(properties) {
@@ -24631,8 +22353,8 @@
       };
       return data;
     }
-    var RowDiv = function(Element1) {
-      _inherits(RowDiv2, _easy2.Element);
+    var RowDiv = /* @__PURE__ */ function(Element1) {
+      _inherits(RowDiv2, Element1);
       function RowDiv2() {
         _classCallCheck(this, RowDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RowDiv2).apply(this, arguments));
@@ -24643,7 +22365,7 @@
     _defineProperty(RowDiv, "defaultProperties", {
       className: "row"
     });
-    var _default = _easyWithStyle2.default(RowDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(RowDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -24804,8 +22526,8 @@
       };
       return data;
     }
-    var RowsDiv = function(Element1) {
-      _inherits(RowsDiv2, _easy2.Element);
+    var RowsDiv = /* @__PURE__ */ function(Element1) {
+      _inherits(RowsDiv2, Element1);
       function RowsDiv2() {
         _classCallCheck(this, RowsDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RowsDiv2).apply(this, arguments));
@@ -24816,7 +22538,7 @@
     _defineProperty(RowsDiv, "defaultProperties", {
       className: "rows"
     });
-    var _default = _easyWithStyle2.default(RowsDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(RowsDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -24977,8 +22699,8 @@
       };
       return data;
     }
-    var ColumnDiv = function(Element1) {
-      _inherits(ColumnDiv2, _easy2.Element);
+    var ColumnDiv = /* @__PURE__ */ function(Element1) {
+      _inherits(ColumnDiv2, Element1);
       function ColumnDiv2() {
         _classCallCheck(this, ColumnDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(ColumnDiv2).apply(this, arguments));
@@ -24989,7 +22711,7 @@
     _defineProperty(ColumnDiv, "defaultProperties", {
       className: "column"
     });
-    var _default = _easyWithStyle2.default(ColumnDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(ColumnDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -25150,8 +22872,8 @@
       };
       return data;
     }
-    var ColumnsDiv = function(Element1) {
-      _inherits(ColumnsDiv2, _easy2.Element);
+    var ColumnsDiv = /* @__PURE__ */ function(Element1) {
+      _inherits(ColumnsDiv2, Element1);
       function ColumnsDiv2() {
         _classCallCheck(this, ColumnsDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(ColumnsDiv2).apply(this, arguments));
@@ -25162,7 +22884,7 @@
     _defineProperty(ColumnsDiv, "defaultProperties", {
       className: "columns"
     });
-    var _default = _easyWithStyle2.default(ColumnsDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(ColumnsDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -25323,8 +23045,8 @@
       };
       return data;
     }
-    var SizeableDiv = function(Element1) {
-      _inherits(SizeableDiv2, _easy2.Element);
+    var SizeableDiv = /* @__PURE__ */ function(Element1) {
+      _inherits(SizeableDiv2, Element1);
       function SizeableDiv2() {
         _classCallCheck(this, SizeableDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(SizeableDiv2).apply(this, arguments));
@@ -25335,7 +23057,7 @@
     _defineProperty(SizeableDiv, "defaultProperties", {
       className: "sizeable"
     });
-    var _default = _easyWithStyle2.default(SizeableDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(SizeableDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -25381,12 +23103,20 @@
   });
 
   // lib/constants.js
-  var require_constants9 = __commonJS((exports) => {
+  var require_constants6 = __commonJS((exports) => {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
     });
-    exports.ESCAPE_KEY_CODE = void 0;
+    exports.START_DRAG = exports.DRAG = exports.ESCAPE_KEY_CODE = exports.MOUSEUP_BLUR = exports.STOP_DRAG = void 0;
+    var DRAG = "drag";
+    exports.DRAG = DRAG;
+    var STOP_DRAG = "stop drag";
+    exports.STOP_DRAG = STOP_DRAG;
+    var START_DRAG = "start drag";
+    exports.START_DRAG = START_DRAG;
+    var MOUSEUP_BLUR = "mouseup blur";
+    exports.MOUSEUP_BLUR = MOUSEUP_BLUR;
     var ESCAPE_KEY_CODE = 27;
     exports.ESCAPE_KEY_CODE = ESCAPE_KEY_CODE;
   });
@@ -25402,8 +23132,16 @@
     var _easy2 = require_lib();
     var _sizeable = _interopRequireDefault2(require_sizeable());
     var _cursor = require_cursor();
-    var _constants = require_constants9();
     var _options = require_options();
+    var _constants = require_constants6();
+    function _arrayWithoutHoles(arr) {
+      if (Array.isArray(arr)) {
+        for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+          arr2[i] = arr[i];
+        }
+        return arr2;
+      }
+    }
     function _assertThisInitialized(self) {
       if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -25513,6 +23251,13 @@
     function _isNativeFunction(fn) {
       return Function.toString.call(fn).indexOf("[native code]") !== -1;
     }
+    function _iterableToArray(iter) {
+      if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]")
+        return Array.from(iter);
+    }
+    function _nonIterableSpread() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance");
+    }
     function _possibleConstructorReturn(self, call) {
       if (call && (_typeof(call) === "object" || typeof call === "function")) {
         return call;
@@ -25535,6 +23280,9 @@
           value: Object.freeze(raw)
         }
       }));
+    }
+    function _toConsumableArray(arr) {
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
     }
     var _typeof = function(obj) {
       return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj;
@@ -25567,6 +23315,7 @@
       };
       return _wrapNativeSuper(Class);
     }
+    var _handler;
     function _templateObject() {
       var data = _taggedTemplateLiteral([
         "\n\n  flex-shrink: 0;\n\n"
@@ -25576,15 +23325,12 @@
       };
       return data;
     }
-    var SplitterDiv = function(Element1) {
-      _inherits(SplitterDiv2, _easy2.Element);
-      function SplitterDiv2(selector, startDragHandler, stopDragHandler, dragHandler, options) {
+    var SplitterDiv = /* @__PURE__ */ function(Element1) {
+      _inherits(SplitterDiv2, Element1);
+      function SplitterDiv2(selector, options) {
         _classCallCheck(this, SplitterDiv2);
         var _this;
         _this = _possibleConstructorReturn(this, _getPrototypeOf(SplitterDiv2).call(this, selector));
-        _this.startDragHandler = startDragHandler;
-        _this.stopDragHandler = stopDragHandler;
-        _this.dragHandler = dragHandler;
         _this.options = options;
         return _this;
       }
@@ -25616,8 +23362,59 @@
         },
         {
           key: "onDrag",
-          value: function onDrag(dragHandler) {
-            this.dragHandler = dragHandler;
+          value: function onDrag(dragHandler, element) {
+            var eventType = _constants.DRAG, handler = dragHandler;
+            this.addEventListener(eventType, handler, element);
+          }
+        },
+        {
+          key: "offDrag",
+          value: function offDrag(dragHandler, element) {
+            var eventType = _constants.DRAG, handler = dragHandler;
+            this.removeEventListener(eventType, handler, element);
+          }
+        },
+        {
+          key: "onStopDrag",
+          value: function onStopDrag(stopDragHandler, element) {
+            var eventType = _constants.STOP_DRAG, handler = stopDragHandler;
+            this.addEventListener(eventType, handler, element);
+          }
+        },
+        {
+          key: "offStopDrag",
+          value: function offStopDrag(stopDragHandler, element) {
+            var eventType = _constants.STOP_DRAG, handler = stopDragHandler;
+            this.removeEventListener(eventType, handler, element);
+          }
+        },
+        {
+          key: "onStartDrag",
+          value: function onStartDrag(stopDragHandler, element) {
+            var eventType = _constants.START_DRAG, handler = stopDragHandler;
+            this.addEventListener(eventType, handler, element);
+          }
+        },
+        {
+          key: "offStartDrag",
+          value: function offStartDrag(stopDragHandler, element) {
+            var eventType = _constants.START_DRAG, handler = stopDragHandler;
+            this.removeEventListener(eventType, handler, element);
+          }
+        },
+        {
+          key: "callHandlers",
+          value: function callHandlers(eventType) {
+            for (var _len = arguments.length, remainingArguments = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+              remainingArguments[_key - 1] = arguments[_key];
+            }
+            var eventListeners = this.findEventListeners(eventType);
+            eventListeners.forEach(function(eventListener) {
+              var handler = eventListener.handler, element = eventListener.element;
+              (_handler = handler).call.apply(_handler, [
+                element
+              ].concat(_toConsumableArray(remainingArguments)));
+            });
           }
         },
         {
@@ -25675,31 +23472,25 @@
           }
         },
         {
-          key: "getDragHandler",
-          value: function getDragHandler() {
-            return this.dragHandler;
-          }
-        },
-        {
           key: "startDrag",
           value: function startDrag() {
-            var escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(_options.ESCAPE_KEY_STOPS_DRAGGING);
+            var eventType = _constants.START_DRAG, escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(_options.ESCAPE_KEY_STOPS_DRAGGING);
             if (escapeKeyStopsDraggingOptionPresent) {
               _easy2.window.onKeyDown(this.keyDownHandler, this);
             }
             this.addClass("dragging");
-            this.startDragHandler && this.startDragHandler();
+            this.callHandlers(eventType);
           }
         },
         {
           key: "stopDrag",
           value: function stopDrag() {
-            var escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(_options.ESCAPE_KEY_STOPS_DRAGGING);
+            var eventType = _constants.STOP_DRAG, escapeKeyStopsDraggingOptionPresent = this.isOptionPresent(_options.ESCAPE_KEY_STOPS_DRAGGING);
             if (escapeKeyStopsDraggingOptionPresent) {
               _easy2.window.offKeyDown(this.keyDownHandler, this);
             }
             this.removeClass("dragging");
-            this.stopDragHandler && this.stopDragHandler();
+            this.callHandlers(eventType);
           }
         },
         {
@@ -25711,7 +23502,7 @@
               if (dragging) {
                 this.stopDrag();
               }
-              _cursor.resetCursor();
+              (0, _cursor).resetCursor();
             }
           }
         },
@@ -25722,7 +23513,7 @@
             if (!disabled) {
               var dragging = this.isDragging();
               if (!dragging) {
-                _cursor.resetCursor();
+                (0, _cursor).resetCursor();
               }
             }
           }
@@ -25736,39 +23527,50 @@
               if (dragging) {
                 this.stopDrag();
               }
-              _cursor.resetCursor();
+              (0, _cursor).resetCursor();
             }
           }
         },
         {
           key: "didMount",
           value: function didMount() {
-            var _properties = this.properties, disabled = _properties.disabled;
+            var _properties = this.properties, onDrag = _properties.onDrag, onStopDrag = _properties.onStopDrag, onStartDrag = _properties.onStartDrag, disabled = _properties.disabled, dragHandler = onDrag, stopDragHandler = onStopDrag, startDragHandler = onStartDrag;
             disabled === true ? this.disable() : this.enable();
+            dragHandler && this.onDrag(dragHandler);
+            stopDragHandler && this.onStopDrag(stopDragHandler);
+            startDragHandler && this.onStartDrag(startDragHandler);
+            _easy2.window.on(_constants.MOUSEUP_BLUR, this.mouseUpHandler, this);
+            _easy2.window.onMouseMove(this.mouseMoveHandler, this);
+            this.onMouseDown(this.mouseDownHandler, this);
+            this.onMouseOver(this.mouseOverHandler, this);
+            this.onMouseOut(this.mouseOutHandler, this);
           }
         },
         {
-          key: "willUnmout",
-          value: function willUnmout() {
+          key: "willUnmount",
+          value: function willUnmount() {
+            var _properties = this.properties, onDrag = _properties.onDrag, onStopDrag = _properties.onStopDrag, onStartDrag = _properties.onStartDrag, dragHandler = onDrag, stopDragHandler = onStopDrag, startDragHandler = onStartDrag;
+            dragHandler && this.offDrag(dragHandler);
+            stopDragHandler && this.offStopDrag(stopDragHandler);
+            startDragHandler && this.offStartDrag(startDragHandler);
+            _easy2.window.off(_constants.MOUSEUP_BLUR, this.mouseUpHandler, this);
+            _easy2.window.offMouseMove(this.mouseMoveHandler, this);
+            this.offMouseDown(this.mouseDownHandler, this);
+            this.offMouseOver(this.mouseOverHandler, this);
+            this.offMouseOut(this.mouseOutHandler, this);
           }
         },
         {
           key: "initialise",
           value: function initialise() {
             this.setInitialState();
-            _easy2.window.on("mouseup blur", this.mouseUpHandler.bind(this));
-            _easy2.window.onMouseMove(this.mouseMoveHandler.bind(this));
-            this.onMouseDown(this.mouseDownHandler.bind(this));
-            this.onMouseOver(this.mouseOverHandler.bind(this));
-            this.onMouseOut(this.mouseOutHandler.bind(this));
           }
         }
       ], [
         {
           key: "fromClass",
           value: function fromClass(Class, properties) {
-            var onStartDrag = properties.onStartDrag, onStopDrag = properties.onStopDrag, onDrag = properties.onDrag, _options1 = properties.options, options = _options1 === void 0 ? {} : _options1, startDragHandler = onStartDrag, stopDragHandler = onStopDrag, dragHandler = onDrag, splitterDiv = _easy2.Element.fromClass(Class, properties, startDragHandler, stopDragHandler, dragHandler, options);
-            splitterDiv.initialise();
+            var _options1 = properties.options, options = _options1 === void 0 ? {} : _options1, splitterDiv = _easy2.Element.fromClass(Class, properties, options);
             return splitterDiv;
           }
         }
@@ -25786,7 +23588,7 @@
       "options",
       "disabled"
     ]);
-    var _default = _easyWithStyle2.default(SplitterDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(SplitterDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -25799,6 +23601,7 @@
     exports.default = void 0;
     var _easyWithStyle2 = _interopRequireDefault2(require_lib6());
     var _splitter = _interopRequireDefault2(require_splitter());
+    var _constants = require_constants6();
     var _cursor = require_cursor();
     function _assertThisInitialized(self) {
       if (self === void 0) {
@@ -25901,8 +23704,8 @@
       };
       return data;
     }
-    var VerticalSplitter = function(Splitter) {
-      _inherits(VerticalSplitter2, _splitter.default);
+    var VerticalSplitter = /* @__PURE__ */ function(Splitter) {
+      _inherits(VerticalSplitter2, Splitter);
       function VerticalSplitter2() {
         _classCallCheck(this, VerticalSplitter2);
         return _possibleConstructorReturn(this, _getPrototypeOf(VerticalSplitter2).apply(this, arguments));
@@ -25913,7 +23716,7 @@
           value: function mouseOverHandler(event, element) {
             var disabled = this.isDisabled();
             if (!disabled) {
-              _cursor.columnResizeCursor();
+              (0, _cursor).columnResizeCursor();
             }
           }
         },
@@ -25924,13 +23727,13 @@
             if (!disabled) {
               var dragging = this.isDragging();
               if (dragging) {
-                var direction = this.getDirection(), sizeableDiv = this.getSizeableDiv(), dragHandler = this.getDragHandler();
+                var direction = this.getDirection(), sizeableDiv = this.getSizeableDiv();
                 var previousMouseLeft = this.getPreviousMouseLeft(), previousSizeableDivWidth = this.getPreviousSizeableDivWidth(), relativeMouseLeft = mouseLeft - previousMouseLeft;
                 var sizeableDivWidth = previousSizeableDivWidth - direction * relativeMouseLeft;
-                var width = sizeableDivWidth;
+                var width = sizeableDivWidth, eventType = _constants.DRAG;
                 sizeableDiv.setWidth(width);
                 sizeableDivWidth = sizeableDiv.getWidth();
-                dragHandler && dragHandler(sizeableDivWidth);
+                this.callHandlers(eventType, sizeableDivWidth);
               }
             }
           }
@@ -25943,7 +23746,7 @@
               var dragging = this.isDragging(), sizeableDiv = this.getSizeableDiv(), previousMouseLeft = mouseLeft, sizeableDivWidth = sizeableDiv.getWidth(), previousSizeableDivWidth = sizeableDivWidth;
               this.setPreviousMouseLeft(previousMouseLeft);
               this.setPreviousSizeableDivWidth(previousSizeableDivWidth);
-              _cursor.columnResizeCursor();
+              (0, _cursor).columnResizeCursor();
               if (!dragging) {
                 this.startDrag();
               }
@@ -25996,7 +23799,7 @@
     _defineProperty(VerticalSplitter, "defaultProperties", {
       className: "vertical"
     });
-    var _default = _easyWithStyle2.default(VerticalSplitter)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(VerticalSplitter)(_templateObject());
     exports.default = _default;
   });
 
@@ -26009,6 +23812,7 @@
     exports.default = void 0;
     var _easyWithStyle2 = _interopRequireDefault2(require_lib6());
     var _splitter = _interopRequireDefault2(require_splitter());
+    var _constants = require_constants6();
     var _cursor = require_cursor();
     function _assertThisInitialized(self) {
       if (self === void 0) {
@@ -26111,8 +23915,8 @@
       };
       return data;
     }
-    var HorizontalSplitter = function(Splitter) {
-      _inherits(HorizontalSplitter2, _splitter.default);
+    var HorizontalSplitter = /* @__PURE__ */ function(Splitter) {
+      _inherits(HorizontalSplitter2, Splitter);
       function HorizontalSplitter2() {
         _classCallCheck(this, HorizontalSplitter2);
         return _possibleConstructorReturn(this, _getPrototypeOf(HorizontalSplitter2).apply(this, arguments));
@@ -26123,7 +23927,7 @@
           value: function mouseOverHandler(event, element) {
             var disabled = this.isDisabled();
             if (!disabled) {
-              _cursor.rowResizeCursor();
+              (0, _cursor).rowResizeCursor();
             }
           }
         },
@@ -26134,13 +23938,13 @@
             if (!disabled) {
               var dragging = this.isDragging();
               if (dragging) {
-                var direction = this.getDirection(), sizeableDiv = this.getSizeableDiv(), dragHandler = this.getDragHandler();
+                var direction = this.getDirection(), sizeableDiv = this.getSizeableDiv();
                 var previousMouseTop = this.getPreviousMouseTop(), previousSizeableDivHeight = this.getPreviousSizeableDivHeight(), relativeMouseTop = mouseTop - previousMouseTop;
                 var sizeableDivHeight = previousSizeableDivHeight - direction * relativeMouseTop;
-                var height = sizeableDivHeight;
+                var height = sizeableDivHeight, eventType = _constants.DRAG;
                 sizeableDiv.setHeight(height);
                 sizeableDivHeight = sizeableDiv.getHeight();
-                dragHandler && dragHandler(sizeableDivHeight);
+                this.callHandlers(eventType, sizeableDivHeight);
               }
             }
           }
@@ -26153,7 +23957,7 @@
               var dragging = this.isDragging(), sizeableDiv = this.getSizeableDiv(), previousMouseTop = mouseTop, sizeableDivHeight = sizeableDiv.getHeight(), previousSizeableDivHeight = sizeableDivHeight;
               this.setPreviousMouseTop(previousMouseTop);
               this.setPreviousSizeableDivHeight(previousSizeableDivHeight);
-              _cursor.rowResizeCursor();
+              (0, _cursor).rowResizeCursor();
               if (!dragging) {
                 this.startDrag();
               }
@@ -26206,7 +24010,7 @@
     _defineProperty(HorizontalSplitter, "defaultProperties", {
       className: "horizontal"
     });
-    var _default = _easyWithStyle2.default(HorizontalSplitter)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(HorizontalSplitter)(_templateObject());
     exports.default = _default;
   });
 
@@ -26379,8 +24183,8 @@
       };
       return data;
     }
-    var BlueRowDiv = function(RowDiv) {
-      _inherits(BlueRowDiv2, _index.RowDiv);
+    var BlueRowDiv = /* @__PURE__ */ function(RowDiv) {
+      _inherits(BlueRowDiv2, RowDiv);
       function BlueRowDiv2() {
         _classCallCheck(this, BlueRowDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BlueRowDiv2).apply(this, arguments));
@@ -26390,7 +24194,7 @@
     _defineProperty(BlueRowDiv, "defaultProperties", {
       className: "blue"
     });
-    var _default = _easyWithStyle2.default(BlueRowDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(BlueRowDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -26487,8 +24291,8 @@
       };
       return data;
     }
-    var YellowRowDiv = function(RowDiv) {
-      _inherits(YellowRowDiv2, _index.RowDiv);
+    var YellowRowDiv = /* @__PURE__ */ function(RowDiv) {
+      _inherits(YellowRowDiv2, RowDiv);
       function YellowRowDiv2() {
         _classCallCheck(this, YellowRowDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(YellowRowDiv2).apply(this, arguments));
@@ -26498,7 +24302,7 @@
     _defineProperty(YellowRowDiv, "defaultProperties", {
       className: "yellow"
     });
-    var _default = _easyWithStyle2.default(YellowRowDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(YellowRowDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -26536,11 +24340,11 @@
     }
     var BottomLeftDiv = function(properties) {
       var className = properties.className;
-      return React.createElement("div", {
+      return /* @__PURE__ */ React.createElement("div", {
         className: "".concat(className, " bottom-left")
       });
     };
-    var _default = _easyWithStyle2.default(BottomLeftDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(BottomLeftDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -26637,8 +24441,8 @@
       };
       return data;
     }
-    var LeftSizeableDiv = function(SizeableDiv) {
-      _inherits(LeftSizeableDiv2, _index.SizeableDiv);
+    var LeftSizeableDiv = /* @__PURE__ */ function(SizeableDiv) {
+      _inherits(LeftSizeableDiv2, SizeableDiv);
       function LeftSizeableDiv2() {
         _classCallCheck(this, LeftSizeableDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(LeftSizeableDiv2).apply(this, arguments));
@@ -26648,7 +24452,7 @@
     _defineProperty(LeftSizeableDiv, "defaultProperties", {
       className: "left"
     });
-    var _default = _easyWithStyle2.default(LeftSizeableDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(LeftSizeableDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -26745,8 +24549,8 @@
       };
       return data;
     }
-    var RightSizeableDiv = function(SizeableDiv) {
-      _inherits(RightSizeableDiv2, _index.SizeableDiv);
+    var RightSizeableDiv = /* @__PURE__ */ function(SizeableDiv) {
+      _inherits(RightSizeableDiv2, SizeableDiv);
       function RightSizeableDiv2() {
         _classCallCheck(this, RightSizeableDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RightSizeableDiv2).apply(this, arguments));
@@ -26756,7 +24560,7 @@
     _defineProperty(RightSizeableDiv, "defaultProperties", {
       className: "right"
     });
-    var _default = _easyWithStyle2.default(RightSizeableDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(RightSizeableDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -26794,11 +24598,11 @@
     }
     var PseudoHorizontalSplitterDiv = function(properties) {
       var className = properties.className;
-      return React.createElement("div", {
+      return /* @__PURE__ */ React.createElement("div", {
         className: "".concat(className, " pseudo horizontal splitter")
       });
     };
-    var _default = _easyWithStyle2.default(PseudoHorizontalSplitterDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(PseudoHorizontalSplitterDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -26895,8 +24699,8 @@
       };
       return data;
     }
-    var BottomSizeableDiv = function(SizeableDiv) {
-      _inherits(BottomSizeableDiv2, _index.SizeableDiv);
+    var BottomSizeableDiv = /* @__PURE__ */ function(SizeableDiv) {
+      _inherits(BottomSizeableDiv2, SizeableDiv);
       function BottomSizeableDiv2() {
         _classCallCheck(this, BottomSizeableDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(BottomSizeableDiv2).apply(this, arguments));
@@ -26906,7 +24710,7 @@
     _defineProperty(BottomSizeableDiv, "defaultProperties", {
       className: "bottom"
     });
-    var _default = _easyWithStyle2.default(BottomSizeableDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(BottomSizeableDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -27003,8 +24807,8 @@
       };
       return data;
     }
-    var LeftVerticalSplitterDiv = function(VerticalSplitterDiv) {
-      _inherits(LeftVerticalSplitterDiv2, _index.VerticalSplitterDiv);
+    var LeftVerticalSplitterDiv = /* @__PURE__ */ function(VerticalSplitterDiv) {
+      _inherits(LeftVerticalSplitterDiv2, VerticalSplitterDiv);
       function LeftVerticalSplitterDiv2() {
         _classCallCheck(this, LeftVerticalSplitterDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(LeftVerticalSplitterDiv2).apply(this, arguments));
@@ -27014,7 +24818,7 @@
     _defineProperty(LeftVerticalSplitterDiv, "defaultProperties", {
       className: "left"
     });
-    var _default = _easyWithStyle2.default(LeftVerticalSplitterDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(LeftVerticalSplitterDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -27111,8 +24915,8 @@
       };
       return data;
     }
-    var RightVerticalSplitterDiv = function(VerticalSplitterDiv) {
-      _inherits(RightVerticalSplitterDiv2, _index.VerticalSplitterDiv);
+    var RightVerticalSplitterDiv = /* @__PURE__ */ function(VerticalSplitterDiv) {
+      _inherits(RightVerticalSplitterDiv2, VerticalSplitterDiv);
       function RightVerticalSplitterDiv2() {
         _classCallCheck(this, RightVerticalSplitterDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(RightVerticalSplitterDiv2).apply(this, arguments));
@@ -27122,7 +24926,7 @@
     _defineProperty(RightVerticalSplitterDiv, "defaultProperties", {
       className: "right"
     });
-    var _default = _easyWithStyle2.default(RightVerticalSplitterDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(RightVerticalSplitterDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -27261,30 +25065,32 @@
       };
       return data;
     }
-    var MainHorizontalSplitterDiv = function(HorizontalSplitterDiv) {
-      _inherits(MainHorizontalSplitterDiv2, _index.HorizontalSplitterDiv);
+    var MainHorizontalSplitterDiv = /* @__PURE__ */ function(HorizontalSplitterDiv) {
+      _inherits(MainHorizontalSplitterDiv2, HorizontalSplitterDiv);
       function MainHorizontalSplitterDiv2() {
         _classCallCheck(this, MainHorizontalSplitterDiv2);
         return _possibleConstructorReturn(this, _getPrototypeOf(MainHorizontalSplitterDiv2).apply(this, arguments));
       }
       _createClass(MainHorizontalSplitterDiv2, [
         {
-          key: "initialise",
-          value: function initialise() {
-            var _properties = this.properties, bottomLeftDiv = _properties.bottomLeftDiv;
-            this.onDrag(function(height) {
-              return bottomLeftDiv.setHeight(height);
-            });
-            _get(_getPrototypeOf(MainHorizontalSplitterDiv2.prototype), "initialise", this).call(this);
+          key: "dragHandler",
+          value: function dragHandler(sizeableDivHeight) {
+            var _properties = this.properties, bottomLeftDiv = _properties.bottomLeftDiv, height = sizeableDivHeight;
+            bottomLeftDiv.setHeight(height);
           }
-        }
-      ], [
+        },
         {
-          key: "fromClass",
-          value: function fromClass(Class, properties) {
-            var leftHorizontalSplitterDiv = _index.HorizontalSplitterDiv.fromClass(Class, properties);
-            leftHorizontalSplitterDiv.initialise();
-            return leftHorizontalSplitterDiv;
+          key: "didMount",
+          value: function didMount() {
+            _get(_getPrototypeOf(MainHorizontalSplitterDiv2.prototype), "didMount", this).call(this);
+            this.onDrag(this.dragHandler, this);
+          }
+        },
+        {
+          key: "willUnmount",
+          value: function willUnmount() {
+            this.offDrag(this.dragHandler, this);
+            _get(_getPrototypeOf(MainHorizontalSplitterDiv2.prototype), "willUnmount", this).call(this);
           }
         }
       ]);
@@ -27293,7 +25099,7 @@
     _defineProperty(MainHorizontalSplitterDiv, "defaultProperties", {
       className: "main"
     });
-    var _default = _easyWithStyle2.default(MainHorizontalSplitterDiv)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(MainHorizontalSplitterDiv)(_templateObject());
     exports.default = _default;
   });
 
@@ -27342,21 +25148,21 @@
     }
     var ESCAPE_KEY_STOPS_DRAGGING = _index.options.ESCAPE_KEY_STOPS_DRAGGING;
     var View = function(properties) {
-      var className = properties.className, bottomLeftDiv = React.createElement(_bottomLeft.default, null), options = {
+      var className = properties.className, bottomLeftDiv = /* @__PURE__ */ React.createElement(_bottomLeft.default, null), options = {
         ESCAPE_KEY_STOPS_DRAGGING
       };
-      return React.createElement("div", {
+      return /* @__PURE__ */ React.createElement("div", {
         className: "".concat(className, " view")
-      }, React.createElement(_index.ColumnsDiv, null, React.createElement(_left.default, null, React.createElement(_index.RowsDiv, null, React.createElement(_yellow.default, null), React.createElement(_pseudo.default, null), bottomLeftDiv)), React.createElement(_left1.default, {
+      }, /* @__PURE__ */ React.createElement(_index.ColumnsDiv, null, /* @__PURE__ */ React.createElement(_left.default, null, /* @__PURE__ */ React.createElement(_index.RowsDiv, null, /* @__PURE__ */ React.createElement(_yellow.default, null), /* @__PURE__ */ React.createElement(_pseudo.default, null), bottomLeftDiv)), /* @__PURE__ */ React.createElement(_left1.default, {
         options
-      }), React.createElement(_index.ColumnDiv, null, React.createElement(_index.RowsDiv, null, React.createElement(_index.RowDiv, null, React.createElement(_index.ColumnsDiv, null, React.createElement(_index.ColumnDiv, null), React.createElement(_right1.default, {
+      }), /* @__PURE__ */ React.createElement(_index.ColumnDiv, null, /* @__PURE__ */ React.createElement(_index.RowsDiv, null, /* @__PURE__ */ React.createElement(_index.RowDiv, null, /* @__PURE__ */ React.createElement(_index.ColumnsDiv, null, /* @__PURE__ */ React.createElement(_index.ColumnDiv, null), /* @__PURE__ */ React.createElement(_right1.default, {
         options
-      }), React.createElement(_right.default, null, React.createElement(_index.RowsDiv, null, React.createElement(_blue.default, null))))), React.createElement(_main.default, {
+      }), /* @__PURE__ */ React.createElement(_right.default, null, /* @__PURE__ */ React.createElement(_index.RowsDiv, null, /* @__PURE__ */ React.createElement(_blue.default, null))))), /* @__PURE__ */ React.createElement(_main.default, {
         bottomLeftDiv,
         options
-      }), React.createElement(_bottom.default, null)))));
+      }), /* @__PURE__ */ React.createElement(_bottom.default, null)))));
     };
-    var _default = _easyWithStyle2.default(View)(_templateObject());
+    var _default = (0, _easyWithStyle2).default(View)(_templateObject());
     exports.default = _default;
   });
 
@@ -27376,6 +25182,6 @@
   var renderStyles = _easyWithStyle.default.renderStyles;
   var body = new _easy.Body();
   renderStyles();
-  body.mount(_easy.React.createElement(_view.default, null));
+  body.mount(/* @__PURE__ */ _easy.React.createElement(_view.default, null));
 })();
 //# sourceMappingURL=example.js.map
