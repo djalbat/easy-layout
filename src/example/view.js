@@ -39,13 +39,13 @@ const View = (properties) => {
             {bottomLeftDiv}
           </RowsDiv>
         </LeftSizeableDiv>
-        <LeftVerticalSplitterDiv options={options}/>
+        <LeftVerticalSplitterDiv options={options} />
         <ColumnDiv>
           <RowsDiv>
             <RowDiv>
               <ColumnsDiv>
                 <ColumnDiv/>
-                <RightVerticalSplitterDiv options={options}/>
+                <RightVerticalSplitterDiv options={options} />
                 <RightSizeableDiv>
                   <RowsDiv>
                     <BlueRowDiv/>
@@ -53,7 +53,7 @@ const View = (properties) => {
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options}/>
+            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options} />
             <BottomSizeableDiv/>
           </RowsDiv>
         </ColumnDiv>

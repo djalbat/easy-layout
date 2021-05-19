@@ -2,6 +2,8 @@
 
 import { Body } from "easy";
 
+import { AUTO, CURSOR, COL_RESIZE, ROW_RESIZE } from "./constants";
+
 const body = new Body();
 
 let previousCursor;  ///
@@ -9,20 +11,20 @@ let previousCursor;  ///
 export function columnResizeCursor() {
   const currentCursor = getCurrentCursor();
 
-  if (currentCursor !== "col-resize") {
+  if (currentCursor !== COL_RESIZE) {
     previousCursor = currentCursor;
 
-    setCursor("col-resize");
+    setCursor(COL_RESIZE);
   }
 }
 
 export function rowResizeCursor() {
   const currentCursor = getCurrentCursor();
 
-  if (currentCursor !== "row-resize") {
+  if (currentCursor !== ROW_RESIZE) {
     previousCursor = currentCursor;
 
-    setCursor("row-resize");
+    setCursor(ROW_RESIZE);
   }
 }
 
@@ -39,7 +41,7 @@ function setCursor(cursor) {
 }
 
 function getCurrentCursor() {
-  const currentCursor = body.css("cursor");  ///
+  const currentCursor = body.css(CURSOR) || AUTO;
 
-  return currentCursor || "auto"; ///
+  return currentCursor;
 }
