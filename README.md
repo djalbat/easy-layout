@@ -17,7 +17,7 @@ There is now support for JSX in the form of [Juxtapose](https://github.com/djalb
 
 ## Installation
 
-You can install Easy-Layout with [npm](https://www.npmjs.com/):
+You can install Easy Layout with [npm](https://www.npmjs.com/):
 
     npm install easy-layout
 
