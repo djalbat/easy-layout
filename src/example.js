@@ -1,6 +1,6 @@
 "use strict";
 
-import "./preamble";
+import "./example/preamble";
 
 import withStyle from "easy-with-style";  ///
 
