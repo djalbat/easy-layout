@@ -15,7 +15,7 @@ import LeftVerticalSplitterDiv from "./div/splitter/vertical/left";
 import RightVerticalSplitterDiv from "./div/splitter/vertical/right";
 import MainHorizontalSplitterDiv from "./div/splitter/horizontal/main";
 
-const { ESCAPE_KEY_STOPS_DRAGGING } = options;
+const { ESCAPE_KEY_STOPS_DRAGGING_OPTION } = options;
 
 const View = (properties) => {
   const { className } = properties,
@@ -25,7 +25,7 @@ const View = (properties) => {
 
         ,
         options = {
-          ESCAPE_KEY_STOPS_DRAGGING
+          ESCAPE_KEY_STOPS_DRAGGING_OPTION
         };
 
   return (
