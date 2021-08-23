@@ -11,7 +11,7 @@ There is now support for JSX in the form of [Juxtapose](https://github.com/djalb
 ### Related projects
 
 - [Easy](https://github.com/djalbat/easy) Elements that abstract away from the DOM.
-- [Easy Accordion](https://github.com/djalbat/easy-accordion) A responsive accordion and associated navigation.
+- [Easy Navigation](https://github.com/djalbat/easy-navigation) A responsive accordion and associated navigation.
 - [Easy File System](https://github.com/djalbat/easy-file-system) A file system explorer and a rubbish bin.
 - [Easy RichTextarea](https://github.com/djalbat/easy-richTextarea) A textarea element that handles and hands off events well.
 - [Easy Drag and Drop](https://github.com/djalbat/easy-drag-and-drop) Drag and drop functionality for Easy elements.
