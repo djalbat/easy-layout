@@ -4,8 +4,8 @@ import withStyle from "easy-with-style";  ///
 
 import Splitter from "../splitter";
 
-import { DRAG } from "../../constants";
 import { rowResizeCursor } from "../../cursor";
+import { DRAG_EVENT_TYPE } from "../../eventTypes";
 
 class HorizontalSplitter extends Splitter {
   mouseOverHandler(event, element) {
@@ -35,7 +35,7 @@ class HorizontalSplitter extends Splitter {
         let sizeableDivHeight = previousSizeableDivHeight - direction * relativeMouseTop;
 
         const height = sizeableDivHeight, ///
-              eventType = DRAG;
+              eventType = DRAG_EVENT_TYPE;
 
         sizeableDiv.setHeight(height);
 

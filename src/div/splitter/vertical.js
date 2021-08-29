@@ -4,7 +4,7 @@ import withStyle from "easy-with-style";  ///
 
 import Splitter from "../splitter";
 
-import { DRAG } from "../../constants";
+import { DRAG_EVENT_TYPE } from "../../eventTypes";
 import { columnResizeCursor } from "../../cursor";
 
 class VerticalSplitter extends Splitter {
@@ -35,7 +35,7 @@ class VerticalSplitter extends Splitter {
         let sizeableDivWidth = previousSizeableDivWidth - direction * relativeMouseLeft;
 
         const width = sizeableDivWidth, ///
-              eventType = DRAG;
+              eventType = DRAG_EVENT_TYPE;
 
         sizeableDiv.setWidth(width);
 
