@@ -84,7 +84,7 @@ class SplitterDiv extends Element {
     eventListeners.forEach((eventListener) => {
       const { handler, element } = eventListener;
 
-      handler.call(element, ...remainingArguments);
+      handler.call(element, ...remainingArguments, this); ///
     });
   }
 
