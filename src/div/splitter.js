@@ -262,11 +262,11 @@ class SplitterDiv extends Element {
   };
 
   static ignoredProperties = [
-    "onStartDrag",
-    "onStopDrag",
     "onDrag",
     "options",
-    "disabled"
+    "disabled",
+    "onStopDrag",
+    "onStartDrag"
   ];
 
   static fromClass(Class, properties) {
