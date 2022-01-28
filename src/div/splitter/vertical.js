@@ -2,10 +2,13 @@
 
 import withStyle from "easy-with-style";  ///
 
+import { eventTypes } from "easy";
+
 import Splitter from "../splitter";
 
-import { DRAG_EVENT_TYPE } from "../../eventTypes";
 import { columnResizeCursor } from "../../cursor";
+
+const { DRAG_EVENT_TYPE } = eventTypes;
 
 class VerticalSplitter extends Splitter {
   mouseOverHandler(event, element) {

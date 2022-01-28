@@ -2,14 +2,15 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { window, Element } from "easy";
+import { window, Element, eventTypes } from "easy";
 
 import SizeableDiv from "../div/sizeable";
 
 import { resetCursor } from "../cursor";
 import { ESCAPE_KEY_CODE } from "../constants";
 import { ESCAPE_KEY_STOPS_DRAGGING_OPTION } from "../options";
-import { DRAG_EVENT_TYPE, STOP_DRAG_EVENT_TYPE, START_DRAG_EVENT_TYPE, MOUSEUP_BLUR_EVENT_TYPE } from "../eventTypes";
+
+const { BLUR_EVENT_TYPE, DRAG_EVENT_TYPE, MOUSEUP_EVENT_TYPE, STOP_DRAG_EVENT_TYPE, START_DRAG_EVENT_TYPE } = eventTypes;
 
 class SplitterDiv extends Element {
   constructor(selector, options) {
@@ -223,7 +224,7 @@ class SplitterDiv extends Element {
     stopDragHandler && this.onStopDrag(stopDragHandler);
     startDragHandler && this.onStartDrag(startDragHandler);
 
-    window.on(MOUSEUP_BLUR_EVENT_TYPE, this.mouseUpHandler, this);  ///
+    window.on(`${BLUR_EVENT_TYPE} ${MOUSEUP_EVENT_TYPE}`, this.mouseUpHandler, this);  ///
 
     window.onMouseMove(this.mouseMoveHandler, this);
 
@@ -242,7 +243,7 @@ class SplitterDiv extends Element {
     stopDragHandler && this.offStopDrag(stopDragHandler);
     startDragHandler && this.offStartDrag(startDragHandler);
 
-    window.off(MOUSEUP_BLUR_EVENT_TYPE, this.mouseUpHandler, this);  ///
+    window.off(`${BLUR_EVENT_TYPE} ${MOUSEUP_EVENT_TYPE}`, this.mouseUpHandler, this);  ///
 
     window.offMouseMove(this.mouseMoveHandler, this);
 
