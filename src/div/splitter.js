@@ -5,6 +5,7 @@ import withStyle from "easy-with-style";  ///
 import { window, Element, eventTypes } from "easy";
 
 import SizeableDiv from "../div/sizeable";
+import SizeableSection from "../section/sizeable";
 
 import { resetCursor } from "../cursor";
 import { ESCAPE_KEY_CODE } from "../constants";
@@ -114,34 +115,38 @@ class SplitterDiv extends Element {
     let direction;
 
     const nextSiblingElement = this.getNextSiblingElement(),
-          previousSiblingElement = this.getPreviousSiblingElement();
+          previousSiblingElement = this.getPreviousSiblingElement(),
+          nextSiblingElementSizeableElement = isElementSizeableElement(nextSiblingElement),
+          previousSiblingElementSizeableElement = isElementSizeableElement(previousSiblingElement);
 
-    if (nextSiblingElement instanceof SizeableDiv) {
+    if (nextSiblingElementSizeableElement) {
       direction = +1;
     }
 
-    if (previousSiblingElement instanceof SizeableDiv) {
+    if (previousSiblingElementSizeableElement) {
       direction = -1;
     }
 
     return direction;
   }
 
-  getSizeableDiv() {
-    let sizeableDiv;
+  getSizeableElement() {
+    let sizeableElement;
 
     const nextSiblingElement = this.getNextSiblingElement(),
-          previousSiblingElement = this.getPreviousSiblingElement();
+          previousSiblingElement = this.getPreviousSiblingElement(),
+          nextSiblingElementSizeableElement = isElementSizeableElement(nextSiblingElement),
+          previousSiblingElementSizeableElement = isElementSizeableElement(previousSiblingElement);
 
-    if (nextSiblingElement instanceof SizeableDiv) {
-      sizeableDiv = nextSiblingElement; ///
+    if (nextSiblingElementSizeableElement) {
+      sizeableElement = nextSiblingElement; ///
     }
 
-    if (previousSiblingElement instanceof SizeableDiv) {
-      sizeableDiv = previousSiblingElement; ///
+    if (previousSiblingElementSizeableElement) {
+      sizeableElement = previousSiblingElement; ///
     }
 
-    return sizeableDiv;
+    return sizeableElement;
   }
 
   startDrag() {
@@ -283,3 +288,9 @@ export default withStyle(SplitterDiv)`
   flex-shrink: 0;
 
 `;
+
+function isElementSizeableElement(element) {
+  const elementSizeableElement = (element instanceof SizeableDiv) || (element instanceof SizeableSection);
+
+  return elementSizeableElement;
+}

@@ -29,22 +29,22 @@ class VerticalSplitter extends Splitter {
 
       if (dragging) {
         const direction = this.getDirection(),
-              sizeableDiv = this.getSizeableDiv();
+              sizeableElement = this.getSizeableElement();
 
         const previousMouseLeft = this.getPreviousMouseLeft(),
-              previousSizeableDivWidth = this.getPreviousSizeableDivWidth(),
+              previousSizeableElementWidth = this.getPreviousSizeableElementWidth(),
               relativeMouseLeft = mouseLeft - previousMouseLeft;
 
-        let sizeableDivWidth = previousSizeableDivWidth - direction * relativeMouseLeft;
+        let sizeableElementWidth = previousSizeableElementWidth - direction * relativeMouseLeft;
 
-        const width = sizeableDivWidth, ///
+        const width = sizeableElementWidth, ///
               eventType = DRAG_EVENT_TYPE;
 
-        sizeableDiv.setWidth(width);
+        sizeableElement.setWidth(width);
 
-        sizeableDivWidth = sizeableDiv.getWidth();  ///
+        sizeableElementWidth = sizeableElement.getWidth();  ///
 
-        this.callHandlers(eventType, sizeableDivWidth);
+        this.callHandlers(eventType, sizeableElementWidth);
       }
     }
   }
@@ -56,14 +56,14 @@ class VerticalSplitter extends Splitter {
 
     if (!disabled) {
       const dragging = this.isDragging(),
-            sizeableDiv = this.getSizeableDiv(),
+            sizeableElement = this.getSizeableElement(),
             previousMouseLeft = mouseLeft,  ///
-            sizeableDivWidth = sizeableDiv.getWidth(),
-            previousSizeableDivWidth = sizeableDivWidth;  ///
+            sizeableElementWidth = sizeableElement.getWidth(),
+            previousSizeableElementWidth = sizeableElementWidth;  ///
 
       this.setPreviousMouseLeft(previousMouseLeft);
 
-      this.setPreviousSizeableDivWidth(previousSizeableDivWidth);
+      this.setPreviousSizeableElementWidth(previousSizeableElementWidth);
 
       columnResizeCursor();
 
@@ -80,11 +80,11 @@ class VerticalSplitter extends Splitter {
     return previousMouseLeft;
   }
 
-  getPreviousSizeableDivWidth() {
+  getPreviousSizeableElementWidth() {
     const state = this.getState(),
-          { previousSizeableDivWidth } = state;
+          { previousSizeableElementWidth } = state;
 
-    return previousSizeableDivWidth;
+    return previousSizeableElementWidth;
   }
 
   setPreviousMouseLeft(previousMouseLeft) {
@@ -93,19 +93,19 @@ class VerticalSplitter extends Splitter {
     });
   }
 
-  setPreviousSizeableDivWidth(previousSizeableDivWidth) {
+  setPreviousSizeableElementWidth(previousSizeableElementWidth) {
     this.updateState({
-      previousSizeableDivWidth
+      previousSizeableElementWidth
     });
   }
 
   setInitialState() {
     const previousMouseLeft = null,
-          previousSizeableDivWidth = null;
+          previousSizeableElementWidth = null;
 
     this.setState({
       previousMouseLeft,
-      previousSizeableDivWidth
+      previousSizeableElementWidth
     });
   }
 

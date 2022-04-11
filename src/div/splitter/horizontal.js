@@ -29,22 +29,22 @@ class HorizontalSplitter extends Splitter {
 
       if (dragging) {
         const direction = this.getDirection(),
-              sizeableDiv = this.getSizeableDiv();
+              sizeableElement = this.getSizeableElement();
 
         const previousMouseTop = this.getPreviousMouseTop(),
-              previousSizeableDivHeight = this.getPreviousSizeableDivHeight(),
+              previousSizeableElementHeight = this.getPreviousSizeableElementHeight(),
               relativeMouseTop = mouseTop - previousMouseTop;
 
-        let sizeableDivHeight = previousSizeableDivHeight - direction * relativeMouseTop;
+        let sizeableElementHeight = previousSizeableElementHeight - direction * relativeMouseTop;
 
-        const height = sizeableDivHeight, ///
+        const height = sizeableElementHeight, ///
               eventType = DRAG_EVENT_TYPE;
 
-        sizeableDiv.setHeight(height);
+        sizeableElement.setHeight(height);
 
-        sizeableDivHeight = sizeableDiv.getHeight();  ///
+        sizeableElementHeight = sizeableElement.getHeight();  ///
 
-        this.callHandlers(eventType, sizeableDivHeight);
+        this.callHandlers(eventType, sizeableElementHeight);
       }
     }
   }
@@ -56,14 +56,14 @@ class HorizontalSplitter extends Splitter {
 
     if (!disabled) {
       const dragging = this.isDragging(),
-            sizeableDiv = this.getSizeableDiv(),
+            sizeableElement = this.getSizeableElement(),
             previousMouseTop = mouseTop,  ///
-            sizeableDivHeight = sizeableDiv.getHeight(),
-            previousSizeableDivHeight = sizeableDivHeight;  ///
+            sizeableElementHeight = sizeableElement.getHeight(),
+            previousSizeableElementHeight = sizeableElementHeight;  ///
 
       this.setPreviousMouseTop(previousMouseTop);
 
-      this.setPreviousSizeableDivHeight(previousSizeableDivHeight);
+      this.setPreviousSizeableElementHeight(previousSizeableElementHeight);
 
       rowResizeCursor();
 
@@ -80,11 +80,11 @@ class HorizontalSplitter extends Splitter {
     return previousMouseTop;
   }
 
-  getPreviousSizeableDivHeight() {
+  getPreviousSizeableElementHeight() {
     const state = this.getState(),
-          { previousSizeableDivHeight } = state;
+          { previousSizeableElementHeight } = state;
 
-    return previousSizeableDivHeight;
+    return previousSizeableElementHeight;
   }
 
   setPreviousMouseTop(previousMouseTop) {
@@ -93,19 +93,19 @@ class HorizontalSplitter extends Splitter {
     });
   }
 
-  setPreviousSizeableDivHeight(previousSizeableDivHeight) {
+  setPreviousSizeableElementHeight(previousSizeableElementHeight) {
     this.updateState({
-      previousSizeableDivHeight
+      previousSizeableElementHeight
     });
   }
 
   setInitialState() {
     const previousMouseTop = null,
-          previousSizeableDivHeight = null;
+          previousSizeableElementHeight = null;
 
     this.setState({
       previousMouseTop,
-      previousSizeableDivHeight
+      previousSizeableElementHeight
     });
   }
 
