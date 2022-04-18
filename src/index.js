@@ -1,7 +1,5 @@
 'use strict';
 
-export { default as options } from "./options";
-
 export { default as RowDiv } from "./div/row";
 export { default as RowsDiv } from "./div/rows";
 export { default as ColumnDiv } from "./div/column";

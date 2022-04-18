@@ -2,13 +2,9 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { eventTypes } from "easy";
-
 import Splitter from "../splitter";
 
 import { columnResizeCursor } from "../../cursor";
-
-const { DRAG_EVENT_TYPE } = eventTypes;
 
 class VerticalSplitter extends Splitter {
   mouseOverHandler(event, element) {
@@ -19,65 +15,32 @@ class VerticalSplitter extends Splitter {
     }
   }
 
-  mouseMoveHandler(event, element) {
-    const { pageX } = event,
-          mouseLeft = pageX,  ///
-          disabled = this.isDisabled();
+  startDragHandler(element) {
+    const disabled = this.isDisabled();
 
     if (!disabled) {
-      const dragging = this.isDragging();
-
-      if (dragging) {
-        const direction = this.getDirection(),
-              sizeableElement = this.getSizeableElement();
-
-        const previousMouseLeft = this.getPreviousMouseLeft(),
-              previousSizeableElementWidth = this.getPreviousSizeableElementWidth(),
-              relativeMouseLeft = mouseLeft - previousMouseLeft;
-
-        let sizeableElementWidth = previousSizeableElementWidth - direction * relativeMouseLeft;
-
-        const width = sizeableElementWidth, ///
-              eventType = DRAG_EVENT_TYPE;
-
-        sizeableElement.setWidth(width);
-
-        sizeableElementWidth = sizeableElement.getWidth();  ///
-
-        this.callHandlers(eventType, sizeableElementWidth);
-      }
-    }
-  }
-
-  mouseDownHandler(event, element) {
-    const { pageX } = event,
-          mouseLeft = pageX,  ///
-          disabled = this.isDisabled();
-
-    if (!disabled) {
-      const dragging = this.isDragging(),
-            sizeableElement = this.getSizeableElement(),
-            previousMouseLeft = mouseLeft,  ///
+      const sizeableElement = this.getSizeableElement(),
             sizeableElementWidth = sizeableElement.getWidth(),
             previousSizeableElementWidth = sizeableElementWidth;  ///
-
-      this.setPreviousMouseLeft(previousMouseLeft);
 
       this.setPreviousSizeableElementWidth(previousSizeableElementWidth);
 
       columnResizeCursor();
-
-      if (!dragging) {
-        this.startDrag();
-      }
     }
   }
 
-  getPreviousMouseLeft() {
-    const state = this.getState(),
-          { previousMouseLeft } = state;
+  dragHandler(relativeMouseTop, relativeMouseLeft) {
+    const disabled = this.isDisabled();
 
-    return previousMouseLeft;
+    if (!disabled) {
+      const direction = this.getDirection(),
+            sizeableElement = this.getSizeableElement(),
+            previousSizeableElementWidth = this.getPreviousSizeableElementWidth(),
+            sizeableElementWidth = previousSizeableElementWidth - direction * relativeMouseLeft,
+            width = sizeableElementWidth; ///
+
+      sizeableElement.setWidth(width);
+    }
   }
 
   getPreviousSizeableElementWidth() {
@@ -87,12 +50,6 @@ class VerticalSplitter extends Splitter {
     return previousSizeableElementWidth;
   }
 
-  setPreviousMouseLeft(previousMouseLeft) {
-    this.updateState({
-      previousMouseLeft
-    });
-  }
-
   setPreviousSizeableElementWidth(previousSizeableElementWidth) {
     this.updateState({
       previousSizeableElementWidth
@@ -100,11 +57,9 @@ class VerticalSplitter extends Splitter {
   }
 
   setInitialState() {
-    const previousMouseLeft = null,
-          previousSizeableElementWidth = null;
+    const previousSizeableElementWidth = null;
 
     this.setState({
-      previousMouseLeft,
       previousSizeableElementWidth
     });
   }

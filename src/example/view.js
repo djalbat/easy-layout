@@ -2,7 +2,7 @@
 
 import withStyle from "easy-with-style";  ///
 
-import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv, options } from "../index"; ///
+import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv } from "../index"; ///
 
 import BlueRowDiv from "./div/row/blue";
 import YellowRowDiv from "./div/row/yellow";
@@ -15,8 +15,6 @@ import LeftVerticalSplitterDiv from "./div/splitter/vertical/left";
 import RightVerticalSplitterDiv from "./div/splitter/vertical/right";
 import MainHorizontalSplitterDiv from "./div/splitter/horizontal/main";
 
-const { ESCAPE_KEY_STOPS_DRAGGING_OPTION } = options;
-
 const View = (properties) => {
   const { className } = properties,
         bottomLeftDiv =
@@ -24,9 +22,13 @@ const View = (properties) => {
           <BottomLeftDiv/>
 
         ,
-        options = {
-          ESCAPE_KEY_STOPS_DRAGGING_OPTION
-        };
+        bottomSizeableDiv =
+
+          <BottomSizeableDiv/>
+
+        ;
+
+  let bottomSizeableDivHeight;
 
   return (
 
@@ -39,13 +41,13 @@ const View = (properties) => {
             {bottomLeftDiv}
           </RowsDiv>
         </LeftSizeableDiv>
-        <LeftVerticalSplitterDiv options={options} />
+        <LeftVerticalSplitterDiv/>
         <ColumnDiv>
           <RowsDiv>
             <RowDiv>
               <ColumnsDiv>
                 <ColumnDiv/>
-                <RightVerticalSplitterDiv options={options} />
+                <RightVerticalSplitterDiv/>
                 <RightSizeableDiv>
                   <RowsDiv>
                     <BlueRowDiv/>
@@ -53,8 +55,20 @@ const View = (properties) => {
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv bottomLeftDiv={bottomLeftDiv} options={options} />
-            <BottomSizeableDiv/>
+            <MainHorizontalSplitterDiv onStartDrag={(element) => {
+
+                                         bottomSizeableDivHeight = bottomSizeableDiv.getHeight();
+
+                                       }}
+                                       onDrag={(relativeMouseTop, relativeMouseLeft) => {
+
+                                         const height = bottomSizeableDivHeight - relativeMouseTop;
+
+                                         bottomLeftDiv.setHeight(height);
+
+                                       }}
+            />
+            {bottomSizeableDiv}
           </RowsDiv>
         </ColumnDiv>
       </ColumnsDiv>
