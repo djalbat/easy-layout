@@ -13,5 +13,6 @@ class BottomSizeableDiv extends SizeableDiv {
 export default withStyle(BottomSizeableDiv)`
 
   height: 24rem;
+  min-height: 12rem;
 
 `;

@@ -12,19 +12,11 @@ import { resetCursor } from "../cursor";
 
 class SplitterDiv extends Element {
   mouseOutHandler(event, element) {
-    const disabled = this.isDisabled();
-
-    if (!disabled) {
-      resetCursor();
-    }
+    resetCursor();
   }
 
   stopDragHandler(dropElement, aborted, element, done) {
-    const disabled = this.isDisabled();
-
-    if (!disabled) {
-      resetCursor();
-    }
+    resetCursor();
 
     done();
   }
