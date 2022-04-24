@@ -1,5 +1,7 @@
 'use strict';
 
+export { default as cursor } from "./cursor";
+
 export { default as RowDiv } from "./div/row";
 export { default as RowsDiv } from "./div/rows";
 export { default as ColumnDiv } from "./div/column";

@@ -7,12 +7,16 @@ import Splitter from "../splitter";
 import { columnResizeCursor } from "../../cursor";
 
 class VerticalSplitter extends Splitter {
-  mouseOverHandler(event, element) {
+  setCursor() {
     const disabled = this.isDisabled();
 
     if (!disabled) {
       columnResizeCursor();
     }
+  }
+
+  mouseOverHandler(event, element) {
+    this.setCursor();
   }
 
   startDragHandler(element) {
@@ -24,9 +28,9 @@ class VerticalSplitter extends Splitter {
             previousSizeableElementWidth = sizeableElementWidth;  ///
 
       this.setPreviousSizeableElementWidth(previousSizeableElementWidth);
-
-      columnResizeCursor();
     }
+
+    this.setCursor();
   }
 
   dragHandler(relativeMouseTop, relativeMouseLeft) {
