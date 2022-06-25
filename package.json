@@ -1,7 +1,7 @@
 {
   "name": "easy-layout",
   "author": "James Smith",
-  "version": "5.1.11",
+  "version": "5.1.12",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/easy-layout",
   "description": "Layout elements that work with CSS flexbox.",
@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "easy": "^13.0.41",
-    "easy-drag-and-drop": "^1.2.60",
-    "easy-with-style": "^3.0.143"
+    "easy-drag-and-drop": "^1.2.61",
+    "easy-with-style": "^3.0.145"
   },
   "devDependencies": {
     "@swc/core": "^1.2.50",
