@@ -7,19 +7,11 @@ import Splitter from "../splitter";
 import { rowResizeCursor } from "../../cursor";
 
 class HorizontalSplitter extends Splitter {
-  setCursor() {
-    const disabled = this.isDisabled();
-
-    if (!disabled) {
-      rowResizeCursor();
-    }
-  }
-
-  mouseOverHandler(event, element) {
+  mouseOverHandler = (event, element) => {
     this.setCursor();
   }
 
-  startDragHandler(element) {
+  startDragHandler = (element) => {
     const disabled = this.isDisabled();
 
     if (!disabled) {
@@ -33,7 +25,7 @@ class HorizontalSplitter extends Splitter {
     this.setCursor();
   }
 
-  dragHandler(relativeMouseTop, relativeMouseLeft) {
+  dragHandler = (relativeMouseTop, relativeMouseLeft) => {
     const disabled = this.isDisabled();
 
     if (!disabled) {
@@ -44,6 +36,14 @@ class HorizontalSplitter extends Splitter {
             height = sizeableElementHeight; ///
 
       sizeableElement.setHeight(height);
+    }
+  }
+
+  setCursor() {
+    const disabled = this.isDisabled();
+
+    if (!disabled) {
+      rowResizeCursor();
     }
   }
 

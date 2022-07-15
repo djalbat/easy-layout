@@ -11,14 +11,14 @@ import SizeableSection from "../section/sizeable";
 import { resetCursor } from "../cursor";
 
 class SplitterDiv extends Element {
-  mouseOutHandler(event, element) {
-    resetCursor();
-  }
-
-  stopDragHandler(dropElement, aborted, element, done) {
+  stopDragHandler = (dropElement, aborted, element, done) => {
     resetCursor();
 
     done();
+  }
+
+  mouseOutHandler = (event, element) => {
+    resetCursor();
   }
 
   getSizeableElement() {
