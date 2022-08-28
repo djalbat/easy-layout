@@ -5,8 +5,10 @@ import withStyle from "easy-with-style";  ///
 import { RowDiv, RowsDiv, ColumnDiv, ColumnsDiv } from "../index"; ///
 
 import BlueRowDiv from "./div/row/blue";
+import TextSection from "./section/text";
 import YellowRowDiv from "./div/row/yellow";
 import BottomLeftDiv from "./div/bottomLeft";
+import MiddleColumnDiv from "./div/column/middle";
 import LeftSizeableDiv from "./div/sizeable/left";
 import RightSizeableDiv from "./div/sizeable/right";
 import PseudoSplitterDiv from "./div/splitter/pseudo";
@@ -46,7 +48,9 @@ const View = (properties) => {
           <RowsDiv>
             <RowDiv>
               <ColumnsDiv>
-                <ColumnDiv/>
+                <MiddleColumnDiv>
+                  <TextSection/>
+                </MiddleColumnDiv>
                 <RightVerticalSplitterDiv/>
                 <RightSizeableDiv>
                   <RowsDiv>
