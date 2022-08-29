@@ -6,7 +6,6 @@ import { Element } from "easy";
 import { dragMixins } from "easy-drag-and-drop";
 
 import SizeableDiv from "../div/sizeable";
-import SizeableSection from "../section/sizeable";
 
 import { resetCursor } from "../cursor";
 
@@ -21,23 +20,23 @@ class SplitterDiv extends Element {
     resetCursor();
   }
 
-  getSizeableElement() {
-    let sizeableElement;
+  getSizeableDiv() {
+    let sizeableDiv;
 
     const nextSiblingElement = this.getNextSiblingElement(),
           previousSiblingElement = this.getPreviousSiblingElement(),
-          nextSiblingElementSizeableElement = isElementSizeableElement(nextSiblingElement),
-          previousSiblingElementSizeableElement = isElementSizeableElement(previousSiblingElement);
+          nextSiblingElementSizeableDiv = (nextSiblingElement instanceof SizeableDiv),
+          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDivment);
 
-    if (nextSiblingElementSizeableElement) {
-      sizeableElement = nextSiblingElement; ///
+    if (nextSiblingElementSizeableDiv) {
+      sizeableDiv = nextSiblingElement; ///
     }
 
-    if (previousSiblingElementSizeableElement) {
-      sizeableElement = previousSiblingElement; ///
+    if (previousSiblingElementSizeableDiv) {
+      sizeableDiv = previousSiblingElement; ///
     }
 
-    return sizeableElement;
+    return sizeableDiv;
   }
 
   getDirection() {
@@ -45,14 +44,14 @@ class SplitterDiv extends Element {
 
     const nextSiblingElement = this.getNextSiblingElement(),
           previousSiblingElement = this.getPreviousSiblingElement(),
-          nextSiblingElementSizeableElement = isElementSizeableElement(nextSiblingElement),
-          previousSiblingElementSizeableElement = isElementSizeableElement(previousSiblingElement);
+          nextSiblingElementSizeableDiv = (nextSiblingElement instanceof SizeableDiv),
+          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDivment);
 
-    if (nextSiblingElementSizeableElement) {
+    if (nextSiblingElementSizeableDiv) {
       direction = +1;
     }
 
-    if (previousSiblingElementSizeableElement) {
+    if (previousSiblingElementSizeableDiv) {
       direction = -1;
     }
 
@@ -132,9 +131,3 @@ export default withStyle(SplitterDiv)`
   flex-shrink: 0;
 
 `;
-
-function isElementSizeableElement(element) {
-  const elementSizeableElement = (element instanceof SizeableDiv) || (element instanceof SizeableSection);
-
-  return elementSizeableElement;
-}

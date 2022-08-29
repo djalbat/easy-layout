@@ -15,11 +15,11 @@ class HorizontalSplitter extends Splitter {
     const disabled = this.isDisabled();
 
     if (!disabled) {
-      const sizeableElement = this.getSizeableElement(),
-            sizeableElementHeight = sizeableElement.getHeight(),
-            previousSizeableElementHeight = sizeableElementHeight;  ///
+      const sizeableDiv = this.getSizeableDiv(),
+            sizeableDivHeight = sizeableDiv.getHeight(),
+            previousSizeableDivHeight = sizeableDivHeight;  ///
 
-      this.setPreviousSizeableElementHeight(previousSizeableElementHeight);
+      this.setPreviousSizeableDivHeight(previousSizeableDivHeight);
     }
 
     this.setCursor();
@@ -30,12 +30,12 @@ class HorizontalSplitter extends Splitter {
 
     if (!disabled) {
       const direction = this.getDirection(),
-            sizeableElement = this.getSizeableElement(),
-            previousSizeableElementHeight = this.getPreviousSizeableElementHeight(),
-            sizeableElementHeight = previousSizeableElementHeight - direction * relativeMouseTop,
-            height = sizeableElementHeight; ///
+            sizeableDiv = this.getSizeableDiv(),
+            previousSizeableDivHeight = this.getPreviousSizeableDivHeight(),
+            sizeableDivHeight = previousSizeableDivHeight - direction * relativeMouseTop,
+            height = sizeableDivHeight; ///
 
-      sizeableElement.setHeight(height);
+      sizeableDiv.setHeight(height);
     }
   }
 
@@ -47,24 +47,24 @@ class HorizontalSplitter extends Splitter {
     }
   }
 
-  getPreviousSizeableElementHeight() {
+  getPreviousSizeableDivHeight() {
     const state = this.getState(),
-          { previousSizeableElementHeight } = state;
+          { previousSizeableDivHeight } = state;
 
-    return previousSizeableElementHeight;
+    return previousSizeableDivHeight;
   }
 
-  setPreviousSizeableElementHeight(previousSizeableElementHeight) {
+  setPreviousSizeableDivHeight(previousSizeableDivHeight) {
     this.updateState({
-      previousSizeableElementHeight
+      previousSizeableDivHeight
     });
   }
 
   setInitialState() {
-    const previousSizeableElementHeight = null;
+    const previousSizeableDivHeight = null;
 
     this.setState({
-      previousSizeableElementHeight
+      previousSizeableDivHeight
     });
   }
 
