@@ -26,7 +26,7 @@ class SplitterDiv extends Element {
     const nextSiblingElement = this.getNextSiblingElement(),
           previousSiblingElement = this.getPreviousSiblingElement(),
           nextSiblingElementSizeableDiv = (nextSiblingElement instanceof SizeableDiv),
-          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDivment);
+          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDiv);
 
     if (nextSiblingElementSizeableDiv) {
       sizeableDiv = nextSiblingElement; ///
@@ -45,7 +45,7 @@ class SplitterDiv extends Element {
     const nextSiblingElement = this.getNextSiblingElement(),
           previousSiblingElement = this.getPreviousSiblingElement(),
           nextSiblingElementSizeableDiv = (nextSiblingElement instanceof SizeableDiv),
-          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDivment);
+          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDiv);
 
     if (nextSiblingElementSizeableDiv) {
       direction = +1;
