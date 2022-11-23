@@ -75,15 +75,15 @@ class SplitterDiv extends Element {
   didMount() {
     this.enableDrag();
 
-    this.onDrag(this.dragHandler, this);
+    this.onDrag(this.dragHandler);
 
-    this.onStopDrag(this.stopDragHandler, this);
+    this.onStopDrag(this.stopDragHandler);
 
-    this.onStartDrag(this.startDragHandler, this);
+    this.onStartDrag(this.startDragHandler);
 
-    this.onMouseOver(this.mouseOverHandler, this);
+    this.onMouseOver(this.mouseOverHandler);
 
-    this.onMouseOut(this.mouseOutHandler, this);
+    this.onMouseOut(this.mouseOutHandler);
   }
 
   willUnmount() {
