@@ -48,8 +48,7 @@ class HorizontalSplitter extends Splitter {
   }
 
   getPreviousSizeableDivHeight() {
-    const state = this.getState(),
-          { previousSizeableDivHeight } = state;
+    const { previousSizeableDivHeight } = this.getState();
 
     return previousSizeableDivHeight;
   }

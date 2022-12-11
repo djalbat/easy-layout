@@ -48,8 +48,7 @@ class VerticalSplitter extends Splitter {
   }
 
   getPreviousSizeableDivWidth() {
-    const state = this.getState(),
-          { previousSizeableDivWidth } = state;
+    const { previousSizeableDivWidth } = this.getState();
 
     return previousSizeableDivWidth;
   }
