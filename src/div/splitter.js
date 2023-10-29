@@ -58,6 +58,12 @@ class SplitterDiv extends Element {
     return direction;
   }
 
+  getReferences() {
+    const references = [];
+
+    return references;
+  }
+
   enable() {
     this.removeClass("disabled");
   }
