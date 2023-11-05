@@ -9,41 +9,36 @@ const body = new Body();
 
 let previousCursor;  ///
 
+export function autoCursor() {
+  const cursor = AUTO_CURSOR;
+
+  updateCursor(cursor);
+}
+
 export function resetCursor() {
   setCursor(previousCursor); ///
 }
 
 export function pointerCursor() {
-  const currentCursor = getCurrentCursor();
+  const cursor = POINTER_CURSOR;
 
-  if (currentCursor !== POINTER_CURSOR) {
-    previousCursor = currentCursor; ///
-
-    setCursor(POINTER_CURSOR);
-  }
+  updateCursor(cursor);
 }
 
 export function rowResizeCursor() {
-  const currentCursor = getCurrentCursor();
+  const cursor = ROW_RESIZE_CURSOR;
 
-  if (currentCursor !== ROW_RESIZE_CURSOR) {
-    previousCursor = currentCursor; ///
-
-    setCursor(ROW_RESIZE_CURSOR);
-  }
+  updateCursor(cursor);
 }
 
 export function columnResizeCursor() {
-  const currentCursor = getCurrentCursor();
+  const cursor = COL_RESIZE_CURSOR;
 
-  if (currentCursor !== COL_RESIZE_CURSOR) {
-    previousCursor = currentCursor; ///
-
-    setCursor(COL_RESIZE_CURSOR);
-  }
+  updateCursor(cursor);
 }
 
 export default {
+  autoCursor,
   resetCursor,
   pointerCursor,
   rowResizeCursor,
@@ -56,6 +51,16 @@ function setCursor(cursor) {
   };
 
   body.css(css);
+}
+
+function updateCursor(cursor) {
+  const currentCursor = getCurrentCursor();
+
+  if (currentCursor !== cursor) {
+    previousCursor = currentCursor; ///
+
+    setCursor(cursor);
+  }
 }
 
 function getCurrentCursor() {
