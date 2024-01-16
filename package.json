@@ -10,8 +10,8 @@
     "url": "https://github.com/djalbat/easy-layout"
   },
   "dependencies": {
-    "easy": "^15.1.1",
-    "easy-drag-and-drop": "^1.3.79",
+    "easy": "^15.1.10",
+    "easy-drag-and-drop": "^1.3.84",
     "easy-with-style": "^3.0.273"
   },
   "devDependencies": {

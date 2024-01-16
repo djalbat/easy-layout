@@ -10,7 +10,7 @@ import SizeableDiv from "../div/sizeable";
 import { resetCursor } from "../cursor";
 
 class SplitterDiv extends Element {
-  stopDragHandler = (dropElement, aborted, element, done) => {
+  stopDragCustomHandler = (dropElement, aborted, element, done) => {
     resetCursor();
 
     done();
@@ -81,11 +81,11 @@ class SplitterDiv extends Element {
   didMount() {
     this.enableDrag();
 
-    this.onDrag(this.dragHandler);
+    this.onCustomDrag(this.dragCustomHandler);
 
-    this.onStopDrag(this.stopDragHandler);
+    this.onCustomStopDrag(this.stopDragCustomHandler);
 
-    this.onStartDrag(this.startDragHandler);
+    this.onCustomStartDrag(this.startDragCustomHandler);
 
     this.onMouseOver(this.mouseOverHandler);
 
@@ -97,11 +97,11 @@ class SplitterDiv extends Element {
 
     this.offMouseOver(this.mouseOverHandler);
 
-    this.offStartDrag(this.startDragHandler);
+    this.offCustomStartDrag(this.startDragCustomHandler);
 
-    this.offStopDrag(this.stopDragHandler);
+    this.offCustomStopDrag(this.stopDragCustomHandler);
 
-    this.offDrag(this.dragHandler);
+    this.offCustomDrag(this.dragCustomHandler);
 
     this.disableDrag();
   }
@@ -113,10 +113,7 @@ class SplitterDiv extends Element {
   static tagName = "div";
 
   static ignoredProperties = [
-    "onDrag",
-    "disabled",
-    "onStopDrag",
-    "onStartDrag"
+    "disabled"
   ];
 
   static defaultProperties = {
