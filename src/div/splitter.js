@@ -79,6 +79,12 @@ class SplitterDiv extends Element {
   }
 
   didMount() {
+    const { disabled = false } = this.properties;
+
+    if (disabled) {
+      this.disable();
+    }
+
     this.enableDrag();
 
     this.onCustomDrag(this.dragCustomHandler);

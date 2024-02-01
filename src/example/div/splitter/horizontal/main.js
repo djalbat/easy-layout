@@ -13,5 +13,5 @@ class MainHorizontalSplitterDiv extends HorizontalSplitterDiv {
 export default withStyle(MainHorizontalSplitterDiv)`
 
   background-color: black;
-
+  
 `;
