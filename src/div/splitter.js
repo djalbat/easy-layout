@@ -126,8 +126,8 @@ class SplitterDiv extends Element {
     className: "splitter"
   };
 
-  static fromClass(Class, properties) {
-    const splitterDiv = Element.fromClass(Class, properties);
+  static fromClass(Class, properties, ...remainingArguments) {
+    const splitterDiv = Element.fromClass(Class, properties, ...remainingArguments);
 
     return splitterDiv;
   }
