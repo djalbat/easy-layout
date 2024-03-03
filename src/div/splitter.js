@@ -125,12 +125,6 @@ class SplitterDiv extends Element {
   static defaultProperties = {
     className: "splitter"
   };
-
-  static fromClass(Class, properties, ...remainingArguments) {
-    const splitterDiv = Element.fromClass(Class, properties, ...remainingArguments);
-
-    return splitterDiv;
-  }
 }
 
 Object.assign(SplitterDiv.prototype, dragMixins);
