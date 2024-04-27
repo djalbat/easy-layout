@@ -15,7 +15,7 @@
     "easy-with-style": "^3.0.343"
   },
   "devDependencies": {
-    "@swc/core": "^1.2.50",
+    "@swc/core": "1.2.52",
     "esbuild": "^0.9.2",
     "express": "^4.17.1",
     "lively-cli": "^2.0.52",
