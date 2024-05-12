@@ -10,7 +10,7 @@ import SizeableDiv from "../div/sizeable";
 import { resetCursor } from "../cursor";
 
 class SplitterDiv extends Element {
-  stopDragCustomHandler = (dropElement, aborted, element, done) => {
+  stopDragCustomHandler = (event, element, dropElement, aborted, done) => {
     resetCursor();
 
     done();

@@ -7,7 +7,7 @@ import Splitter from "../splitter";
 import { rowResizeCursor } from "../../cursor";
 
 class HorizontalSplitter extends Splitter {
-  startDragCustomHandler = (element) => {
+  startDragCustomHandler = (event, element) => {
     const disabled = this.isDisabled();
 
     if (!disabled) {
@@ -21,7 +21,7 @@ class HorizontalSplitter extends Splitter {
     this.setCursor();
   }
 
-  dragCustomHandler = (relativeMouseTop, relativeMouseLeft) => {
+  dragCustomHandler = (event, element, relativeMouseTop, relativeMouseLeft) => {
     const disabled = this.isDisabled();
 
     if (!disabled) {

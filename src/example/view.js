@@ -59,12 +59,12 @@ const View = (properties) => {
                 </RightSizeableDiv>
               </ColumnsDiv>
             </RowDiv>
-            <MainHorizontalSplitterDiv onCustomStartDrag={(element) => {
+            <MainHorizontalSplitterDiv onCustomStartDrag={(event, element) => {
 
                                          bottomSizeableDivHeight = bottomSizeableDiv.getHeight();
 
                                        }}
-                                       onCustomDrag={(relativeMouseTop, relativeMouseLeft) => {
+                                       onCustomDrag={(event, element, relativeMouseTop, relativeMouseLeft) => {
 
                                          const height = bottomSizeableDivHeight - relativeMouseTop;
 
