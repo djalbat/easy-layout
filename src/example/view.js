@@ -51,7 +51,7 @@ const View = (properties) => {
                 <MiddleColumnDiv>
                   <TextSection/>
                 </MiddleColumnDiv>
-                <RightVerticalSplitterDiv/>
+                <RightVerticalSplitterDiv disabled />
                 <RightSizeableDiv>
                   <RowsDiv>
                     <BlueRowDiv/>

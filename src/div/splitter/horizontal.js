@@ -8,31 +8,23 @@ import { rowResizeCursor } from "../../cursor";
 
 class HorizontalSplitter extends Splitter {
   startDragCustomHandler = (event, element) => {
-    const disabled = this.isDisabled();
+    const sizeableDiv = this.getSizeableDiv(),
+          sizeableDivHeight = sizeableDiv.getHeight(),
+          previousSizeableDivHeight = sizeableDivHeight;  ///
 
-    if (!disabled) {
-      const sizeableDiv = this.getSizeableDiv(),
-            sizeableDivHeight = sizeableDiv.getHeight(),
-            previousSizeableDivHeight = sizeableDivHeight;  ///
-
-      this.setPreviousSizeableDivHeight(previousSizeableDivHeight);
-    }
+    this.setPreviousSizeableDivHeight(previousSizeableDivHeight);
 
     this.setCursor();
   }
 
   dragCustomHandler = (event, element, relativeMouseTop, relativeMouseLeft) => {
-    const disabled = this.isDisabled();
+    const direction = this.getDirection(),
+          sizeableDiv = this.getSizeableDiv(),
+          previousSizeableDivHeight = this.getPreviousSizeableDivHeight(),
+          sizeableDivHeight = previousSizeableDivHeight - direction * relativeMouseTop,
+          height = sizeableDivHeight; ///
 
-    if (!disabled) {
-      const direction = this.getDirection(),
-            sizeableDiv = this.getSizeableDiv(),
-            previousSizeableDivHeight = this.getPreviousSizeableDivHeight(),
-            sizeableDivHeight = previousSizeableDivHeight - direction * relativeMouseTop,
-            height = sizeableDivHeight; ///
-
-      sizeableDiv.setHeight(height);
-    }
+    sizeableDiv.setHeight(height);
   }
 
   mouseOverHandler = (event, element) => {

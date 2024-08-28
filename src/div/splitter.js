@@ -65,15 +65,36 @@ class SplitterDiv extends Element {
   }
 
   enable() {
-    this.removeClass("disabled");
+    const dragEnabled = this.isDragEnabled();
+
+    if (!dragEnabled) {
+      this.enableDrag();
+
+      this.onCustomDrag(this.dragCustomHandler);
+
+      this.onCustomStopDrag(this.stopDragCustomHandler);
+
+      this.onCustomStartDrag(this.startDragCustomHandler);
+    }
   }
 
   disable() {
-    this.addClass("disabled");
+    const dragEnabled = this.isDragEnabled();
+
+    if (dragEnabled) {
+      this.offCustomStartDrag(this.startDragCustomHandler);
+
+      this.offCustomStopDrag(this.stopDragCustomHandler);
+
+      this.offCustomDrag(this.dragCustomHandler);
+
+      this.disableDrag();
+    }
   }
 
   isDisabled() {
-    const disabled = this.hasClass("disabled");
+    const dragEnabled = this.isDragEnabled(),
+          disabled = !dragEnabled;
 
     return disabled;
   }
@@ -81,17 +102,9 @@ class SplitterDiv extends Element {
   didMount() {
     const { disabled = false } = this.properties;
 
-    if (disabled) {
-      this.disable();
+    if (!disabled) {
+      this.enable();
     }
-
-    this.enableDrag();
-
-    this.onCustomDrag(this.dragCustomHandler);
-
-    this.onCustomStopDrag(this.stopDragCustomHandler);
-
-    this.onCustomStartDrag(this.startDragCustomHandler);
 
     this.onMouseOver(this.mouseOverHandler);
 
@@ -99,17 +112,15 @@ class SplitterDiv extends Element {
   }
 
   willUnmount() {
+    const disabled = this.isDisabled();
+
     this.offMouseOut(this.mouseOutHandler);
 
     this.offMouseOver(this.mouseOverHandler);
 
-    this.offCustomStartDrag(this.startDragCustomHandler);
-
-    this.offCustomStopDrag(this.stopDragCustomHandler);
-
-    this.offCustomDrag(this.dragCustomHandler);
-
-    this.disableDrag();
+    if (!disabled) {
+      this.disable();
+    }
   }
 
   initialise() {
