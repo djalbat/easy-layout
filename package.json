@@ -1,7 +1,7 @@
 {
   "name": "easy-layout",
   "author": "James Smith",
-  "version": "6.0.260",
+  "version": "6.0.261",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/easy-layout",
   "description": "Layout elements that work with CSS flexbox.",
@@ -15,8 +15,8 @@
     "easy-with-style": "^3.0.519"
   },
   "devDependencies": {
-    "@swc/core": "^1.5.6",
-    "esbuild": "^0.9.2",
+    "@swc/core": "1.13.20",
+    "esbuild": "0.11.14",
     "express": "^4.17.1",
     "lively-cli": "^2.0.65",
     "watchful-cli": "^1.7.56"
