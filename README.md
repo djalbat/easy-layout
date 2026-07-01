@@ -2,11 +2,15 @@
 
 Layout elements that work with CSS flexbox.
 
-There are several elements that can be nested. Broadly speaking there are row and column divs together with sizeable and splitter divs. Splitter divs can be dragged with a mouse in order to resize sizeable divs.
+There are several elements that can be nested. 
+Broadly speaking there are row and column divs together with sizeable and splitter divs. 
+Splitter divs can be dragged with a mouse in order to resize sizeable divs.
 
 ### JSX support
 
-There is now support for JSX in the form of [Juxtapose](https://github.com/djalbat/Juxtapose). What this means is that Easy *will* now help you with the architecture of your large application. So although Easy elements will continue to work standalone, their use with Juxtapose is recommended.
+There is now support for JSX in the form of [Juxtapose](https://github.com/djalbat/Juxtapose). 
+What this means is that Easy *will* now help you with the architecture of your large application. 
+So although Easy elements will continue to work standalone, their use with Juxtapose is recommended.
 
 ### Easy projects
 
@@ -42,13 +46,15 @@ The example will then be available at the following URL:
 
 http://localhost:8888
 
-The source for the example can be found in the `src/example.js` file and corresponding`src/example` folder. You are encouraged to try the example whilst reading what follows. You can rebuild it on the fly with the following command:
+The source for the example can be found in the `src/example.js` file and corresponding`src/example` folder. 
+You are encouraged to try the example whilst reading what follows. You can rebuild it on the fly with the following command:
 
     npm run watch-debug
 
 The development server will reload the page whenever you make changes.
 
-One last thing to bear in mind is that this package is included by way of a relative rather than a package import. If you are importing it into your own application, however, you should use the standard package import.
+One last thing to bear in mind is that this package is included by way of a relative rather than a package import. 
+If you are importing it into your own application, however, then you should use the standard package import.
 
 ## Usage
 
@@ -95,7 +101,10 @@ Note that he enclosing `View` element has its `display` style set to `flex`.
 
 ## Styles
 
-There is a small amount of default styling. All the elements have class names, however, allowing you to override this with CSS. Or a better way is to use [Easy with Style](https://github.com/djalbat/easy-with-style). For example:
+There is a small amount of default styling. 
+All the elements have class names, however, allowing you to override this with CSS. 
+Or a better way is to use [Easy with Style](https://github.com/djalbat/easy-with-style). 
+For example:
 
 ```
 import withStyle from "easy-with-style"; ///
@@ -109,7 +118,8 @@ export default (VerticalSplitter)`
 
 ## Building
 
-Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
+Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. 
+The pertinent commands are:
 
     npm run build-debug
     npm run watch-debug

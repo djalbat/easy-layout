@@ -5,9 +5,8 @@ import withStyle from "easy-with-style";  ///
 import { Element } from "easy";
 import { dragMixins } from "easy-drag-and-drop";
 
-import SizeableDiv from "../div/sizeable";
-
 import { resetCursor } from "../cursor";
+import { isElementSizeableDiv } from "../div/sizeable";
 
 class SplitterDiv extends Element {
   stopDragCustomHandler = (event, element, dropElement, aborted, done) => {
@@ -25,8 +24,8 @@ class SplitterDiv extends Element {
 
     const nextSiblingElement = this.getNextSiblingElement(),
           previousSiblingElement = this.getPreviousSiblingElement(),
-          nextSiblingElementSizeableDiv = (nextSiblingElement instanceof SizeableDiv),
-          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDiv);
+          nextSiblingElementSizeableDiv = isElementSizeableDiv(nextSiblingElement),
+          previousSiblingElementSizeableDiv = isElementSizeableDiv(previousSiblingElement);
 
     if (nextSiblingElementSizeableDiv) {
       sizeableDiv = nextSiblingElement; ///
@@ -44,8 +43,8 @@ class SplitterDiv extends Element {
 
     const nextSiblingElement = this.getNextSiblingElement(),
           previousSiblingElement = this.getPreviousSiblingElement(),
-          nextSiblingElementSizeableDiv = (nextSiblingElement instanceof SizeableDiv),
-          previousSiblingElementSizeableDiv = (previousSiblingElement instanceof SizeableDiv);
+          nextSiblingElementSizeableDiv = isElementSizeableDiv(nextSiblingElement),
+          previousSiblingElementSizeableDiv = isElementSizeableDiv(previousSiblingElement);
 
     if (nextSiblingElementSizeableDiv) {
       direction = +1;

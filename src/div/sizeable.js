@@ -17,3 +17,9 @@ export default withStyle(SizeableDiv)`
   display: flex;
   
 `;
+
+export function isElementSizeableDiv(element) {
+  const elementSizeableDiv = SizeableDiv.prototype.isPrototypeOf(element);
+
+  return elementSizeableDiv;
+}
